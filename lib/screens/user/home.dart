@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
     return const Scaffold(
       body: Center(
         child: Text(
-          'Home, On Standby'
+          'Home, On Standby,whoop'
         )
       ),
       

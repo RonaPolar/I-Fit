@@ -6,7 +6,8 @@ import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
 import 'package:ifit/screens/account-login&reg/password/forgot_pass.dart';
 import 'package:ifit/screens/account-login&reg/register/register.dart';
-import 'package:ifit/screens/user/home.dart';
+// import 'package:ifit/screens/main_screens/home.dart';
+import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -109,7 +110,7 @@ class _LogInState extends State<LogIn> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Home(),
+                            builder: (context) => const MainBottomBar(),
                           ),
                         );
                       },

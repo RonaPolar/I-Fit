@@ -6,14 +6,14 @@ import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
 import 'package:ifit/screens/account-login&reg/password/pass_verification.dart';
 
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({super.key});
+class PasswordRecovery extends StatefulWidget {
+  const PasswordRecovery({super.key});
 
   @override
-  State<ForgotPassword> createState() => _ForgotPasswordState();
+  State<PasswordRecovery> createState() => _PasswordRecoveryState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
+class _PasswordRecoveryState extends State<PasswordRecovery> {
   @override
   Widget build(BuildContext context) {
   return Scaffold(
@@ -83,7 +83,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     MainButton(
                       title: 'Next',
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const PasswordVerification(),

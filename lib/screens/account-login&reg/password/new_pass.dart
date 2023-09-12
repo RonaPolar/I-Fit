@@ -83,7 +83,7 @@ class _NewPasswordState extends State<NewPassword> {
                     MainButton(
                       title: 'Change Password',
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const SuccessPassword(),

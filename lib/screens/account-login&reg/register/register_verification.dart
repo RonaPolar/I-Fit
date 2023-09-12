@@ -101,7 +101,7 @@ class _RegisterVerificationState extends State<RegisterVerification> {
                     MainButton(
                       title: 'Confirm',
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const RegisterPart2(),

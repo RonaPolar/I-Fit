@@ -4,11 +4,14 @@ import 'package:ifit/common/utils/app_styles.dart';
 class MainButton extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
+  final TextStyle? textStyle; // Add a TextStyle parameter
 
   const MainButton({
     Key? key, // Change super.key to Key key
     required this.title,
     required this.onPressed,
+    this.textStyle, // Allow customization of text style
+
   }) : super(key: key);
 
   @override
@@ -24,7 +27,7 @@ class MainButton extends StatelessWidget {
       ),
       child: Text(
         title, // Use the 'title' variable
-        style: Styles.buttonText.copyWith(color: Styles.bgColor),
+        style: textStyle ?? Styles.buttonText.copyWith(color: Styles.bgColor), // Use the provided textStyle or the default style
       ),
     );
   }

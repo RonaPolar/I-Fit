@@ -7,8 +7,8 @@ import 'package:ifit/screens/main_screens/discover.dart';
 import 'package:ifit/screens/main_screens/home.dart';
 import 'package:ifit/screens/main_screens/profile.dart';
 import 'package:ifit/screens/main_screens/tracker.dart';
-// import 'package:ifit/common/widgets/bottom_bar.dart';
 
+//for the navigation bottom bar itself
 class MainBottomBar extends StatefulWidget {
   const MainBottomBar({super.key});
 
@@ -25,8 +25,7 @@ class _MainBottomBarState extends State<MainBottomBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageStorage(bucket: pageBucket, child: currentTab),
-      backgroundColor: Styles.bgColor,
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: BottomAppBar(  //the line above the bottombar
           child: Container(
         decoration: BoxDecoration(color: Styles.bgColor, boxShadow: const [
           BoxShadow(color: Colors.black12, blurRadius: 2, offset: Offset(0, -2))

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-//import 'package:ifit/common/widgets/bottom_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ifit/screens/welcome/onboarding_screen.dart';
 import 'package:ifit/screens/account-login&reg/register/register.dart';
@@ -55,8 +54,7 @@ class _MyAppState extends State<MyApp> {
       ),
       title: 'I-Fit',
     home: widget.homeScreen, //either Onboarding or Register Screen
-    //home: const BottomBar(), //either Onboarding or Register Screen
-
+    
     );
   }
 }

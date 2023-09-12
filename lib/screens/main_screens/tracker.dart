@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:ifit/common/widgets/bottom_bar.dart';
 
 class TrackerScreen extends StatefulWidget {
   const TrackerScreen({super.key});
@@ -17,7 +16,6 @@ class _TrackerScreenState extends State<TrackerScreen> {
           'TrackerScreen, On Standby'
         )
       ),
-      // bottomNavigationBar: BottomBar(),
     );
   }
 }

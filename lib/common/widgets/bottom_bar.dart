@@ -8,7 +8,7 @@ class BottomBar extends StatelessWidget {
   final bool isActive;
 
   const BottomBar({
-    Key? key, // Add the Key parameter here if needed
+    Key? key, 
     required this.icon,
     required this.selectIcon,
     required this.isActive,
@@ -24,12 +24,12 @@ class BottomBar extends StatelessWidget {
         children: [
           Icon(
             isActive ? selectIcon : icon,
-            color: isActive ? primary : Colors.black, // Change the colors as needed
+            color: isActive ? primary : Colors.black,
           ),          SizedBox(
-          height: isActive ?  5: 12,
+          height: isActive ?  5: 12,  //padding between circle and icons
         ),
-        if(isActive)
-        Container(
+        if(isActive)  
+        Container(  //the circle under the icons of bottom navbar when onTapped
           width: 4,
           height: 4,
           decoration: BoxDecoration(

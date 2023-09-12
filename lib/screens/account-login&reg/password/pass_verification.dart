@@ -107,7 +107,7 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                     MainButton(
                       title: 'Confirm',
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const NewPassword(),

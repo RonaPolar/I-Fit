@@ -4,9 +4,8 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
-import 'package:ifit/screens/account-login&reg/password/forgot_pass.dart';
+import 'package:ifit/screens/account-login&reg/password/pass_recovery.dart';
 import 'package:ifit/screens/account-login&reg/register/register.dart';
-// import 'package:ifit/screens/main_screens/home.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 
 class LogIn extends StatefulWidget {
@@ -84,7 +83,7 @@ class _LogInState extends State<LogIn> {
                           const Gap(10),
                           TextButton(onPressed: (){
                             Navigator.of(context).push( 
-                              MaterialPageRoute(builder: (context) => const ForgotPassword()));}, 
+                              MaterialPageRoute(builder: (context) => const PasswordRecovery()));}, 
                             child: Text(
                             'Forgot your password?',
                             style: Styles.text2.copyWith(
@@ -107,7 +106,7 @@ class _LogInState extends State<LogIn> {
                     MainButton(
                       title: 'Login',
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const MainBottomBar(),

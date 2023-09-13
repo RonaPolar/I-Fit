@@ -109,7 +109,7 @@ class _LogInState extends State<LogIn> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const MainBottomBar(),
+                            builder: (context) => const HomeNavBar(),
                           ),
                         );
                       },

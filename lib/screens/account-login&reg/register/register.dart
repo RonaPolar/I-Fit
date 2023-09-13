@@ -32,6 +32,8 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
+  
+
     return Scaffold(
       backgroundColor: Styles.bgColor,
       body: SingleChildScrollView(

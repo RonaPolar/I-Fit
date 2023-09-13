@@ -2,6 +2,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/common/widgets/drop_down_container.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
 import 'package:ifit/screens/account-login&reg/register/register_part3.dart';
@@ -17,6 +18,7 @@ class _RegisterPart2State extends State<RegisterPart2> {
   @override
 
 Widget build(BuildContext context) {
+String? selectedValue;
     return Scaffold(
       backgroundColor: Styles.bgColor,
       body: SingleChildScrollView(
@@ -46,55 +48,23 @@ Widget build(BuildContext context) {
                             style: Styles.text2,
                           ),
                           const Gap(30),
-                          Padding(
-                            padding: const EdgeInsets.only(top:15),
-                            child: Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Styles.boxtextField,
-                                    borderRadius: BorderRadius.circular(15)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 13, right: 13),
-                                    child: DropdownButtonHideUnderline(
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            FluentSystemIcons.ic_fluent_people_regular,
-                                            color: Styles.fadeTextColor,
-                                          ),
-                                          const Gap(10),
-                                          Expanded(
-                                            child: DropdownButton(
-                                              items: ["Male", "Female"]
-                                                  .map((name) => DropdownMenuItem(
-                                                    value: name,
-                                                    child: Text(
-                                                      name,
-                                                      style: TextStyle(
-                                                        color: Styles.fadeTextColor,
-                                                      ),
-                                                    ),
-                                                  ))
-                                                  .toList(),
-                                              onChanged: (value) {},
-                                              isExpanded: true,
-                                              hint: Text(
-                                                "Choose Gender",
-                                                style: TextStyle(
-                                                  color: Styles.fadeTextColor,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),  
+                          DropDownContainer(hintText: 'Gender', 
+                          icon: FluentSystemIcons.ic_fluent_people_regular,
+                          items: const [
+                            DropdownMenuItem<String>(
+                              value: "Male",
+                              child: Text("Male"),),
+                            DropdownMenuItem<String>(
+                              value: "Female",
+                              child: Text("Female"),)
+                          ],  
+                          onChanged: (value) {
+                            setState(() {
+                              selectedValue = value;
+                            });
+                          },
+                          selectedValue: selectedValue,
+                          ),
                             const Gap(15),
                             const TextfieldContainer(
                             hitText: 'Date of Birth', 

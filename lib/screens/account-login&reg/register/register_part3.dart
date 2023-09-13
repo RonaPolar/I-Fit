@@ -2,6 +2,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/common/widgets/drop_down_container.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
 import 'package:ifit/screens/account-login&reg/login.dart';
@@ -14,8 +15,8 @@ class RegisterPart3 extends StatefulWidget {
 }
 
 class _RegisterPart3State extends State<RegisterPart3> {
-  @override
-
+String? selectedValue;
+@override
 Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Styles.bgColor,
@@ -51,6 +52,24 @@ Widget build(BuildContext context) {
                             icon: FluentSystemIcons.ic_fluent_people_regular, 
                             obscureText: false
                             ),
+                            const Gap(15),
+                            DropDownContainer(hintText: 'Gender', 
+                          icon: FluentSystemIcons.ic_fluent_people_regular,
+                          items: const [
+                            DropdownMenuItem<String>(
+                              value: "Male",
+                              child: Text("Male"),),
+                            DropdownMenuItem<String>(
+                              value: "Female",
+                              child: Text("Female"),)
+                          ],  
+                          onChanged: (value) {
+                            setState(() {
+                              selectedValue = value;
+                            });
+                          },
+                          selectedValue: selectedValue,
+                          ),
                             const Gap(15),
                             const TextfieldContainer(
                             hitText: 'Date of Birth', 

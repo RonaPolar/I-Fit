@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
+import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/notifications.dart';
-import 'package:ifit/screens/main_screens/profile.dart';
-import 'package:ifit/screens/main_screens/tracker.dart';
 
 class MyWidget extends StatelessWidget {
   const MyWidget({super.key});
@@ -110,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         onPressed: () {
                                           Navigator.of(context).push(
                                               MaterialPageRoute(
-                                                  builder: (context) => const ProfileScreen()));
+                                                  builder: (context) => const ProfileNavBar()));
                                         },
                                         textStyle: const TextStyle(
                                           fontSize: 14,
@@ -170,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             onPressed: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                builder: (context) => const TrackerScreen()));
+                                builder: (context) => const ActivityTrackerNavbar()));
                             },
                             textStyle: const TextStyle(
                               fontSize: 14,

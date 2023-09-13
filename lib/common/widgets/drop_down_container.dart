@@ -4,14 +4,14 @@ import 'package:ifit/common/utils/app_styles.dart';
 class DropDownContainer extends StatefulWidget {
   final List<DropdownMenuItem<String>> items;
   final String hintText;
-  final IconData icon;
+  final IconData? icon;
   final void Function(String?) onChanged;
   final String? selectedValue;
 
   const DropDownContainer({super.key, 
     required this.items,
     required this.hintText,
-    required this.icon,
+    this.icon,
     required this.onChanged,
     this.selectedValue,
     });

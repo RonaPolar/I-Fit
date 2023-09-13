@@ -1,11 +1,9 @@
-import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/common/widgets/drop_down_container.dart';
+import 'package:ifit/common/widgets/check_boxes.dart';
 import 'package:ifit/common/widgets/main_button.dart';
-import 'package:ifit/common/widgets/text_field_container.dart';
-import 'package:ifit/screens/account-login&reg/login.dart';
+import 'package:ifit/screens/account-login&reg/register/registration_success.dart';
 
 class RegisterPart3 extends StatefulWidget {
   const RegisterPart3({super.key});
@@ -16,11 +14,13 @@ class RegisterPart3 extends StatefulWidget {
 
 class _RegisterPart3State extends State<RegisterPart3> {
 String? selectedValue;
+  List<bool> isCheckedList = [false, false, false];
+
 @override
 Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Styles.bgColor,
-      body: SingleChildScrollView(
+      body: Center(
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Column(
@@ -34,10 +34,6 @@ Widget build(BuildContext context) {
                           const EdgeInsets.only(right: 20, left: 20, top: 20),
                       child: Column(
                         children: [
-                          // Image.asset(
-                          //   "assets/images/complete-profile.png",
-                          //   width: double.maxFinite,
-                          //   fit: BoxFit.fitHeight,),
                           Text(
                             'What\'s your goal?',
                             style: Styles.headline,
@@ -47,48 +43,29 @@ Widget build(BuildContext context) {
                             style: Styles.text2,
                           ),
                           const Gap(30),
-                          const TextfieldContainer(
-                            hitText: 'Choose Gender', 
-                            icon: FluentSystemIcons.ic_fluent_people_regular, 
-                            obscureText: false
-                            ),
-                            const Gap(15),
-                            DropDownContainer(hintText: 'Gender', 
-                          icon: FluentSystemIcons.ic_fluent_people_regular,
-                          items: const [
-                            DropdownMenuItem<String>(
-                              value: "Male",
-                              child: Text("Male"),),
-                            DropdownMenuItem<String>(
-                              value: "Female",
-                              child: Text("Female"),)
-                          ],  
-                          onChanged: (value) {
-                            setState(() {
-                              selectedValue = value;
-                            });
-                          },
-                          selectedValue: selectedValue,
+                          const CheckBoxList(questionText: 'What fitness goals do you want to achieve?',
+                            choices: ['Lose Weight', 'Body Toning', 'Gain muscles'],  
                           ),
-                            const Gap(15),
-                            const TextfieldContainer(
-                            hitText: 'Date of Birth', 
-                            icon: FluentSystemIcons.ic_fluent_calendar_regular, 
-                            obscureText: false
-                            ),
-                            const Gap(15),
-                            const TextfieldContainer(
-                            hitText: 'Your Weight', 
-                            icon: FluentSystemIcons.ic_fluent_data_funnel_regular, 
-                            obscureText: false
-                            ),
-                            const Gap(15),
-                            const TextfieldContainer(
-                            hitText: 'Your Weight', 
-                            icon: FluentSystemIcons.ic_fluent_arrow_sort_regular, 
-                            obscureText: false
-                            ),
-                            const Gap(30),
+                          const Gap(15),
+                          const CheckBoxList(questionText: 'What specific body part do you want for it?',
+                            choices: ['Upper Body', 'Abdominal', 'Lower Body', 'Full Body'], 
+                          ),
+                          const Gap(15),
+                          const CheckBoxList(questionText: 'How do you want to attain these goals?',
+                            choices: ['Body Exercises', 'Lifting Weights', 'Food Restrictions'], 
+                          ),
+                          const Gap(15),
+                          const CheckBoxList(questionText: 'How many minutes/hours do you exercise?',
+                            choices: ['Less than 30 minutes', 'An hour', 'More than an hour'], 
+                          ),
+                          const Gap(15),
+                          const CheckBoxList(questionText: 'How many times in a week do you exercise?',
+                            choices: ['None', 'Once a week', 'Twice a week', '3-4 times a week', 'More than'], 
+                          ),
+                          const Gap(15),
+                          const CheckBoxList(questionText: 'Do you have a body or health complications that need to be considered upon the process?',
+                            choices: ['None', 'Injuries', 'Breathing Complications(ex: Asthma)', 'Cardiovascular Diseases'], 
+                          ),
                         ],
                       ),
                     ),
@@ -106,7 +83,7 @@ Widget build(BuildContext context) {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const LogIn(),
+                            builder: (context) => const SuccessRegistration(),
                           ),
                         );
                       },

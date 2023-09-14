@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
+import 'package:ifit/common/widgets/next_navigation_container.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/notifications.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 import 'package:dotted_dashed_line/dotted_dashed_line.dart';
+import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -196,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Container(
                         height: 315,
                         padding: const EdgeInsets.symmetric(
-                            vertical: 20, horizontal: 15),
+                            vertical: 15, horizontal: 15),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(15),
@@ -206,12 +208,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                  "Schedule",
-                                  style: Styles.text2.copyWith(
-                                      color: Styles.fadeTextColor,
-                                      fontWeight: FontWeight.bold),
-                                ),
+                              NextNavigationContainer(title: 'Schedule', 
+                                    onTap: () {
+                                      // Navigator.of(context).push(MaterialPageRoute(
+                                      //   builder: (context) => const ActivityTrackerNavbar(),
+                                      // ));
+                                    },),
                                 Text(
                                   "Monday",
                                   style: TextStyle(
@@ -225,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   SimpleAnimationProgressBar(
                                   height: 235,
                                   width: 20,
-                                  backgroundColor: Colors.grey.shade300,
+                                  backgroundColor: Colors.grey.shade200,
                                   foregrondColor: Colors.white,
                                   ratio: 0.8, //1 is 100%
                                   direction: Axis.vertical,
@@ -316,30 +318,111 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           Container(
+                            width: double.maxFinite,
                             height: 150,
                             padding: const EdgeInsets.symmetric(
-                                vertical: 25, horizontal: 20),
+                              vertical: 15, horizontal: 15),
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15),
                                 boxShadow: const [
                                   BoxShadow(color: Colors.black26, blurRadius: 2)
                                 ]),
-                              ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    NextNavigationContainer(title: 'Time Spent', 
+                                    onTap: () {
+                                      Navigator.of(context).push(MaterialPageRoute(
+                                        builder: (context) => const ActivityTrackerNavbar(),
+                                      ));
+                                    },),
+                                      Text(
+                                        "2hr 50m",
+                                        style: TextStyle(
+                                            color: Styles.secondColor.withOpacity(0.5),
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 14),
+                                      ),
+                                      Expanded(
+                                        child: Image.asset('assets/images/Sleep-Graph.png', 
+                                          fit: BoxFit.fill),
+                                      ),
+                        ])
+                      ),
                           const Gap(15),
                           Container(
+                            width: double.maxFinite,
                             height: 150,
                             padding: const EdgeInsets.symmetric(
-                                vertical: 25, horizontal: 20),
+                              vertical: 15, horizontal: 15),
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15),
                                 boxShadow: const [
                                   BoxShadow(color: Colors.black26, blurRadius: 2)
                                 ]),
-                              ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              NextNavigationContainer(title: 'Calories', 
+                                    onTap: () {
+                                      // Navigator.of(context).push(MaterialPageRoute(
+                                      //   builder: (context) => const ActivityTrackerNavbar(),
+                                      // ));
+                                    },),
+                                Text(
+                                  "760 kCal",
+                                  style: TextStyle(
+                                      color: Styles.secondColor.withOpacity(0.5),
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 14),
+                                ),
+                                const Gap(10),
+                                Container(
+                                  alignment: Alignment.center,
+                                  child: SizedBox(
+                                    width: 65,
+                                    height: 65,
+                                    child: Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        Container(
+                                          width: 60,
+                                          height: 60,
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                            color: primary,
+                                            borderRadius: BorderRadius.circular(20),
+                                          ),
+                                          child: const FittedBox(
+                                            child: Text(
+                                              "240kCal\nBurned",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 10),
+                                            ),
+                                            ),
+                                          ),
+                                          SimpleCircularProgressBar(
+                                          progressStrokeWidth: 10,
+                                          backStrokeWidth: 10,
+                                          progressColors: [Styles.secondColor.withOpacity(0.5), Styles.secondColor],
+                                          backColor: Colors.grey.shade200,
+                                          valueNotifier: ValueNotifier(30),
+                                          startAngle: -180,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                        ])
+                       ),
                         ],
                       ),
                       )

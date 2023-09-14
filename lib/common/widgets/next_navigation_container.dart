@@ -3,13 +3,15 @@ import 'package:ifit/common/utils/app_styles.dart';
 
 class NextNavigationContainer extends StatelessWidget {
   final String title;
+  final TextStyle? titleTextStyle;
   final IconData? iconData;
   final VoidCallback onTap;
 
   const NextNavigationContainer({super.key, 
-  required this.title, 
+  required this.title,
+  this.titleTextStyle,
   this.iconData, 
-  required this.onTap});
+  required this.onTap,});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class NextNavigationContainer extends StatelessWidget {
           ],
           Text(
             title,
-            style: Styles.text2.copyWith(
+            style: titleTextStyle ?? Styles.text2.copyWith(
               color: Styles.fadeTextColor,
               fontWeight: FontWeight.bold),
           ),

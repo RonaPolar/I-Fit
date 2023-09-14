@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -5,15 +6,8 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/notifications.dart';
-
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
+import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
+import 'package:dotted_dashed_line/dotted_dashed_line.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,6 +17,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List waterArr = [
+    {"title": "7pm - 8pm", "subtitle": "Stretching"},
+    {"title": "5pm - 6:30pm", "subtitle": "Full Body"},
+    {"title": "8am - 9pm", "subtitle": "Abdominal"},
+    {"title": "7:30am - 7:50am", "subtitle": "Stretching"},
+    {"title": "6:30am - 7am", "subtitle": "Meal"},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,37 +121,35 @@ class _HomeScreenState extends State<HomeScreen> {
                                       )),
                                 ],
                               ),
-                              // AspectRatio(
-                              //   aspectRatio: 1,
-                              //   child: PieChart(
-                              //     PieChartData(
-                              //       pieTouchData: PieTouchData(
-                              //         touchCallback:
-                              //             (FlTouchEvent event, pieTouchResponse) {},
-                              //       ),
-                              //       startDegreeOffset: 250,
-                              //       borderData: FlBorderData(
-                              //         show: false,
-                              //       ),
-                              //       sectionsSpace: 1,
-                              //       centerSpaceRadius: 0,
-                              //       sections: showingSections(),
-                              //     ),
-                              //   ),
-                              // ),
+                              AspectRatio(
+                                aspectRatio: 1,
+                                child: PieChart(
+                                  PieChartData(
+                                    pieTouchData: PieTouchData(
+                                      touchCallback:
+                                          (FlTouchEvent event, pieTouchResponse) {},
+                                    ),
+                                    startDegreeOffset: 250,
+                                    borderData: FlBorderData(
+                                      show: false,
+                                    ),
+                                    sectionsSpace: 1,
+                                    centerSpaceRadius: 0,
+                                    sections: showingSections(),
+                                  ),
+                                ),
+                              ),
                             ],
-
                           ),
                         )
                       ]),
                     ),
                   const Gap(15),
                   Container(
-                    
                     padding:
                         const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                     decoration: BoxDecoration(
-                      color: const Color.fromRGBO(255, 0, 0, 72).withOpacity(0.3),
+                      color: Styles.secondColor.withOpacity(0.3),
                       borderRadius: BorderRadius.circular(15),),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -187,7 +187,163 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.bold),
-                  )
+                  ),
+                  const Gap(10),
+                  
+                  Row(
+                  children: [
+                    Expanded( //Schedule Container
+                      child: Container(
+                        height: 315,
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 15),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: const [
+                              BoxShadow(color: Colors.black26, blurRadius: 2)
+                            ]),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  "Schedule",
+                                  style: Styles.text2.copyWith(
+                                      color: Styles.fadeTextColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "Monday",
+                                  style: TextStyle(
+                                      color: Styles.secondColor.withOpacity(0.5),
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 14),
+                                ),
+                              const Gap(5),
+                              Row( //text at Schedule
+                                children: [
+                                  SimpleAnimationProgressBar(
+                                  height: 235,
+                                  width: 20,
+                                  backgroundColor: Colors.grey.shade300,
+                                  foregrondColor: Colors.white,
+                                  ratio: 0.8, //1 is 100%
+                                  direction: Axis.vertical,
+                                  curve: Curves.fastLinearToSlowEaseIn,
+                                  duration: const Duration(seconds: 3),
+                                  borderRadius: BorderRadius.circular(15),
+                                  gradientColor: LinearGradient(
+                                      colors: [Styles.secondColor.withOpacity(0.5), Styles.secondColor],
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter),
+                                  ),
+                                  const Gap(10),
+                                  Expanded(
+                                    child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Gap(2),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: waterArr.map((wObj) { //schedule content
+                                        var isLast = wObj == waterArr.last;
+                                        return Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  width: 10,
+                                                  height: 10,
+                                                  decoration: BoxDecoration(
+                                                    color: Styles.secondColor
+                                                        .withOpacity(0.5),
+                                                    borderRadius:
+                                                        BorderRadius.circular(5),
+                                                  ),
+                                                ),
+                                                if (!isLast)
+                                                  DottedDashedLine(
+                                                      height: 40,
+                                                      width: 0,
+                                                      dashColor: Styles
+                                                          .secondColor
+                                                          .withOpacity(0.5),
+                                                      axis: Axis.vertical)
+                                              ],
+                                            ),
+                                            const Gap(5), //gap between text and line
+                                            Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [ //waterArry
+                                                Text(
+                                                  wObj["title"].toString(),
+                                                  style: TextStyle(
+                                                    color: Styles.fadeTextColor,
+                                                    fontSize: 12,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  wObj["subtitle"].toString(),
+                                                  style: TextStyle(
+                                                      color: Styles.secondColor
+                                                          .withOpacity(0.5),
+                                                      fontSize: 12),
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        );
+                                      }).toList(),
+                                    )
+                                  ],
+                                ))
+                              ],
+                              ),
+                            ],
+                          ),
+                      ),
+                    ),
+                    const Gap(15),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 150,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 25, horizontal: 20),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: const [
+                                  BoxShadow(color: Colors.black26, blurRadius: 2)
+                                ]),
+                              ),
+                          const Gap(15),
+                          Container(
+                            height: 150,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 25, horizontal: 20),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: const [
+                                  BoxShadow(color: Colors.black26, blurRadius: 2)
+                                ]),
+                              ),
+                        ],
+                      ),
+                      )
+                  ],)
                   ],
                 ),
               ],
@@ -195,6 +351,41 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+    );
+  }
+  List<PieChartSectionData> showingSections() {
+    return List.generate(
+      2,
+      (i) {
+
+        switch (i) {
+          case 0:
+            return PieChartSectionData(
+                color: primary,
+                value: 20.1,
+                title: '',
+                radius: 45,
+                titlePositionPercentageOffset: 0.55,
+                badgeWidget: const Text(
+                  "20.1",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700),
+                ));
+          case 1:
+            return PieChartSectionData(
+              color: Colors.white,
+              value: 75,
+              title: '',
+              radius: 40,
+              titlePositionPercentageOffset: 0.55,
+            );
+
+          default:
+            throw Error();
+        }
+      },
     );
   }
 }

@@ -1,23 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
-class WorkoutRowContainer extends StatefulWidget {
-  final Map wObj;
-  final double? progress; // Make progress optional
+class MealRowContainer extends StatelessWidget {
+  final Map mealObj;
 
-  const WorkoutRowContainer({
-    Key? key,
-    required this.wObj,
-    this.progress, // Provide a default value of null
-  }) : super(key: key);
+  const MealRowContainer({Key? key, 
+  required this.mealObj}) : super(key: key);
 
-  @override
-  State<WorkoutRowContainer> createState() => _WorkoutRowContainerState();
-}
-
-class _WorkoutRowContainerState extends State<WorkoutRowContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,7 +27,7 @@ class _WorkoutRowContainerState extends State<WorkoutRowContainer> {
               height: 60,
               color: Styles.secondColor.withOpacity(0.6),
               child: Image.asset(
-                widget.wObj["image"].toString(),
+                mealObj["image"].toString(),
                 fit: BoxFit.contain,
               ),
             ),
@@ -48,36 +38,20 @@ class _WorkoutRowContainerState extends State<WorkoutRowContainer> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.wObj["name"].toString(),
+                  mealObj["name"].toString(),
                   style: Styles.text2.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  "${widget.wObj["kcal"].toString()} Calories Burn | ${widget.wObj["time"].toString()} minutes",
+                  "${mealObj["categories"].toString()} | ${mealObj["kcal"].toString()} Calories",
                   style: TextStyle(
                     color: Styles.fadeTextColor,
                     fontSize: 12,
                   ),
                 ),
                 const SizedBox(height: 4,),
-                if (widget.progress != null) // Conditionally render the progress bar
-                  SimpleAnimationProgressBar(
-                    height: 15,
-                    width: 165,
-                    backgroundColor: Colors.grey.shade200,
-                    foregrondColor: Styles.secondColor,
-                    ratio: widget.progress!,
-                    direction: Axis.horizontal,
-                    curve: Curves.fastLinearToSlowEaseIn,
-                    duration: const Duration(seconds: 3),
-                    borderRadius: BorderRadius.circular(7.5),
-                    gradientColor: LinearGradient(
-                      colors: Styles.gradientColor,
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                    ),
-                  ),
+                // Remove the SimpleAnimationProgressBar from here
               ],
             ),
           ),

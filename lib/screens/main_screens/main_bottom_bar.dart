@@ -1,7 +1,7 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/screens/main_screens/progress_tracker.dart';
+import 'package:ifit/common/widgets/progress_tracker.dart';
 import 'package:ifit/screens/main_screens/discover.dart';
 import 'package:ifit/screens/main_screens/home.dart';
 import 'package:ifit/screens/main_screens/profile.dart';

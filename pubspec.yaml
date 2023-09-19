@@ -45,6 +45,7 @@ dependencies:
   simple_animation_progress_bar: ^1.6.0
   dotted_dashed_line: ^0.0.3
   simple_circular_progress_bar: ^1.0.2
+  animated_toggle_switch: ^0.8.0
 
 dev_dependencies:
   flutter_test:

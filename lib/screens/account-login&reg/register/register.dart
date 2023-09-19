@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/screens/account-login&reg/login.dart';
-import 'package:ifit/screens/account-login&reg/register/popup.dart';
+import 'package:ifit/screens/account-login&reg/register/popup_privacy_terms.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
 import 'package:ifit/screens/account-login&reg/register/register_verification.dart';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
+import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
@@ -54,13 +55,13 @@ class _WorkoutRowContainerState extends State<WorkoutRowContainer> {
                   ),
                 ),
                 Text(
-                  "${widget.wObj["kcal"].toString()} Calories Burn | ${widget.wObj["time"].toString()} minutes",
+                  "${widget.wObj["kcal"].toString()} Calories | ${widget.wObj["time"].toString()} minutes",
                   style: TextStyle(
                     color: Styles.fadeTextColor,
                     fontSize: 12,
                   ),
                 ),
-                const SizedBox(height: 4,),
+                const Gap(5),
                 if (widget.progress != null) // Conditionally render the progress bar
                   SimpleAnimationProgressBar(
                     height: 15,

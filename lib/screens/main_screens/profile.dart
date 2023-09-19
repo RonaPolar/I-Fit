@@ -1,4 +1,11 @@
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/common/widgets/main_button.dart';
+import 'package:ifit/common/widgets/next_navigation_container.dart';
+import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 // import 'package:ifit/common/widgets/bottom_bar.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -9,15 +16,388 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  bool positive = false;
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'ProfileScreen, On Standby'
-        )
+    return Scaffold(
+      backgroundColor: Styles.bgColor,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        elevation: 0,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            margin: const EdgeInsets.all(12),
+              height: 30,
+              width: 30,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(10)),
+            child: const Icon(
+              FluentSystemIcons.ic_fluent_chevron_left_filled,
+              size: 20,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        title: Text('Profile',
+        style: Styles.headlineSmall,),
       ),
-      // bottomNavigationBar: BottomBar(),
+      body: ListView(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(
+                            color: Styles.primaryColor, // Replace with your desired border color
+                            width: 2.0, // Replace with your desired border width
+                          ),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30),
+                          child: SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: Image.asset(
+                              'assets/icons/profile_pic.png',
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Gap(10),
+                      Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Stefani Wong",
+                            style: Styles.textStyle.copyWith(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const Gap(5),
+                          Text(
+                            "Lose a Fat Program",
+                            style: Styles.text2.copyWith(
+                              color: Colors.black,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                      SizedBox(
+                      width: 80,
+                      height: 30,
+                        child: MainButton(
+                          title: "Edit",
+                        onPressed: () {
+                          
+                        },
+                        textStyle: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      )),             
+                    ],
+                    ),
+                    const Gap(10),
+                    const Row(
+                      children: [
+                        Expanded(
+                            child: ProfileCell(value: '188cm', title: 'Height')
+                            ),
+                        Gap(10),
+                        Expanded(
+                            child: ProfileCell(value: '56kg', title: 'Weight')
+                            ),
+                        Gap(10),
+                        Expanded(
+                            child: ProfileCell(value: '22yo', title: 'Height')
+                            ),
+                      ],
+                    ),
+
+                    const Gap(25),
+                    Container(
+                      height: 200,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 15),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: const [
+                            BoxShadow(color: Colors.black26, blurRadius: 2)
+                          ]),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Account",
+                            style: Styles.textStyle.copyWith(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const Gap(1),
+                          NextNavigationContainer(
+                            iconData: FluentSystemIcons.ic_fluent_person_accounts_regular,
+                            title: 'Personal Data',
+                            onTap: () {},
+                          ),
+                          NextNavigationContainer(
+                            iconData: FluentSystemIcons.ic_fluent_archive_regular,
+                            title: 'Achievement',
+                            onTap: () {},
+                          ),
+                          NextNavigationContainer(
+                            iconData: FluentSystemIcons.ic_fluent_history_regular,
+                            title: 'Activity History',
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const ActivityTrackerNavbar()));
+                            },
+                          ),
+                          NextNavigationContainer(
+                            iconData: FluentSystemIcons.ic_fluent_activity_regular,
+                            title: 'Workout Progress',
+                            onTap: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    const Gap(20),
+                    Container(
+                      height: 115,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 15),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: const [
+                            BoxShadow(color: Colors.black26, blurRadius: 2)
+                          ]),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Notifications",
+                            style: Styles.textStyle.copyWith(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const Gap(1),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Icon(FluentSystemIcons.ic_fluent_alert_regular,),
+                                
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: Text(
+                                "Pop-up Notification",
+                                style: Styles.textStyle.copyWith(
+                                  color: Colors.black,
+                                  fontSize: 16
+                                ),
+                              ),
+                            ),
+                            CustomAnimatedToggleSwitch<bool>(
+                              current: positive,
+                              values: const [false, true],
+                              spacing: 0.0,
+                              indicatorSize: const Size.square(30.0),
+                              animationDuration:
+                                  const Duration(milliseconds: 200),
+                              animationCurve: Curves.linear,
+                              onChanged: (b) => setState(() => positive = b),
+                              iconBuilder: (context, local, global) {
+                                return const SizedBox();
+                              },
+                              cursors: const ToggleCursors(defaultCursor: SystemMouseCursors.click),
+                              onTap: (_) => setState(() => positive = !positive),
+                              iconsTappable: false,
+                              wrapperBuilder: (context, global, child) {
+                                return Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Positioned(
+                                        left: 10.0,
+                                        right: 10.0,
+                                        
+                                        height: 20.0,
+                                        child: DecoratedBox(
+                                          decoration: BoxDecoration(
+                                             gradient: LinearGradient(
+                                                colors: [ const Color.fromRGBO(255, 0, 0, 72), Colors.grey.shade900]),
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(50.0)),
+                                          ),
+                                        )),
+                                    child,
+                                  ],
+                                );
+                              },
+                              foregroundIndicatorBuilder: (context, global) {
+                                return SizedBox.fromSize(
+                                  size: const Size(8, 8),
+                                  child: const DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(50.0)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.black38,
+                                            spreadRadius: 0.05,
+                                            blurRadius: 1.1,
+                                            offset: Offset(0.0, 0.8))
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ]),
+                          
+                        ],
+                      ),
+                    ),
+
+                    const Gap(20),
+                    Container(
+                      height: 170,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 15),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: const [
+                            BoxShadow(color: Colors.black26, blurRadius: 2)
+                          ]),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Other",
+                            style: Styles.textStyle.copyWith(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const Gap(1),
+                          NextNavigationContainer(
+                            iconData: FluentSystemIcons.ic_fluent_mail_regular,
+                            title: 'Contact Us',
+                            onTap: () {},
+                          ),
+                          NextNavigationContainer(
+                            iconData: FluentSystemIcons.ic_fluent_shield_regular,
+                            title: 'Privacy Policy',
+                            onTap: () {},
+                          ),
+                          NextNavigationContainer(
+                            iconData: FluentSystemIcons.ic_fluent_settings_regular,
+                            title: 'Settings',
+                            onTap: () {},
+                          ),
+                          
+                        ],
+                      ),
+                    ),
+                
+                ],
+                )
+
+
+              ],//main Children
+            ),
+          ),
+        ],
+
+      ),
+    );
+  }
+}
+
+class ProfileCell extends StatefulWidget {
+  final String value;
+  final String title;
+
+  const ProfileCell({super.key, required this.value, required this.title});
+
+  @override
+  State<ProfileCell> createState() => _ProfileCellState();
+}
+
+class _ProfileCellState extends State<ProfileCell> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 70,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 2)]
+      ),
+      child: Row(
+        children: [
+          Expanded(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ShaderMask(
+                blendMode: BlendMode.srcIn,
+                shaderCallback: (bounds) {
+                  return LinearGradient(
+                          colors: Styles.gradientColor,
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight)
+                      .createShader(
+                          Rect.fromLTRB(0, 0, bounds.width, bounds.height));
+                },
+                child: Text(
+                  widget.value,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18),
+                ),
+              ),
+              Text(
+                widget.title,
+                style: Styles.text2.copyWith(
+                  color: Colors.black,
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),),
+        ],
+      ),
     );
   }
 }

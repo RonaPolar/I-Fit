@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
+import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 
 class MealRowContainer extends StatelessWidget {
@@ -44,13 +45,13 @@ class MealRowContainer extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "${mealObj["categories"].toString()} | ${mealObj["kcal"].toString()} Calories",
+                  "${mealObj["kcal"].toString()} Calories | ${mealObj["categories"].toString()}",
                   style: TextStyle(
                     color: Styles.fadeTextColor,
                     fontSize: 12,
                   ),
                 ),
-                const SizedBox(height: 4,),
+                const Gap(5),
                 // Remove the SimpleAnimationProgressBar from here
               ],
             ),

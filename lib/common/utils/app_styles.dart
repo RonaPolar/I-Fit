@@ -6,6 +6,7 @@ class Styles {
   static Color primaryColor = primary;
   static Color secondColor = const Color.fromRGBO(255, 0, 0, 72);
   static List<Color> gradientColor = [const Color.fromRGBO(255, 0, 0, 72).withOpacity(0.5), const Color.fromRGBO(255, 0, 0, 72)];
+  
   static Color bgColor = const Color(0xFFFFFFFF);
   static Color textColor = const Color(0xFF000000);
   static Color fadeTextColor = const Color(0xFF9E9E9E);

@@ -170,7 +170,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => const WorkoutTrackerNavbar()));
+                                  builder: (context) => const ActivityTrackerScreen()));
                             },
                           ),
                           NextNavigationContainer(

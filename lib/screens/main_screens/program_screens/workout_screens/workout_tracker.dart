@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
+import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_row.dart';
 import 'package:ifit/common/widgets/workout_line_chart.dart';
 
@@ -99,6 +100,16 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                 ),
                 title: Text('Workout Tracker',
                 style: Styles.headlineSmall),
+                actions: [
+                  Container(
+                    margin: const EdgeInsets.only(right: 20),
+                    height: 30,
+                    width: 30,
+                    alignment: Alignment.center,
+                    child: const MoreIcon(options: ['This Week','Last Week'], iconData: FluentSystemIcons.ic_fluent_more_filled,
+                    ),
+                  ),
+                ],
               ),
               SliverAppBar(
                 backgroundColor: Colors.transparent,
@@ -270,7 +281,7 @@ final Map what2TrainObj;
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
       decoration: BoxDecoration(
-        color: Styles.secondColor.withOpacity(0.3),
+        color: Styles.secondColor.withOpacity(0.6),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -284,12 +295,13 @@ final Map what2TrainObj;
                   what2TrainObj["name"].toString(),
                   style: Styles.text2.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: Colors.black
                   ),
                 ),
                 Text(
                   "${what2TrainObj["exercise"].toString()} Exercises | ${what2TrainObj["duration"].toString()} mins",
-                  style: TextStyle(
-                    color: Styles.textColor,
+                  style: const TextStyle(
+                    color: Colors.black,
                     fontSize: 12,
                   ),
                 ),

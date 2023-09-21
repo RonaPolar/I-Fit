@@ -1,11 +1,11 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/screens/main_screens/progress_tracker.dart';
-import 'package:ifit/screens/main_screens/discover.dart';
-import 'package:ifit/screens/main_screens/home.dart';
-import 'package:ifit/screens/main_screens/profile.dart';
-import 'package:ifit/screens/main_screens/workout_traker.dart';
+import 'package:ifit/screens/main_screens/progress_tracker_screens/progress_tracker.dart';
+import 'package:ifit/screens/main_screens/discover_screens/discover.dart';
+import 'package:ifit/screens/main_screens/home_screens/home.dart';
+import 'package:ifit/screens/main_screens/profile_screens/profile.dart';
+import 'package:ifit/screens/main_screens/program_screens/workout_screens/workout_tracker.dart';
 
 class BottomBar extends StatelessWidget {
   final IconData icon;

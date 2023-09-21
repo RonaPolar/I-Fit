@@ -131,7 +131,7 @@ List<int> showingTooltipOnSpots = [21];
               getTooltipItems: (List<LineBarSpot> lineBarsSpot) {
                 return lineBarsSpot.map((lineBarSpot) {
                   return LineTooltipItem(
-                    "${lineBarSpot.x.toInt()} Workouts",
+                    "${lineBarSpot.x.toInt()} Calories",
                     const TextStyle(
                       color: Colors.white,
                       fontSize: 10,
@@ -189,23 +189,23 @@ LineTouchData get lineTouchData1 => LineTouchData(
 
   List<LineChartBarData> get lineBarsData1 => [
         lineChartBarData1_1,
-        lineChartBarData1_2,
+        // lineChartBarData1_2,
       ];
 
   LineChartBarData get lineChartBarData1_1 => LineChartBarData( //curve lines
         isCurved: true,
         gradient: LinearGradient(colors: [
-          Styles.textColor.withOpacity(0.5),
-          Styles.primaryColor.withOpacity(0.5),
+          Styles.primaryColor.withOpacity(0.6),
+          Styles.secondColor.withOpacity(0.9),
         ]),
-        barWidth: 1,
+        barWidth: 3,
         isStrokeCapRound: true,
-        dotData: const FlDotData(show: false),
-        belowBarData: BarAreaData(show: false),
+        dotData: const FlDotData(show: true),
+        belowBarData: BarAreaData(show: true, color: Colors.transparent),
         spots: const [
-          FlSpot(1, 35),
+          FlSpot(1, 10),
           FlSpot(2, 70),
-          FlSpot(3, 40),
+          FlSpot(3, 90),
           FlSpot(4, 80),
           FlSpot(5, 25),
           FlSpot(6, 70),
@@ -213,28 +213,28 @@ LineTouchData get lineTouchData1 => LineTouchData(
         ],
       );
 
-  LineChartBarData get lineChartBarData1_2 => LineChartBarData( 
-        isCurved: true,
-        gradient: LinearGradient(colors: [
-          Styles.primaryColor.withOpacity(0.5),
-          Styles.secondColor.withOpacity(0.5),
-        ]),
-        barWidth: 2,
-        isStrokeCapRound: true,
-        dotData: const FlDotData(show: false),
-        belowBarData: BarAreaData(
-          show: false,
-        ),
-        spots: const [
-          FlSpot(1, 80),
-          FlSpot(2, 50),
-          FlSpot(3, 90),
-          FlSpot(4, 40),
-          FlSpot(5, 80),
-          FlSpot(6, 35),
-          FlSpot(7, 60),
-        ],
-      );
+  // LineChartBarData get lineChartBarData1_2 => LineChartBarData( 
+  //       isCurved: true,
+  //       gradient: LinearGradient(colors: [
+  //         Styles.primaryColor.withOpacity(0.5),
+  //         Styles.secondColor.withOpacity(0.5),
+  //       ]),
+  //       barWidth: 2,
+  //       isStrokeCapRound: true,
+  //       dotData: const FlDotData(show: false),
+  //       belowBarData: BarAreaData(
+  //         show: false,
+  //       ),
+  //       spots: const [
+  //         FlSpot(1, 80),
+  //         FlSpot(2, 50),
+  //         FlSpot(3, 90),
+  //         FlSpot(4, 40),
+  //         FlSpot(5, 80),
+  //         FlSpot(6, 35),
+  //         FlSpot(7, 60),
+  //       ],
+  //     );
 
 SideTitles get rightTitles => const SideTitles(
         getTitlesWidget: rightTitleWidgets,
@@ -247,22 +247,22 @@ SideTitles get rightTitles => const SideTitles(
     String text;
     switch (value.toInt()) {
       case 0:
-        text = '0%';
+        text = '0';
         break;
       case 20:
-        text = '20%';
+        text = '200';
         break;
       case 40:
-        text = '40%';
+        text = '400';
         break;
       case 60:
-        text = '60%';
+        text = '600';
         break;
       case 80:
-        text = '80%';
+        text = '800';
         break;
       case 100:
-        text = '100%';
+        text = '1000';
         break;
       default:
         return Container();

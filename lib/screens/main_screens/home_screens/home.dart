@@ -3,13 +3,13 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/common/widgets/programs_chart.dart';
 import 'package:ifit/common/widgets/program_row.dart';
-import 'package:ifit/common/widgets/workout_line_chart.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/next_navigation_container.dart';
-import 'package:ifit/screens/main_screens/activity_tracker.dart';
+import 'package:ifit/screens/main_screens/home_screens/activity_tracker.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
-import 'package:ifit/screens/main_screens/notifications.dart';
+import 'package:ifit/screens/main_screens/home_screens/notifications.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 import 'package:dotted_dashed_line/dotted_dashed_line.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
@@ -493,7 +493,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Column(  //Workout Progress
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              NextNavigationContainer(title: 'Workout Progress',
+              NextNavigationContainer(title: 'Program Progress',
                 nextIconColor: Styles.fadeTextColor,
                 titleTextStyle: const TextStyle(
                   color: Colors.black,
@@ -514,7 +514,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
-                      items: ["Weekly", "Last Week"]
+                      items: ["This Week", "Last Week"]
                           .map((name) => DropdownMenuItem(
                                 value: name,
                                 child: Text(
@@ -545,7 +545,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 200,
             width: double.maxFinite,
             alignment: Alignment.center,
-            child: const LineChartWidget(),
+            child: ProgramsChart(),
           ),
 
             const Gap(15),

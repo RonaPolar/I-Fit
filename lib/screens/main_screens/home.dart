@@ -3,11 +3,11 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/common/widgets/program_row.dart';
 import 'package:ifit/common/widgets/workout_line_chart.dart';
 import 'package:ifit/common/widgets/main_button.dart';
-import 'package:ifit/common/widgets/meal_row_container.dart';
 import 'package:ifit/common/widgets/next_navigation_container.dart';
-import 'package:ifit/common/widgets/workout_row_container.dart';
+import 'package:ifit/screens/main_screens/activity_tracker.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/notifications.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
     {
       "name": "Blueberry Pancake",
       "image": "assets/icons/pancake.png",
-      "kcal": "180",
+      "kcal": "190",
       "categories": "Breakfast",
     },
     {
@@ -189,8 +189,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                 ]),
               ),
+            
             const Gap(15),
-
             Container(
               padding:
                   const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
@@ -215,7 +215,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                          builder: (context) => const ActivityTrackerNavbar()));
+                          builder: (context) => const ActivityTrackerScreen()));
                       },
                       textStyle: const TextStyle(
                         fontSize: 14,
@@ -392,7 +392,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const ActivityTrackerNavbar(),
+                                  builder: (context) => const WorkoutTrackerNavbar(),
                                 ));
                               },),
                                 Text(
@@ -588,7 +588,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       //   ),
                       // );
                     },
-                    child: WorkoutRowContainer(wObj: wObj,
+                    child: ProgramRow(wObj: wObj,
                       // progress: wObj["progress"] as double?,
                       ));
               }),
@@ -622,7 +622,7 @@ class _HomeScreenState extends State<HomeScreen> {
               shrinkWrap: true,
               itemCount: recommendWorkoutArr.length,
               itemBuilder: (context, index) {
-                var mealObj = recommendMealArr[index] as Map? ?? {};
+                var wObj = recommendMealArr[index] as Map? ?? {};
                 return InkWell(
                     onTap: () {
                       // Navigator.push(
@@ -633,7 +633,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       //   ),
                       // );
                     },
-                    child: MealRowContainer(mealObj: mealObj));
+                    child: ProgramRow(wObj: wObj));
               }),
             ],
           ),

@@ -3,7 +3,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/common/widgets/latest_activity_row.dart';
+import 'package:ifit/common/widgets/program_row.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/today_target_container.dart';
 
@@ -242,7 +242,7 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                       //   ),
                       // );
                     },
-                    child: LatestActivityRow(wObj: wObj,
+                    child: ProgramRow(wObj: wObj,
                       progress: wObj["progress"] as double?,
                       ));
               }),

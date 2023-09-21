@@ -163,7 +163,7 @@ List<int> showingTooltipOnSpots = [21];
             drawVerticalLine: false,
             getDrawingHorizontalLine: (value) {
               return FlLine(
-                color: Colors.grey.withOpacity(0.15),
+                color: Colors.black.withOpacity(0.15),
                 strokeWidth: 2,
               );
             },
@@ -192,10 +192,10 @@ LineTouchData get lineTouchData1 => LineTouchData(
         lineChartBarData1_2,
       ];
 
-  LineChartBarData get lineChartBarData1_1 => LineChartBarData(
+  LineChartBarData get lineChartBarData1_1 => LineChartBarData( //curve lines
         isCurved: true,
         gradient: LinearGradient(colors: [
-          Styles.fadeTextColor.withOpacity(0.5),
+          Styles.textColor.withOpacity(0.5),
           Styles.primaryColor.withOpacity(0.5),
         ]),
         barWidth: 1,
@@ -213,7 +213,7 @@ LineTouchData get lineTouchData1 => LineTouchData(
         ],
       );
 
-  LineChartBarData get lineChartBarData1_2 => LineChartBarData(
+  LineChartBarData get lineChartBarData1_2 => LineChartBarData( 
         isCurved: true,
         gradient: LinearGradient(colors: [
           Styles.primaryColor.withOpacity(0.5),
@@ -270,7 +270,7 @@ SideTitles get rightTitles => const SideTitles(
 
     return Text(text,
         style: TextStyle(
-          color: Styles.fadeTextColor,
+          color: Styles.textColor,
           fontSize: 12,
         ),
         textAlign: TextAlign.center);
@@ -285,7 +285,7 @@ SideTitles get rightTitles => const SideTitles(
   
   Widget bottomTitleWidgets(double value, TitleMeta meta) { //Workout Progress Content
     var style = TextStyle(
-      color: Styles.fadeTextColor,
+      color: Styles.textColor,
       fontSize: 12,
     );
     Widget text;

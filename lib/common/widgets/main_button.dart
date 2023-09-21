@@ -5,13 +5,14 @@ class MainButton extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
   final TextStyle? textStyle; // Add a TextStyle parameter
+  final Color? buttonColor;
 
   const MainButton({
     Key? key, // Change super.key to Key key
     required this.title,
     required this.onPressed,
     this.textStyle, // Allow customization of text style
-
+    this.buttonColor, 
   }) : super(key: key);
 
   @override
@@ -19,7 +20,7 @@ class MainButton extends StatelessWidget {
     return MaterialButton(
       onPressed: onPressed,
       height: 50,
-      color: Styles.primaryColor, // Custom button color
+      color: buttonColor ?? Styles.primaryColor, // Custom button color
       textColor: Styles.bgColor,
       minWidth: double.maxFinite,
       shape: RoundedRectangleBorder(

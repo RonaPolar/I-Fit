@@ -1,12 +1,11 @@
-import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/next_navigation_container.dart';
+import 'package:ifit/common/widgets/toggle_switch.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
-// import 'package:ifit/common/widgets/bottom_bar.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -171,7 +170,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => const ActivityTrackerNavbar()));
+                                  builder: (context) => const WorkoutTrackerNavbar()));
                             },
                           ),
                           NextNavigationContainer(
@@ -222,63 +221,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                               ),
                             ),
-                            CustomAnimatedToggleSwitch<bool>(
-                              current: positive,
-                              values: const [false, true],
-                              spacing: 0.0,
-                              indicatorSize: const Size.square(30.0),
-                              animationDuration:
-                                  const Duration(milliseconds: 200),
-                              animationCurve: Curves.linear,
-                              onChanged: (b) => setState(() => positive = b),
-                              iconBuilder: (context, local, global) {
-                                return const SizedBox();
-                              },
-                              cursors: const ToggleCursors(defaultCursor: SystemMouseCursors.click),
-                              onTap: (_) => setState(() => positive = !positive),
-                              iconsTappable: false,
-                              wrapperBuilder: (context, global, child) {
-                                return Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    Positioned(
-                                        left: 10.0,
-                                        right: 10.0,
-                                        
-                                        height: 20.0,
-                                        child: DecoratedBox(
-                                          decoration: BoxDecoration(
-                                             gradient: LinearGradient(
-                                                colors: [ const Color.fromRGBO(255, 0, 0, 72), Colors.grey.shade900]),
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(50.0)),
-                                          ),
-                                        )),
-                                    child,
-                                  ],
-                                );
-                              },
-                              foregroundIndicatorBuilder: (context, global) {
-                                return SizedBox.fromSize(
-                                  size: const Size(8, 8),
-                                  child: const DecoratedBox(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(50.0)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.black38,
-                                            spreadRadius: 0.05,
-                                            blurRadius: 1.1,
-                                            offset: Offset(0.0, 0.8))
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
+                            const ToggleSwitch()
                           ]),
                           
                         ],

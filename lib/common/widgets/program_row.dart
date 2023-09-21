@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/common/widgets/toggle_switch.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
-class LatestActivityRow extends StatefulWidget {
+class ProgramRow extends StatefulWidget {
   final Map wObj;
   final double? progress; // Make progress optional
 
 
-  const LatestActivityRow({
+  const ProgramRow({
     Key? key,
     required this.wObj,
     this.progress, // Provide a default value of null
@@ -16,10 +17,10 @@ class LatestActivityRow extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<LatestActivityRow> createState() => _LatestActivityRowState();
+  State<ProgramRow> createState() => _ProgramRowState();
 }
 
-class _LatestActivityRowState extends State<LatestActivityRow> {
+class _ProgramRowState extends State<ProgramRow> {
   @override
   Widget build(BuildContext context) {
     final String name = widget.wObj["name"].toString();
@@ -117,6 +118,70 @@ class _LatestActivityRowState extends State<LatestActivityRow> {
               color: Styles.secondColor,
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+
+class ScheduledProgram extends StatefulWidget {
+  final Map schedObj;
+
+  const ScheduledProgram({super.key, required this.schedObj});
+
+  @override
+  State<ScheduledProgram> createState() => _ScheduledProgramState();
+}
+
+class _ScheduledProgramState extends State<ScheduledProgram> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+      decoration: BoxDecoration(
+        color: Styles.bgColor,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 2)],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: Container(
+              width: 60,
+              height: 60,
+              color: Styles.secondColor.withOpacity(0.6),
+              child: Image.asset(
+                widget.schedObj["image"].toString(),
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+          const SizedBox(width: 15,),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.schedObj["name"].toString(),
+                  style: Styles.text2.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "${widget.schedObj["day"].toString()} | ${widget.schedObj["time"].toString()}",
+                  style: TextStyle(
+                    color: Styles.fadeTextColor,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const ToggleSwitch(),
         ],
       ),
     );

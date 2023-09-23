@@ -6,8 +6,10 @@ import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_row.dart';
 import 'package:ifit/common/widgets/workout_line_chart.dart';
+import 'package:ifit/screens/main_screens/program_screens/workout_screens/workout_details.dart';
 
 class WorkoutTrackerScreen extends StatefulWidget {
+
   const WorkoutTrackerScreen({super.key});
 
   @override
@@ -15,6 +17,7 @@ class WorkoutTrackerScreen extends StatefulWidget {
 }
 
 class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
+
   List what2TrainArr = [
     {
       "name": "Full Body Workout",
@@ -219,11 +222,11 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                                 //   context,
                                 //   MaterialPageRoute(
                                 //     builder: (context) =>
-                                //         const FinishedWorkoutView(),
+                                //          WorkoutDetails(dObj: schedObj),
                                 //   ),
                                 // );
                               },
-                              child: ScheduledProgram(schedObj: schedObj));
+                              child: ScheduledProgram(wObj: schedObj));
                         }),
 
                     const Gap(20),
@@ -248,15 +251,15 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                           var what2TrainObj = what2TrainArr[index] as Map? ?? {};
                           return InkWell(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) =>
-                                //         const FinishedWorkoutView(),
-                                //   ),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                         WorkoutDetails(dObj: what2TrainObj),
+                                  ),
+                                );
                               },
-                              child: What2TrainContainer(what2TrainObj: what2TrainObj));
+                              child: What2TrainContainer(wObj: what2TrainObj));
                         }),
 
 
@@ -270,86 +273,3 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
   }
 }
 
-class What2TrainContainer extends StatelessWidget {
-final Map what2TrainObj;
-
-  const What2TrainContainer({super.key, required this.what2TrainObj});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
-      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-      decoration: BoxDecoration(
-        color: Styles.secondColor.withOpacity(0.6),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  what2TrainObj["name"].toString(),
-                  style: Styles.text2.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black
-                  ),
-                ),
-                Text(
-                  "${what2TrainObj["exercise"].toString()} Exercises | ${what2TrainObj["duration"].toString()} mins",
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                  ),
-                ),
-                const Gap(10),
-                SizedBox(
-                    width: 100,
-                    height: 30,
-                      child: MainButton(
-                        title: "View More",
-                        buttonColor: Styles.primaryColor,
-                      onPressed: () {
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //   builder: (context) => const ActivityTrackerScreen()));
-                      },
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    )),  
-              ],
-            ),
-          ),
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                width: 70,
-                height: 70,
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.3),   
-                  borderRadius: BorderRadius.circular(40),
-                ),
-              ),
-                ClipRRect(
-                  child: Image.asset(
-                    what2TrainObj["image"].toString(),
-                    width: 80,
-                    height: 100,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-            ],
-          ),
-        ],
-        
-      ),
-    );
-  }
-}

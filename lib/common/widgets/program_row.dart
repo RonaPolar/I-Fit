@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
+import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/toggle_switch.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
@@ -25,9 +27,9 @@ class _ProgramRowState extends State<ProgramRow> {
   Widget build(BuildContext context) {
     final String name = widget.wObj["name"].toString();
     final String kcal = widget.wObj["kcal"]?.toString() ?? '';
-    final String time = widget.wObj["time"]?.toString() ?? ''; // Make time optional
-    final String categories = widget.wObj["categories"]?.toString() ?? ''; // Make categories optional
     final String duration = widget.wObj["duration"].toString();
+    final String categories = widget.wObj["categories"]?.toString() ?? ''; // Make categories optional
+
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
@@ -62,9 +64,9 @@ class _ProgramRowState extends State<ProgramRow> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                if (time.isNotEmpty) // Display time if available
+                if (categories.isEmpty) // Display time if available
                   Text(
-                    "$kcal Calories | $time minutes",
+                    "$kcal Calories | $duration minutes",
                     style: TextStyle(
                       color: Styles.fadeTextColor,
                       fontSize: 12,
@@ -104,7 +106,7 @@ class _ProgramRowState extends State<ProgramRow> {
                           color: Styles.fadeTextColor,
                           fontSize: 12,
                         ),
-                      )
+                      ),
                     ],
                   ),
               ],
@@ -126,9 +128,9 @@ class _ProgramRowState extends State<ProgramRow> {
 
 
 class ScheduledProgram extends StatefulWidget {
-  final Map schedObj;
+  final Map wObj;
 
-  const ScheduledProgram({super.key, required this.schedObj});
+  const ScheduledProgram({super.key, required this.wObj});
 
   @override
   State<ScheduledProgram> createState() => _ScheduledProgramState();
@@ -155,7 +157,7 @@ class _ScheduledProgramState extends State<ScheduledProgram> {
               height: 60,
               color: Styles.secondColor.withOpacity(0.6),
               child: Image.asset(
-                widget.schedObj["image"].toString(),
+                widget.wObj["image"].toString(),
                 fit: BoxFit.contain,
               ),
             ),
@@ -166,13 +168,13 @@ class _ScheduledProgramState extends State<ScheduledProgram> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.schedObj["name"].toString(),
+                  widget.wObj["name"].toString(),
                   style: Styles.text2.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  "${widget.schedObj["day"].toString()} | ${widget.schedObj["time"].toString()}",
+                  "${widget.wObj["day"].toString()} | ${widget.wObj["time"].toString()}",
                   style: TextStyle(
                     color: Styles.fadeTextColor,
                     fontSize: 12,
@@ -183,6 +185,92 @@ class _ScheduledProgramState extends State<ScheduledProgram> {
           ),
           const ToggleSwitch(),
         ],
+      ),
+    );
+  }
+}
+
+
+class What2TrainContainer extends StatelessWidget {
+final Map wObj;
+
+  const What2TrainContainer({super.key, required this.wObj});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+      decoration: BoxDecoration(
+        color: Styles.secondColor.withOpacity(0.6),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  wObj["name"].toString(),
+                  style: Styles.text2.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black
+                  ),
+                ),
+                Text(
+                  "${wObj["exercise"].toString()} Exercises | ${wObj["duration"].toString()} mins",
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 12,
+                  ),
+                ),
+                
+                const Gap(10),
+                SizedBox(
+                    width: 100,
+                    height: 30,
+                      child: MainButton(
+                        title: "View More",
+                        buttonColor: Styles.primaryColor,
+                      onPressed: () {
+                        // Navigator.of(context).push(
+                        //   MaterialPageRoute(
+                        //   builder: (context) => const WorkoutDetails()));
+                      },
+                      textStyle: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    )),  
+              ],
+            ),
+          ),
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                width: 70,
+                height: 70,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.3),   
+                  borderRadius: BorderRadius.circular(40),
+                ),
+              ),
+                ClipRRect(
+                  child: Image.asset(
+                    wObj["image"].toString(),
+                    width: 80,
+                    height: 100,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+            ],
+          ),
+        ],
+        
       ),
     );
   }

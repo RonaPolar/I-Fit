@@ -6,7 +6,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/programs_chart.dart';
 import 'package:ifit/common/widgets/program_row.dart';
 import 'package:ifit/common/widgets/main_button.dart';
-import 'package:ifit/common/widgets/next_navigation_container.dart';
+import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/screens/main_screens/home_screens/activity_tracker.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/home_screens/notifications.dart';
@@ -28,19 +28,19 @@ class _HomeScreenState extends State<HomeScreen> {
       "name": "Full Body Exercises",
       "image": "assets/icons/workout-pic.png",
       "kcal": "180",
-      "time": "20",
+      "duration": "20",
     },
     {
       "name": "Upper Body Weights",
       "image": "assets/icons/Lower-Weights.png",
       "kcal": "200",
-      "time": "30",
+      "duration": "30",
     },
     {
       "name": "Ab Exercises",
       "image": "assets/icons/Ab-workout.png",
       "kcal": "300",
-      "time": "40",
+      "duration": "40",
     },
   ];
 
@@ -252,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        NextNavigationContainer(title: 'Schedule',
+                        NextNavigation(title: 'Schedule',
                               nextIconColor: Styles.fadeTextColor,
                               titleTextStyle: Styles.text2.copyWith(
                                 color: Styles.fadeTextColor,
@@ -384,7 +384,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              NextNavigationContainer(title: 'Time Spent',
+                              NextNavigation(title: 'Time Spent',
                               nextIconColor: Styles.fadeTextColor,
                               titleTextStyle: Styles.text2.copyWith(
                                 color: Styles.fadeTextColor,
@@ -424,7 +424,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        NextNavigationContainer(title: 'Calories', 
+                        NextNavigation(title: 'Calories', 
                               nextIconColor: Styles.fadeTextColor,
                               titleTextStyle: Styles.text2.copyWith(
                                 color: Styles.fadeTextColor,
@@ -493,7 +493,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Column(  //Workout Progress
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              NextNavigationContainer(title: 'Program Progress',
+              NextNavigation(title: 'Program Progress',
                 nextIconColor: Styles.fadeTextColor,
                 titleTextStyle: const TextStyle(
                   color: Colors.black,
@@ -505,38 +505,38 @@ class _HomeScreenState extends State<HomeScreen> {
                  // ));
                 },),
               const Gap(5),
-              Container(  //Weekly DropDOwn Button
-                  height: 30,
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                    color: primary,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton(
-                      items: ["This Week", "Last Week"]
-                          .map((name) => DropdownMenuItem(
-                                value: name,
-                                child: Text(
-                                  name,
-                                  style: const TextStyle(
-                                      color: Colors.black, fontSize: 14),
-                                ),
-                              ))
-                          .toList(),
-                      onChanged: (value) {},
-                      icon: const Icon(Icons.expand_more, color: Colors.white),
-                      hint: const Text(
-                        "Weekly",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                      ),
-                    ),
-                  )), 
+              // Container(  //Weekly DropDOwn Button
+              //     height: 30,
+              //     padding: const EdgeInsets.symmetric(horizontal: 10),
+              //     decoration: BoxDecoration(
+              //       color: primary,
+              //       borderRadius: BorderRadius.circular(15),
+              //     ),
+              //     child: DropdownButtonHideUnderline(
+              //       child: DropdownButton(
+              //         items: ["This Week", "Last Week"]
+              //             .map((name) => DropdownMenuItem(
+              //                   value: name,
+              //                   child: Text(
+              //                     name,
+              //                     style: const TextStyle(
+              //                         color: Colors.black, fontSize: 14),
+              //                   ),
+              //                 ))
+              //             .toList(),
+              //         onChanged: (value) {},
+              //         icon: const Icon(Icons.expand_more, color: Colors.white),
+              //         hint: const Text(
+              //           "Weekly",
+              //           textAlign: TextAlign.center,
+              //           style: TextStyle(
+              //                       fontSize: 14,
+              //                       fontWeight: FontWeight.bold,
+              //                       color: Colors.white,
+              //                     ),
+              //         ),
+              //       ),
+              //     )), 
               ],
             ),
             

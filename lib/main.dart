@@ -54,8 +54,8 @@ class _MyAppState extends State<MyApp> {
         primaryColor: primary,
       ),
       title: 'I-Fit',
-    // home: const HomeScreen(), 
-    home: widget.homeScreen, //either Onboarding or Register Screen
+    home: const HomeScreen(), 
+    // home: widget.homeScreen, //either Onboarding or Register Screen
 
     );
   }

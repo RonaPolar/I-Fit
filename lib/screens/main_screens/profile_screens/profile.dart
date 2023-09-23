@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
-import 'package:ifit/common/widgets/next_navigation_container.dart';
+import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/toggle_switch.dart';
-import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
+import 'package:ifit/screens/main_screens/home_screens/activity_tracker.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -154,17 +154,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 fontWeight: FontWeight.bold),
                           ),
                           const Gap(1),
-                          NextNavigationContainer(
+                          NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_person_accounts_regular,
                             title: 'Personal Data',
                             onTap: () {},
                           ),
-                          NextNavigationContainer(
+                          NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_archive_regular,
                             title: 'Achievement',
                             onTap: () {},
                           ),
-                          NextNavigationContainer(
+                          NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_history_regular,
                             title: 'Activity History',
                             onTap: () {
@@ -173,7 +173,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   builder: (context) => const ActivityTrackerScreen()));
                             },
                           ),
-                          NextNavigationContainer(
+                          NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_activity_regular,
                             title: 'Workout Progress',
                             onTap: () {},
@@ -250,17 +250,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 fontWeight: FontWeight.bold),
                           ),
                           const Gap(1),
-                          NextNavigationContainer(
+                          NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_mail_regular,
                             title: 'Contact Us',
                             onTap: () {},
                           ),
-                          NextNavigationContainer(
+                          NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_shield_regular,
                             title: 'Privacy Policy',
                             onTap: () {},
                           ),
-                          NextNavigationContainer(
+                          NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_settings_regular,
                             title: 'Settings',
                             onTap: () {},

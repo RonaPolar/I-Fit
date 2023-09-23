@@ -225,27 +225,32 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                 )
               ],
             ),
-            ListView.builder( //WorkoutRowContainer Content
-              padding: EdgeInsets.zero,
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: latestActivityArr.length,
-              itemBuilder: (context, index) {
-                var wObj = latestActivityArr[index] as Map? ?? {};
-                return InkWell(
-                    onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) =>
-                      //         const FinishedWorkoutView(),
-                      //   ),
-                      // );
-                    },
-                    child: ProgramRow(wObj: wObj,
-                      progress: wObj["progress"] as double?,
-                      ));
-              }),
+            SizedBox(
+              height: 270,
+              child: SingleChildScrollView(
+                child: ListView.builder( //WorkoutRowContainer Content
+                  padding: EdgeInsets.zero,
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: latestActivityArr.length,
+                  itemBuilder: (context, index) {
+                    var wObj = latestActivityArr[index] as Map? ?? {};
+                    return InkWell(
+                        onTap: () {
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) =>
+                          //         const FinishedWorkoutView(),
+                          //   ),
+                          // );
+                        },
+                        child: ProgramRow(wObj: wObj,
+                          progress: wObj["progress"] as double?,
+                          ));
+                  }),
+              ),
+            ),
 
           ],//Main Children
           ),

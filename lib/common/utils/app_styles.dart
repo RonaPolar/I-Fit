@@ -9,7 +9,7 @@ class Styles {
   
   static Color bgColor = const Color(0xFFFFFFFF);
   static Color textColor = const Color(0xFF000000);
-  static Color fadeTextColor = const Color(0xFF9E9E9E);
+  static Color fadeTextColor = Colors.black54;
   static Color boxtextField = const Color(0xFFEEEEEE);
 
   static TextStyle text = TextStyle(fontFamily: 'Raleway', fontSize: 10, color: textColor,fontWeight: FontWeight.normal);

@@ -46,6 +46,9 @@ dependencies:
   dotted_dashed_line: ^0.0.3
   simple_circular_progress_bar: ^1.0.2
   animated_toggle_switch: ^0.8.0
+  video_player: ^2.7.2
+  youtube_player_flutter: ^8.1.2
+  readmore: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +75,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
    - assets/images/
+   - assets/videos/
    - assets/images/exercises/
    - assets/icons/
 

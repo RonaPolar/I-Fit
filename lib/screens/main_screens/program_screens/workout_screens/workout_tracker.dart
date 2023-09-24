@@ -5,7 +5,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_row.dart';
-import 'package:ifit/common/widgets/workout_line_chart.dart';
+import 'package:ifit/common/widgets/programs_chart.dart';
 import 'package:ifit/screens/main_screens/program_screens/workout_screens/workout_details.dart';
 
 class WorkoutTrackerScreen extends StatefulWidget {
@@ -249,17 +249,16 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                         itemCount: what2TrainArr.length,
                         itemBuilder: (context, index) {
                           var what2TrainObj = what2TrainArr[index] as Map? ?? {};
-                          return InkWell(
-                              onTap: () {
-                                Navigator.push(
+                          return What2TrainContainer(wObj: what2TrainObj, 
+                            onPressed: (obj) {  //wObj
+                                Navigator.push( //there will be major changes
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                         WorkoutDetails(dObj: what2TrainObj),
+                                    builder: (context) => WorkoutDetails(dObj: what2TrainObj)
                                   ),
                                 );
                               },
-                              child: What2TrainContainer(wObj: what2TrainObj));
+                            );
                         }),
 
 

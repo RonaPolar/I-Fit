@@ -1,12 +1,14 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/exercises_row.dart';
 import 'package:ifit/common/widgets/heart_icon_button.dart';
 import 'package:ifit/common/widgets/main_button.dart';
-import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
+import 'package:ifit/screens/main_screens/program_screens/workout_screens/workout_exercises_steps.dart';
+import 'package:readmore/readmore.dart';
 
 class WorkoutDetails extends StatefulWidget {
   final Map dObj;
@@ -33,7 +35,7 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
     {
       "name": "Set 1",
       "set": [
-        {"image": "assets/images/exercises/WarmUp.png", "title": "Warm Up", "value": "05:00"},
+        {"image": "assets/images/exercises/WarmUp.png", "title": "Stretching", "value": "05:00"},
         {
           "image": "assets/images/exercises/JumpingJack.png",
           "title": "Jumping Jack",
@@ -113,7 +115,7 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
               centerTitle: true,
               // pinned: true,
               elevation: 0,
-              expandedHeight: 220,
+              expandedHeight: 300,
               leading: InkWell(
                 onTap: () {
                   Navigator.pop(context);
@@ -130,18 +132,7 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                   ),
                 ),
               ),
-              actions: [
-                Container(
-                  margin: const EdgeInsets.only(right: 20),
-                  height: 30,
-                  width: 30,
-                  alignment: Alignment.center,
-                  child: const MoreIcon(
-                    options: ['This Week', 'Last Week'],
-                    iconData: FluentSystemIcons.ic_fluent_more_filled,
-                  ),
-                ),
-              ],
+              
               flexibleSpace: Container(
                 padding: const EdgeInsets.only(top: 80, bottom: 10),
                 width: double.maxFinite,
@@ -160,6 +151,7 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
             backgroundColor: Colors.transparent,
             body: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Gap(10),
                   Container(
@@ -169,66 +161,143 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                         color: Colors.grey,
                         borderRadius: BorderRadius.circular(3)),
                   ),
+
                   const Gap(20),
-                  Container(
-                    padding:
-                          const EdgeInsets.symmetric(horizontal: 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              widget.dObj["name"].toString(),
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            Text(
-                              "${widget.dObj["exercise"].toString()} Exercises | ${widget.dObj["duration"].toString()} mins | 320 Calories Burn",
-                              style: TextStyle(
-                                  color: Styles.fadeTextColor,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.normal),
-                            ),
-                          ],
-                        ),
-                        Container(
-                            padding: EdgeInsets.zero,
-                            height: 20,
-                            width: 25,
-                            child: const HeartIconButton()),
-                      ],
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.dObj["name"].toString(),
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                              RichText(
+                                text: TextSpan(
+                                  children: [
+                                    const TextSpan(
+                                      text: 'by ',
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                    TextSpan(
+                                      text: 'Dr. Jose P. Rosales',
+                                      style: const TextStyle(
+                                        color: Colors.blue,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          
+                                        },
+                                    ),
+                                  ],
+                                ),
+                              ),  
+                            ],
+                          ),
+                          Container(
+                              padding: EdgeInsets.zero,
+                              child: const HeartIconButton()),
+                        ],
+                      ),
+                      
+                    ],
                   ),
 
+                  
                   const Gap(15),
-                  Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Upcoming Workout",
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                      'Descriptions',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 18,
                           fontWeight: FontWeight.w700),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "See More",
-                        style: TextStyle(
-                          color: Styles.fadeTextColor,
+                      ),
+                      const Gap(10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                            decoration: BoxDecoration(
+                              color: Styles.secondColor.withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Row(
+                              children: [
+                                const Icon(Icons.accessibility_new_sharp, color: Colors.red,),
+                                Text("${widget.dObj["exercise"].toString()} Exercises"),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                            decoration: BoxDecoration(
+                              color: Styles.secondColor.withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Row(
+                              children: [
+                                const Icon(Icons.timer, color: Colors.red,),
+                                Text("${widget.dObj["duration"].toString()} mins"),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                            decoration: BoxDecoration(
+                              color: Styles.secondColor.withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Row(
+                              children: [
+                                Icon(Icons.local_fire_department_sharp, color: Colors.red,),
+                                Text("320 Calories"),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      const Gap(10),
+                      ReadMoreText(
+                      'In this Full body workout: you are exercising your whole body, with all muscle groups being used and stimulated in one workout. For example, you combine exercises that use the upper body and lower body, plus the core in one training session.',
+                      style: TextStyle(
+                        color: Styles.fadeTextColor,
+                        fontSize: 14,
+                      ),
+                      trimLines: 3,
+                      colorClickableText: Colors.blue,
+                      trimMode: TrimMode.Line,
+                      trimCollapsedText: '  Show more',
+                      trimExpandedText: ' Show less',
+                      moreStyle: const TextStyle(
                           fontSize: 14,
-                          fontWeight: FontWeight.w700),
-                        ),
-                      )
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue),
+                      lessStyle: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue),
+                      ),
                     ],
                   ),
+
                   
-                  const Gap(15),
+                  
+                  const Gap(30),
                   Container(
                     padding: const EdgeInsets.symmetric(
                         vertical: 15, horizontal: 20),
@@ -243,50 +312,52 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                   ),
 
 
-                  const Gap(15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  const Gap(30),
+                  Column(
                     children: [
-                      const Text(
-                        "You'll Need",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "You'll Need",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            "${itemsArr.length} Items",
+                            style: TextStyle(
+                                color: Styles.fadeTextColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700),
+                          )
+                        ],
                       ),
-                      Text(
-                        "${itemsArr.length} Items",
-                        style: TextStyle(
-                            color: Styles.fadeTextColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700),
-                      )
+                      const Gap(2),
+                      ListView.builder(
+                          padding: EdgeInsets.zero,
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: itemsArr.length,
+                          itemBuilder: (context, index) {
+                            var yObj = itemsArr[index] as Map? ?? {};
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text( yObj["item"].toString(),
+                                  style: TextStyle(
+                                    color: Styles.fadeTextColor,
+                                    fontSize: 14,
+                                    ),
+                                  ),
+                              ],
+                            );
+                          }),
                     ],
                   ),
-                  const Gap(5),
-                  SizedBox(
-                    height: 100,
-                    child: ListView.builder(
-                        padding: EdgeInsets.zero,
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: itemsArr.length,
-                        itemBuilder: (context, index) {
-                          var yObj = itemsArr[index] as Map? ?? {};
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text( yObj["item"].toString(),
-                                style: TextStyle(
-                                  color: Styles.fadeTextColor,
-                                  fontSize: 14,
-                                  ),
-                                ),
-                            ],
-                          );
-                        }),
-                  ),
 
+                  const Gap(20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -299,7 +370,6 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                       ),
                       Text(
                         "${exercisesArr.length} Sets",
-                        // "3 Sets",
                         style: TextStyle(
                             color: Styles.fadeTextColor,
                             fontSize: 14,
@@ -315,17 +385,15 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                           itemCount: exercisesArr.length,
                           itemBuilder: (context, index) {
                             var sObj = exercisesArr[index] as Map? ?? {};
-                            return ExercisesSetSection(
-                              sObj: sObj,
+                            return ExercisesRow(
+                              eObjOrSObj: sObj,
                               onPressed: (obj) {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) => ExercisesStepDetails(
-                                //       eObj: obj,
-                                //     ),
-                                //   ),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => WorkoutExercisesSteps(eObj: obj)
+                                  ),
+                                );
                               },
                             );
                           }),
@@ -336,7 +404,7 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                     child: Column(
                       children: [
                         MainButton(
-                          title: 'Start',
+                          title: 'Start Now',
                           onPressed: () {
                             // Navigator.push(
                             //   context,

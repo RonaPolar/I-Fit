@@ -193,8 +193,10 @@ class _ScheduledProgramState extends State<ScheduledProgram> {
 
 class What2TrainContainer extends StatelessWidget {
 final Map wObj;
+final Function(Map obj) onPressed;
 
-  const What2TrainContainer({super.key, required this.wObj});
+
+  const What2TrainContainer({super.key, required this.wObj, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -234,11 +236,7 @@ final Map wObj;
                       child: MainButton(
                         title: "View More",
                         buttonColor: Styles.primaryColor,
-                      onPressed: () {
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //   builder: (context) => const WorkoutDetails()));
-                      },
+                        onPressed: () => onPressed(wObj),
                       textStyle: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,

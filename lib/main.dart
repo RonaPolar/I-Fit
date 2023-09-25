@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:ifit/common/utils/app_styles.dart';
@@ -55,8 +57,8 @@ class _MyAppState extends State<MyApp> {
         primaryColor: primary,
       ),
       title: 'I-Fit',
-    // home: const WorkoutTrackerScreen(),
-    home: widget.homeScreen, //either Onboarding or Register Screen
+    home: const WorkoutTrackerScreen(),
+    // home: widget.homeScreen, //either Onboarding or Register Screen
 
     );
   }

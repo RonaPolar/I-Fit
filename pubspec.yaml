@@ -50,9 +50,13 @@ dependencies:
   youtube_player_flutter: ^8.1.2
   readmore: ^2.2.0
 
-calendar_agenda: # Indentation should be correct
-  path: dev_lib/calendar_agenda/
+  calendar_agenda: # Indentation should be correct
+    path: dev_lib/calendar_agenda/
+  intl: ^0.18.1
 
+dependency_overrides:
+  intl: ^0.18.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

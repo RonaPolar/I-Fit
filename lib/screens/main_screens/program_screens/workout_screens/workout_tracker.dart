@@ -7,6 +7,7 @@ import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_row.dart';
 import 'package:ifit/common/widgets/programs_chart.dart';
 import 'package:ifit/screens/main_screens/program_screens/workout_screens/workout_details.dart';
+import 'package:ifit/screens/main_screens/program_screens/workout_screens/workout_schedule.dart';
 
 class WorkoutTrackerScreen extends StatefulWidget {
 
@@ -159,11 +160,9 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             'Daily Workout Schedule',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
+                            style: Styles.text2.copyWith(
                               fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
@@ -172,9 +171,9 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                               child: MainButton(
                                 title: "Check",
                               onPressed: () {
-                                // Navigator.of(context).push(
-                                //   MaterialPageRoute(
-                                //   builder: (context) => const ActivityTrackerScreen()));
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                  builder: (context) => const WorkoutSchedule()));
                               },
                               textStyle: const TextStyle(
                                 fontSize: 14,
@@ -190,18 +189,15 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                     Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                       Text(
                         "Upcoming Workout",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700),
+                        style: Styles.title
                       ),
                       TextButton(
                         onPressed: () {},
                         child: Text(
                           "See More",
-                          style: TextStyle(
+                          style: Styles.text2.copyWith(
                             color: Styles.fadeTextColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w700),
@@ -230,15 +226,12 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                         }),
 
                     const Gap(20),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           "What Do You Want to Train Next?",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700),
+                          style: Styles.title
                         ),
                       ],
                     ),

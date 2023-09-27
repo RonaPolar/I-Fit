@@ -63,7 +63,7 @@ class IconText extends StatelessWidget {
   final String title;
   final TextStyle? titleTextStyle;
   final IconData? iconData;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final IconData? leftIcon; // Change the type to Widget?
   final Color? nextIconColor;
 
@@ -72,7 +72,7 @@ class IconText extends StatelessWidget {
     required this.title,
     this.titleTextStyle,
     this.iconData,
-    required this.onTap,
+    this.onTap,
     this.leftIcon,
     this.nextIconColor,
   }) : super(key: key);

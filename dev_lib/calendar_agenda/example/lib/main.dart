@@ -87,9 +87,8 @@ class _ExamplePageState extends State<ExamplePage> {
           height: double.maxFinite,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [ const Color(0xff9DCEFF), const Color(0xff92A3FD),
-                
-            ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+                colors: [const Color.fromRGBO(255, 0, 0, 72).withOpacity(0.5), const Color.fromRGBO(255, 0, 0, 72)],
+                 begin: Alignment.topCenter, end: Alignment.bottomCenter),
             borderRadius: BorderRadius.circular(10.0),
           ),
         ),

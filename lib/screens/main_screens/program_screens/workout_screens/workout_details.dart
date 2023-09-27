@@ -8,6 +8,7 @@ import 'package:ifit/common/widgets/heart_icon_button.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/screens/main_screens/program_screens/workout_screens/workout_exercises_steps.dart';
+import 'package:ifit/screens/main_screens/program_screens/workout_screens/workout_schedule.dart';
 import 'package:readmore/readmore.dart';
 
 class WorkoutDetails extends StatefulWidget {
@@ -308,7 +309,14 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                     child: NextNavigation(
                         title: 'Schedule Workout',
                         iconData: FluentSystemIcons.ic_fluent_calendar_regular,
-                        onTap: () {}),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const WorkoutSchedule(),
+                            ),
+                          );
+                        }),
                   ),
 
 

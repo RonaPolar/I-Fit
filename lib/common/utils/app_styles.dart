@@ -15,6 +15,7 @@ class Styles {
   static TextStyle text = TextStyle(fontFamily: 'Raleway', fontSize: 10, color: textColor,fontWeight: FontWeight.normal);
   static TextStyle text2 = TextStyle(fontFamily: 'Raleway', fontSize: 15, color: textColor,fontWeight: FontWeight.normal);
   static TextStyle textStyle = TextStyle(fontFamily: 'Raleway', fontSize: 18, color: textColor,fontWeight: FontWeight.normal);
+  static TextStyle title = TextStyle(fontFamily: 'Raleway', fontSize: 18, color: textColor,fontWeight: FontWeight.bold);
 
   static TextStyle buttonText = TextStyle(fontFamily: 'Raleway', fontSize: 22, color: textColor,fontWeight: FontWeight.bold);
   static TextStyle headlineSmall = TextStyle(fontFamily: 'Raleway', fontSize: 20, color: textColor,fontWeight: FontWeight.bold);

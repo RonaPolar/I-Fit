@@ -279,7 +279,7 @@ class CalendarAgendaState extends State<CalendarAgenda>
 
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: widget.appbar ? 210 : 140.0,
+      height: widget.appbar ? 210 : 160.0,
       child: Stack(
         children: [
           Positioned(
@@ -291,31 +291,43 @@ class CalendarAgendaState extends State<CalendarAgenda>
             ),
           ),
           Positioned(
-            top: widget.appbar ? 50.0 : 0.0,
+            top: widget.appbar ? 50.0 : 10.0,
             child:  Container(
                 width: MediaQuery.of(context).size.width,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    leading,
+                    // leading,
                     widget.fullCalendar!
                         ? GestureDetector(
                             onTap: () => widget.fullCalendar!
                                 ? _showFullCalendar(_locale, widget.weekDay)
                                 : null,
-                            child: Row(
-                              children: [
-                                Text(
-                                  DateFormat.yMMMM(Locale(_locale).toString())
-                                      .format(_selectedDate!),
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: widget.dateColor,
-                                    fontWeight: FontWeight.w400,
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: Colors.red.withOpacity(0.8),
+                              ),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.edit_calendar_rounded,
+                                    size: 18,
+                                    color: Colors.white,
                                   ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
+                                  SizedBox(width: 8),
+                                  Text(
+                                    DateFormat.yMMMM(Locale(_locale).toString())
+                                        .format(_selectedDate!),
+                                    style: TextStyle(
+                                      fontSize: 18.0,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           )
                         : SizedBox(),

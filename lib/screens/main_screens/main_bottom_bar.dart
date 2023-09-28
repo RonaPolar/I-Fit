@@ -1,11 +1,11 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_tracker.dart';
 import 'package:ifit/screens/main_screens/progress_tracker_screens/progress_tracker.dart';
 import 'package:ifit/screens/main_screens/discover_screens/discover.dart';
 import 'package:ifit/screens/main_screens/home_screens/home.dart';
 import 'package:ifit/screens/main_screens/profile_screens/profile.dart';
-import 'package:ifit/screens/main_screens/program_screens/workout_screens/workout_tracker.dart';
 
 class BottomBar extends StatelessWidget {
   final IconData icon;
@@ -128,7 +128,7 @@ class _MainBottomBarState extends State<MainBottomBar> {
                 isActive: selectTab == 3,
                 onTap: () {
                   selectTab = 3;
-                  currentTab = const WorkoutTrackerScreen();
+                  currentTab = const ProgramTrackerScreen();
                   if (mounted) {
                     setState(() {});
                   }
@@ -191,15 +191,15 @@ class _ProgressTrackerNavBarState extends State<ProgressTrackerNavBar> {
 }
 
 
-class WorkoutTrackerNavbar extends StatefulWidget {
-  const WorkoutTrackerNavbar({super.key});
+class ProgramTrackerNavbar extends StatefulWidget {
+  const ProgramTrackerNavbar({super.key});
   @override
-  State<WorkoutTrackerNavbar> createState() => _WorkoutTrackerNavbarState();
+  State<ProgramTrackerNavbar> createState() => _ProgramTrackerNavbarState();
 }
-class _WorkoutTrackerNavbarState extends State<WorkoutTrackerNavbar> {
+class _ProgramTrackerNavbarState extends State<ProgramTrackerNavbar> {
   @override
   Widget build(BuildContext context) {
-    return const MainBottomBar(initialSelectTab: 3, initialCurrentTab: WorkoutTrackerScreen());
+    return const MainBottomBar(initialSelectTab: 3, initialCurrentTab: ProgramTrackerScreen());
   }
 }
 

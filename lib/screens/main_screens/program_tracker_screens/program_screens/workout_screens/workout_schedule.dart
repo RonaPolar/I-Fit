@@ -6,7 +6,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/utils/common_utils.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
-import 'package:ifit/screens/main_screens/program_screens/workout_screens/workout_add_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_add_schedule.dart';
 
 class WorkoutSchedule extends StatefulWidget {
   const WorkoutSchedule({super.key});
@@ -82,9 +82,9 @@ class _WorkoutScheduleState extends State<WorkoutSchedule> {
       return dateToStartDate(wObj["date"] as DateTime) == date;
     }).toList();
 
-    // if (mounted) {
-    //   setState(() {});
-    // }
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -142,11 +142,13 @@ class _WorkoutScheduleState extends State<WorkoutSchedule> {
             calendarEventColor: Styles.secondColor,
             firstDate: DateTime.now().subtract(const Duration(days: 140)),
             lastDate: DateTime.now().add(const Duration(days: 60)),
+
             onDateSelected: (date) {
-              setState(() {
-                _selectedDateAppBBar = date;
-              });
+              _selectedDateAppBBar = date;
+              setDayEventWorkoutList();
+              // setState(() {});
             },
+            
             selectedDayLogo: Container(
               width: double.maxFinite,
               height: double.maxFinite,
@@ -205,85 +207,118 @@ class _WorkoutScheduleState extends State<WorkoutSchedule> {
                                             context: context,
                                             builder: (context) {
                                               return AlertDialog(
-                                                backgroundColor: Colors.transparent,
+                                                backgroundColor:
+                                                    Colors.transparent,
                                                 contentPadding: EdgeInsets.zero,
                                                 content: Container(
                                                   width: media.width * 0.9,
-                                                  padding: const EdgeInsets.all(15),
+                                                  padding:
+                                                      const EdgeInsets.all(20),
                                                   decoration: BoxDecoration(
                                                     color: Colors.white,
                                                     borderRadius:
-                                                        BorderRadius.circular(20),
+                                                        BorderRadius.circular(
+                                                            20),
                                                   ),
                                                   child: Column(
-                                                    mainAxisSize: MainAxisSize.min,
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
                                                     children: [
                                                       Row(
-                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
                                                         children: [
-                                                          InkWell(  
+                                                          InkWell(
                                                             onTap: () {
-                                                              Navigator.pop(context);
+                                                              Navigator.pop(
+                                                                  context);
                                                             },
                                                             child: const Icon(
                                                               Icons.close,
                                                               size: 20,
-                                                              color: Colors.black,
+                                                              color:
+                                                                  Colors.black,
                                                             ),
                                                           ),
-                                                          Text('Workout Schedule',
-                                                          style: Styles.headlineSmall,),
-                                                          const MoreIcon(
-                                                            iconData: FluentSystemIcons.ic_fluent_more_filled,
-                                                            options: ['Edit','Remove'], 
+                                                          Text(
+                                                            'Workout Schedule',
+                                                            style: Styles
+                                                                .headlineSmall,
+                                                          ),
+                                                          MoreIcon(
+                                                            options: const ['Edit', 'Remove'], iconData: FluentSystemIcons.ic_fluent_more_vertical_filled,
+                                                            onTap: (String selectedOption) {
+                                                              // Handle the selected option here
+                                                              if (selectedOption == 'Edit') {
+                                                                Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                    builder: (context) => WorkoutAddSchedule(date: _selectedDateAppBBar),
+                                                                  ),
+                                                                );
+                                                              } else if (selectedOption == 'Remove') {
+                                                                // Execute the action for Option 2
+                                                              }
+                                                            },
                                                           ),
                                                         ],
                                                       ),
-                                                      
                                                       const Gap(20),
                                                       Column(
-                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
                                                           Row(
-                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
                                                             children: [
-                                                              Text(sObj["name"].toString(),
-                                                                style: Styles.textStyle),
+                                                              Text(
+                                                                  sObj["name"]
+                                                                      .toString(),
+                                                                  style: Styles
+                                                                      .textStyle),
                                                               const InkWell(
-                                                              // onTap: () {
-                                                              //   Navigator.push(
-                                                              //     context,
-                                                              //     MaterialPageRoute(
-                                                              //         builder: (context) => const WorkoutDetails()));
-                                                              // },
-                                                              child: Icon(Icons.navigate_next),
+                                                                // onTap: () {
+                                                                //   Navigator.push(
+                                                                //     context,
+                                                                //     MaterialPageRoute(
+                                                                //         builder: (context) => const WorkoutDetails()));
+                                                                // },
+                                                                child: Icon(Icons
+                                                                    .navigate_next),
                                                               ),
                                                             ],
                                                           ),
                                                           const Gap(5),
                                                           Row(
                                                             children: [
-                                                              const Icon(
-                                                                Icons.alarm_outlined
-                                                              ),
+                                                              const Icon(Icons
+                                                                  .alarm_outlined),
                                                               const Gap(5),
-                                                              Text("${ getDayTitle(sObj["start_time"].toString())} | ${getStringDateToOtherFormate(sObj["start_time"].toString(), outFormatStr: "h:mm aa")}",
-                                                              style: Styles.text2),
+                                                              Text(
+                                                                  "${getDayTitle(sObj["start_time"].toString())} | ${getStringDateToOtherFormate(sObj["start_time"].toString(), outFormatStr: "h:mm aa")}",
+                                                                  style: Styles
+                                                                      .text2),
                                                             ],
                                                           ),
                                                         ],
-                                                      ),                                                      
-                                                      
-                                                      const Gap(15), 
-                                                      MainButton(title: 'Cancel', onPressed: (){}),
+                                                      ),
+                                                      const Gap(15),
+                                                      MainButton(
+                                                          title: 'Cancel Workout',
+                                                          onPressed: () {}),
                                                     ],
                                                   ),
                                                 ),
                                               );
                                             });
-                                       },
-                                      
+                                      },
                                       child: Container(
                                         height: 35,
                                         width: availWidth * 0.7,

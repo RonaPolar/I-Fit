@@ -2,12 +2,11 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_row.dart';
 import 'package:ifit/common/widgets/programs_chart.dart';
-import 'package:ifit/screens/main_screens/program_screens/workout_screens/workout_details.dart';
-import 'package:ifit/screens/main_screens/program_screens/workout_screens/workout_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_details.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_schedule.dart';
 
 class WorkoutTrackerScreen extends StatefulWidget {
 
@@ -71,9 +70,7 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
 @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [Styles.secondColor.withOpacity(0.5), Styles.secondColor]),
-      ),
+      color: Colors.red.shade400.withOpacity(0.9),
       child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled){
             return [
@@ -151,50 +148,54 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                           borderRadius: BorderRadius.circular(3)),
                     ),
                     const Gap(20),
-                    Container(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                      decoration: BoxDecoration(
-                        color: Styles.secondColor.withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(15),),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Daily Workout Schedule',
-                            style: Styles.text2.copyWith(
-                              fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 80,
-                            height: 30,
-                              child: MainButton(
-                                title: "Check",
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                  builder: (context) => const WorkoutSchedule()));
-                              },
-                              textStyle: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            )),                    
-                            ],
-                          ),
-                        ),
+                    // Container(
+                    //   padding:
+                    //       const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    //   decoration: BoxDecoration(
+                    //     color: Styles.secondColor.withOpacity(0.3),
+                    //     borderRadius: BorderRadius.circular(15),),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       Text(
+                    //         'Daily Workout Schedule',
+                    //         style: Styles.text2.copyWith(
+                    //           fontWeight: FontWeight.bold),
+                    //       ),
+                    //       SizedBox(
+                    //         width: 80,
+                    //         height: 30,
+                    //           child: MainButton(
+                    //             title: "Check",
+                    //           onPressed: () {
+                    //             Navigator.of(context).push(
+                    //               MaterialPageRoute(
+                    //               builder: (context) => const WorkoutSchedule()));
+                    //           },
+                    //           textStyle: const TextStyle(
+                    //             fontSize: 14,
+                    //             fontWeight: FontWeight.bold,
+                    //             color: Colors.white,
+                    //           ),
+                    //         )),                    
+                    //         ],
+                    //       ),
+                    //     ),
 
-                    const Gap(15),
+                    // const Gap(15),
                     Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                        Text(
-                        "Upcoming Workout",
+                        "Daily Workout Schedule",
                         style: Styles.title
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                            builder: (context) => const WorkoutSchedule()));
+                        },
                         child: Text(
                           "See More",
                           style: Styles.text2.copyWith(

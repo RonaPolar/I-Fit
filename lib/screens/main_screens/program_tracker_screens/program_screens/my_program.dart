@@ -2,14 +2,14 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 
-class ProgressTrackerScreen extends StatefulWidget {
-  const ProgressTrackerScreen({super.key});
+class MyProgramScreen extends StatefulWidget {
+  const MyProgramScreen({super.key});
 
   @override
-  State<ProgressTrackerScreen> createState() => _ProgressTrackerScreenState();
+  State<MyProgramScreen> createState() => _MyProgramScreenState();
 }
 
-class _ProgressTrackerScreenState extends State<ProgressTrackerScreen> {
+class _MyProgramScreenState extends State<MyProgramScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +37,7 @@ class _ProgressTrackerScreenState extends State<ProgressTrackerScreen> {
             ),
           ),
         ),
-        title: Text('Progress Tracker',
+        title: Text('My Programs',
         style: Styles.headlineSmall,),
       ),
       body: ListView(

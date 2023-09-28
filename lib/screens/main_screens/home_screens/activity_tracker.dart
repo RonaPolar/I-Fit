@@ -202,12 +202,9 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                     //Activity Progress
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                      Text(
                         'Time Spent',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
+                        style: Styles.title,
                       ),
                       Container(
                           //Weekly DropDOwn Button
@@ -249,7 +246,7 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                   const Gap(10),
                   Container(
                     padding: const EdgeInsets.only(top: 10),
-                    height: 200,
+                    height: 190,
                     width: double.maxFinite,
                     alignment: Alignment.center,
                     child: const ActivityBarChart(),
@@ -258,12 +255,9 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                      Text(
                         "Activity History",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700),
+                        style: Styles.title
                       ),
                       TextButton(
                         onPressed: () {
@@ -277,27 +271,24 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                         },
                         child: Text(
                           "See More",
-                          style: TextStyle(
-                              color: Styles.fadeTextColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700),
+                          style: Styles.text2.copyWith(
+                            color: Styles.fadeTextColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700),
                         ),
                       )
                     ],
                   ),
-                  SizedBox(
-                    height: 270,
-                    child: ListView.builder(
-                      // WorkoutRowContainer Content
-                      padding: EdgeInsets.zero,
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: 5,
-                      itemBuilder: (context, index) {
-                        var actObj = actHistoryArr[index] as Map? ?? {};
-                        return ActivityHistoryRow(actObj: actObj);
-                      },
-                    ),
+                  ListView.builder(
+                    // WorkoutRowContainer Content
+                    padding: EdgeInsets.zero,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      var actObj = actHistoryArr[index] as Map? ?? {};
+                      return ActivityHistoryRow(actObj: actObj);
+                    },
                   ),
 
                 ], //Main Children

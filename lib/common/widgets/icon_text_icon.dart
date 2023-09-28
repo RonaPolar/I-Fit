@@ -59,7 +59,63 @@ class NextNavigation extends StatelessWidget {
 }
 
 
-class IconText extends StatelessWidget {
+// class IconText extends StatelessWidget {
+//   final String title;
+//   final TextStyle? titleTextStyle;
+//   final IconData? iconData;
+//   final VoidCallback? onTap;
+//   final IconData? leftIcon; // Change the type to Widget?
+//   final Color? nextIconColor;
+
+//   const IconText({
+//     Key? key,
+//     required this.title,
+//     this.titleTextStyle,
+//     this.iconData,
+//     this.onTap,
+//     this.leftIcon,
+//     this.nextIconColor,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return InkWell(
+//       onTap: onTap,
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: [
+//           if (iconData != null) ...[
+//             Icon(
+//               iconData,
+//             ),
+//             const Gap(10), // Add some spacing between icon and text
+//           ],
+//           Expanded(
+//             child: Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               children: [
+//                 Text(
+//                   title,
+//                   style: titleTextStyle ??
+//                     Styles.textStyle.copyWith(
+//                       color: Colors.black,
+//                       fontSize: 16
+//                      ),
+//                 ),
+//                   Icon(
+//                     leftIcon,
+//                   ),
+//                 ],
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+
+class IconButtonText extends StatelessWidget {
   final String title;
   final TextStyle? titleTextStyle;
   final IconData? iconData;
@@ -67,7 +123,7 @@ class IconText extends StatelessWidget {
   final IconData? leftIcon; // Change the type to Widget?
   final Color? nextIconColor;
 
-  const IconText({
+  const IconButtonText({
     Key? key,
     required this.title,
     this.titleTextStyle,
@@ -81,36 +137,32 @@ class IconText extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center, // Adjust alignment as needed
         children: [
           if (iconData != null) ...[
-            Icon(
-              iconData,
-            ),
-            const Gap(10), // Add some spacing between icon and text
-          ],
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Row(
               children: [
-                Text(
-                  title,
-                  style: titleTextStyle ??
-                    Styles.textStyle.copyWith(
-                      color: Colors.black,
-                      fontSize: 16
-                     ),
+                Icon(
+                  iconData,
+                  color: Colors.red,
                 ),
-                  Icon(
-                    leftIcon,
-                  ),
-                ],
+              ],
             ),
+          ],
+          Text(
+            title,
+            style: titleTextStyle ??
+                Styles.text2
           ),
+          if (leftIcon != null) ...[
+            const Gap(5), // Add some spacing between text and leftIcon
+            Icon(
+              leftIcon,
+            ),
+          ],
         ],
       ),
     );
   }
 }
-

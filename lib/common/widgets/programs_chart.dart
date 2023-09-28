@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
+import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 class ProgramsChart extends StatelessWidget {
   ProgramsChart({super.key});
@@ -30,13 +31,13 @@ class ProgramsChart extends StatelessWidget {
           fromY: betweenSpace,
           toY: betweenSpace + quickWorkout,
           color: mealColor,
-          width: 15,
+          width: 12,
         ),
         BarChartRodData(
           fromY: betweenSpace + quickWorkout + betweenSpace,
           toY: betweenSpace + quickWorkout + betweenSpace + cycling,
           color: workoutColor,
-          width: 15,
+          width: 12,
         ),
       ],
     );
@@ -45,73 +46,49 @@ class ProgramsChart extends StatelessWidget {
   Widget bottomTitles(double value, TitleMeta meta) {
     const style = TextStyle(
       color: Colors.black,
-      fontWeight: FontWeight.bold,
-      fontSize: 14);
+      fontWeight: FontWeight.w500,
+      fontSize: 12);
     String text;
     switch (value.toInt()) {
       case 0:
-        text = 'Mon';
+        text = 'JAN';
         break;
       case 1:
-        text = 'Tue';
+        text = 'FEB';
         break;
       case 2:
-        text = 'Wed';
+        text = 'MAR';
         break;
       case 3:
-        text = 'Thu';
+        text = 'APR';
         break;
       case 4:
-        text = 'Fri';
+        text = 'MAY';
         break;
       case 5:
-        text = 'Sat';
+        text = 'JUN';
         break;
       case 6:
-        text = 'Sun';
+        text = 'JUL';
+        break;
+      case 7:
+        text = 'AUG';
+        break;
+      case 8:
+        text = 'SEP';
+        break;
+      case 9:
+        text = 'OCT';
+        break;
+      case 10:
+        text = 'NOV';
+        break;
+      case 11:
+        text = 'DEC';
         break;
       default:
         text = '';
     }
-    //   case 0:
-    //     text = 'JAN';
-    //     break;
-    //   case 1:
-    //     text = 'FEB';
-    //     break;
-    //   case 2:
-    //     text = 'MAR';
-    //     break;
-    //   case 3:
-    //     text = 'APR';
-    //     break;
-    //   case 4:
-    //     text = 'MAY';
-    //     break;
-    //   case 5:
-    //     text = 'JUN';
-    //     break;
-    //   case 6:
-    //     text = 'JUL';
-    //     break;
-    //   case 7:
-    //     text = 'AUG';
-    //     break;
-    //   case 8:
-    //     text = 'SEP';
-    //     break;
-    //   case 9:
-    //     text = 'OCT';
-    //     break;
-    //   case 10:
-    //     text = 'NOV';
-    //     break;
-    //   case 11:
-    //     text = 'DEC';
-    //     break;
-    //   default:
-    //     text = '';
-    // }
     return SideTitleWidget(
       axisSide: meta.axisSide,
       child: Text(text, style: style),
@@ -163,13 +140,13 @@ class ProgramsChart extends StatelessWidget {
                   generateGroupData(4, 0.8, 3.3),
                   generateGroupData(5, 2, 5.6),
                   generateGroupData(6, 1.3, 3.2),
-                  // generateGroupData(7, 2.3, 3.2),
-                  // generateGroupData(8, 2, 4.8),
-                  // generateGroupData(9, 1.2, 3.2),
-                  // generateGroupData(10, 1, 4.8),
-                  // generateGroupData(11, 2, 4.4),
+                  generateGroupData(7, 2.3, 3.2),
+                  generateGroupData(8, 2, 4.8),
+                  generateGroupData(9, 1.2, 3.2),
+                  generateGroupData(10, 1, 4.8),
+                  generateGroupData(11, 2, 4.4),
                 ],
-                // maxY: 11 + (betweenSpace * 3),
+                // maxY: 11 + (betweenSpace * 2),
                 // extraLinesData: ExtraLinesData(
                 //   horizontalLines: [
                 //     HorizontalLine(
@@ -184,12 +161,12 @@ class ProgramsChart extends StatelessWidget {
                 //       strokeWidth: 1,
                 //       dashArray: [20, 4],
                 //     ),
-                //     HorizontalLine(
-                //       y: 11,
-                //       color: cyclingColor,
-                //       strokeWidth: 1,
-                //       dashArray: [20, 4],
-                //     ),
+                //     // HorizontalLine(
+                //     //   y: 11,
+                //     //   color: cyclingColor,
+                //     //   strokeWidth: 1,
+                //     //   dashArray: [20, 4],
+                //     // ),
                 //   ],
                 // ),
               ),
@@ -264,8 +241,6 @@ class Legend {
   final String name;
   final Color color;
 }
-
-
 
 
 
@@ -590,3 +565,269 @@ SideTitles get rightTitles => const SideTitles(
       child: text,
     );
   }
+
+
+
+
+//PieChart Calories
+class CaloriesPieChart extends StatefulWidget {
+  const CaloriesPieChart({super.key});
+
+  @override
+  State<CaloriesPieChart> createState() => _CaloriesPieChartState();
+}
+
+class _CaloriesPieChartState extends State<CaloriesPieChart> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          alignment: Alignment.center,
+          child: SizedBox(
+            width: 70,
+            height: 70,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: 60,
+                  height: 60,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: primary,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const FittedBox(
+                    child: Text(
+                      "240kCal\nBurned",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10),
+                    ),
+                    ),
+                  ),
+                  SimpleCircularProgressBar(
+                  progressStrokeWidth: 10,
+                  backStrokeWidth: 10,
+                  progressColors: [Styles.secondColor.withOpacity(0.5), Styles.secondColor],
+                  backColor: Colors.grey.shade200,
+                  valueNotifier: ValueNotifier(30),
+                  startAngle: -180,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+
+//Nutrition Pie Chart
+class NutritionPieChart extends StatefulWidget {
+  const NutritionPieChart({super.key});
+
+  @override
+  State<NutritionPieChart> createState() => _NutritionPieChartState();
+}
+
+class _NutritionPieChartState extends State<NutritionPieChart> {
+  int touchedIndex = -1;
+
+  @override
+  Widget build(BuildContext context) {
+    return AspectRatio(
+      aspectRatio: 1.3,
+      child: Row(
+        children: <Widget>[
+          const SizedBox(
+            height: 18,
+          ),
+          Expanded(
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: PieChart(
+                PieChartData(
+                  pieTouchData: PieTouchData(
+                    touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                      setState(() {
+                        if (!event.isInterestedForInteractions ||
+                            pieTouchResponse == null ||
+                            pieTouchResponse.touchedSection == null) {
+                          touchedIndex = -1;
+                          return;
+                        }
+                        touchedIndex = pieTouchResponse
+                            .touchedSection!.touchedSectionIndex;
+                      });
+                    },
+                  ),
+                  borderData: FlBorderData(
+                    show: false,
+                  ),
+                  sectionsSpace: 0,
+                  centerSpaceRadius: 20,
+                  sections: showingSections(),
+                ),
+              ),
+            ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const Indicator(
+                color: Colors.red,
+                text: 'First',
+                isSquare: true,
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              Indicator(
+                color: Colors.red.shade300,
+                text: 'Second',
+                isSquare: true,
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              Indicator(
+                color: Styles.primaryColor,
+                text: 'Third',
+                isSquare: true,
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              Indicator(
+                color: Styles.secondColor,
+                text: 'Fourth',
+                isSquare: true,
+              ),
+              const SizedBox(
+                height: 18,
+              ),
+            ],
+          ),
+          const SizedBox(
+            width: 28,
+          ),
+        ],
+      ),
+    );
+  }
+
+  List<PieChartSectionData> showingSections() {
+    return List.generate(4, (i) {
+      final isTouched = i == touchedIndex;
+      final fontSize = isTouched ? 25.0 : 16.0;
+      final radius = isTouched ? 60.0 : 50.0;
+      const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
+      switch (i) {
+        case 0:
+          return PieChartSectionData(
+            color: Colors.red,
+            value: 40,
+            title: '40%',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              shadows: shadows,
+            ),
+          );
+        case 1:
+          return PieChartSectionData(
+            color: Colors.red.shade300,
+            value: 30,
+            title: '30%',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              shadows: shadows,
+            ),
+          );
+        case 2:
+          return PieChartSectionData(
+            color: Styles.primaryColor,
+            value: 15,
+            title: '15%',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              shadows: shadows,
+            ),
+          );
+        case 3:
+          return PieChartSectionData(
+            color: Styles.secondColor,
+            value: 15,
+            title: '15%',
+            radius: radius,
+            titleStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              shadows: shadows,
+            ),
+          );
+        default:
+          throw Error();
+      }
+    });
+  }
+}
+
+class Indicator extends StatelessWidget {
+  const Indicator({
+    super.key,
+    required this.color,
+    required this.text,
+    required this.isSquare,
+    this.size = 16,
+    this.textColor,
+  });
+  final Color color;
+  final String text;
+  final bool isSquare;
+  final double size;
+  final Color? textColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
+            color: color,
+          ),
+        ),
+        const SizedBox(
+          width: 4,
+        ),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: textColor,
+          ),
+        )
+      ],
+    );
+  }
+}

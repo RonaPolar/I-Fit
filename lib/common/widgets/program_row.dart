@@ -29,6 +29,7 @@ class _ProgramRowState extends State<ProgramRow> {
     final String kcal = widget.wObj["kcal"]?.toString() ?? '';
     final String duration = widget.wObj["duration"].toString();
     final String categories = widget.wObj["categories"]?.toString() ?? ''; // Make categories optional
+    final String days = widget.wObj["days"]?.toString() ?? ''; // Make categories optional
 
 
     return Container(
@@ -101,7 +102,7 @@ class _ProgramRowState extends State<ProgramRow> {
                         ),
                       ),
                       Text(
-                        "$duration days", // Display the duration here
+                        "$days days", // Display the duration here
                         style: TextStyle(
                           color: Styles.fadeTextColor,
                           fontSize: 12,

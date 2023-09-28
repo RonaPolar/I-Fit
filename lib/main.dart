@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/screens/main_screens/home_screens/home.dart';
-import 'package:ifit/screens/main_screens/program_screens/workout_screens/workout_tracker.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_tracker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ifit/screens/welcome/onboarding_screen.dart';
 import 'package:ifit/screens/account-login&reg/register/register.dart';
@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
         primaryColor: primary,
       ),
       title: 'I-Fit',
-    // home: const WorkoutTrackerScreen(),
+    // home: const HomeScreen(),
     home: widget.homeScreen, //either Onboarding or Register Screen
 
     );

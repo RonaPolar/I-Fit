@@ -75,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: Styles.bgColor,
       body: ListView(
@@ -228,12 +229,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
             const Gap(20),
 
-            const Text(
+            Text(
               'Activity Today',
-               style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.bold),
+               style: Styles.title
             ),
             const Gap(10),
             Row(
@@ -384,29 +382,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              NextNavigation(title: 'Time Spent',
-                              nextIconColor: Styles.fadeTextColor,
-                              titleTextStyle: Styles.text2.copyWith(
-                                color: Styles.fadeTextColor,
-                                fontWeight: FontWeight.bold,
+                              Text('Time Spent',
+                              style: Styles.text2.copyWith(
+                                  color: Styles.fadeTextColor,
+                                  fontWeight: FontWeight.bold),
                               ),
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const WorkoutTrackerNavbar(),
-                                ));
-                              },),
-                                Text(
-                                  "2hr 50m",
-                                  style: TextStyle(
-                                      color: Styles.secondColor.withOpacity(0.5),
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 14),
-                                ),
-                                Expanded(
-                                  child: Image.asset('assets/images/Sleep-Graph.png', 
-                                    fit: BoxFit.fill),
-                                ),
-                  ])
+                              Text(
+                                "2hr 50m",
+                                style: TextStyle(
+                                    color: Styles.secondColor.withOpacity(0.5),
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 14),
+                              ),
+                              Expanded(
+                                child: Image.asset('assets/images/Sleep-Graph.png', 
+                                  fit: BoxFit.fill),
+                              ),
+                          ])
                 ),
                     const Gap(15),
                     
@@ -423,69 +415,63 @@ class _HomeScreenState extends State<HomeScreen> {
                           ]),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        NextNavigation(title: 'Calories', 
-                              nextIconColor: Styles.fadeTextColor,
-                              titleTextStyle: Styles.text2.copyWith(
-                                color: Styles.fadeTextColor,
-                                fontWeight: FontWeight.bold,
+                            children: [
+                              Text('Calories',
+                              style: Styles.text2.copyWith(
+                                  color: Styles.fadeTextColor,
+                                  fontWeight: FontWeight.bold),
                               ),
-                              onTap: () {
-                                // Navigator.of(context).push(MaterialPageRoute(
-                                //   builder: (context) => const ActivityTrackerNavbar(),
-                                // ));
-                              },),
-                          Text(
-                            "760 kCal",
-                            style: TextStyle(
-                                color: Styles.secondColor.withOpacity(0.5),
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14),
-                          ),
-                          const Gap(10),
-                          Container(
-                            alignment: Alignment.center,
-                            child: SizedBox(
-                              width: 65,
-                              height: 65,
-                              child: Stack(
+                              Text(
+                                "760 kCal",
+                                style: TextStyle(
+                                    color: Styles.secondColor.withOpacity(0.5),
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 14),
+                              ),
+                              const Gap(10),
+                              Container(
                                 alignment: Alignment.center,
-                                children: [
-                                  Container(
-                                    width: 60,
-                                    height: 60,
+                                child: SizedBox(
+                                  width: 70,
+                                  height: 70,
+                                  child: Stack(
                                     alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color: primary,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: const FittedBox(
-                                      child: Text(
-                                        "240kCal\nBurned",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 10),
+                                    children: [
+                                      Container(
+                                        width: 60,
+                                        height: 60,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          color: primary,
+                                          borderRadius: BorderRadius.circular(20),
+                                        ),
+                                        child: const FittedBox(
+                                          child: Text(
+                                            "240kCal\nBurned",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 10),
+                                          ),
+                                          ),
+                                        ),
+                                        SimpleCircularProgressBar(
+                                        progressStrokeWidth: 10,
+                                        backStrokeWidth: 10,
+                                        progressColors: [Styles.secondColor.withOpacity(0.5), Styles.secondColor],
+                                        backColor: Colors.grey.shade200,
+                                        valueNotifier: ValueNotifier(30),
+                                        startAngle: -180,
                                       ),
-                                      ),
-                                    ),
-                                    SimpleCircularProgressBar(
-                                    progressStrokeWidth: 10,
-                                    backStrokeWidth: 10,
-                                    progressColors: [Styles.secondColor.withOpacity(0.5), Styles.secondColor],
-                                    backColor: Colors.grey.shade200,
-                                    valueNotifier: ValueNotifier(30),
-                                    startAngle: -180,
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ),
-                        ])
+                              ])
                       ),
                     ],
-                  ),
+                ),
                 )
               ],),
               const Gap(20),
@@ -493,50 +479,15 @@ class _HomeScreenState extends State<HomeScreen> {
             Column(  //Workout Progress
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              NextNavigation(title: 'Program Progress',
+              NextNavigation(title: 'Program Activity',
                 nextIconColor: Styles.fadeTextColor,
-                titleTextStyle: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
+                titleTextStyle: Styles.title,
                 onTap: () {
-                  // Navigator.of(context).push(MaterialPageRoute(
-                 //   builder: (context) => const ActivityTrackerNavbar(),
-                 // ));
+                  Navigator.of(context).push(MaterialPageRoute(
+                   builder: (context) => const ProgramTrackerNavbar(),
+                 ));
                 },),
               const Gap(5),
-              // Container(  //Weekly DropDOwn Button
-              //     height: 30,
-              //     padding: const EdgeInsets.symmetric(horizontal: 10),
-              //     decoration: BoxDecoration(
-              //       color: primary,
-              //       borderRadius: BorderRadius.circular(15),
-              //     ),
-              //     child: DropdownButtonHideUnderline(
-              //       child: DropdownButton(
-              //         items: ["This Week", "Last Week"]
-              //             .map((name) => DropdownMenuItem(
-              //                   value: name,
-              //                   child: Text(
-              //                     name,
-              //                     style: const TextStyle(
-              //                         color: Colors.black, fontSize: 14),
-              //                   ),
-              //                 ))
-              //             .toList(),
-              //         onChanged: (value) {},
-              //         icon: const Icon(Icons.expand_more, color: Colors.white),
-              //         hint: const Text(
-              //           "Weekly",
-              //           textAlign: TextAlign.center,
-              //           style: TextStyle(
-              //                       fontSize: 14,
-              //                       fontWeight: FontWeight.bold,
-              //                       color: Colors.white,
-              //                     ),
-              //         ),
-              //       ),
-              //     )), 
               ],
             ),
             
@@ -548,29 +499,34 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ProgramsChart(),
           ),
 
-            const Gap(15),
-            Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                "Workout Recommendation",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  "See More",
-                  style: TextStyle(
-                    color: Styles.fadeTextColor,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700),
-                  ),
-                )
-              ],
+          const Gap(15),
+          Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Workout Recommendation",
+              style: Styles.title
             ),
+            TextButton(
+              onPressed: () {
+                // Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) =>
+                //             const WorkoutTrackerScreen()
+                //       ),
+                //     );
+              },
+              child: Text(
+                "See More",
+                style: TextStyle(
+                  color: Styles.fadeTextColor,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700),
+                ),
+              )
+            ],
+          ),
           ListView.builder( //WorkoutRowContainer Content
               padding: EdgeInsets.zero,
               physics: const NeverScrollableScrollPhysics(),
@@ -597,12 +553,9 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(  
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
+              Text(
                 "Meal Recommendation",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700),
+                style: Styles.title
               ),
               TextButton(
                 onPressed: () {},
@@ -643,6 +596,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+//BMI pIE cHART
   List<PieChartSectionData> showingSections() {
     return List.generate(
       2,
@@ -678,3 +632,5 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+

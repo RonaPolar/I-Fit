@@ -52,7 +52,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
         title: Text('Notification',
         style: Styles.headlineSmall,),
       actions: const [
-           MoreIcon(options: ['Today','This Week','This Month'], 
+           MoreIcon(options: ['Today','This Week','This Month']
           ),
         ],
       ),

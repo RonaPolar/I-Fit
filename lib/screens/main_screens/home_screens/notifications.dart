@@ -50,7 +50,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           ),
         ),
         title: Text('Notification',
-        style: Styles.headlineSmall,),
+        style: Styles.headline20,),
       actions: const [
            MoreIcon(options: ['Today','This Week','This Month']
           ),
@@ -96,13 +96,14 @@ class NotificationRow extends StatelessWidget {
             children: [
               Text(
                 nObj["title"].toString(),
-                style: Styles.textStyle.copyWith(
+                style: Styles.text12.copyWith(
                     fontWeight: FontWeight.bold,
-                    fontSize: 12),
+                    ),
               ),
               Text(
                 nObj["time"].toString(),
-                style: Styles.text.copyWith(
+                style: const TextStyle(
+                  fontSize: 12,
                   color: Colors.grey,
                 ),
               ),

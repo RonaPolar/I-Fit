@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
-import 'package:ifit/common/widgets/today_target_container.dart';
 import 'package:ifit/screens/main_screens/profile_screens/activity_history.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_add_schedule.dart';
 
 class ActivityTrackerScreen extends StatefulWidget {
   const ActivityTrackerScreen({super.key});
@@ -16,40 +16,6 @@ class ActivityTrackerScreen extends StatefulWidget {
 
 class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
   int touchedIndex = -1;
-  // List latestActivityArr = [
-  //   {
-  //     "name": "Full Body Exercises",
-  //     "image": "assets/icons/workout-pic.png",
-  //     "kcal": "180",
-  //     "time": "20",
-  //     "progress": 0.3,
-  //     "duration": "21",
-  //   },
-  //   {
-  //     "name": "Upper Body Weights",
-  //     "image": "assets/icons/Lower-Weights.png",
-  //     "kcal": "200",
-  //     "time": "30",
-  //     "progress": 0.4,
-  //     "duration": "14",
-  //   },
-  //   {
-  //     "name": "Salad",
-  //     "image": "assets/icons/salad.png",
-  //     "kcal": "200",
-  //     "categories": "Lunch",
-  //     "progress": 0.8,
-  //     "duration": "7",
-  //   },
-  //   {
-  //     "name": "Ab Exercises",
-  //     "image": "assets/icons/Ab-workout.png",
-  //     "kcal": "300",
-  //     "time": "40",
-  //     "progress": 0.7,
-  //     "duration": "14",
-  //   },
-  // ];
 
   List actHistoryArr = [
     {
@@ -113,7 +79,7 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
           ),
           title: Text(
             'Activity Tracker',
-            style: Styles.headlineSmall,
+            style: Styles.headline20,
           ),
         ),
         body: ListView(
@@ -135,12 +101,9 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
+                            Text(
                               'Today Target',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold),
+                              style: Styles.text15bold
                             ),
                             SizedBox(
                               width: 30,
@@ -154,9 +117,9 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                                   ),
                                   child: MaterialButton(
                                     onPressed: () {
-                                      // Navigator.of(context).push(
-                                      //   MaterialPageRoute(
-                                      //   builder: (context) => const ActivityTrackerNavbar()));
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                        builder: (context) => WorkoutAddSchedule(date: DateTime.now())));
                                     },
                                     padding: EdgeInsets.zero,
                                     height: 30,
@@ -221,8 +184,7 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                                         value: name,
                                         child: Text(
                                           name,
-                                          style: const TextStyle(
-                                              color: Colors.black,
+                                          style: Styles.text12.copyWith(
                                               fontSize: 14),
                                         ),
                                       ))
@@ -230,12 +192,10 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                               onChanged: (value) {},
                               icon: const Icon(Icons.expand_more,
                                   color: Colors.white),
-                              hint: const Text(
+                              hint: Text(
                                 "Weekly",
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
+                                style: Styles.seeMore.copyWith(
                                   color: Colors.white,
                                 ),
                               ),
@@ -271,10 +231,7 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                         },
                         child: Text(
                           "See More",
-                          style: Styles.text2.copyWith(
-                            color: Styles.fadeTextColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700),
+                          style: Styles.seeMore
                         ),
                       )
                     ],
@@ -347,15 +304,13 @@ class _ActivityBarChartState extends State<ActivityBarChart> {
               }
               return BarTooltipItem(
                 '$weekDay\n',
-                const TextStyle(
+                Styles.seeMore.copyWith(
                   color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
                 ),
                 children: <TextSpan>[
                   TextSpan(
                     text: '${(rod.toY - 1).toStringAsFixed(1)} hrs',
-                    style: const TextStyle(
+                    style: Styles.text12.copyWith(
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -408,10 +363,9 @@ class _ActivityBarChartState extends State<ActivityBarChart> {
   }
 
   Widget getTitles(double value, TitleMeta meta) {
-    var style = TextStyle(
+    var style = Styles.text12.copyWith(
       color: Styles.fadeTextColor,
       fontWeight: FontWeight.w500,
-      fontSize: 12,
     );
     Widget text;
     switch (value.toInt()) {
@@ -537,12 +491,13 @@ class ActivityHistoryRow extends StatelessWidget {
             children: [
               Text(
                 actObj["title"].toString(),
-                style: Styles.textStyle
-                    .copyWith(fontWeight: FontWeight.bold, fontSize: 12),
+                style: Styles.text12
+                    .copyWith(fontWeight: FontWeight.bold),
               ),
               Text(
                 actObj["time"].toString(),
-                style: Styles.text.copyWith(
+                style: const TextStyle(
+                  fontSize: 12,
                   color: Colors.grey,
                 ),
               ),
@@ -552,6 +507,76 @@ class ActivityHistoryRow extends StatelessWidget {
             options: ['Remove'],
             iconData: FluentSystemIcons.ic_fluent_more_vertical_filled,
           )
+        ],
+      ),
+    );
+  }
+}
+
+
+
+//Today Target Container
+class TodayTargetContainer extends StatefulWidget {
+  final String icon;
+  final String value;
+  final String title;
+
+  const TodayTargetContainer({super.key, required this.icon, required this.value, required this.title});
+
+  @override
+  State<TodayTargetContainer> createState() => _TodayTargetContainerState();
+}
+
+class _TodayTargetContainerState extends State<TodayTargetContainer> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 70,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Row(
+        children: [
+          Image.asset(
+           widget.icon,
+            width: 40,
+            height: 40,
+            fit: BoxFit.contain,
+          ),
+          const SizedBox(
+            width: 8,
+          ),
+          Expanded(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ShaderMask(
+                blendMode: BlendMode.srcIn,
+                shaderCallback: (bounds) {
+                  return LinearGradient(
+                          colors: Styles.gradientColor,
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight)
+                      .createShader(
+                          Rect.fromLTRB(0, 0, bounds.width, bounds.height));
+                },
+                child: Text(
+                  widget.value,
+                  style: Styles.seeMore.copyWith(
+                      color: Colors.white.withOpacity(0.7),
+                      fontWeight: FontWeight.w700,
+                      ),
+                ),
+              ),
+              Text(
+                widget.title,
+                style: Styles.text12
+              ),
+            ],
+          ))
         ],
       ),
     );

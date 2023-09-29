@@ -35,7 +35,7 @@ class _SuccessPasswordState extends State<SuccessPassword> {
                             const Gap(30),
                             Text(
                               'Your Password has been changed successfully!',
-                               style: Styles.headline,
+                               style: Styles.headline25,
                                textAlign: TextAlign.center,
                               ),
                           ],

@@ -12,13 +12,16 @@ class Styles {
   static Color fadeTextColor = Colors.black54;
   static Color boxtextField = const Color(0xFFEEEEEE);
 
-  static TextStyle text = TextStyle(fontFamily: 'Raleway', fontSize: 10, color: textColor,fontWeight: FontWeight.normal);
-  static TextStyle text2 = TextStyle(fontFamily: 'Raleway', fontSize: 15, color: textColor,fontWeight: FontWeight.normal);
-  static TextStyle textStyle = TextStyle(fontFamily: 'Raleway', fontSize: 18, color: textColor,fontWeight: FontWeight.normal);
+  static TextStyle normal = TextStyle(fontSize: 14, color: fadeTextColor,fontWeight: FontWeight.normal);
+  static TextStyle text12 = TextStyle(fontFamily: 'Raleway', fontSize: 12, color: textColor,fontWeight: FontWeight.normal);
+  static TextStyle text15normal = TextStyle(fontFamily: 'Raleway', fontSize: 15, color: textColor,fontWeight: FontWeight.normal);
+  static TextStyle text15bold = TextStyle(fontFamily: 'Raleway', fontSize: 15, color: textColor,fontWeight: FontWeight.bold);
+  static TextStyle text18 = TextStyle(fontFamily: 'Raleway', fontSize: 18, color: textColor,fontWeight: FontWeight.normal);
   static TextStyle title = TextStyle(fontFamily: 'Raleway', fontSize: 18, color: textColor,fontWeight: FontWeight.bold);
+  static TextStyle seeMore = TextStyle(fontFamily: 'Raleway', fontSize: 14, color: fadeTextColor,fontWeight: FontWeight.bold);
 
-  static TextStyle buttonText = TextStyle(fontFamily: 'Raleway', fontSize: 22, color: textColor,fontWeight: FontWeight.bold);
-  static TextStyle headlineSmall = TextStyle(fontFamily: 'Raleway', fontSize: 20, color: textColor,fontWeight: FontWeight.bold);
-  static TextStyle headline = TextStyle(fontFamily: 'Raleway', fontSize: 25, color: textColor,fontWeight: FontWeight.bold);
+  static TextStyle mainButtonText = TextStyle(fontFamily: 'Raleway', fontSize: 22, color: textColor,fontWeight: FontWeight.bold);
+  static TextStyle headline20 = TextStyle(fontFamily: 'Raleway', fontSize: 20, color: textColor,fontWeight: FontWeight.bold);
+  static TextStyle headline25 = TextStyle(fontFamily: 'Raleway', fontSize: 25, color: textColor,fontWeight: FontWeight.bold);
   static TextStyle headlineBig = TextStyle(fontFamily: 'RobotoMono', fontSize: 30, color: textColor,fontWeight: FontWeight.bold);
 }

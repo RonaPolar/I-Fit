@@ -5,7 +5,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/utils/common_utils.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/main_button.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_schedule.dart';
 
 class WorkoutAddSchedule extends StatefulWidget {
   final DateTime date;
@@ -45,7 +45,7 @@ class _WorkoutAddScheduleState extends State<WorkoutAddSchedule> {
         ),
         title: Text(
           'Add Schedule',
-          style: Styles.headlineSmall,
+          style: Styles.headline20,
         ),
       ),
       body: Scaffold(
@@ -69,9 +69,9 @@ class _WorkoutAddScheduleState extends State<WorkoutAddSchedule> {
                           const Gap(5),
                           Text(
                             dateToString(widget.date, formatStr: "E, dd MMMM yyyy"),
-                            style: TextStyle(
-                              color: Styles.fadeTextColor,
-                              fontSize: 18),
+                            style: Styles.normal.copyWith(
+                              fontSize: 18
+                              ),
                           )
                         ],
                       ),
@@ -129,7 +129,7 @@ class _WorkoutAddScheduleState extends State<WorkoutAddSchedule> {
                       ),
                       Text(
                         ' Or ',
-                        style: Styles.textStyle,
+                        style: Styles.text18,
                       ),
                       Expanded(
                         child: Container(

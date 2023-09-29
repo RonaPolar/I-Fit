@@ -35,12 +35,12 @@ class _SuccessRegistrationState extends State<SuccessRegistration> {
                             const Gap(30),
                             Text(
                               'Welcome!',
-                               style: Styles.headline,
+                               style: Styles.headline25,
                                textAlign: TextAlign.center,
                               ),
                             Text(
                               'You are all set now, let’s reach your goals together with us',
-                               style: Styles.textStyle,
+                               style: Styles.text18,
                                textAlign: TextAlign.center,
                               ),
                           ],

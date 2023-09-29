@@ -38,7 +38,7 @@ class _MyProgramScreenState extends State<MyProgramScreen> {
           ),
         ),
         title: Text('My Programs',
-        style: Styles.headlineSmall,),
+        style: Styles.headline20,),
       ),
       body: ListView(
         children: [

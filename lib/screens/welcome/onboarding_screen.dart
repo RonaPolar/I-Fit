@@ -188,12 +188,12 @@ Widget build(BuildContext context) {  //OnboardingScreen
             const SizedBox(height: 20),
             Text( //Bold text below the picture
               title,
-              style: Styles.headlineSmall,
+              style: Styles.headline20,
             ),
             const SizedBox(height: 10),
             Text( //text below the bold Text
               description,
-              style: Styles.textStyle,
+              style: Styles.text18,
               textAlign: TextAlign.center,
             ),
           ],

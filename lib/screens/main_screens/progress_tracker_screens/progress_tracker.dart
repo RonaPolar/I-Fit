@@ -38,7 +38,7 @@ class _ProgressTrackerScreenState extends State<ProgressTrackerScreen> {
           ),
         ),
         title: Text('Progress Tracker',
-        style: Styles.headlineSmall,),
+        style: Styles.headline20,),
       ),
       body: ListView(
         children: [

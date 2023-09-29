@@ -52,11 +52,11 @@ class _RegisterState extends State<Register> {
                         children: [
                           Text(
                             'Hey there,',
-                            style: Styles.textStyle,
+                            style: Styles.text18,
                           ),
                           Text(
                             'Create an Account',
-                            style: Styles.headline,
+                            style: Styles.headline25,
                           ),
                           const Gap(30),
                           // this is where the modification of it --> /common/widgets/textfield_container.dart';
@@ -95,14 +95,13 @@ class _RegisterState extends State<Register> {
                             ),
                           ),
                           const Gap(5),
-                          const Align(
+                          Align(
                             //make a condition that make if any of it wasnt filled it will display "Enter _____"
                             alignment: Alignment.bottomLeft,
                             child: Text(
                               'Password must contain at least 8 characters',
-                              style: TextStyle(
+                              style: Styles.text15normal.copyWith(
                                 color: Colors.red,
-                                fontSize: 15,
                               ),
                             ),
                           ),
@@ -191,12 +190,12 @@ class _RegisterState extends State<Register> {
                         ),
                         Text(
                           ' Or ',
-                          style: Styles.textStyle,
+                          style: Styles.text18,
                         ),
                         Expanded(
                           child: Container(
                             height: 1,
-                            color: Styles.textColor,
+                            color: Colors.black,
                           ),
                         ),
                       ],
@@ -212,15 +211,14 @@ class _RegisterState extends State<Register> {
                       },
                       child: RichText(
                         text: TextSpan(
-                          style: Styles.textStyle,
-                          children: const <TextSpan>[
-                            TextSpan(
+                          style: Styles.text18,
+                          children: <TextSpan>[
+                            const TextSpan(
                               text: 'Already have an Account? ',
                             ),
                             TextSpan(
                               text: 'Login',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
+                              style: Styles.title.copyWith(
                                 decoration: TextDecoration.underline,
                               ),
                             ),

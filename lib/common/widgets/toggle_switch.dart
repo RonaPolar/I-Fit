@@ -2,6 +2,8 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 
+
+//Switch On and Off
 class ToggleSwitch extends StatefulWidget {
   const ToggleSwitch({super.key,});
 

@@ -35,11 +35,11 @@ Widget build(BuildContext context) {
                         children: [
                           Text(
                             'What\'s your goal?',
-                            style: Styles.headline,
+                            style: Styles.headline25,
                           ),
                           Text(
                             'It will help us to choose a best program for you',
-                            style: Styles.text2,
+                            style: Styles.text15normal,
                           ),
                           const Gap(30),
                           const CheckBoxList(questionText: 'In fitness, do you consider yourself as?',
@@ -144,15 +144,14 @@ class _CheckBoxListState extends State<CheckBoxList> {
       children: [
         Text(
           widget.questionText, 
-          style:  Styles.text2.copyWith(
-            fontWeight: FontWeight.bold),
+          style:  Styles.text15bold
           ),
         for (int index = 0; index < widget.choices.length; index++)
           CheckboxListTile(
             activeColor: Styles.primaryColor, // Use your desired checkbox color 
             title: Text(
               widget.choices[index],
-              style: Styles.text2,
+              style: Styles.text15normal,
             ),
              dense: true, 
             value: isCheckedList[index],

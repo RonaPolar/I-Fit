@@ -84,65 +84,50 @@ class _WorkoutExercisesStepsState extends State<WorkoutExercisesSteps> {
                 const Gap(20),
                 Text(
                   widget.eObj["title"].toString(),
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
+                  style: Styles.text18.copyWith(
                       fontWeight: FontWeight.w700),
                 ),
                 const Gap(2),
                 Text(
                   widget.eObj["value"].toString(),
-                  style: TextStyle(
-                    color: Styles.fadeTextColor,
-                    fontSize: 14,
+                  style: Styles.normal.copyWith(
                   ),
                 ),
                 const Gap(20),
-                const Text(
+                Text(
                   'Descriptions',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
+                  style: Styles.text18.copyWith(
                       fontWeight: FontWeight.w700),
                 ),
                 const Gap(10),
                 ReadMoreText(
                   'A jumping jack, also known as a star jump and called a side-straddle hop in the US military, is a physical jumping exercise performed by jumping to a position with the legs spread wide and the hands going overhead, sometimes in a clap, and then returning to a position with the feet together and the arms at the sides.',
-                  style: TextStyle(
-                    color: Styles.fadeTextColor,
-                    fontSize: 14,
+                  style: Styles.seeMore.copyWith(
+                    fontWeight: FontWeight.normal
                   ),
                   trimLines: 3,
                   colorClickableText: Colors.blue,
                   trimMode: TrimMode.Line,
                   trimCollapsedText: '  Show more',
                   trimExpandedText: ' Show less',
-                  moreStyle: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
+                  moreStyle: Styles.seeMore.copyWith(
                       color: Colors.blue),
-                  lessStyle: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
+                  lessStyle: Styles.seeMore.copyWith(
                       color: Colors.blue),
                 ),
                 const Gap(20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'How To Do It',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
+                      style: Styles.text18.copyWith(
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
                       "${stepArr.length} Steps",
-                      style: TextStyle(
-                          color: Styles.fadeTextColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700),
+                      style: Styles.normal.copyWith(
+                          fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -207,9 +192,8 @@ class StepsDottedLine extends StatelessWidget {
           width: 25,
           child: Text(
             sObj["no"].toString(),
-            style: TextStyle(
+            style: Styles.normal.copyWith(
               color: Styles.secondColor,
-              fontSize: 14,
             ),
           ),
         ),
@@ -250,16 +234,14 @@ class StepsDottedLine extends StatelessWidget {
               //waterArry
               Text(
                 sObj["title"].toString(),
-                style: const TextStyle(
-                  color: Colors.black,
+                style: Styles.text12.copyWith(
                   fontSize: 14,
                 ),
               ),
               Text(
                 sObj["detail"].toString(),
-                style: TextStyle(
-                    color: Styles.fadeTextColor, 
-                    fontSize: 14),
+                style: Styles.seeMore.copyWith(
+                    fontWeight: FontWeight.normal),
               ),
               const Gap(5),
             ],

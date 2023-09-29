@@ -44,7 +44,7 @@ class _ActivtyHistoryScreenState extends State<ActivtyHistoryScreen> {
         ),
         title: Text(
           'Activity History',
-          style: Styles.headlineSmall,
+          style: Styles.headline20,
         ),
         actions: const [
           MoreIcon(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+//Verification Box of Number/Code
 class VerificationTextBox extends StatefulWidget {
   final int numberOfFields;
   final double fieldWidth;

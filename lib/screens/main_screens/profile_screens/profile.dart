@@ -44,7 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         title: Text('Profile',
-        style: Styles.headlineSmall,),
+        style: Styles.headline20,),
       ),
       body: ListView(
         children: [
@@ -83,18 +83,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Stefani Wong",
-                            style: Styles.textStyle.copyWith(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            "Juan Dela Cruz",
+                            style: Styles.title
                           ),
                           const Gap(5),
                           Text(
                             "Lose a Fat Program",
-                            style: Styles.text2.copyWith(
-                              color: Colors.black,
-                            ),
+                            style: Styles.text15normal
                           )
                         ],
                       ),
@@ -107,9 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         onPressed: () {
                           
                         },
-                        textStyle: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
+                        textStyle: Styles.seeMore.copyWith(
                           color: Colors.white,
                         ),
                       )),             
@@ -149,9 +142,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           Text(
                             "Account",
-                            style: Styles.textStyle.copyWith(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
+                            style: Styles.title
                           ),
                           const Gap(1),
                           NextNavigation(
@@ -199,9 +190,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           Text(
                             "Notifications",
-                            style: Styles.textStyle.copyWith(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
+                            style: Styles.title
                           ),
                           const Gap(1),
                           Row(
@@ -215,8 +204,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             Expanded(
                               child: Text(
                                 "Pop-up Notification",
-                                style: Styles.textStyle.copyWith(
-                                  color: Colors.black,
+                                style: Styles.text12.copyWith(
                                   fontSize: 16
                                 ),
                               ),
@@ -245,9 +233,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           Text(
                             "Other",
-                            style: Styles.textStyle.copyWith(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
+                            style: Styles.title
                           ),
                           const Gap(1),
                           NextNavigation(
@@ -284,6 +270,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
+//Profile Cell Details
 class ProfileCell extends StatefulWidget {
   final String value;
   final String title;
@@ -325,17 +312,14 @@ class _ProfileCellState extends State<ProfileCell> {
                 child: Text(
                   widget.value,
                   style: const TextStyle(
-                      color: Colors.white,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500,
-                      fontSize: 18),
+                      ),
                 ),
               ),
               Text(
                 widget.title,
-                style: Styles.text2.copyWith(
-                  color: Colors.black,
-                  fontSize: 15,
-                ),
+                style: Styles.text15normal
               ),
             ],
           ),),

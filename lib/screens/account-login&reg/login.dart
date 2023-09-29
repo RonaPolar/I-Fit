@@ -39,11 +39,11 @@ class _LogInState extends State<LogIn> {
                         children: [
                           Text(
                             'Hey there,',
-                            style: Styles.textStyle,
+                            style: Styles.text18,
                           ),
                           Text(
                             'Welcome Back',
-                            style: Styles.headline,
+                            style: Styles.headline25,
                           ),
                           const Gap(30),
                           const TextfieldContainer(
@@ -69,14 +69,13 @@ class _LogInState extends State<LogIn> {
                             ),
                           ),
                           const Gap(5),
-                          const Align(
+                          Align(
                             //make a condition that make if any of it wasnt filled it will display "Enter _____"
                             alignment: Alignment.bottomLeft,
                             child: Text(
                               'Wrong Password',
-                              style: TextStyle(
+                              style: Styles.text15normal.copyWith(
                                 color: Colors.red,
-                                fontSize: 15,
                               ),
                             ),
                           ),
@@ -86,8 +85,7 @@ class _LogInState extends State<LogIn> {
                               MaterialPageRoute(builder: (context) => const PasswordRecovery()));}, 
                             child: Text(
                             'Forgot your password?',
-                            style: Styles.text2.copyWith(
-                                fontWeight: FontWeight.bold,
+                            style: Styles.text15bold.copyWith(
                                 decoration: TextDecoration.underline,
                               ),
                             ),
@@ -125,7 +123,7 @@ class _LogInState extends State<LogIn> {
                         ),
                         Text(
                           ' Or ',
-                          style: Styles.textStyle,
+                          style: Styles.text18,
                         ),
                         Expanded(
                           child: Container(
@@ -146,15 +144,14 @@ class _LogInState extends State<LogIn> {
                       },
                       child: RichText(
                         text: TextSpan(
-                          style: Styles.textStyle,
-                          children: const <TextSpan>[
-                            TextSpan(
+                          style: Styles.text18,
+                          children: <TextSpan>[
+                            const TextSpan(
                               text: 'Don’t have an account yet? ',
                             ),
                             TextSpan(
                               text: 'Register',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
+                              style: Styles.title.copyWith(
                                 decoration: TextDecoration.underline,
                               ),
                             ),

@@ -41,11 +41,11 @@ String? selectedValue;
                           const Gap(15),
                           Text(
                             'Let\'s complete your profile',
-                            style: Styles.headline,
+                            style: Styles.headline25,
                           ),
                           Text(
                             'It will help us to know more about you',
-                            style: Styles.text2,
+                            style: Styles.text15normal,
                           ),
                           const Gap(30),
                           DropDownContainer(hintText: 'Gender', 

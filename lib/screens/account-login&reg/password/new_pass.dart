@@ -34,7 +34,7 @@ class _NewPasswordState extends State<NewPassword> {
                         children: [
                             Text(
                                   'Set New Password',
-                                  style: Styles.headline,
+                                  style: Styles.headline25,
                                 ),
                             const Gap(30),
                             Align(
@@ -44,7 +44,7 @@ class _NewPasswordState extends State<NewPassword> {
                               children: [
                                 Text(
                                   'Your new password must be different from previously used',
-                                  style: Styles.text2,
+                                  style: Styles.text15normal,
                                 ),
                                 const Gap(10),
                                 const TextfieldContainer(

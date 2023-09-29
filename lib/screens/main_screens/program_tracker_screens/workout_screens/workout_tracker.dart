@@ -4,9 +4,9 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_row.dart';
-import 'package:ifit/common/widgets/programs_chart.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_details.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_schedule.dart';
+import 'package:ifit/common/widgets/charts/workout_linechart.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_schedule.dart';
 
 class WorkoutTrackerScreen extends StatefulWidget {
 
@@ -100,7 +100,7 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                   ),
                 ),
                 title: Text('Workout Tracker',
-                style: Styles.headlineSmall),
+                style: Styles.headline20),
                 actions: [
                   Container(
                     margin: const EdgeInsets.only(right: 20),
@@ -197,11 +197,8 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                             builder: (context) => const WorkoutSchedule()));
                         },
                         child: Text(
-                          "See More",
-                          style: Styles.text2.copyWith(
-                            color: Styles.fadeTextColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700),
+                          "View More",
+                          style: Styles.seeMore
                           ),
                         )
                       ],

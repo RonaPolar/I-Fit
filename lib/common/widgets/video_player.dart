@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+
+//Video for Local and Online Links
 class VidPlayer extends StatefulWidget {
   final String? videoAssetPath;
   final String? videoUrl;
@@ -124,7 +126,7 @@ class _VidPlayerState extends State<VidPlayer> {
   }
 }
 
-
+//For Youtube vids links
 class YouTubePlayer extends StatefulWidget {
     final String videoId;
 

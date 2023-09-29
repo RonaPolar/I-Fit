@@ -33,7 +33,7 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                         children: [
                             Text(
                                   'Verification Code',
-                                  style: Styles.headline,
+                                  style: Styles.headline25,
                                 ),
                             const Gap(30),
                             Align(
@@ -43,12 +43,11 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                               children: [
                                 Text(
                                   'We have sent the code verification to',
-                                  style: Styles.text2,
+                                  style: Styles.text15normal,
                                 ),
                                 Text(
                                   'jua*********@gmail.com',
-                                  style: Styles.textStyle.copyWith(
-                                  fontSize: 15,
+                                  style: Styles.text15normal.copyWith(
                                   color: Colors.blue, // You can change the color to your preference
                                   ),
                                 ),
@@ -70,7 +69,7 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                             children: [
                               Text(
                                 'Did\'nt receive yet?',
-                                style: Styles.text2,
+                                style: Styles.text15normal,
                                 ),
                               TextButton(
                                 onPressed: () {
@@ -78,12 +77,11 @@ class _PasswordVerificationState extends State<PasswordVerification> {
                                   },
                                 child: RichText(
                                   text: TextSpan(
-                                    style: Styles.text2,
+                                    style: Styles.text15bold,
                                     children: const <TextSpan>[
                                       TextSpan(
                                         text: 'Resend',
                                         style: TextStyle(
-                                        fontWeight: FontWeight.bold,
                                         decoration: TextDecoration.underline,
                                         ),
                                       )

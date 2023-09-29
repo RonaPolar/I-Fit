@@ -61,23 +61,19 @@ class _ProgramRowState extends State<ProgramRow> {
               children: [
                 Text(
                   name,
-                  style: Styles.text2.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Styles.text15bold
                 ),
                 if (categories.isEmpty) // Display time if available
                   Text(
                     "$kcal Calories | $duration minutes",
-                    style: TextStyle(
-                      color: Styles.fadeTextColor,
+                    style: Styles.normal.copyWith(
                       fontSize: 12,
                     ),
                   ),
                 if (categories.isNotEmpty) // Display categories if available
                   Text(
                     "$kcal Calories | $categories",
-                    style: TextStyle(
-                      color: Styles.fadeTextColor,
+                    style: Styles.normal.copyWith(
                       fontSize: 12,
                     ),
                   ),
@@ -103,8 +99,7 @@ class _ProgramRowState extends State<ProgramRow> {
                       ),
                       Text(
                         "$days days", // Display the duration here
-                        style: TextStyle(
-                          color: Styles.fadeTextColor,
+                        style: Styles.normal.copyWith(
                           fontSize: 12,
                         ),
                       ),
@@ -170,14 +165,11 @@ class _ScheduledProgramState extends State<ScheduledProgram> {
               children: [
                 Text(
                   widget.wObj["name"].toString(),
-                  style: Styles.text2.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Styles.text15bold
                 ),
                 Text(
                   "${widget.wObj["day"].toString()} | ${widget.wObj["time"].toString()}",
-                  style: TextStyle(
-                    color: Styles.fadeTextColor,
+                  style: Styles.normal.copyWith(
                     fontSize: 12,
                   ),
                 ),
@@ -217,29 +209,25 @@ final Function(Map obj) onPressed;
               children: [
                 Text(
                   wObj["name"].toString(),
-                  style: Styles.text2.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black
-                  ),
+                  style: Styles.text15bold
                 ),
                 Text(
                   "${wObj["exercise"].toString()} Exercises | ${wObj["duration"].toString()} mins",
-                  style: const TextStyle(
-                    color: Colors.black,
+                  style: TextStyle(
                     fontSize: 12,
+                    color: Styles.textColor
                   ),
                 ),
                 
                 const Gap(10),
                 SizedBox(
-                    width: 100,
+                    width: 110,
                     height: 30,
                       child: MainButton(
                         title: "View More",
                         buttonColor: Styles.primaryColor,
                         onPressed: () => onPressed(wObj),
-                      textStyle: const TextStyle(
-                        fontSize: 14,
+                      textStyle: Styles.seeMore.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),

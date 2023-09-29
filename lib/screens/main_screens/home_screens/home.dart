@@ -3,7 +3,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/common/widgets/programs_chart.dart';
+import 'package:ifit/common/widgets/charts/programs_chart.dart';
 import 'package:ifit/common/widgets/program_row.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
@@ -93,11 +93,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Text(
                         'Welcome Back,',
-                        style: Styles.text2,
+                        style: Styles.text15normal,
                       ),
                       Text(
                         'Juan Dela Cruz',
-                        style: Styles.headlineSmall,
+                        style: Styles.headline20,
                       ),
                     ],
                   ),
@@ -135,22 +135,21 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               "BMI (Body Mass Index)",
-                              style: TextStyle(
+                              style: Styles.text15bold.copyWith(
                                   color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold),
+                                  ),
                             ),
                             Text(
                               "You have a normal weight",
-                              style: TextStyle(
+                              style: Styles.seeMore.copyWith(
                                   color: Colors.white.withOpacity(0.7),
-                                  fontSize: 14),
+                                  ),
                             ),
                             const Gap(12),
                             SizedBox(
-                                width: 100,
+                                width: 110,
                                 height: 30,
                                 child: MainButton(
                                   title: "View More",
@@ -159,9 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         MaterialPageRoute(
                                             builder: (context) => const ProfileNavBar()));
                                   },
-                                  textStyle: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
+                                  textStyle: Styles.seeMore.copyWith(
                                     color: Colors.white,
                                   ),
                                 )),
@@ -201,12 +198,11 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     'Today Target',
-                    style: TextStyle(
+                    style: Styles.text15bold.copyWith(
                       color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold),
+                      ),
                   ),
                   SizedBox(
                     width: 80,
@@ -218,9 +214,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                           builder: (context) => const ActivityTrackerScreen()));
                       },
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
+                      textStyle: Styles.seeMore.copyWith(
                         color: Colors.white,
                       ),
                     )),                    
@@ -252,9 +246,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         NextNavigation(title: 'Schedule',
                               nextIconColor: Styles.fadeTextColor,
-                              titleTextStyle: Styles.text2.copyWith(
+                              titleTextStyle: Styles.text15bold.copyWith(
                                 color: Styles.fadeTextColor,
-                                fontWeight: FontWeight.bold,
                               ),
                               onTap: () {
                                 // Navigator.of(context).push(MaterialPageRoute(
@@ -263,10 +256,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               },),
                           Text(
                             "Monday",
-                            style: TextStyle(
+                            style: Styles.seeMore.copyWith(
                                 color: Styles.secondColor.withOpacity(0.5),
                                 fontWeight: FontWeight.w700,
-                                fontSize: 14),
+                                ),
                           ),
                         const Gap(5),
                         Row( //text at Schedule
@@ -335,17 +328,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                         children: [ //waterArry
                                           Text(
                                             wObj["title"].toString(),
-                                            style: TextStyle(
-                                              color: Styles.fadeTextColor,
+                                            style: Styles.normal.copyWith(
                                               fontSize: 12,
+                                              color: Styles.fadeTextColor,
                                             ),
                                           ),
                                           Text(
                                             wObj["subtitle"].toString(),
-                                            style: TextStyle(
-                                                color: Styles.secondColor
-                                                    .withOpacity(0.5),
-                                                fontSize: 12),
+                                            style: Styles.normal.copyWith(
+                                                fontSize: 12,
+                                                color: Styles.secondColor.withOpacity(0.5),
+                                                ),
                                           ),
                                         ],
                                       )
@@ -383,16 +376,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Time Spent',
-                              style: Styles.text2.copyWith(
+                              style: Styles.text15bold.copyWith(
                                   color: Styles.fadeTextColor,
-                                  fontWeight: FontWeight.bold),
+                                  ),
                               ),
                               Text(
                                 "2hr 50m",
-                                style: TextStyle(
+                                style: Styles.normal.copyWith(
                                     color: Styles.secondColor.withOpacity(0.5),
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 14),
+                                    ),
                               ),
                               Expanded(
                                 child: Image.asset('assets/images/Sleep-Graph.png', 
@@ -417,16 +410,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Calories',
-                              style: Styles.text2.copyWith(
+                              style: Styles.text15bold.copyWith(
                                   color: Styles.fadeTextColor,
-                                  fontWeight: FontWeight.bold),
+                                  ),
                               ),
                               Text(
                                 "760 kCal",
-                                style: TextStyle(
+                                style: Styles.normal.copyWith(
                                     color: Styles.secondColor.withOpacity(0.5),
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 14),
+                                    ),
                               ),
                               const Gap(10),
                               Container(
@@ -445,13 +438,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                           color: primary,
                                           borderRadius: BorderRadius.circular(20),
                                         ),
-                                        child: const FittedBox(
+                                        child: FittedBox(
                                           child: Text(
                                             "240kCal\nBurned",
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(
+                                            style: Styles.normal.copyWith(
                                                 color: Colors.white,
-                                                fontWeight: FontWeight.bold,
                                                 fontSize: 10),
                                           ),
                                           ),
@@ -519,10 +511,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               child: Text(
                 "See More",
-                style: TextStyle(
-                  color: Styles.fadeTextColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700),
+                style: Styles.seeMore
                 ),
               )
             ],
@@ -561,10 +550,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {},
                 child: Text(
                   "See More",
-                  style: TextStyle(
-                    color: Styles.fadeTextColor,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700),
+                  style: Styles.seeMore
                   ),
                 )
               ],
@@ -609,11 +595,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: '',
                 radius: 45,
                 titlePositionPercentageOffset: 0.55,
-                badgeWidget: const Text(
+                badgeWidget: Text(
                   "20.1",
-                  style: TextStyle(
+                  style: Styles.text12.copyWith(
                       color: Colors.white,
-                      fontSize: 12,
                       fontWeight: FontWeight.w700),
                 ));
           case 1:

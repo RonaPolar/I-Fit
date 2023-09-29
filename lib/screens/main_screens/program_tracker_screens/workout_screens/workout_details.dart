@@ -3,12 +3,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/common/widgets/exercises_row.dart';
-import 'package:ifit/common/widgets/heart_icon_button.dart';
+import 'package:ifit/common/widgets/favorites_button.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_add_schedule.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_exercises_steps.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_add_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_exercises_steps.dart';
 import 'package:readmore/readmore.dart';
 
 class WorkoutDetails extends StatefulWidget {
@@ -176,21 +175,19 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                             children: [
                               Text(
                                 widget.dObj["name"].toString(),
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
+                                style: Styles.text18.copyWith(
                                     fontWeight: FontWeight.w700),
                               ),
                               RichText(
                                 text: TextSpan(
                                   children: [
-                                    const TextSpan(
+                                   TextSpan(
                                       text: 'by ',
-                                      style: TextStyle(color: Colors.black),
+                                      style: Styles.text12
                                     ),
                                     TextSpan(
                                       text: 'Dr. Jose P. Rosales',
-                                      style: const TextStyle(
+                                      style: Styles.text12.copyWith(
                                         color: Colors.blue,
                                       ),
                                       recognizer: TapGestureRecognizer()
@@ -205,7 +202,7 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                           ),
                           Container(
                               padding: EdgeInsets.zero,
-                              child: const HeartIconButton()),
+                              child: const FavoriteButton()),
                         ],
                       ),
                       
@@ -217,11 +214,9 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                       'Descriptions',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
+                      style:  Styles.text18.copyWith(
                           fontWeight: FontWeight.w700),
                       ),
                       const Gap(10),
@@ -276,22 +271,17 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                       const Gap(10),
                       ReadMoreText(
                       'In this Full body workout: you are exercising your whole body, with all muscle groups being used and stimulated in one workout. For example, you combine exercises that use the upper body and lower body, plus the core in one training session.',
-                      style: TextStyle(
-                        color: Styles.fadeTextColor,
-                        fontSize: 14,
+                      style: Styles.seeMore.copyWith(
+                        fontWeight: FontWeight.normal
                       ),
                       trimLines: 3,
                       colorClickableText: Colors.blue,
                       trimMode: TrimMode.Line,
                       trimCollapsedText: '  Show more',
                       trimExpandedText: ' Show less',
-                      moreStyle: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
+                      moreStyle:  Styles.seeMore.copyWith(
                           color: Colors.blue),
-                      lessStyle: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
+                      lessStyle:  Styles.seeMore.copyWith(
                           color: Colors.blue),
                       ),
                     ],
@@ -327,23 +317,19 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             "You'll Need",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
+                            style:  Styles.text18.copyWith(
                                 fontWeight: FontWeight.w700),
                           ),
                           Text(
                             "${itemsArr.length} Items",
-                            style: TextStyle(
-                                color: Styles.fadeTextColor,
-                                fontSize: 14,
+                            style: Styles.normal.copyWith(
                                 fontWeight: FontWeight.w700),
                           )
                         ],
                       ),
-                      const Gap(2),
+                      const Gap(5),
                       ListView.builder(
                           padding: EdgeInsets.zero,
                           physics: const NeverScrollableScrollPhysics(),
@@ -355,9 +341,7 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text( yObj["item"].toString(),
-                                  style: TextStyle(
-                                    color: Styles.fadeTextColor,
-                                    fontSize: 14,
+                                  style: Styles.normal.copyWith(
                                     ),
                                   ),
                               ],
@@ -370,42 +354,38 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                      Text(
                         "Exercises",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
+                        style:  Styles.text18.copyWith(
                             fontWeight: FontWeight.w700),
                       ),
                       Text(
                         "${exercisesArr.length} Sets",
-                        style: TextStyle(
-                            color: Styles.fadeTextColor,
-                            fontSize: 14,
+                        style:  Styles.normal.copyWith(
                             fontWeight: FontWeight.w700),
                       )
                     ],
                   ),
                   const Gap(10),
                   ListView.builder(
-                          padding: EdgeInsets.zero,
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: exercisesArr.length,
-                          itemBuilder: (context, index) {
-                            var sObj = exercisesArr[index] as Map? ?? {};
-                            return ExercisesRow(
-                              eObjOrSObj: sObj,
-                              onPressed: (obj) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => WorkoutExercisesSteps(eObj: obj)
-                                  ),
-                                );
-                              },
-                            );
-                          }),
+                    padding: EdgeInsets.zero,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: exercisesArr.length,
+                    itemBuilder: (context, index) {
+                      var sObj = exercisesArr[index] as Map? ?? {};
+                      return ExercisesRow(
+                        eObjOrSObj: sObj,
+                        onPressed: (obj) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => WorkoutExercisesSteps(eObj: obj)
+                            ),
+                          );
+                        },
+                      );
+                    }),
 
                   Container(
                     padding: const EdgeInsets.only(top: 5,
@@ -434,5 +414,101 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
         ), //Main top
       ),
     );
+  }
+}
+
+
+//Workout Exercises
+class ExercisesRow extends StatelessWidget {
+  final Map eObjOrSObj; // Either an exercise or a set object
+  final Function(Map obj) onPressed;
+
+  const ExercisesRow({
+    Key? key,
+    required this.eObjOrSObj,
+    required this.onPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (eObjOrSObj.containsKey("image")) {
+      // It's an exercise
+      final eObj = eObjOrSObj as Map<String, dynamic>;
+      return Container(
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: Image.asset(
+                eObj["image"].toString(),
+                width: 60,
+                height: 60,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(width: 15),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    eObj["title"].toString(),
+                    style: Styles.text15bold,
+                  ),
+                  Text(
+                    eObj["value"].toString(),
+                    style: Styles.normal.copyWith(
+                      fontSize: 12
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            IconButton(
+              onPressed: () => onPressed(eObj),
+              icon: const Icon(Icons.navigate_next),
+            )
+          ],
+        ),
+      );
+    } else if (eObjOrSObj.containsKey("set")) {
+      // It's a set
+      final sObj = eObjOrSObj as Map<String, dynamic>;
+      final exercisesArr = sObj["set"] as List<Map<String, dynamic>>? ?? [];
+
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Gap(10),
+          Text(
+            sObj["name"].toString(),
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          ListView.builder(
+            padding: EdgeInsets.zero,
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: exercisesArr.length,
+            itemBuilder: (context, index) {
+              final eObj = exercisesArr[index];
+              return ExercisesRow(
+                eObjOrSObj: eObj,
+                onPressed: onPressed,
+              );
+            },
+          ),
+        ],
+      );
+    }
+
+    return Container();
   }
 }

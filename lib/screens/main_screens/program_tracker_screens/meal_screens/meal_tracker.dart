@@ -4,9 +4,9 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_row.dart';
-import 'package:ifit/common/widgets/programs_chart.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_details.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_schedule.dart';
+import 'package:ifit/common/widgets/charts/workout_linechart.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_schedule.dart';
 
 class MealTrackerScreen extends StatefulWidget {
 
@@ -45,22 +45,22 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
     },
   ];
 
-  List upcomingWorkoutArr = [
+  List upcomingMealArr = [
     {
-      "name": "Full Body Exercises",
-      "image": "assets/icons/workout-pic.png",
+      "name": "Blueberry Pancake",
+      "image": "assets/icons/pancake.png",
       "day": "Monday",
       "time": "9:00am",
     },
     {
-      "name": "Upper Body Weights",
-      "image": "assets/icons/Lower-Weights.png",
+      "name": "Salad",
+      "image": "assets/icons/salad.png",
       "day": "Monday",
       "time": "10:00am",
     },
     {
-      "name": "Ab Exercises",
-      "image": "assets/icons/Ab-workout.png",
+      "name": "Salmon Nigiri",
+      "image": "assets/icons/nigiri.png",
       "day": "Monday",
       "time": "4:00pm",
     },
@@ -70,9 +70,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
 @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [Styles.secondColor.withOpacity(0.5), Styles.secondColor]),
-      ),
+      color: Colors.red.shade400.withOpacity(0.9),
       child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled){
             return [
@@ -91,9 +89,6 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                       height: 30,
                       width: 30,
                     alignment: Alignment.center,
-                    // decoration: BoxDecoration(
-                    //     color: Colors.grey.shade200,
-                    //     borderRadius: BorderRadius.circular(10)),
                     child: const Icon(
                       FluentSystemIcons.ic_fluent_chevron_left_filled,
                       size: 20,
@@ -102,14 +97,14 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                   ),
                 ),
                 title: Text('Meal Tracker',
-                style: Styles.headlineSmall),
+                style: Styles.headline20),
                 actions: [
                   Container(
                     margin: const EdgeInsets.only(right: 20),
                     height: 30,
                     width: 30,
                     alignment: Alignment.center,
-                    child: const MoreIcon(options: ['This Week','Last Week'], iconData: FluentSystemIcons.ic_fluent_more_filled,
+                    child: const MoreIcon(options: ['This Week','This Month'], iconData: FluentSystemIcons.ic_fluent_more_filled,
                     ),
                   ),
                 ],
@@ -129,7 +124,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
               ),
             ];
           }, 
-          body:Container(  //Workout Chart
+          body:Container(  //Meal Chart
             padding: const EdgeInsets.symmetric(horizontal: 15),
             decoration: BoxDecoration(
                 color: Styles.bgColor,
@@ -189,7 +184,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                        Text(
-                        "Daily Workout Schedule",
+                        "Daily Meal Schedule",
                         style: Styles.title
                       ),
                       TextButton(
@@ -200,10 +195,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                         },
                         child: Text(
                           "See More",
-                          style: Styles.text2.copyWith(
-                            color: Styles.fadeTextColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700),
+                          style: Styles.seeMore
                           ),
                         )
                       ],
@@ -212,9 +204,9 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                         padding: EdgeInsets.zero,
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: upcomingWorkoutArr.length,
+                        itemCount: upcomingMealArr.length,
                         itemBuilder: (context, index) {
-                          var schedObj = upcomingWorkoutArr[index] as Map? ?? {};
+                          var schedObj = upcomingMealArr[index] as Map? ?? {};
                           return InkWell(
                               onTap: () {
                                 // Navigator.push(
@@ -233,7 +225,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "What Do You Want to Train Next?",
+                          "Find Something to Eat",
                           style: Styles.title
                         ),
                       ],

@@ -40,8 +40,7 @@ class NextNavigation extends StatelessWidget {
                 Text(
                   title,
                   style: titleTextStyle ??
-                    Styles.textStyle.copyWith(
-                      color: Colors.black,
+                    Styles.text12.copyWith(
                       fontSize: 16
                      ),
                 ),
@@ -153,7 +152,7 @@ class IconButtonText extends StatelessWidget {
           Text(
             title,
             style: titleTextStyle ??
-                Styles.text2
+                Styles.text15bold
           ),
           if (leftIcon != null) ...[
             const Gap(5), // Add some spacing between text and leftIcon

@@ -6,7 +6,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/utils/common_utils.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_add_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_add_schedule.dart';
 
 class WorkoutSchedule extends StatefulWidget {
   const WorkoutSchedule({super.key});
@@ -117,7 +117,7 @@ class _WorkoutScheduleState extends State<WorkoutSchedule> {
         ),
         title: Text(
           'Workout Schedule',
-          style: Styles.headlineSmall,
+          style: Styles.headline20,
         ),
       ),
       body: Column(
@@ -186,8 +186,8 @@ class _WorkoutScheduleState extends State<WorkoutSchedule> {
                               width: 80,
                               child: Text(
                                 getTime(index * 60),
-                                style: TextStyle(
-                                    fontSize: 15, color: Styles.fadeTextColor),
+                                style: Styles.normal.copyWith(
+                                    fontSize: 15),
                               ),
                             ),
                             if (slotArr.isNotEmpty)
@@ -247,7 +247,7 @@ class _WorkoutScheduleState extends State<WorkoutSchedule> {
                                                           Text(
                                                             'Workout Schedule',
                                                             style: Styles
-                                                                .headlineSmall,
+                                                                .headline20,
                                                           ),
                                                           MoreIcon(
                                                             options: const ['Edit', 'Remove'], iconData: FluentSystemIcons.ic_fluent_more_vertical_filled,
@@ -282,7 +282,7 @@ class _WorkoutScheduleState extends State<WorkoutSchedule> {
                                                                   sObj["name"]
                                                                       .toString(),
                                                                   style: Styles
-                                                                      .textStyle),
+                                                                      .text18),
                                                               const InkWell(
                                                                 // onTap: () {
                                                                 //   Navigator.push(
@@ -303,8 +303,7 @@ class _WorkoutScheduleState extends State<WorkoutSchedule> {
                                                               const Gap(5),
                                                               Text(
                                                                   "${getDayTitle(sObj["start_time"].toString())} | ${getStringDateToOtherFormate(sObj["start_time"].toString(), outFormatStr: "h:mm aa")}",
-                                                                  style: Styles
-                                                                      .text2),
+                                                                  style: Styles.text15normal),
                                                             ],
                                                           ),
                                                         ],
@@ -312,7 +311,9 @@ class _WorkoutScheduleState extends State<WorkoutSchedule> {
                                                       const Gap(15),
                                                       MainButton(
                                                           title: 'Cancel Workout',
-                                                          onPressed: () {}),
+                                                          onPressed: () {
+                                                            Navigator.pop(context);
+                                                          }),
                                                     ],
                                                   ),
                                                 ),
@@ -332,9 +333,8 @@ class _WorkoutScheduleState extends State<WorkoutSchedule> {
                                         child: Text(
                                           "${sObj["name"].toString()}, ${getStringDateToOtherFormate(sObj["start_time"].toString(), outFormatStr: "h:mm aa")}",
                                           maxLines: 1,
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              color: Styles.fadeTextColor),
+                                          style: Styles.normal.copyWith(
+                                              fontSize: 15),
                                         ),
                                       ),
                                     ),
@@ -360,10 +360,10 @@ class _WorkoutScheduleState extends State<WorkoutSchedule> {
       floatingActionButton: InkWell(
         onTap: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      WorkoutAddSchedule(date: _selectedDateAppBBar)));
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    WorkoutAddSchedule(date: _selectedDateAppBBar)));
         },
         child: Container(
           width: 55,

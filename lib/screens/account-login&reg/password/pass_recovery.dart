@@ -34,7 +34,7 @@ class _PasswordRecoveryState extends State<PasswordRecovery> {
                         children: [
                             Text(
                                   'Password Recovery',
-                                  style: Styles.headline,
+                                  style: Styles.headline25,
                                 ),
                             const Gap(30),
                             Align(
@@ -44,7 +44,7 @@ class _PasswordRecoveryState extends State<PasswordRecovery> {
                               children: [
                                 Text(
                                   'Enter your information to recover your password',
-                                  style: Styles.text2,
+                                  style: Styles.text15normal,
                                 ),
                                 const Gap(10),
                                 const TextfieldContainer(

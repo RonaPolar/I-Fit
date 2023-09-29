@@ -4,9 +4,10 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/program_row.dart';
-import 'package:ifit/common/widgets/programs_chart.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_details.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_screens/workout_screens/workout_tracker.dart';
+import 'package:ifit/common/widgets/charts/programs_chart.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_tracker.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_tracker.dart';
 
 class ProgramTrackerScreen extends StatefulWidget {
   const ProgramTrackerScreen({super.key});
@@ -18,7 +19,7 @@ class ProgramTrackerScreen extends StatefulWidget {
 class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
   @override
   Widget build(BuildContext context) {
-  List recommendWorkoutArr = [
+  List latestWorkoutArr = [
     {
       "name": "Full Body Exercises",
       "image": "assets/icons/workout-pic.png",
@@ -45,7 +46,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
     },
   ];
 
-    List recommendMealArr = [
+    List latestMealArr = [
     {
       "name": "Blueberry Pancake",
       "image": "assets/icons/pancake.png",
@@ -99,8 +100,8 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
           ),
         ),
       ),
-      title: Text('Program Activity',
-      style: Styles.headlineSmall,),
+      title: Text('Program Tracker',
+      style: Styles.headline20,),
     ),
     body: ListView(
       children: [
@@ -172,10 +173,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                     },
                     child: Text(
                       "See More",
-                      style: Styles.text2.copyWith(
-                        color: Styles.fadeTextColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700),
+                      style: Styles.seeMore
                       ),
                     )
                   ],
@@ -187,7 +185,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                       shrinkWrap: true,
                       itemCount: 2, //recommendWorkoutArr.length
                       itemBuilder: (context, index) {
-                        var wObj = recommendWorkoutArr[index] as Map? ?? {};
+                        var wObj = latestWorkoutArr[index] as Map? ?? {};
                         return InkWell(
                             onTap: () {
                               Navigator.push(
@@ -213,13 +211,18 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                       style: Styles.title
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const MealTrackerScreen(),
+                              ),
+                            );
+                      },
                       child: Text(
                         "See More",
-                        style: Styles.text2.copyWith(
-                          color: Styles.fadeTextColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700),
+                        style: Styles.seeMore
                         ),
                       )
                     ],
@@ -230,7 +233,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                     shrinkWrap: true,
                     itemCount: 2, //recommendWorkoutArr.length
                     itemBuilder: (context, index) {
-                      var wObj = recommendMealArr[index] as Map? ?? {};
+                      var wObj = latestMealArr[index] as Map? ?? {};
                       return InkWell(
                           onTap: () {
                             // Navigator.push(

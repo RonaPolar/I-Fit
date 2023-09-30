@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
+import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/program_row.dart';
 import 'package:ifit/common/widgets/charts/programs_chart.dart';
+import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_tracker.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_schedule.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_tracker.dart';
 
 class ProgramTrackerScreen extends StatefulWidget {
@@ -26,6 +29,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
       "kcal": "180",
       "days": "14",
       "duration": "30",
+      "exercise": "10",
       "progress": 0.3,
     },
     {
@@ -34,6 +38,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
       "kcal": "200",
       "duration": "30",
       "days": "10",
+      "exercise": "11",
       "progress": 0.5,
     },
     {
@@ -42,6 +47,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
       "kcal": "300",
       "duration": "20",
       "days": "15",
+      "exercise": "12",
       "progress": 0.6,
     },
   ];
@@ -83,7 +89,9 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
       elevation: 0,
       leading: InkWell(
         onTap: () {
-          Navigator.pop(context);
+          Navigator.of(context).push(
+            MaterialPageRoute(
+            builder: (context) => const HomeNavBar()));
         },
         child: Container(
           margin: const EdgeInsets.all(12),
@@ -108,13 +116,26 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Gap(15),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              height: 200,
-              width: double.maxFinite,
-              alignment: Alignment.center,
-              child: ProgramsChart(),
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  child: LegendsListWidget(
+                    legends: [
+                      // Legend('Pilates', pilateColor),
+                      Legend('Workouts', Styles.secondColor),
+                      Legend('Meal', Styles.primaryColor),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  height: 200,
+                  width: double.maxFinite,
+                  alignment: Alignment.center,
+                  child: ProgramsChart(),
+                ),
+              ],
             ),
 
             const Gap(10),
@@ -148,66 +169,52 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                   onTap: (){},),
                 ],
               )
-            ),
+            ),           
 
-          Container(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              children: [
-                Row(
+            const Gap(10),
+            Container(
+              padding: const EdgeInsets.all(15),
+              child: Column(
+                children: [
+                  Container(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+              decoration: BoxDecoration(
+                color: Styles.secondColor.withOpacity(0.3),
+                borderRadius: BorderRadius.circular(15),),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Latest Workout",
-                    style: Styles.title
+                    'Daily Workout Schedule',
+                    style: Styles.text15bold
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const WorkoutTrackerScreen()
-                            ),
-                          );
-                    },
-                    child: Text(
-                      "See More",
-                      style: Styles.seeMore
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  child: ListView.builder( //WorkoutRowContainer Content
-                      padding: EdgeInsets.zero,
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: 2, //recommendWorkoutArr.length
-                      itemBuilder: (context, index) {
-                        var wObj = latestWorkoutArr[index] as Map? ?? {};
-                        return InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                     WorkoutDetails(dObj: wObj),
-                                ),
-                              );
-                            },
-                            child: ProgramRow(wObj: wObj,
-                              progress: wObj["progress"] as double?,
-                              ));
-                      }),
-                ),
-                    
-                const Gap(10),
-                  Row(  
+                  SizedBox(
+                    width: 80,
+                    height: 30,
+                      child: MainButton(
+                        title: "Check",
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                          builder: (context) => const WorkoutSchedule()));
+                      },
+                      textStyle: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        ),
+                      )),                    
+                      ],
+                    ),
+                  ),
+
+                  const Gap(15),
+                  Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Latest Meal",
+                      "Workout Tracker",
                       style: Styles.title
                     ),
                     TextButton(
@@ -216,7 +223,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    const MealTrackerScreen(),
+                                    const WorkoutTrackerScreen()
                               ),
                             );
                       },
@@ -227,31 +234,83 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                       )
                     ],
                   ),
-                ListView.builder( //MealRowContainer Content
-                    padding: EdgeInsets.zero,
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: 2, //recommendWorkoutArr.length
-                    itemBuilder: (context, index) {
-                      var wObj = latestMealArr[index] as Map? ?? {};
-                      return InkWell(
-                          onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) =>
-                            //         const FinishedWorkoutView(),
-                            //   ),
-                            // );
-                          },
-                          child: ProgramRow(wObj: wObj,
-                          progress: wObj["progress"] as double?,));
-                    }),
-              ],
+                  SizedBox(
+                    child: ListView.builder( //WorkoutRowContainer Content
+                        padding: EdgeInsets.zero,
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: 2, //recommendWorkoutArr.length
+                        itemBuilder: (context, index) {
+                          var wObj = latestWorkoutArr[index] as Map? ?? {};
+                          return InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                      WorkoutDetails(dObj: wObj),
+                                  ),
+                                );
+                              },
+                              child: WorkoutRow(wObj: wObj,
+                                progress: wObj["progress"] as double?,
+                                showToggleSwitch: false,
+                                icon: FluentSystemIcons.ic_fluent_chevron_right_filled));
+                        }),
+                  ),
+                      
+                  const Gap(10),
+                  Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Meal Tracker",
+                      style: Styles.title
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const MealTrackerScreen()
+                              ),
+                            );
+                      },
+                      child: Text(
+                        "See More",
+                        style: Styles.seeMore
+                        ),
+                      )
+                    ],
+                  ),
+                  ListView.builder( //MealRowContainer Content
+                      padding: EdgeInsets.zero,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 2, //recommendWorkoutArr.length
+                      itemBuilder: (context, index) {
+                        var mObj = latestMealArr[index] as Map? ?? {};
+                        return InkWell(
+                            onTap: () {
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) =>
+                              //         const FinishedWorkoutView(),
+                              //   ),
+                              // );
+                            },
+                            child: MealRow(mObj: mObj,
+                            progress: mObj["progress"] as double?,
+                            showToggleSwitch: false,
+                            icon: FluentSystemIcons.ic_fluent_chevron_right_filled));
+                      }),
+                ],
+              ),
             ),
-          ),
-            
-            
+              
+              
 
           ],  //main Children
         ),

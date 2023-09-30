@@ -6,6 +6,7 @@ import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/toggle_switch.dart';
 import 'package:ifit/screens/main_screens/home_screens/activity_tracker.dart';
+import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -26,7 +27,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         elevation: 0,
         leading: InkWell(
           onTap: () {
-            Navigator.pop(context);
+            Navigator.of(context).push(
+              MaterialPageRoute(
+              builder: (context) => const HomeNavBar()));
           },
           child: Container(
             margin: const EdgeInsets.all(12),

@@ -233,7 +233,7 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                             child: Row(
                               children: [
                                 const Icon(Icons.accessibility_new_sharp, color: Colors.red,),
-                                Text("${widget.dObj["exercise"].toString()} Exercises"),
+                                Text("${widget.dObj["exercise"].toString()} exercises"),
                               ],
                             ),
                           ),
@@ -258,10 +258,10 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                               color: Styles.secondColor.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: const Row(
+                            child: Row(
                               children: [
-                                Icon(Icons.local_fire_department_sharp, color: Colors.red,),
-                                Text("320 Calories"),
+                                const Icon(Icons.local_fire_department_sharp, color: Colors.red,),
+                                Text("${widget.dObj["kcal"].toString()} calories"),
                               ],
                             ),
                           ),

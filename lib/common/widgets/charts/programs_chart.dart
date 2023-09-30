@@ -99,78 +99,62 @@ class ProgramsChart extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       height: 300,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          LegendsListWidget(
-            legends: [
-              // Legend('Pilates', pilateColor),
-              Legend('Workouts', workoutColor),
-              Legend('Meal', mealColor),
-            ],
-          ),
-          AspectRatio(
-            aspectRatio: 2,
-            child: BarChart(
-              BarChartData(
-                alignment: BarChartAlignment.spaceBetween,
-                titlesData: FlTitlesData(
-                  leftTitles: const AxisTitles(),
-                  rightTitles: const AxisTitles(),
-                  topTitles: const AxisTitles(),
-                  bottomTitles: AxisTitles(
-                    sideTitles: SideTitles(
-                      showTitles: true,
-                      getTitlesWidget: bottomTitles,
-                      reservedSize: 25,
-                    ),
-                  ),
-                ),
-                barTouchData: BarTouchData(enabled: false),
-                borderData: FlBorderData(show: false),
-                gridData: const FlGridData(show: false),
-                barGroups: [
-                  generateGroupData(0, 2, 2),
-                  generateGroupData(1, 2, 5),
-                  generateGroupData(2, 1.3, 3.1),
-                  generateGroupData(3, 3.1, 4),
-                  generateGroupData(4, 0.8, 3.3),
-                  generateGroupData(5, 2, 5.6),
-                  generateGroupData(6, 1.3, 3.2),
-                  generateGroupData(7, 2.3, 3.2),
-                  generateGroupData(8, 2, 4.8),
-                  generateGroupData(9, 1.2, 3.2),
-                  generateGroupData(10, 1, 4.8),
-                  generateGroupData(11, 2, 4.4),
-                ],
-                // maxY: 11 + (betweenSpace * 2),
-                // extraLinesData: ExtraLinesData(
-                //   horizontalLines: [
-                //     HorizontalLine(
-                //       y: 3.3,
-                //       color: Colors.black,
-                //       strokeWidth: 1,
-                //       dashArray: [20, 4],
-                //     ),
-                //     HorizontalLine(
-                //       y: 8,
-                //       color: workoutColor,
-                //       strokeWidth: 1,
-                //       dashArray: [20, 4],
-                //     ),
-                //     // HorizontalLine(
-                //     //   y: 11,
-                //     //   color: cyclingColor,
-                //     //   strokeWidth: 1,
-                //     //   dashArray: [20, 4],
-                //     // ),
-                //   ],
-                // ),
+      child: BarChart(
+        BarChartData(
+          alignment: BarChartAlignment.spaceBetween,
+          titlesData: FlTitlesData(
+            leftTitles: const AxisTitles(),
+            rightTitles: const AxisTitles(),
+            topTitles: const AxisTitles(),
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                getTitlesWidget: bottomTitles,
+                reservedSize: 25,
               ),
             ),
           ),
-        ],
+          barTouchData: BarTouchData(enabled: false),
+          borderData: FlBorderData(show: false),
+          gridData: const FlGridData(show: false),
+          barGroups: [
+            generateGroupData(0, 2, 2),
+            generateGroupData(1, 2, 5),
+            generateGroupData(2, 1.3, 3.1),
+            generateGroupData(3, 3.1, 4),
+            generateGroupData(4, 0.8, 3.3),
+            generateGroupData(5, 2, 5.6),
+            generateGroupData(6, 1.3, 3.2),
+            generateGroupData(7, 2.3, 3.2),
+            generateGroupData(8, 2, 4.8),
+            generateGroupData(9, 1.2, 3.2),
+            generateGroupData(10, 1, 4.8),
+            generateGroupData(11, 2, 4.4),
+          ],
+          // maxY: 11 + (betweenSpace * 2),
+          // extraLinesData: ExtraLinesData(
+          //   horizontalLines: [
+          //     HorizontalLine(
+          //       y: 3.3,
+          //       color: Colors.black,
+          //       strokeWidth: 1,
+          //       dashArray: [20, 4],
+          //     ),
+          //     HorizontalLine(
+          //       y: 8,
+          //       color: workoutColor,
+          //       strokeWidth: 1,
+          //       dashArray: [20, 4],
+          //     ),
+          //     // HorizontalLine(
+          //     //   y: 11,
+          //     //   color: cyclingColor,
+          //     //   strokeWidth: 1,
+          //     //   dashArray: [20, 4],
+          //     // ),
+          //   ],
+          // ),
+        ),
       ),
     );
   }

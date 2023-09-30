@@ -49,20 +49,29 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
     {
       "name": "Full Body Exercises",
       "image": "assets/icons/workout-pic.png",
-      "day": "Monday",
+      "schedule": "Monday",
       "time": "9:00am",
+      "kcal": "320",
+      "exercise": "10",
+      "duration": "30",
     },
     {
       "name": "Upper Body Weights",
       "image": "assets/icons/Lower-Weights.png",
-      "day": "Monday",
+      "schedule": "Monday",
       "time": "10:00am",
+      "kcal": "210",
+      "exercise": "10",
+      "duration": "30",
     },
     {
       "name": "Ab Exercises",
       "image": "assets/icons/Ab-workout.png",
-      "day": "Monday",
+      "schedule": "Monday",
       "time": "4:00pm",
+      "kcal": "260",
+      "exercise": "10",
+      "duration": "30",
     },
   ];
 
@@ -148,46 +157,11 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                           borderRadius: BorderRadius.circular(3)),
                     ),
                     const Gap(20),
-                    // Container(
-                    //   padding:
-                    //       const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                    //   decoration: BoxDecoration(
-                    //     color: Styles.secondColor.withOpacity(0.3),
-                    //     borderRadius: BorderRadius.circular(15),),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //     children: [
-                    //       Text(
-                    //         'Daily Workout Schedule',
-                    //         style: Styles.text2.copyWith(
-                    //           fontWeight: FontWeight.bold),
-                    //       ),
-                    //       SizedBox(
-                    //         width: 80,
-                    //         height: 30,
-                    //           child: MainButton(
-                    //             title: "Check",
-                    //           onPressed: () {
-                    //             Navigator.of(context).push(
-                    //               MaterialPageRoute(
-                    //               builder: (context) => const WorkoutSchedule()));
-                    //           },
-                    //           textStyle: const TextStyle(
-                    //             fontSize: 14,
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.white,
-                    //           ),
-                    //         )),                    
-                    //         ],
-                    //       ),
-                    //     ),
-
-                    // const Gap(15),
                     Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                        Text(
-                        "Daily Workout Schedule",
+                        "Upcoming Workout",
                         style: Styles.title
                       ),
                       TextButton(
@@ -197,9 +171,8 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                             builder: (context) => const WorkoutSchedule()));
                         },
                         child: Text(
-                          "View More",
-                          style: Styles.seeMore
-                          ),
+                          "See More",
+                          style: Styles.seeMore),
                         )
                       ],
                     ),
@@ -209,18 +182,19 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                         shrinkWrap: true,
                         itemCount: upcomingWorkoutArr.length,
                         itemBuilder: (context, index) {
-                          var schedObj = upcomingWorkoutArr[index] as Map? ?? {};
+                          var wObj = upcomingWorkoutArr[index] as Map? ?? {};
                           return InkWell(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) =>
-                                //          WorkoutDetails(dObj: schedObj),
-                                //   ),
-                                // );
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                     WorkoutDetails(dObj: wObj),
+                                ),
+                              );
                               },
-                              child: ScheduledProgram(wObj: schedObj));
+                              child: WorkoutRow(wObj: wObj,
+                              showToggleSwitch: true));
                         }),
 
                     const Gap(20),
@@ -245,7 +219,7 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                                 Navigator.push( //there will be major changes
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => WorkoutDetails(dObj: what2TrainObj)
+                                    builder: (context) => WorkoutDetails(dObj: what2TrainObj,)
                                   ),
                                 );
                               },

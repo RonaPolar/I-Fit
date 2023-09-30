@@ -49,19 +49,19 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
     {
       "name": "Blueberry Pancake",
       "image": "assets/icons/pancake.png",
-      "day": "Monday",
+      "schedule": "Monday",
       "time": "9:00am",
     },
     {
       "name": "Salad",
       "image": "assets/icons/salad.png",
-      "day": "Monday",
+      "schedule": "Monday",
       "time": "10:00am",
     },
     {
       "name": "Salmon Nigiri",
       "image": "assets/icons/nigiri.png",
-      "day": "Monday",
+      "schedule": "Monday",
       "time": "4:00pm",
     },
   ];
@@ -144,42 +144,8 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                           color: Colors.grey,
                           borderRadius: BorderRadius.circular(3)),
                     ),
-                    const Gap(20),
-                    // Container(
-                    //   padding:
-                    //       const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                    //   decoration: BoxDecoration(
-                    //     color: Styles.secondColor.withOpacity(0.3),
-                    //     borderRadius: BorderRadius.circular(15),),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //     children: [
-                    //       Text(
-                    //         'Daily Workout Schedule',
-                    //         style: Styles.text2.copyWith(
-                    //           fontWeight: FontWeight.bold),
-                    //       ),
-                    //       SizedBox(
-                    //         width: 80,
-                    //         height: 30,
-                    //           child: MainButton(
-                    //             title: "Check",
-                    //           onPressed: () {
-                    //             Navigator.of(context).push(
-                    //               MaterialPageRoute(
-                    //               builder: (context) => const WorkoutSchedule()));
-                    //           },
-                    //           textStyle: const TextStyle(
-                    //             fontSize: 14,
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.white,
-                    //           ),
-                    //         )),                    
-                    //         ],
-                    //       ),
-                    //     ),
 
-                    // const Gap(15),
+                    const Gap(20),
                     Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -206,7 +172,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                         shrinkWrap: true,
                         itemCount: upcomingMealArr.length,
                         itemBuilder: (context, index) {
-                          var schedObj = upcomingMealArr[index] as Map? ?? {};
+                          var mObj = upcomingMealArr[index] as Map? ?? {};
                           return InkWell(
                               onTap: () {
                                 // Navigator.push(
@@ -217,7 +183,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                                 //   ),
                                 // );
                               },
-                              child: ScheduledProgram(wObj: schedObj));
+                              child: MealRow(mObj: mObj));
                         }),
 
                     const Gap(20),

@@ -193,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding:
                   const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               decoration: BoxDecoration(
-                color: Styles.secondColor.withOpacity(0.3),
+                color: Styles.secondColor.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(15),),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -483,62 +483,76 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             
-          const Gap(10),
-          Container(  //Workout Chart
-            height: 200,
-            width: double.maxFinite,
-            alignment: Alignment.center,
-            child: ProgramsChart(),
-          ),
-
-          const Gap(15),
-          Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "Workout Recommendation",
-              style: Styles.title
-            ),
-            TextButton(
-              onPressed: () {
-                // Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //         builder: (context) =>
-                //             const WorkoutTrackerScreen()
-                //       ),
-                //     );
-              },
-              child: Text(
-                "See More",
-                style: Styles.seeMore
+            const Gap(10),
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  child: LegendsListWidget(
+                          legends: [
+                            // Legend('Pilates', pilateColor),
+                            Legend('Workouts', Styles.secondColor),
+                            Legend('Meal', Styles.primaryColor),
+                          ],
+                        ),
                 ),
-              )
-            ],
-          ),
-          ListView.builder( //WorkoutRowContainer Content
-              padding: EdgeInsets.zero,
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: recommendWorkoutArr.length,
-              itemBuilder: (context, index) {
-                var wObj = recommendWorkoutArr[index] as Map? ?? {};
-                return InkWell(
-                    onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) =>
-                      //         const FinishedWorkoutView(),
-                      //   ),
-                      // );
-                    },
-                    child: ProgramRow(wObj: wObj,
-                      // progress: wObj["progress"] as double?,
-                      ));
-              }),
-              
-          const Gap(15),
+                Container(
+                  height: 200,
+                  width: double.maxFinite,
+                  alignment: Alignment.center,
+                  child: ProgramsChart(),
+                ),
+              ],
+            ),
+
+            const Gap(15),
+            Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Workout Recommendation",
+                style: Styles.title
+              ),
+              TextButton(
+                onPressed: () {
+                  // Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             const WorkoutTrackerScreen()
+                  //       ),
+                  //     );
+                },
+                child: Text(
+                  "See More",
+                  style: Styles.seeMore
+                  ),
+                )
+              ],
+            ),
+            ListView.builder( //WorkoutRowContainer Content
+                padding: EdgeInsets.zero,
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: recommendWorkoutArr.length,
+                itemBuilder: (context, index) {
+                  var wObj = recommendWorkoutArr[index] as Map? ?? {};
+                  return InkWell(
+                      onTap: () {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) =>
+                        //         const FinishedWorkoutView(),
+                        //   ),
+                        // );
+                      },
+                      child: WorkoutRow(wObj: wObj,
+                        // progress: wObj["progress"] as double?,
+                        ));
+                }),
+                
+            const Gap(15),
             Row(  
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -555,29 +569,29 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               ],
             ),
-          ListView.builder( //MealRowContainer Content
-              padding: EdgeInsets.zero,
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: recommendWorkoutArr.length,
-              itemBuilder: (context, index) {
-                var wObj = recommendMealArr[index] as Map? ?? {};
-                return InkWell(
-                    onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) =>
-                      //         const FinishedWorkoutView(),
-                      //   ),
-                      // );
-                    },
-                    child: ProgramRow(wObj: wObj));
-              }),
-            ],
+            ListView.builder( //MealRowContainer Content
+                padding: EdgeInsets.zero,
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: recommendWorkoutArr.length,
+                itemBuilder: (context, index) {
+                  var wObj = recommendMealArr[index] as Map? ?? {};
+                  return InkWell(
+                      onTap: () {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) =>
+                        //         const FinishedWorkoutView(),
+                        //   ),
+                        // );
+                      },
+                      child: WorkoutRow(wObj: wObj));
+                }),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
       ),
     );
   }
@@ -617,5 +631,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-

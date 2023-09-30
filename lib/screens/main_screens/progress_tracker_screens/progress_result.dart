@@ -1,19 +1,20 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
-// import 'package:ifit/common/widgets/bottom_bar.dart';
 
-class DiscoverScreen extends StatefulWidget {
-  const DiscoverScreen({super.key});
+class ProgressResult extends StatefulWidget {
+  const ProgressResult({super.key});
 
   @override
-  State<DiscoverScreen> createState() => _DiscoverScreenState();
+  State<ProgressResult> createState() => _ProgressResultState();
 }
 
-class _DiscoverScreenState extends State<DiscoverScreen> {
+class _ProgressResultState extends State<ProgressResult> {
   @override
   Widget build(BuildContext context) {
+    // var media = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Styles.bgColor,
       appBar: AppBar(
@@ -22,14 +23,12 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
         elevation: 0,
         leading: InkWell(
           onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-              builder: (context) => const HomeNavBar()));
+            Navigator.pop(context);
           },
           child: Container(
             margin: const EdgeInsets.all(12),
-              height: 30,
-              width: 30,
+            height: 30,
+            width: 30,
             alignment: Alignment.center,
             decoration: BoxDecoration(
                 color: Colors.grey.shade200,
@@ -41,24 +40,30 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
             ),
           ),
         ),
-        title: Text('Discover',
-        style: Styles.headline20,),
+        title: Text(
+          'Result',
+          style: Styles.headline20,
+        ),
       ),
-      body: ListView(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(15),
-            child: const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+      body: Container(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ListView(
 
-
-
-              ],//main Children
+              ),
             ),
-          ),
-        ],
 
+            MainButton(title: "Back to Home", 
+              onPressed: (){
+                Navigator.push(context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomeNavBar()));
+            }),
+          ],  //Main Children
+        ),
       ),
     );
   }

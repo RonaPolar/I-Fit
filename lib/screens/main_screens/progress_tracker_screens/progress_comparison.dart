@@ -101,7 +101,10 @@ class _ProgressComparisonState extends State<ProgressComparison> {
               onPressed: (){
                 Navigator.push(context,
                   MaterialPageRoute(
-                    builder: (context) => const ProgressResult()));
+                    builder: (context) => ProgressResult(
+                      date1: DateTime(2023, 09, 1),
+                      date2: DateTime(2023, 10, 1),
+                    )));
             }),
           ], //main Children
         ),

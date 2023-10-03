@@ -101,8 +101,8 @@ class _MainBottomBarState extends State<MainBottomBar> {
                   }
                 }),
             BottomBar(
-                icon: FluentSystemIcons.ic_fluent_search_regular,
-                selectIcon: FluentSystemIcons.ic_fluent_search_filled,
+                icon: FluentSystemIcons.ic_fluent_grid_regular,
+                selectIcon: FluentSystemIcons.ic_fluent_grid_filled,
                 isActive: selectTab == 1,
                 onTap: () {
                   selectTab = 1;

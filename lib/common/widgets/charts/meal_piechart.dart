@@ -1,7 +1,6 @@
 //Nutrition Pie Chart
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:ifit/common/utils/app_styles.dart';
 
 class MealPieChart extends StatefulWidget {
   const MealPieChart({super.key});
@@ -11,88 +10,36 @@ class MealPieChart extends StatefulWidget {
 }
 
 class _MealPieChartState extends State<MealPieChart> {
-  int touchedIndex = -1;
+  int touchedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1.3,
-      child: Row(
-        children: <Widget>[
-          const SizedBox(
-            height: 18,
+    return Container(
+      padding: const EdgeInsets.only(top: 5),
+      width: double.maxFinite,
+      child: PieChart(
+        PieChartData(
+          pieTouchData: PieTouchData(
+            touchCallback: (FlTouchEvent event, pieTouchResponse) {
+              setState(() {
+                if (!event.isInterestedForInteractions ||
+                    pieTouchResponse == null ||
+                    pieTouchResponse.touchedSection == null) {
+                  touchedIndex = -1;
+                  return;
+                }
+                touchedIndex =
+                    pieTouchResponse.touchedSection!.touchedSectionIndex;
+              });
+            },
           ),
-          Expanded(
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: PieChart(
-                PieChartData(
-                  pieTouchData: PieTouchData(
-                    touchCallback: (FlTouchEvent event, pieTouchResponse) {
-                      setState(() {
-                        if (!event.isInterestedForInteractions ||
-                            pieTouchResponse == null ||
-                            pieTouchResponse.touchedSection == null) {
-                          touchedIndex = -1;
-                          return;
-                        }
-                        touchedIndex = pieTouchResponse
-                            .touchedSection!.touchedSectionIndex;
-                      });
-                    },
-                  ),
-                  borderData: FlBorderData(
-                    show: false,
-                  ),
-                  sectionsSpace: 0,
-                  centerSpaceRadius: 20,
-                  sections: showingSections(),
-                ),
-              ),
-            ),
+          borderData: FlBorderData(
+            show: false,
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const Indicator(
-                color: Colors.red,
-                text: 'First',
-                isSquare: true,
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Indicator(
-                color: Colors.red.shade300,
-                text: 'Second',
-                isSquare: true,
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Indicator(
-                color: Styles.primaryColor,
-                text: 'Third',
-                isSquare: true,
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Indicator(
-                color: Styles.secondColor,
-                text: 'Fourth',
-                isSquare: true,
-              ),
-              const SizedBox(
-                height: 18,
-              ),
-            ],
-          ),
-          const SizedBox(
-            width: 28,
-          ),
-        ],
+          sectionsSpace: 0,
+          centerSpaceRadius: 0,
+          sections: showingSections(),
+        ),
       ),
     );
   }
@@ -100,15 +47,17 @@ class _MealPieChartState extends State<MealPieChart> {
   List<PieChartSectionData> showingSections() {
     return List.generate(4, (i) {
       final isTouched = i == touchedIndex;
-      final fontSize = isTouched ? 25.0 : 16.0;
-      final radius = isTouched ? 60.0 : 50.0;
+      final fontSize = isTouched ? 20.0 : 16.0;
+      final radius = isTouched ? 110.0 : 100.0;
+      final widgetSize = isTouched ? 70.0 : 60.0;
       const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
+
       switch (i) {
         case 0:
           return PieChartSectionData(
-            color: Colors.red,
-            value: 40,
-            title: '40%',
+            color: Colors.blue.shade400,
+            value: 20,
+            title: '20%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -116,10 +65,16 @@ class _MealPieChartState extends State<MealPieChart> {
               color: Colors.white,
               shadows: shadows,
             ),
+            badgeWidget: _Badge(
+              'assets/icons/sugar_pie.png',
+              size: widgetSize,
+              borderColor: Colors.black
+            ),
+            badgePositionPercentageOffset: .98,
           );
         case 1:
           return PieChartSectionData(
-            color: Colors.red.shade300,
+            color: Colors.yellow.shade700,
             value: 30,
             title: '30%',
             radius: radius,
@@ -129,79 +84,95 @@ class _MealPieChartState extends State<MealPieChart> {
               color: Colors.white,
               shadows: shadows,
             ),
+            badgeWidget: _Badge(
+              'assets/icons/fat_pie.png',
+              size: widgetSize,
+              borderColor: Colors.black,
+            ),
+            badgePositionPercentageOffset: .98,
           );
         case 2:
           return PieChartSectionData(
-            color: Styles.primaryColor,
-            value: 15,
-            title: '15%',
+            color: Colors.orange.shade800,
+            value: 16,
+            title: '16%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: const Color(0xffffffff),
               shadows: shadows,
             ),
+            badgeWidget: _Badge(
+              'assets/icons/calories_pie.png',
+              size: widgetSize,
+              borderColor: Colors.black,
+            ),
+            badgePositionPercentageOffset: .98,
           );
         case 3:
           return PieChartSectionData(
-            color: Styles.secondColor,
-            value: 15,
-            title: '15%',
+            color: Colors.red.shade600,
+            value: 35,
+            title: '35%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: const Color(0xffffffff),
               shadows: shadows,
             ),
+            badgeWidget: _Badge(
+              'assets/icons/proteins_pie.png',
+              size: widgetSize,
+              borderColor: Colors.black,
+            ),
+            badgePositionPercentageOffset: .98,
           );
         default:
-          throw Error();
+          throw Exception('Oh no');
       }
     });
   }
 }
 
-class Indicator extends StatelessWidget {
-  const Indicator({
-    super.key,
-    required this.color,
-    required this.text,
-    required this.isSquare,
-    this.size = 16,
-    this.textColor,
+class _Badge extends StatelessWidget {
+  const _Badge(
+    this.imageAsset, {
+    required this.size,
+    required this.borderColor,
   });
-  final Color color;
-  final String text;
-  final bool isSquare;
+  final String imageAsset;
   final double size;
-  final Color? textColor;
+  final Color borderColor;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Container(
-          width: size,
-          height: size,
-          decoration: BoxDecoration(
-            shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
-            color: color,
-          ),
+    return AnimatedContainer(
+      duration: PieChart.defaultDuration,
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: borderColor,
+          width: 2,
         ),
-        const SizedBox(
-          width: 4,
-        ),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: textColor,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black.withOpacity(.5),
+            offset: const Offset(3, 3),
+            blurRadius: 3,
           ),
-        )
-      ],
+        ],
+      ),
+      padding: EdgeInsets.all(size * .15),
+      child: Center(
+        child: Image.asset(
+          imageAsset,
+        ),
+      ),
     );
   }
 }

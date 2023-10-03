@@ -78,162 +78,134 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
   
 @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red.shade400.withOpacity(0.9),
-      child: NestedScrollView(
-          headerSliverBuilder: (context, innerBoxIsScrolled){
-            return [
-              SliverAppBar(
-                backgroundColor: Colors.transparent,
-                centerTitle: true,
-                // pinned: true,
-                elevation: 0,
-                expandedHeight: 54,
-                leading: InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.all(12),
-                      height: 30,
-                      width: 30,
-                    alignment: Alignment.center,
-                    // decoration: BoxDecoration(
-                    //     color: Colors.grey.shade200,
-                    //     borderRadius: BorderRadius.circular(10)),
-                    child: const Icon(
-                      FluentSystemIcons.ic_fluent_chevron_left_filled,
-                      size: 20,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                title: Text('Workout Tracker',
-                style: Styles.headline20),
-                actions: [
-                  Container(
-                    margin: const EdgeInsets.only(right: 20),
-                    height: 30,
-                    width: 30,
-                    alignment: Alignment.center,
-                    child: const MoreIcon(options: ['This Week','Last Week'], iconData: FluentSystemIcons.ic_fluent_more_filled,
-                    ),
-                  ),
-                ],
-              ),
-              SliverAppBar(
-                backgroundColor: Colors.transparent,
-                centerTitle: true,
-                elevation: 0,
-                leadingWidth: 0,
-                leading: const SizedBox(),
-                expandedHeight: 200,
-                flexibleSpace: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  width: double.maxFinite,
-                  child: const LineChartWidget(),
-                ),
-              ),
-            ];
-          }, 
-          body:Container(  //Workout Chart
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+    return Scaffold(
+      backgroundColor: Styles.bgColor,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        elevation: 0,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            margin: const EdgeInsets.all(12),
+            height: 30,
+            width: 30,
+            alignment: Alignment.center,
             decoration: BoxDecoration(
-                color: Styles.bgColor,
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(25), topRight: Radius.circular(25))
-                ),
-            child: Scaffold(
-              backgroundColor: Colors.transparent,
-              body: SingleChildScrollView(
-                child: Column(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(10)),
+            child: const Icon(
+              FluentSystemIcons.ic_fluent_chevron_left_filled,
+              size: 20,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        title: Text(
+          'Workout Tracker',
+          style: Styles.headline20),
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 20),
+            height: 30,
+            width: 30,
+            alignment: Alignment.center,
+            child: const MoreIcon(options: ['This Week','This Month'], iconData: FluentSystemIcons.ic_fluent_more_filled,
+            ),
+          ),
+        ],
+      ),
+
+        body:ListView(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    width: double.maxFinite,
+                    child: LineChartWidget(),
+                  ),
+                  const Gap(20),
+                  Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Gap(10),
-                    Container(
-                      width: 50,
-                      height: 4,
-                      decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(3)),
+                     Text(
+                      "Upcoming Workout",
+                      style: Styles.title
                     ),
-                    const Gap(20),
-                    Row(
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                          builder: (context) => const WorkoutSchedule()));
+                      },
+                      child: Text(
+                        "See More",
+                        style: Styles.seeMore),
+                      )
+                    ],
+                  ),
+                  ListView.builder( //WorkoutRowContainer Content
+                      padding: EdgeInsets.zero,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: upcomingWorkoutArr.length,
+                      itemBuilder: (context, index) {
+                        var wObj = upcomingWorkoutArr[index] as Map? ?? {};
+                        return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                   WorkoutDetails(dObj: wObj),
+                              ),
+                            );
+                            },
+                            child: WorkoutRow(wObj: wObj,
+                            showToggleSwitch: true));
+                      }),
+            
+                  const Gap(20),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                       Text(
-                        "Upcoming Workout",
+                      Text(
+                        "What Do You Want to Train Next?",
                         style: Styles.title
                       ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                            builder: (context) => const WorkoutSchedule()));
-                        },
-                        child: Text(
-                          "See More",
-                          style: Styles.seeMore),
-                        )
-                      ],
-                    ),
-                    ListView.builder( //WorkoutRowContainer Content
-                        padding: EdgeInsets.zero,
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: upcomingWorkoutArr.length,
-                        itemBuilder: (context, index) {
-                          var wObj = upcomingWorkoutArr[index] as Map? ?? {};
-                          return InkWell(
-                              onTap: () {
-                                Navigator.push(
+                    ],
+                  ),
+                  ListView.builder( //WorkoutRowContainer Content
+                      padding: EdgeInsets.zero,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: what2TrainArr.length,
+                      itemBuilder: (context, index) {
+                        var what2TrainObj = what2TrainArr[index] as Map? ?? {};
+                        return What2TrainContainer(wObj: what2TrainObj, 
+                          onPressed: (obj) {  //wObj
+                              Navigator.push( //there will be major changes
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                     WorkoutDetails(dObj: wObj),
+                                  builder: (context) => WorkoutDetails(dObj: what2TrainObj,)
                                 ),
                               );
-                              },
-                              child: WorkoutRow(wObj: wObj,
-                              showToggleSwitch: true));
-                        }),
-
-                    const Gap(20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "What Do You Want to Train Next?",
-                          style: Styles.title
-                        ),
-                      ],
-                    ),
-                    ListView.builder( //WorkoutRowContainer Content
-                        padding: EdgeInsets.zero,
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: what2TrainArr.length,
-                        itemBuilder: (context, index) {
-                          var what2TrainObj = what2TrainArr[index] as Map? ?? {};
-                          return What2TrainContainer(wObj: what2TrainObj, 
-                            onPressed: (obj) {  //wObj
-                                Navigator.push( //there will be major changes
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => WorkoutDetails(dObj: what2TrainObj,)
-                                  ),
-                                );
-                              },
-                            );
-                        }),
-
-
-                  ],  //Main children
-                ),
+                            },
+                          );
+                      }),
+            
+            
+                ],  //Main children
               ),
             ),
-          ),  //Main top
-        ),
-    );
+          ],
+        ),  //Main top
+      );
   }
 }
 

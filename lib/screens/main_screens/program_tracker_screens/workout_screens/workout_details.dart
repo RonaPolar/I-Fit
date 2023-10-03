@@ -152,7 +152,6 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
             backgroundColor: Colors.transparent,
             body: SingleChildScrollView(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Gap(10),
                   Container(

@@ -1,7 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 //Programs Activity Chart
 class ProgramsChart extends StatelessWidget {
@@ -218,67 +217,3 @@ class Legend {
   final Color color;
 }
 
-
-
-
-
-//PieChart Calories
-class CaloriesPieChart extends StatefulWidget {
-  const CaloriesPieChart({super.key});
-
-  @override
-  State<CaloriesPieChart> createState() => _CaloriesPieChartState();
-}
-
-class _CaloriesPieChartState extends State<CaloriesPieChart> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          alignment: Alignment.center,
-          child: SizedBox(
-            width: 70,
-            height: 70,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: primary,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: FittedBox(
-                    child: Text(
-                      "240kCal\nBurned",
-                      textAlign: TextAlign.center,
-                      style: Styles.text12.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10),
-                    ),
-                  ),
-                ),
-                SimpleCircularProgressBar(
-                  progressStrokeWidth: 10,
-                  backStrokeWidth: 10,
-                  progressColors: [
-                    Styles.secondColor.withOpacity(0.5),
-                    Styles.secondColor
-                  ],
-                  backColor: Colors.grey.shade200,
-                  valueNotifier: ValueNotifier(30),
-                  startAngle: -180,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}

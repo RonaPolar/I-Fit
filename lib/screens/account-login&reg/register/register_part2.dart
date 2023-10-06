@@ -2,7 +2,6 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/common/widgets/drop_down_container.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
 import 'package:ifit/screens/account-login&reg/register/register_part3.dart';
@@ -48,7 +47,7 @@ String? selectedValue;
                             style: Styles.text15normal,
                           ),
                           const Gap(30),
-                          DropDownContainer(hintText: 'Gender', 
+                          RegisterDropDown(hintText: 'Gender', 
                           icon: FluentSystemIcons.ic_fluent_people_regular,
                           items: const [
                             DropdownMenuItem<String>(
@@ -159,3 +158,60 @@ String? selectedValue;
     );
   }
 }
+
+class RegisterDropDown extends StatefulWidget {
+  final List<DropdownMenuItem<String>> items;
+  final String hintText;
+  final IconData? icon;
+  final void Function(String?) onChanged;
+  final String? selectedValue;
+
+  const RegisterDropDown({super.key, 
+    required this.items,
+    required this.hintText,
+    this.icon,
+    required this.onChanged,
+    this.selectedValue,
+    });
+
+  @override
+  State<RegisterDropDown> createState() => _RegisterDropDownState();
+}
+
+class _RegisterDropDownState extends State<RegisterDropDown> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Styles.boxtextField,
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: DropdownButtonFormField<String>(
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.only(top: 13, right: 10),
+                border: InputBorder.none,
+                prefixIcon: Icon(widget.icon),
+              ),
+              value: widget.selectedValue,
+              items: widget.items,
+              hint: Text(
+                widget.hintText,
+                style: TextStyle(color: Styles.fadeTextColor), 
+              ),
+              onChanged: (newValue) {
+                setState(() {
+                  widget.onChanged(newValue);
+                });
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+

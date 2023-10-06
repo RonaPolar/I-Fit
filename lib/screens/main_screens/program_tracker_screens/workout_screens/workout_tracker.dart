@@ -22,26 +22,22 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
     {
       "name": "Full Body Workout",
       "image": "assets/icons/workout-pic.png",
-      "exercise": "12",
-      "duration": "40",
+      "workoutNumber": "130",
     },
     {
       "name": "Upper Body Workout",
       "image": "assets/icons/Upper-Weights.png",
-      "exercise": "10",
-      "duration": "30",
+      "workoutNumber": "130",
     },
     {
       "name": "Ab Workout",
       "image": "assets/icons/Ab-workout.png",
-      "exercise": "11",
-      "duration": "30",
+      "workoutNumber": "130",
     },
     {
       "name": "Lower Body Workout",
       "image": "assets/icons/Lower-Weights.png",
-      "exercise": "10",
-      "duration": "30",
+      "workoutNumber": "130",
     },
   ];
 
@@ -78,6 +74,7 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
   
 @override
   Widget build(BuildContext context) {
+  
     return Scaffold(
       backgroundColor: Styles.bgColor,
       appBar: AppBar(
@@ -134,7 +131,7 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                      Text(
-                      "Upcoming Workout",
+                      "Upcoming Workout Schedule",
                       style: Styles.title
                     ),
                     TextButton(
@@ -187,14 +184,14 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                       itemCount: what2TrainArr.length,
                       itemBuilder: (context, index) {
                         var what2TrainObj = what2TrainArr[index] as Map? ?? {};
-                        return What2TrainContainer(wObj: what2TrainObj, 
+                        return What2Container(wObj: what2TrainObj, 
                           onPressed: (obj) {  //wObj
-                              Navigator.push( //there will be major changes
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => WorkoutDetails(dObj: what2TrainObj,)
-                                ),
-                              );
+                              // Navigator.push( //there will be major changes
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => WorkoutDetails(dObj: what2TrainObj,)
+                              //   ),
+                              // );
                             },
                           );
                       }),
@@ -208,4 +205,5 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
       );
   }
 }
+
 

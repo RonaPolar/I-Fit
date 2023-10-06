@@ -84,6 +84,7 @@ flutter:
    - assets/images/
    - assets/videos/
    - assets/images/exercises/
+   - assets/images/meal/
    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see

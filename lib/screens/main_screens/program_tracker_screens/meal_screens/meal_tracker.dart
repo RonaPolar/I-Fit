@@ -5,7 +5,6 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/charts/meal_piechart.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_row.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_schedule.dart';
 
 class MealTrackerScreen extends StatefulWidget {
@@ -18,30 +17,31 @@ class MealTrackerScreen extends StatefulWidget {
 
 class _MealTrackerScreenState extends State<MealTrackerScreen> {
 
-  List what2TrainArr = [
+  List what2EatArr = [
     {
-      "name": "Full Body Workout",
-      "image": "assets/icons/workout-pic.png",
-      "exercise": "12",
-      "duration": "40",
+      "name": "Breakfast",
+      "image": "assets/images/meal/breakfast.png",
+      "foodNumber": "120",
     },
     {
-      "name": "Upper Body Workout",
-      "image": "assets/icons/Upper-Weights.png",
-      "exercise": "10",
-      "duration": "30",
+      "name": "Lunch",
+      "image": "assets/images/meal/lunch.png",
+      "foodNumber": "120",
     },
     {
-      "name": "Ab Workout",
-      "image": "assets/icons/Ab-workout.png",
-      "exercise": "11",
-      "duration": "30",
+      "name": "Dinner",
+      "image": "assets/images/meal/dinner.png",
+      "foodNumber": "120",
     },
     {
-      "name": "Lower Body Workout",
-      "image": "assets/icons/Lower-Weights.png",
-      "exercise": "10",
-      "duration": "30",
+      "name": "Snacks",
+      "image": "assets/images/meal/snacks.png",
+      "foodNumber": "120",
+    },
+    {
+      "name": "Drinks",
+      "image": "assets/images/meal/drinks.png",
+      "foodNumber": "120",
     },
   ];
 
@@ -126,7 +126,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                     Text(
-                    "Daily Meal Schedule",
+                    "Upcoming Meal Schedule",
                     style: Styles.title
                   ),
                   TextButton(
@@ -167,29 +167,29 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Find Something to Eat",
+                      "Find Something to Eat and Drink",
                       style: Styles.title
                     ),
                   ],
                 ),
                 ListView.builder( //WorkoutRowContainer Content
-                    padding: EdgeInsets.zero,
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: what2TrainArr.length,
-                    itemBuilder: (context, index) {
-                      var what2TrainObj = what2TrainArr[index] as Map? ?? {};
-                      return What2TrainContainer(wObj: what2TrainObj, 
-                        onPressed: (obj) {  //wObj
-                            Navigator.push( //there will be major changes
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => WorkoutDetails(dObj: what2TrainObj)
-                              ),
-                            );
-                          },
-                        );
-                    }),               
+                      padding: EdgeInsets.zero,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: what2EatArr.length,
+                      itemBuilder: (context, index) {
+                        var what2TrainObj = what2EatArr[index] as Map? ?? {};
+                        return What2Container(wObj: what2TrainObj, 
+                          onPressed: (obj) {  //wObj
+                              // Navigator.push( //there will be major changes
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => WorkoutDetails(dObj: what2TrainObj,)
+                              //   ),
+                              // );
+                            },
+                          );
+                      }),
               ],
             ),
           )
@@ -199,3 +199,69 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
 }
 }
 
+
+
+class CustomDropdown extends StatefulWidget {
+  final TextStyle? textStyle;
+  final List<String> items;
+  final String? selectedValue;
+  final void Function(String?) onChanged;
+  final String? hintText; 
+
+  const CustomDropdown({
+    Key? key,
+    required this.items,
+    required this.onChanged,
+    this.selectedValue, // Make selectedValue optional
+    this.hintText,
+    this.textStyle, // Make hintText optional
+  }) : super(key: key);
+
+  @override
+  State<CustomDropdown> createState() => _CustomDropdownState();
+}
+
+class _CustomDropdownState extends State<CustomDropdown> {
+  String? _currentValue;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentValue = widget.selectedValue;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 30,
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton(
+          items: widget.items
+              .map((name) => DropdownMenuItem(
+                    value: name,
+                    child: Text(
+                      name,
+                      style: Styles.text15bold.copyWith(),
+                    ),
+                  ))
+              .toList(),
+          onChanged: (newValue) {
+            setState(() {
+              _currentValue = newValue;
+              widget.onChanged(newValue);
+            });
+          },
+          icon: const Icon(Icons.expand_more, color: Colors.black,),
+          value: _currentValue,
+          hint: widget.hintText != null
+              ? Text(
+                  widget.hintText!,
+                  textAlign: TextAlign.center,
+                  style: widget.textStyle ?? Styles.text15bold,
+                )
+              : null, // Use the provided hintText if not null
+        ),
+      ),
+    );
+  }
+}

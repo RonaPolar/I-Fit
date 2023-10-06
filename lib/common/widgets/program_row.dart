@@ -158,7 +158,7 @@ class MealRow extends StatefulWidget {
 class _MealRowState extends State<MealRow> {
   @override
   Widget build(BuildContext context) {
-   final String name = widget.mObj["name"].toString();
+    final String name = widget.mObj["name"].toString();
     final String kcal = widget.mObj["kcal"]?.toString() ?? '';
     final String categories = widget.mObj["categories"]?.toString() ?? ''; // Make categories optional
     final String days = widget.mObj["days"]?.toString() ?? ''; // Make categories optional
@@ -260,16 +260,25 @@ class _MealRowState extends State<MealRow> {
 
 
 
-//What Do You Want to Train Next
-class What2TrainContainer extends StatelessWidget {
+//What To Eat and Train Next
+class What2Container extends StatefulWidget {
 final Map wObj;
 final Function(Map obj) onPressed;
 
 
-  const What2TrainContainer({super.key, required this.wObj, required this.onPressed});
+  const What2Container({super.key, required this.wObj, required this.onPressed});
 
   @override
+  State<What2Container> createState() => _What2ContainerState();
+}
+
+class _What2ContainerState extends State<What2Container> {
+  @override
   Widget build(BuildContext context) {
+    final String name = widget.wObj["name"].toString();
+    final String foodNumber = widget.wObj["foodNumber"]?.toString() ?? '';
+    final String workoutNumber = widget.wObj["workoutNumber"]?.toString() ?? '';
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
@@ -285,14 +294,21 @@ final Function(Map obj) onPressed;
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  wObj["name"].toString(),
+                  name,
                   style: Styles.text15bold
                 ),
+                if (foodNumber.isEmpty) // Display kcal and categories if available
                 Text(
-                  "${wObj["exercise"].toString()} Exercises | ${wObj["duration"].toString()} mins",
-                  style: TextStyle(
+                  "$workoutNumber Programs",
+                  style: Styles.normal.copyWith(
                     fontSize: 12,
-                    color: Styles.textColor
+                  ),
+                ),
+                if (foodNumber.isNotEmpty) // Display kcal and categories if available
+                Text(
+                  "$foodNumber Programs",
+                  style: Styles.normal.copyWith(
+                    fontSize: 12,
                   ),
                 ),
                 
@@ -303,7 +319,7 @@ final Function(Map obj) onPressed;
                       child: MainButton(
                         title: "View More",
                         buttonColor: Styles.primaryColor,
-                        onPressed: () => onPressed(wObj),
+                        onPressed: () => widget.onPressed(widget.wObj),
                       textStyle: Styles.seeMore.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -325,7 +341,7 @@ final Function(Map obj) onPressed;
               ),
                 ClipRRect(
                   child: Image.asset(
-                    wObj["image"].toString(),
+                    widget.wObj["image"].toString(),
                     width: 80,
                     height: 100,
                     fit: BoxFit.contain,
@@ -339,3 +355,4 @@ final Function(Map obj) onPressed;
     );
   }
 }
+

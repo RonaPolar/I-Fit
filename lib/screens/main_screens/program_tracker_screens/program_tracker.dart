@@ -4,9 +4,11 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/main_button.dart';
-import 'package:ifit/common/widgets/program_row.dart';
 import 'package:ifit/common/widgets/charts/programs_chart.dart';
+import 'package:ifit/common/widgets/meal_widgets.dart';
+import 'package:ifit/common/widgets/workout_widgets.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_tracker.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_schedule.dart';
@@ -57,6 +59,9 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
       "name": "Blueberry Pancake",
       "image": "assets/icons/pancake.png",
       "kcal": "190",
+      "fats": "100",
+      "proteins": "176",
+      "sugar": "50",
       "categories": "Breakfast",
       "days": "15",
       "progress": 0.2,
@@ -65,6 +70,9 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
       "name": "Salad",
       "image": "assets/icons/salad.png",
       "kcal": "200",
+      "fats": "100",
+      "proteins": "300",
+      "sugar": "50",
       "categories": "Lunch",
       "days": "15",
       "progress": 0.9,
@@ -73,6 +81,9 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
       "name": "Salmon Nigiri",
       "image": "assets/icons/nigiri.png",
       "kcal": "300",
+      "fats": "170",
+      "proteins": "400",
+      "sugar": "79",
       "categories": "Dinner",
       "days": "15",
       "progress": 0.5,
@@ -293,13 +304,11 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                         var mObj = latestMealArr[index] as Map? ?? {};
                         return InkWell(
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) =>
-                              //         const FinishedWorkoutView(),
-                              //   ),
-                              // );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MealDetails(dObj: mObj)),
+                              );
                             },
                             child: MealRow(mObj: mObj,
                             progress: mObj["progress"] as double?,

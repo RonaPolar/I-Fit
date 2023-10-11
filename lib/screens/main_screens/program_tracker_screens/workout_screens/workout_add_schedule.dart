@@ -165,7 +165,7 @@ class _WorkoutAddScheduleState extends State<WorkoutAddSchedule> {
               MainButton(
                 title: 'Save', 
                 onPressed: (){
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const WorkoutSchedule(),

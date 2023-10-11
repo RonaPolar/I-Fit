@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/charts/meal_piechart.dart';
+import 'package:ifit/common/widgets/meal_widgets.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_row.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_category.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_schedule.dart';
 
 class MealTrackerScreen extends StatefulWidget {
@@ -49,18 +52,30 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
     {
       "name": "Blueberry Pancake",
       "image": "assets/icons/pancake.png",
+      "kcal": "200",
+      "fats": "100",
+      "proteins": "300",
+      "sugar": "50",
       "schedule": "Monday",
       "time": "9:00am",
     },
     {
       "name": "Salad",
       "image": "assets/icons/salad.png",
+      "kcal": "200",
+      "fats": "100",
+      "proteins": "300",
+      "sugar": "50",
       "schedule": "Monday",
       "time": "10:00am",
     },
     {
       "name": "Salmon Nigiri",
       "image": "assets/icons/nigiri.png",
+      "kcal": "300",
+      "fats": "250",
+      "proteins": "310",
+      "sugar": "100",
       "schedule": "Monday",
       "time": "4:00pm",
     },
@@ -151,13 +166,11 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                       var mObj = upcomingMealArr[index] as Map? ?? {};
                       return InkWell(
                           onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) =>
-                            //          WorkoutDetails(dObj: schedObj),
-                            //   ),
-                            // );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MealDetails(dObj: mObj)),
+                            );
                           },
                           child: MealRow(mObj: mObj));
                     }),
@@ -172,21 +185,20 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                     ),
                   ],
                 ),
-                ListView.builder( //WorkoutRowContainer Content
+                ListView.builder(
                       padding: EdgeInsets.zero,
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: what2EatArr.length,
                       itemBuilder: (context, index) {
-                        var what2TrainObj = what2EatArr[index] as Map? ?? {};
-                        return What2Container(wObj: what2TrainObj, 
-                          onPressed: (obj) {  //wObj
-                              // Navigator.push( //there will be major changes
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => WorkoutDetails(dObj: what2TrainObj,)
-                              //   ),
-                              // );
+                        var mObj = what2EatArr[index] as Map? ?? {};
+                        return What2Container(wObj: mObj, 
+                          onPressed: (obj) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MealCategory(mObj: mObj,)),
+                              );
                             },
                           );
                       }),
@@ -197,71 +209,4 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
       ),  //Main top
     );
 }
-}
-
-
-
-class CustomDropdown extends StatefulWidget {
-  final TextStyle? textStyle;
-  final List<String> items;
-  final String? selectedValue;
-  final void Function(String?) onChanged;
-  final String? hintText; 
-
-  const CustomDropdown({
-    Key? key,
-    required this.items,
-    required this.onChanged,
-    this.selectedValue, // Make selectedValue optional
-    this.hintText,
-    this.textStyle, // Make hintText optional
-  }) : super(key: key);
-
-  @override
-  State<CustomDropdown> createState() => _CustomDropdownState();
-}
-
-class _CustomDropdownState extends State<CustomDropdown> {
-  String? _currentValue;
-
-  @override
-  void initState() {
-    super.initState();
-    _currentValue = widget.selectedValue;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 30,
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton(
-          items: widget.items
-              .map((name) => DropdownMenuItem(
-                    value: name,
-                    child: Text(
-                      name,
-                      style: Styles.text15bold.copyWith(),
-                    ),
-                  ))
-              .toList(),
-          onChanged: (newValue) {
-            setState(() {
-              _currentValue = newValue;
-              widget.onChanged(newValue);
-            });
-          },
-          icon: const Icon(Icons.expand_more, color: Colors.black,),
-          value: _currentValue,
-          hint: widget.hintText != null
-              ? Text(
-                  widget.hintText!,
-                  textAlign: TextAlign.center,
-                  style: widget.textStyle ?? Styles.text15bold,
-                )
-              : null, // Use the provided hintText if not null
-        ),
-      ),
-    );
-  }
 }

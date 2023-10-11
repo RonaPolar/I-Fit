@@ -3,6 +3,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/common/widgets/custom_dropdown.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/screens/main_screens/profile_screens/activity_history.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_add_schedule.dart';
@@ -169,38 +170,9 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                         'Time Spent',
                         style: Styles.title,
                       ),
-                      Container(
-                          //Weekly DropDOwn Button
-                          height: 30,
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                            color: primary,
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: DropdownButtonHideUnderline(
-                            child: DropdownButton(
-                              items: ["Weekly", "Last Week"]
-                                  .map((name) => DropdownMenuItem(
-                                        value: name,
-                                        child: Text(
-                                          name,
-                                          style: Styles.text12.copyWith(
-                                              fontSize: 14),
-                                        ),
-                                      ))
-                                  .toList(),
-                              onChanged: (value) {},
-                              icon: const Icon(Icons.expand_more,
-                                  color: Colors.white),
-                              hint: Text(
-                                "Weekly",
-                                textAlign: TextAlign.center,
-                                style: Styles.seeMore.copyWith(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          )),
+                      CustomDropdown(items: const ["This Week", "Last Week"], 
+                      hintText: "Weekly",
+                      onChanged: (value){}),
                     ],
                   ),
                   const Gap(10),

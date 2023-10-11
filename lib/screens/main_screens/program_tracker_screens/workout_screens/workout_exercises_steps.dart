@@ -140,7 +140,7 @@ class _WorkoutExercisesStepsState extends State<WorkoutExercisesSteps> {
                     itemCount: stepArr.length,
                     itemBuilder: (context, index) {
                       var sObj = stepArr[index] as Map? ?? {};
-                      return StepsDottedLine(
+                      return ExerStepsDottedLine(
                         sObj: sObj,
                         isLast: stepArr.last == sObj,
                       );
@@ -178,10 +178,10 @@ class _WorkoutExercisesStepsState extends State<WorkoutExercisesSteps> {
 
 
 
-class StepsDottedLine extends StatelessWidget {
+class ExerStepsDottedLine extends StatelessWidget {
   final Map sObj;
   final bool isLast;
-  const StepsDottedLine({super.key, required this.sObj, this.isLast = false});
+  const ExerStepsDottedLine({super.key, required this.sObj, this.isLast = false});
 
   @override
   Widget build(BuildContext context) {

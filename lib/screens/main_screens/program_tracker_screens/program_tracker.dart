@@ -5,8 +5,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/charts/programs_chart.dart';
-import 'package:ifit/common/widgets/meal_widgets.dart';
-import 'package:ifit/common/widgets/workout_widgets.dart';
+import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_tracker.dart';
@@ -57,7 +56,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
     List latestMealArr = [
     {
       "name": "Blueberry Pancake",
-      "image": "assets/icons/pancake.png",
+      "image": "assets/images/meal/pancake.png",
       "kcal": "190",
       "fats": "100",
       "proteins": "176",
@@ -68,7 +67,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
     },
     {
       "name": "Salad",
-      "image": "assets/icons/salad.png",
+      "image": "assets/images/meal/salad.png",
       "kcal": "200",
       "fats": "100",
       "proteins": "300",
@@ -79,7 +78,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
     },
     {
       "name": "Salmon Nigiri",
-      "image": "assets/icons/nigiri.png",
+      "image": "assets/images/meal/nigiri.png",
       "kcal": "300",
       "fats": "170",
       "proteins": "400",
@@ -263,10 +262,12 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                                   ),
                                 );
                               },
-                              child: WorkoutRow(wObj: wObj,
-                                progress: wObj["progress"] as double?,
-                                showToggleSwitch: false,
-                                icon: FluentSystemIcons.ic_fluent_chevron_right_filled));
+                              child: ProgramRow(image: wObj["image"], 
+                              title: wObj["name"], 
+                              bottomText: "${wObj["duration"]} minutes | ${wObj["kcal"]} Calories",
+                              progress: wObj["progress"] as double?,
+                              progressText: wObj["days"],
+                              showToggleSwitch: false,));
                         }),
                   ),
                       
@@ -310,10 +311,13 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                                   builder: (context) => MealDetails(dObj: mObj)),
                               );
                             },
-                            child: MealRow(mObj: mObj,
-                            progress: mObj["progress"] as double?,
-                            showToggleSwitch: false,
-                            icon: FluentSystemIcons.ic_fluent_chevron_right_filled));
+                            child: ProgramRow(image: mObj["image"], 
+                              title: mObj["name"], 
+                              bottomText: "${mObj["categories"]} | ${mObj["kcal"]} Calories",
+                              progress: mObj["progress"] as double?,
+                              progressText: mObj["days"],
+                              showToggleSwitch: false,
+                              ));
                       }),
                 ],
               ),

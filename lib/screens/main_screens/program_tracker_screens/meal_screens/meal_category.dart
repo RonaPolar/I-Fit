@@ -2,8 +2,8 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/common/widgets/meal_widgets.dart';
 import 'package:ifit/common/widgets/program_category.dart';
+import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 
 class MealCategory extends StatefulWidget {
@@ -20,27 +20,27 @@ class _MealCategoryState extends State<MealCategory> {
     List categoryMealArr = [
     {
       "name": "Breakfast",
-      "image": "assets/images/meal/breakfast.png",
+      "image": "assets/icons/breakfast.png",
       "foodNumber": "120",
     },
     {
       "name": "Lunch",
-      "image": "assets/images/meal/lunch.png",
+      "image": "assets/icons/lunch.png",
       "foodNumber": "120",
     },
     {
       "name": "Dinner",
-      "image": "assets/images/meal/dinner.png",
+      "image": "assets/icons/dinner.png",
       "foodNumber": "120",
     },
     {
       "name": "Snacks",
-      "image": "assets/images/meal/snacks.png",
+      "image": "assets/icons/snacks.png",
       "foodNumber": "120",
     },
     {
       "name": "Drinks",
-      "image": "assets/images/meal/drinks.png",
+      "image": "assets/icons/drinks.png",
       "foodNumber": "120",
     },
   ];
@@ -48,7 +48,7 @@ class _MealCategoryState extends State<MealCategory> {
     List popularMealArr = [
     {
       "name": "Blueberry Pancake",
-      "image": "assets/icons/pancake.png",
+      "image": "assets/images/meal/pancake.png",
       "kcal": "190",
       "fats": "199",
       "proteins": "305",
@@ -57,7 +57,7 @@ class _MealCategoryState extends State<MealCategory> {
     },
     {
       "name": "Salad",
-      "image": "assets/icons/salad.png",
+      "image": "assets/images/meal/salad.png",
       "kcal": "200",
       "fats": "100",
       "proteins": "300",
@@ -66,7 +66,7 @@ class _MealCategoryState extends State<MealCategory> {
     },
     {
       "name": "Salmon Nigiri",
-      "image": "assets/icons/nigiri.png",
+      "image": "assets/images/meal/nigiri.png",
       "kcal": "300",
       "fats": "250",
       "proteins": "310",
@@ -231,7 +231,9 @@ class _MealCategoryState extends State<MealCategory> {
                             builder: (context) => MealDetails(dObj: mObj)),
                         );
                       },
-                      child: MealRecom(mObj: mObj, index: index,));
+                      child: RecommedContainer(image: mObj["image"], 
+                        title: mObj["name"], 
+                        bottomText: "${mObj["categories"]} | ${mObj["kcal"]} kcal",));
                 }),
               ),
 
@@ -274,10 +276,13 @@ class _MealCategoryState extends State<MealCategory> {
                             builder: (context) => MealDetails(dObj: mObj)),
                         );
                       },
-                      child: MealRow(mObj: mObj,
-                      showToggleSwitch: false,
-                      icon: FluentSystemIcons.ic_fluent_chevron_right_filled));
+                      child: ProgramRow(image: mObj["image"], 
+                        title: mObj["name"], 
+                        bottomText: "${mObj["categories"]} | ${mObj["kcal"]} Calories",
+                        showToggleSwitch: false,
+                      ));
                 }),
+                
 
 
             ], //main Children

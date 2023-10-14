@@ -6,10 +6,11 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/charts/programs_chart.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
-import 'package:ifit/common/widgets/workout_widgets.dart';
+import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/screens/main_screens/home_screens/activity_tracker.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/home_screens/notifications.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 import 'package:dotted_dashed_line/dotted_dashed_line.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
@@ -47,19 +48,19 @@ class _HomeScreenState extends State<HomeScreen> {
     List recommendMealArr = [
     {
       "name": "Blueberry Pancake",
-      "image": "assets/icons/pancake.png",
+      "image": "assets/images/meal/pancake.png",
       "kcal": "190",
       "categories": "Breakfast",
     },
     {
       "name": "Salad",
-      "image": "assets/icons/salad.png",
+      "image": "assets/images/meal/salad.png",
       "kcal": "200",
       "categories": "Lunch",
     },
     {
       "name": "Salmon Nigiri",
-      "image": "assets/icons/nigiri.png",
+      "image": "assets/images/meal/nigiri.png",
       "kcal": "300",
       "categories": "Dinner",
     },
@@ -530,27 +531,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               ],
             ),
-            ListView.builder( //WorkoutRowContainer Content
-                padding: EdgeInsets.zero,
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: recommendWorkoutArr.length,
-                itemBuilder: (context, index) {
-                  var wObj = recommendWorkoutArr[index] as Map? ?? {};
+            SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: recommendWorkoutArr.length,
+                  itemBuilder: (context, index) {
+                  var mObj = recommendWorkoutArr[index] as Map? ?? {};
                   return InkWell(
                       onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) =>
-                        //         const FinishedWorkoutView(),
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MealDetails(dObj: mObj)),
+                        );
                       },
-                      child: WorkoutRow(wObj: wObj,
-                        // progress: wObj["progress"] as double?,
-                        ));
+                      child: RecommedContainer(image: mObj["image"], 
+                        title: mObj["name"], 
+                        bottomText: "${mObj["duration"]} minutes | ${mObj["kcal"]} kcal",));
                 }),
+              ),
                 
             const Gap(15),
             Row(  
@@ -569,25 +569,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               ],
             ),
-            ListView.builder( //MealRowContainer Content
-                padding: EdgeInsets.zero,
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: recommendWorkoutArr.length,
-                itemBuilder: (context, index) {
-                  var wObj = recommendMealArr[index] as Map? ?? {};
+            SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: recommendMealArr.length,
+                  itemBuilder: (context, index) {
+                  var mObj = recommendMealArr[index] as Map? ?? {};
                   return InkWell(
                       onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) =>
-                        //         const FinishedWorkoutView(),
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MealDetails(dObj: mObj)),
+                        );
                       },
-                      child: WorkoutRow(wObj: wObj));
+                      child: RecommedContainer(image: mObj["image"], 
+                        title: mObj["name"], 
+                        bottomText: "${mObj["categories"]} | ${mObj["kcal"]} kcal",));
                 }),
+              ),
               ],
             ),
           ),

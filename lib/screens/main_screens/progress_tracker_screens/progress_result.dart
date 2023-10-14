@@ -23,23 +23,23 @@ class _ProgressResultState extends State<ProgressResult> {
   List imaArr = [
     {
       "title": "Front Facing",
-      "month_1_image": "assets/icons/pp_1.png",
-      "month_2_image": "assets/icons/pp_2.png",
+      "month_1_image": "assets/images/pp_1.png",
+      "month_2_image": "assets/images/pp_2.png",
     },
     {
       "title": "Back Facing",
-      "month_1_image": "assets/icons/pp_3.png",
-      "month_2_image": "assets/icons/pp_4.png",
+      "month_1_image": "assets/images/pp_3.png",
+      "month_2_image": "assets/images/pp_4.png",
     },
     {
       "title": "Left Facing",
-      "month_1_image": "assets/icons/pp_5.png",
-      "month_2_image": "assets/icons/pp_6.png",
+      "month_1_image": "assets/images/pp_5.png",
+      "month_2_image": "assets/images/pp_6.png",
     },
     {
       "title": "Right Facing",
-      "month_1_image": "assets/icons/pp_7.png",
-      "month_2_image": "assets/icons/pp_8.png",
+      "month_1_image": "assets/images/pp_7.png",
+      "month_2_image": "assets/images/pp_8.png",
     },
   ];
 

@@ -6,7 +6,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/utils/common_utils.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_add_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/add_schedule.dart';
 
 class ProgramSchedule extends StatefulWidget {
   const ProgramSchedule({super.key});
@@ -257,7 +257,7 @@ class _ProgramScheduleState extends State<ProgramSchedule> {
                                                                 Navigator.push(
                                                                   context,
                                                                   MaterialPageRoute(
-                                                                    builder: (context) => WorkoutAddSchedule(date: _selectedDateAppBBar),
+                                                                    builder: (context) => AddSchedule(date: _selectedDateAppBBar),
                                                                   ),
                                                                 );
                                                               } else if (selectedOption == 'Remove') {
@@ -363,7 +363,7 @@ class _ProgramScheduleState extends State<ProgramSchedule> {
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    WorkoutAddSchedule(date: _selectedDateAppBBar)));
+                    AddSchedule(date: _selectedDateAppBBar)));
         },
         child: Container(
           width: 55,

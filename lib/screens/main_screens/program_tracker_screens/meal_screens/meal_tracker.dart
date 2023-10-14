@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/charts/meal_piechart.dart';
-import 'package:ifit/common/widgets/meal_widgets.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
-import 'package:ifit/common/widgets/program_row.dart';
+import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_category.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_schedule.dart';
 
 class MealTrackerScreen extends StatefulWidget {
 
@@ -23,27 +22,27 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
   List what2EatArr = [
     {
       "name": "Breakfast",
-      "image": "assets/images/meal/breakfast.png",
+      "image": "assets/icons/breakfast.png",
       "foodNumber": "120",
     },
     {
       "name": "Lunch",
-      "image": "assets/images/meal/lunch.png",
+      "image": "assets/icons/lunch.png",
       "foodNumber": "120",
     },
     {
       "name": "Dinner",
-      "image": "assets/images/meal/dinner.png",
+      "image": "assets/icons/dinner.png",
       "foodNumber": "120",
     },
     {
       "name": "Snacks",
-      "image": "assets/images/meal/snacks.png",
+      "image": "assets/icons/snacks.png",
       "foodNumber": "120",
     },
     {
       "name": "Drinks",
-      "image": "assets/images/meal/drinks.png",
+      "image": "assets/icons/drinks.png",
       "foodNumber": "120",
     },
   ];
@@ -51,7 +50,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
   List upcomingMealArr = [
     {
       "name": "Blueberry Pancake",
-      "image": "assets/icons/pancake.png",
+      "image": "assets/images/meal/pancake.png",
       "kcal": "200",
       "fats": "100",
       "proteins": "300",
@@ -61,7 +60,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
     },
     {
       "name": "Salad",
-      "image": "assets/icons/salad.png",
+      "image": "assets/images/meal/salad.png",
       "kcal": "200",
       "fats": "100",
       "proteins": "300",
@@ -71,7 +70,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
     },
     {
       "name": "Salmon Nigiri",
-      "image": "assets/icons/nigiri.png",
+      "image": "assets/images/meal/nigiri.png",
       "kcal": "300",
       "fats": "250",
       "proteins": "310",
@@ -148,7 +147,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                        builder: (context) => const WorkoutSchedule()));
+                        builder: (context) => const MealSchedule()));
                     },
                     child: Text(
                       "See More",
@@ -172,7 +171,11 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                                 builder: (context) => MealDetails(dObj: mObj)),
                             );
                           },
-                          child: MealRow(mObj: mObj));
+                          child: ProgramRow(image: mObj["image"], 
+                          title: mObj["name"], 
+                          bottomText: "${mObj["schedule"]} | ${mObj["time"]}", 
+                          showToggleSwitch: true,
+                        ));
                     }),
       
                 const Gap(20),

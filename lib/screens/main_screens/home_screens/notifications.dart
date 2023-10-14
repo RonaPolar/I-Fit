@@ -13,11 +13,11 @@ class NotificationScreen extends StatefulWidget {
 
 class _NotificationScreenState extends State<NotificationScreen> {
   List notificationArr = [
-    {"image": "assets/icons/nigiri.png", "title": "Hey, it’s time for lunch", "time": "About 1 minutes ago"},
+    {"image": "assets/images/meal/nigiri.png", "title": "Hey, it’s time for lunch", "time": "About 1 minutes ago"},
     {"image": "assets/icons/Lower-Weights.png", "title": "Don’t miss your Lowerbody Weights", "time": "About 3 hours ago"},
-    {"image": "assets/icons/salad.png", "title": "Hey, let’s add some meals for your dinner", "time": "About 3 hours ago"},
+    {"image": "assets/images/meal/salad.png", "title": "Hey, let’s add some meals for your dinner", "time": "About 3 hours ago"},
     {"image": "assets/icons/workout-pic.png", "title": "Congratulations, You have finished Full Bo...", "time": "29 May"},
-    {"image": "assets/icons/pancake.png", "title": "Hey, it’s time for snack", "time": "8 April"},
+    {"image": "assets/images/meal/pancake.png", "title": "Hey, it’s time for snack", "time": "8 April"},
     {"image": "assets/icons/Ab-workout.png", "title": "Ups, You have missed your Ab Workout", "time": "8 April"},
   ];
 

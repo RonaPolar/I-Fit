@@ -18,19 +18,19 @@ class _ProgressTrackerScreenState extends State<ProgressTrackerScreen> {
     {
       "date": "2 September",
       "photo": [
-        "assets/icons/pp_1.png",
-        "assets/icons/pp_2.png",
-        "assets/icons/pp_3.png",
-        "assets/icons/pp_4.png",
+        "assets/images/pp_1.png",
+        "assets/images/pp_2.png",
+        "assets/images/pp_3.png",
+        "assets/images/pp_4.png",
       ]
     },
     {
       "date": "5 October",
       "photo": [
-        "assets/icons/pp_5.png",
-        "assets/icons/pp_6.png",
-        "assets/icons/pp_7.png",
-        "assets/icons/pp_8.png",
+        "assets/images/pp_5.png",
+        "assets/images/pp_6.png",
+        "assets/images/pp_7.png",
+        "assets/images/pp_8.png",
       ]
     }
   ];

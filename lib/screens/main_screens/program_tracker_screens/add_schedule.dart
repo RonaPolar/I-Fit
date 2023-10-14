@@ -7,15 +7,15 @@ import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_schedule.dart';
 
-class WorkoutAddSchedule extends StatefulWidget {
+class AddSchedule extends StatefulWidget {
   final DateTime date;
-  const WorkoutAddSchedule({super.key, required this.date});
+  const AddSchedule({super.key, required this.date});
 
   @override
-  State<WorkoutAddSchedule> createState() => _WorkoutAddScheduleState();
+  State<AddSchedule> createState() => _AddScheduleState();
 }
 
-class _WorkoutAddScheduleState extends State<WorkoutAddSchedule> {
+class _AddScheduleState extends State<AddSchedule> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

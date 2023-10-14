@@ -6,7 +6,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/custom_dropdown.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/screens/main_screens/profile_screens/activity_history.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_add_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/add_schedule.dart';
 
 class ActivityTrackerScreen extends StatefulWidget {
   const ActivityTrackerScreen({super.key});
@@ -20,7 +20,7 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
 
   List actHistoryArr = [
     {
-      "image": "assets/icons/nigiri.png",
+      "image": "assets/images/meal/nigiri.png",
       "title": "Eat lunch",
       "time": "About 1 minutes ago"
     },
@@ -30,7 +30,7 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
       "time": "About 3 hours ago"
     },
     {
-      "image": "assets/icons/salad.png",
+      "image": "assets/images/meal/salad.png",
       "title": "Eat dinner",
       "time": "About 3 hours ago"
     },
@@ -40,7 +40,7 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
       "time": "29 May"
     },
     {
-      "image": "assets/icons/pancake.png",
+      "image": "assets/images/meal/pancake.png",
       "title": "You added Pancake to your desserts",
       "time": "8 April"
     },
@@ -120,7 +120,7 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                                     onPressed: () {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
-                                        builder: (context) => WorkoutAddSchedule(date: DateTime.now())));
+                                        builder: (context) => AddSchedule(date: DateTime.now())));
                                     },
                                     padding: EdgeInsets.zero,
                                     height: 30,

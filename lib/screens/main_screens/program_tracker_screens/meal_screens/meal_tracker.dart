@@ -7,7 +7,7 @@ import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_category.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule.dart';
 
 class MealTrackerScreen extends StatefulWidget {
 
@@ -147,7 +147,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                        builder: (context) => const MealSchedule()));
+                        builder: (context) => const MealSched()));
                     },
                     child: Text(
                       "See More",

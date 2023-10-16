@@ -11,6 +11,7 @@ import 'package:ifit/screens/main_screens/home_screens/activity_tracker.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/home_screens/notifications.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 import 'package:dotted_dashed_line/dotted_dashed_line.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
@@ -251,9 +252,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: Styles.fadeTextColor,
                               ),
                               onTap: () {
-                                // Navigator.of(context).push(MaterialPageRoute(
-                                //   builder: (context) => const ActivityTrackerNavbar(),
-                                // ));
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const MealSched(),
+                                ));
                               },),
                           Text(
                             "Monday",

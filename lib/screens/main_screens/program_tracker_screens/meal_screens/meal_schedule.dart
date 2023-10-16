@@ -137,80 +137,80 @@ class _MealScheduleState extends State<MealSchedule> {
     // var media = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Styles.bgColor,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        elevation: 0,
-        leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Container(
-            margin: const EdgeInsets.all(12),
-            height: 30,
-            width: 30,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius: BorderRadius.circular(10)),
-            child: const Icon(
-              FluentSystemIcons.ic_fluent_chevron_left_filled,
-              size: 20,
-              color: Colors.black,
-            ),
-          ),
-        ),
-        title: Text(
-          'Meal Schedule',
-          style: Styles.headline20,
-        ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   centerTitle: true,
+      //   elevation: 0,
+      //   leading: InkWell(
+      //     onTap: () {
+      //       Navigator.pop(context);
+      //     },
+      //     child: Container(
+      //       margin: const EdgeInsets.all(12),
+      //       height: 30,
+      //       width: 30,
+      //       alignment: Alignment.center,
+      //       decoration: BoxDecoration(
+      //           color: Colors.grey.shade200,
+      //           borderRadius: BorderRadius.circular(10)),
+      //       child: const Icon(
+      //         FluentSystemIcons.ic_fluent_chevron_left_filled,
+      //         size: 20,
+      //         color: Colors.black,
+      //       ),
+      //     ),
+      //   ),
+      //   title: Text(
+      //     'Meal Schedule',
+      //     style: Styles.headline20,
+      //   ),
+      // ),
+      body: ListView(
         children: [
-          CalendarAgenda(
-            controller: _calendarAgendaControllerAppBar,
-            appbar: false,
-            selectedDayPosition: SelectedDayPosition.center,
-            weekDay: WeekDay.long,
-            dayNameFontSize: 12,
-            dayNumberFontSize: 16,
-            dayBGColor: Colors.grey.withOpacity(0.15),
-            titleSpaceBetween: 15,
-            backgroundColor: Colors.white,
-            fullCalendarScroll: FullCalendarScroll.horizontal,
-            fullCalendarDay: WeekDay.short, //Monthly Calendar
-            selectedDateColor: Colors.white,
-            dateColor: Colors.black,
-            locale: 'en',
-            initialDate: DateTime.now(),
-            calendarEventColor: Styles.secondColor,
-            firstDate: DateTime.now().subtract(const Duration(days: 140)),
-            lastDate: DateTime.now().add(const Duration(days: 60)),
-
-            onDateSelected: (date) {
-              _selectedDateAppBBar = date;
-              // setDayEventWorkoutList();
-              // setState(() {});
-            },
-
-            selectedDayLogo: Container(
-              width: double.maxFinite,
-              height: double.maxFinite,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(//Date Box
-                    colors: [
-                  const Color.fromRGBO(255, 0, 0, 72).withOpacity(0.5),
-                  const Color.fromRGBO(255, 0, 0, 72)
-                ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
-                borderRadius: BorderRadius.circular(10.0),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CalendarAgenda(
+                controller: _calendarAgendaControllerAppBar,
+                appbar: false,
+                selectedDayPosition: SelectedDayPosition.center,
+                weekDay: WeekDay.long,
+                dayNameFontSize: 12,
+                dayNumberFontSize: 16,
+                dayBGColor: Colors.grey.withOpacity(0.15),
+                titleSpaceBetween: 15,
+                backgroundColor: Colors.white,
+                fullCalendarScroll: FullCalendarScroll.horizontal,
+                fullCalendarDay: WeekDay.short, //Monthly Calendar
+                selectedDateColor: Colors.white,
+                dateColor: Colors.black,
+                locale: 'en',
+                initialDate: DateTime.now(),
+                calendarEventColor: Styles.secondColor,
+                firstDate: DateTime.now().subtract(const Duration(days: 140)),
+                lastDate: DateTime.now().add(const Duration(days: 60)),
+      
+                onDateSelected: (date) {
+                  _selectedDateAppBBar = date;
+                  // setDayEventWorkoutList();
+                  // setState(() {});
+                },
+      
+                selectedDayLogo: Container(
+                  width: double.maxFinite,
+                  height: double.maxFinite,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(//Date Box
+                        colors: [
+                      const Color.fromRGBO(255, 0, 0, 72).withOpacity(0.5),
+                      const Color.fromRGBO(255, 0, 0, 72)
+                    ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
               ),
-            ),
-          ),
-          const Gap(10),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Container(
+              const Gap(10),
+              Container(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -289,8 +289,8 @@ class _MealScheduleState extends State<MealSchedule> {
                         }
                       },
                     ),
-
-
+      
+      
                     const Gap(15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -326,8 +326,8 @@ class _MealScheduleState extends State<MealSchedule> {
                         }
                       },
                     ),
-
-
+      
+      
                     const Gap(15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -366,10 +366,10 @@ class _MealScheduleState extends State<MealSchedule> {
                     ),
                   ],
                 ),
-              ),
-            ),
-          )
-        ], //main Children
+              )
+            ], //main Children
+          ),
+        ],
       ),
       floatingActionButton: InkWell(
         onTap: () {

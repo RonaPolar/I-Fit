@@ -5,8 +5,8 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/common/widgets/charts/workout_linechart.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_schedule.dart';
 
 class WorkoutTrackerScreen extends StatefulWidget {
 
@@ -138,7 +138,7 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                          builder: (context) => const WorkoutSchedule()));
+                          builder: (context) => const WorkoutSched()));
                       },
                       child: Text(
                         "See More",

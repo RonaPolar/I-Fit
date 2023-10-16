@@ -9,8 +9,8 @@ import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_tracker.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_schedule.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_tracker.dart';
 
 class ProgramTrackerScreen extends StatefulWidget {
@@ -196,7 +196,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Daily Workout Schedule',
+                    'Daily Schedule',
                     style: Styles.text15bold
                   ),
                   SizedBox(
@@ -207,7 +207,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                          builder: (context) => const WorkoutSchedule()));
+                          builder: (context) => const MealSched()));
                       },
                       textStyle: const TextStyle(
                         fontSize: 14,

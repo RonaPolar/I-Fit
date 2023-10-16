@@ -92,34 +92,6 @@ class _WorkoutScheduleState extends State<WorkoutSchedule> {
     var media = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Styles.bgColor,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        elevation: 0,
-        leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Container(
-            margin: const EdgeInsets.all(12),
-            height: 30,
-            width: 30,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius: BorderRadius.circular(10)),
-            child: const Icon(
-              FluentSystemIcons.ic_fluent_chevron_left_filled,
-              size: 20,
-              color: Colors.black,
-            ),
-          ),
-        ),
-        title: Text(
-          'Workout Schedule',
-          style: Styles.headline20,
-        ),
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

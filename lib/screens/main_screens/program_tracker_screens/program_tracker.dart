@@ -9,7 +9,7 @@ import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_tracker.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/program_schedule.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_tracker.dart';
 

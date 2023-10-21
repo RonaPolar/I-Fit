@@ -7,7 +7,7 @@ import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_category.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/program_schedule.dart';
 
 class MealTrackerScreen extends StatefulWidget {
 

@@ -5,7 +5,8 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/common/widgets/charts/workout_linechart.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/program_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_category.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
 
 class WorkoutTrackerScreen extends StatefulWidget {
@@ -20,22 +21,22 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
 
   List what2TrainArr = [
     {
-      "name": "Full Body Workout",
+      "name": "Full Body",
       "image": "assets/icons/workout-pic.png",
       "workoutNumber": "130",
     },
     {
-      "name": "Upper Body Workout",
+      "name": "Upper Body",
       "image": "assets/icons/Upper-Weights.png",
       "workoutNumber": "130",
     },
     {
-      "name": "Ab Workout",
+      "name": "Abdominal",
       "image": "assets/icons/Ab-workout.png",
       "workoutNumber": "130",
     },
     {
-      "name": "Lower Body Workout",
+      "name": "Lower Body",
       "image": "assets/icons/Lower-Weights.png",
       "workoutNumber": "130",
     },
@@ -188,12 +189,11 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
                         var what2TrainObj = what2TrainArr[index] as Map? ?? {};
                         return What2Container(wObj: what2TrainObj, 
                           onPressed: (obj) {  //wObj
-                              // Navigator.push( //there will be major changes
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => WorkoutDetails(dObj: what2TrainObj,)
-                              //   ),
-                              // );
+                              Navigator.push( //there will be major changes
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => WorkoutCategory(wObj: what2TrainObj)),
+                              );
                             },
                           );
                       }),

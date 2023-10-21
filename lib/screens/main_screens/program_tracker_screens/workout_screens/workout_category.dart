@@ -5,74 +5,72 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/program_category.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/common/widgets/search.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
 
-class MealCategory extends StatefulWidget {
-  final Map mObj;
-  const MealCategory({super.key, required this.mObj});
+class WorkoutCategory extends StatefulWidget {
+  final Map wObj;
+  const WorkoutCategory({super.key, required this.wObj});
 
   @override
-  State<MealCategory> createState() => _MealCategoryState();
+  State<WorkoutCategory> createState() => _WorkoutCategoryState();
 }
 
-class _MealCategoryState extends State<MealCategory> {
+class _WorkoutCategoryState extends State<WorkoutCategory> {
   TextEditingController txtSearch = TextEditingController();
 
-    List categoryMealArr = [
+    List categoryWorkoutArr = [
     {
-      "name": "Breakfast",
-      "image": "assets/icons/breakfast.png",
-      "foodNumber": "120",
+      "name": "Full Body",
+      "image": "assets/icons/workout-pic.png",
+      "workoutNumber": "130",
     },
     {
-      "name": "Lunch",
-      "image": "assets/icons/lunch.png",
-      "foodNumber": "120",
+      "name": "Upper Body",
+      "image": "assets/icons/Upper-Weights.png",
+      "workoutNumber": "130",
     },
     {
-      "name": "Dinner",
-      "image": "assets/icons/dinner.png",
-      "foodNumber": "120",
+      "name": "Abdominal",
+      "image": "assets/icons/Ab-workout.png",
+      "workoutNumber": "130",
     },
     {
-      "name": "Snacks",
-      "image": "assets/icons/snacks.png",
-      "foodNumber": "120",
-    },
-    {
-      "name": "Drinks",
-      "image": "assets/icons/drinks.png",
-      "foodNumber": "120",
+      "name": "Lower Body",
+      "image": "assets/icons/Lower-Weights.png",
+      "workoutNumber": "130",
     },
   ];
 
-    List popularMealArr = [
+    List popularWorkoutArr = [
     {
-      "name": "Blueberry Pancake",
-      "image": "assets/images/meal/pancake.png",
-      "kcal": "190",
-      "fats": "199",
-      "proteins": "305",
-      "sugar": "150",
-      "categories": "Breakfast",
+      "name": "Full Body Exercises",
+      "image": "assets/icons/workout-pic.png",
+      "schedule": "Monday",
+      "categories": "Full Body",
+      "time": "9:00am",
+      "kcal": "320",
+      "exercise": "10",
+      "duration": "30",
     },
     {
-      "name": "Salad",
-      "image": "assets/images/meal/salad.png",
-      "kcal": "200",
-      "fats": "100",
-      "proteins": "300",
-      "sugar": "50",
-      "categories": "Lunch",
+      "name": "Upper Body Weights",
+      "image": "assets/icons/Lower-Weights.png",
+      "schedule": "Monday",
+      "categories": "Upper Body",
+      "time": "10:00am",
+      "kcal": "210",
+      "exercise": "10",
+      "duration": "30",
     },
     {
-      "name": "Salmon Nigiri",
-      "image": "assets/images/meal/nigiri.png",
-      "kcal": "300",
-      "fats": "250",
-      "proteins": "310",
-      "sugar": "100",
-      "categories": "Dinner",
+      "name": "Ab Exercises",
+      "image": "assets/icons/Ab-workout.png",
+      "schedule": "Monday",
+      "categories": "Abdominal",
+      "time": "4:00pm",
+      "kcal": "260",
+      "exercise": "10",
+      "duration": "30",
     },
   ];
   
@@ -104,7 +102,7 @@ class _MealCategoryState extends State<MealCategory> {
           ),
         ),
         title: Text(
-          widget.mObj["name"].toString(),
+          widget.wObj["name"].toString(),
           style: Styles.headline20,
         ),
         actions: [
@@ -163,15 +161,15 @@ class _MealCategoryState extends State<MealCategory> {
                 child: ListView.builder(
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   scrollDirection: Axis.horizontal,
-                  itemCount: categoryMealArr.length,
+                  itemCount: categoryWorkoutArr.length,
                   itemBuilder: (context, index) {
-                    var cObj = categoryMealArr[index] as Map? ?? {};
+                    var cObj = categoryWorkoutArr[index] as Map? ?? {};
                     return InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MealCategory(mObj: cObj)),
+                            builder: (context) => WorkoutCategory(wObj: cObj)),
                         );
                       },child: SmallCategoryCell(cObj: cObj, index: index));
                   }),
@@ -206,20 +204,20 @@ class _MealCategoryState extends State<MealCategory> {
                 child: ListView.builder(
                   padding: const EdgeInsets.symmetric(horizontal: 11),
                   scrollDirection: Axis.horizontal,
-                  itemCount: popularMealArr.length,
+                  itemCount: popularWorkoutArr.length,
                   itemBuilder: (context, index) {
-                  var mObj = popularMealArr[index] as Map? ?? {};
+                  var wObj = popularWorkoutArr[index] as Map? ?? {};
                   return InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MealDetails(dObj: mObj)),
+                            builder: (context) => WorkoutDetails(dObj: wObj)),
                         );
                       },
-                      child: RecommedContainer(image: mObj["image"], 
-                        title: mObj["name"], 
-                        bottomText: "${mObj["categories"]} | ${mObj["kcal"]} kcal",));
+                      child: RecommedContainer(image: wObj["image"], 
+                        title: wObj["name"], 
+                        bottomText: "${wObj["duration"]} minutes | ${wObj["kcal"]} kcal",));
                 }),
               ),
 
@@ -253,18 +251,18 @@ class _MealCategoryState extends State<MealCategory> {
                 shrinkWrap: true,
                 itemCount: 2, //recommendWorkoutArr.length
                 itemBuilder: (context, index) {
-                  var mObj = popularMealArr[index] as Map? ?? {};
+                  var wObj = popularWorkoutArr[index] as Map? ?? {};
                   return InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MealDetails(dObj: mObj)),
+                            builder: (context) => WorkoutDetails(dObj: wObj)),
                         );
                       },
-                      child: ProgramRow(image: mObj["image"], 
-                        title: mObj["name"], 
-                        bottomText: "${mObj["categories"]} | ${mObj["kcal"]} Calories",
+                      child: ProgramRow(image: wObj["image"], 
+                        title: wObj["name"], 
+                        bottomText: "${wObj["duration"]} minutes | ${wObj["kcal"]} Calories",
                         showToggleSwitch: false,
                       ));
                 }),

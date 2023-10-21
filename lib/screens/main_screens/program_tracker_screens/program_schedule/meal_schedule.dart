@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/add_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/add_schedule.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 
 class MealSchedule extends StatefulWidget {
@@ -137,34 +137,6 @@ class _MealScheduleState extends State<MealSchedule> {
     // var media = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Styles.bgColor,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.white,
-      //   centerTitle: true,
-      //   elevation: 0,
-      //   leading: InkWell(
-      //     onTap: () {
-      //       Navigator.pop(context);
-      //     },
-      //     child: Container(
-      //       margin: const EdgeInsets.all(12),
-      //       height: 30,
-      //       width: 30,
-      //       alignment: Alignment.center,
-      //       decoration: BoxDecoration(
-      //           color: Colors.grey.shade200,
-      //           borderRadius: BorderRadius.circular(10)),
-      //       child: const Icon(
-      //         FluentSystemIcons.ic_fluent_chevron_left_filled,
-      //         size: 20,
-      //         color: Colors.black,
-      //       ),
-      //     ),
-      //   ),
-      //   title: Text(
-      //     'Meal Schedule',
-      //     style: Styles.headline20,
-      //   ),
-      // ),
       body: ListView(
         children: [
           Column(

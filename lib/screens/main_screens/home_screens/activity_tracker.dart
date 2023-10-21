@@ -6,7 +6,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/custom_dropdown.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/screens/main_screens/profile_screens/activity_history.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/add_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/add_schedule.dart';
 
 class ActivityTrackerScreen extends StatefulWidget {
   const ActivityTrackerScreen({super.key});

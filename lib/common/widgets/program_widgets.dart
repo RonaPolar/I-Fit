@@ -226,7 +226,12 @@ class RecommedContainer extends StatefulWidget {
   final String image;
   final String title;
   final String bottomText;
-  const RecommedContainer({super.key, required this.image, required this.title, required this.bottomText});
+  final Color? containerColor;
+  const RecommedContainer({super.key, 
+  required this.image, 
+  required this.title, 
+  required this.bottomText, 
+  this.containerColor});
 
   @override
   State<RecommedContainer> createState() => _RecommedContainerState();
@@ -239,7 +244,7 @@ class _RecommedContainerState extends State<RecommedContainer> {
       margin: const EdgeInsets.all(5),
       width: 160,
       decoration: BoxDecoration(
-          color: Styles.secondColor.withOpacity(0.4),
+          color: widget.containerColor ?? Styles.secondColor.withOpacity(0.4),
           borderRadius: BorderRadius.circular(25)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -7,7 +7,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/favorites_button.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/add_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/add_schedule.dart';
 import 'package:readmore/readmore.dart';
 
 class MealDetails extends StatefulWidget {

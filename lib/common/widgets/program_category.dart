@@ -31,7 +31,7 @@ class SmallCategoryCell extends StatelessWidget {
                 ),),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 8),
+            padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 6),
             child: Text(
               cObj["name"],
               maxLines: 1,

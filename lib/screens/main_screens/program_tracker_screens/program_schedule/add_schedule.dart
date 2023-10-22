@@ -5,7 +5,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/utils/common_utils.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/main_button.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/program_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/body/program_schedule.dart';
 
 
 class AddSchedule extends StatefulWidget {

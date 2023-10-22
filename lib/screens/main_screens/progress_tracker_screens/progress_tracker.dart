@@ -4,7 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
-import 'package:ifit/screens/main_screens/progress_tracker_screens/progress_comparison.dart';
+import 'package:ifit/screens/main_screens/progress_tracker_screens/body/progress_comparison.dart';
 
 class ProgressTrackerScreen extends StatefulWidget {
   const ProgressTrackerScreen({super.key});

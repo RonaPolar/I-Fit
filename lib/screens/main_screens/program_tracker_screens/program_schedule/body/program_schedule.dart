@@ -1,7 +1,7 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/meal_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/body/meal_schedule.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/workout_schedule.dart';
 
 
@@ -69,6 +69,7 @@ class _ProgramSchedState extends State<ProgramSched> with SingleTickerProviderSt
         ],
         labelColor: primary, // Customize the selected tab text color.
         unselectedLabelColor: Colors.black, // Customize the unselected tab text color.
+        indicatorColor: primary,
       ),
       ),
       body: TabBarView(

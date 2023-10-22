@@ -6,7 +6,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/screens/main_screens/home_screens/home.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_tracker.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/program_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/body/program_schedule.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_tracker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ifit/screens/welcome/onboarding_screen.dart';

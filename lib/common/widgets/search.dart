@@ -19,6 +19,16 @@ class SearchContainer extends StatelessWidget {
               prefixIcon: const Icon(
                 Icons.search, // You can change this to your desired search icon
                 size: 25,
+                color: Colors.grey,
+              ),
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  controller.clear();},
+                child: const Icon(
+                  Icons.close,
+                  size: 25,
+                  color: Colors.grey,
+                ),
               ),
               hintText: hintText,
             ),

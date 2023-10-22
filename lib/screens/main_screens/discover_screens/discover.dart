@@ -37,7 +37,7 @@ TextEditingController txtSearch = TextEditingController();
             onTap: () {
             Navigator.of(context).push(
                 MaterialPageRoute(
-                builder: (context) => const MyProgramScreen()));
+                builder: (context) => const OngoingPrograms()));
             },
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal:15, vertical: 10),

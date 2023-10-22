@@ -9,7 +9,8 @@ import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_tracker.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/program_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/my_program/my_program.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/body/program_schedule.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_tracker.dart';
 
@@ -120,6 +121,28 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
       ),
       title: Text('Program Tracker',
       style: Styles.headline20,),
+      actions: [
+          InkWell(
+            onTap: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(
+                builder: (context) => const OngoingPrograms()));
+            },
+            child: Container(
+              margin: const EdgeInsets.all(12),
+              height: 30,
+              width: 30,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(10)),
+              child: const Icon(FluentSystemIcons.ic_fluent_person_regular,
+                size: 20,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ],
     ),
     body: ListView(
       children: [

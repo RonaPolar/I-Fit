@@ -9,8 +9,9 @@ import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_tracker.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/my_program/my_program.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/body/program_schedule.dart';
+import 'package:ifit/screens/main_screens/discover_screens/my_program/my_program.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_rate/my_rate.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/program_schedule.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_tracker.dart';
 
@@ -193,13 +194,29 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButtonText(iconData: FluentSystemIcons.ic_fluent_timer_filled, title: 'Ongoing',
-                  onTap: (){},),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                      builder: (context) => const OngoingPrograms()));
+                    },),
                   IconButtonText(iconData: FluentSystemIcons.ic_fluent_heart_filled, title: 'Favorites',
-                  onTap: (){},),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                      builder: (context) => const FavoritesProgram()));
+                    },),
                   IconButtonText(iconData: FluentSystemIcons.ic_fluent_checkmark_circle_filled, title: 'Finished',
-                  onTap: (){},),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                      builder: (context) => const FinishedProgram()));
+                    },),
                   IconButtonText(iconData: FluentSystemIcons.ic_fluent_star_filled, title: 'Rate',
-                  onTap: (){},),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                      builder: (context) => const ToRateProgram()));
+                    },),
                 ],
               )
             ),           

@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 
-class RateProgramScreen extends StatefulWidget {
-  const RateProgramScreen({super.key});
+class ToRateProgramScreen extends StatefulWidget {
+  const ToRateProgramScreen({super.key});
 
   @override
-  State<RateProgramScreen> createState() => _RateProgramScreenState();
+  State<ToRateProgramScreen> createState() => _ToRateProgramScreenState();
 }
 
-class _RateProgramScreenState extends State<RateProgramScreen> {
+class _ToRateProgramScreenState extends State<ToRateProgramScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Styles.bgColor,
       body: ListView(
         children: const [
+          Gap(15),
           Column(
             children: [
-              Text('Rate'),
+              Text('Rate Program'),
             ],
           )]));
   }

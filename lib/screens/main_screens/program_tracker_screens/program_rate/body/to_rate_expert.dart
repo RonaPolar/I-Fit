@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 
-class FinishedProgramScreen extends StatefulWidget {
-  const FinishedProgramScreen({super.key});
+class ToRateExpertScreen extends StatefulWidget {
+  const ToRateExpertScreen({super.key});
 
   @override
-  State<FinishedProgramScreen> createState() => _FinishedProgramScreenState();
+  State<ToRateExpertScreen> createState() => _ToRateExpertScreenState();
 }
 
-class _FinishedProgramScreenState extends State<FinishedProgramScreen> {
+class _ToRateExpertScreenState extends State<ToRateExpertScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Styles.bgColor,
       body: ListView(
         children: const [
+          Gap(15),
           Column(
             children: [
-              Text('Finished'),
+              Text('To Expert'),
             ],
           )]));
   }

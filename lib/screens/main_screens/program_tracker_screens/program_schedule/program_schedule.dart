@@ -2,7 +2,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/body/meal_schedule.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/workout_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/body/workout_schedule.dart';
 
 
 

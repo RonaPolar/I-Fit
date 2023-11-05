@@ -1,10 +1,10 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/my_program/body/favorites_program.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/my_program/body/finished_program.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/my_program/body/ongoing_program.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/my_program/body/rate_program.dart';
+import 'package:ifit/screens/main_screens/discover_screens/my_program/body/cancelled_program.dart';
+import 'package:ifit/screens/main_screens/discover_screens/my_program/body/favorites_program.dart';
+import 'package:ifit/screens/main_screens/discover_screens/my_program/body/finished_program.dart';
+import 'package:ifit/screens/main_screens/discover_screens/my_program/body/ongoing_program.dart';
 
 class MyProgramScreen extends StatefulWidget {
   final int initialSelectTab;
@@ -65,7 +65,7 @@ class _MyProgramScreenState extends State<MyProgramScreen> with SingleTickerProv
           Tab(text: 'Ongoing'),
           Tab(text: 'Favorites'),
           Tab(text: 'Finished'),
-          Tab(text: 'Rate'),
+          Tab(text: 'Cancelled'),
         ],
         labelColor: primary, // Customize the selected tab text color.
         unselectedLabelColor: Colors.black, // Customize the unselected tab text color.
@@ -78,7 +78,7 @@ class _MyProgramScreenState extends State<MyProgramScreen> with SingleTickerProv
           OngoingProgramScreen(),
           FavoritesProgramScreen(),
           FinishedProgramScreen(),
-          RateProgramScreen(),
+          CancelledProgramScreen(),
         ],
       ),
       
@@ -132,16 +132,18 @@ class _FinishedProgramState extends State<FinishedProgram> {
 }
 
 
-class RateProgram extends StatefulWidget {
-  const RateProgram({super.key});
+class CancelledProgram extends StatefulWidget {
+  const CancelledProgram({super.key});
 
   @override
-  State<RateProgram> createState() => _RateProgramState();
+  State<CancelledProgram> createState() => _CancelledProgramState();
 }
 
-class _RateProgramState extends State<RateProgram> {
+class _CancelledProgramState extends State<CancelledProgram> {
   @override
   Widget build(BuildContext context) {
-    return const MyProgramScreen(initialSelectTab: 3, initialCurrentTab: RateProgramScreen());
+    return const MyProgramScreen(initialSelectTab: 3, initialCurrentTab: CancelledProgramScreen());
   }
 }
+
+

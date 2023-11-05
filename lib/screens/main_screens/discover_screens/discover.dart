@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/search.dart';
-import 'package:ifit/screens/main_screens/program_tracker_screens/my_program/my_program.dart';
+import 'package:ifit/screens/main_screens/discover_screens/my_program/my_program.dart';
 
 class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});

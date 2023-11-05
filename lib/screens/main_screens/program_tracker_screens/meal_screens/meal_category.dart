@@ -217,7 +217,7 @@ class _MealCategoryState extends State<MealCategory> {
                             builder: (context) => MealDetails(dObj: mObj)),
                         );
                       },
-                      child: RecommedContainer(image: mObj["image"], 
+                      child: BigContainer(image: mObj["image"], 
                         title: mObj["name"], 
                         bottomText: "${mObj["categories"]} | ${mObj["kcal"]} kcal",));
                 }),

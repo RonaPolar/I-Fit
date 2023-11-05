@@ -286,29 +286,29 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                   ),
                   SizedBox(
                     child: ListView.builder( //WorkoutRowContainer Content
-                        padding: EdgeInsets.zero,
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: 2, //recommendWorkoutArr.length
-                        itemBuilder: (context, index) {
-                          var wObj = latestWorkoutArr[index] as Map? ?? {};
-                          return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                      WorkoutDetails(dObj: wObj),
-                                  ),
-                                );
-                              },
-                              child: ProgramRow(image: wObj["image"], 
-                              title: wObj["name"], 
-                              bottomText: "${wObj["duration"]} minutes | ${wObj["kcal"]} Calories",
-                              progress: wObj["progress"] as double?,
-                              progressText: wObj["days"],
-                              showToggleSwitch: false,));
-                        }),
+                      padding: EdgeInsets.zero,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 2, //recommendWorkoutArr.length
+                      itemBuilder: (context, index) {
+                        var wObj = latestWorkoutArr[index] as Map? ?? {};
+                        return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                    WorkoutDetails(dObj: wObj),
+                                ),
+                              );
+                            },
+                            child: ProgramRow(image: wObj["image"], 
+                            title: wObj["name"], 
+                            bottomText: "${wObj["duration"]} minutes | ${wObj["kcal"]} Calories",
+                            progress: wObj["progress"] as double?,
+                            progressText: wObj["days"],
+                            showToggleSwitch: false,));
+                      }),
                   ),
                       
                   const Gap(10),

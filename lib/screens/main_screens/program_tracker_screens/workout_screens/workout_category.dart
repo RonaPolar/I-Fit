@@ -215,7 +215,7 @@ class _WorkoutCategoryState extends State<WorkoutCategory> {
                             builder: (context) => WorkoutDetails(dObj: wObj)),
                         );
                       },
-                      child: RecommedContainer(image: wObj["image"], 
+                      child: BigContainer(image: wObj["image"], 
                         title: wObj["name"], 
                         bottomText: "${wObj["duration"]} minutes | ${wObj["kcal"]} kcal",));
                 }),

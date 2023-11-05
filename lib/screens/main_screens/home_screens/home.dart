@@ -247,15 +247,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         NextNavigation(title: 'Schedule',
-                              nextIconColor: Styles.fadeTextColor,
-                              titleTextStyle: Styles.text15bold.copyWith(
-                                color: Styles.fadeTextColor,
-                              ),
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const MealSched(),
-                                ));
-                              },),
+                          nextIconColor: Styles.fadeTextColor,
+                          titleTextStyle: Styles.text15bold.copyWith(
+                            color: Styles.fadeTextColor,
+                          ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const MealSched(),
+                            ));
+                          },),
                           Text(
                             "Monday",
                             style: Styles.seeMore.copyWith(
@@ -547,7 +547,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => MealDetails(dObj: mObj)),
                         );
                       },
-                      child: RecommedContainer(image: mObj["image"], 
+                      child: BigContainer(image: mObj["image"], 
                         title: mObj["name"], 
                         bottomText: "${mObj["duration"]} minutes | ${mObj["kcal"]} kcal",));
                 }),
@@ -585,7 +585,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => MealDetails(dObj: mObj)),
                         );
                       },
-                      child: RecommedContainer(image: mObj["image"], 
+                      child: BigContainer(image: mObj["image"], 
                         title: mObj["name"], 
                         bottomText: "${mObj["categories"]} | ${mObj["kcal"]} kcal",));
                 }),

@@ -13,7 +13,7 @@ final Map wObj;
 final Function(Map obj) onPressed;
 
 
-  const What2Container({super.key, required this.wObj, required this.onPressed});
+const What2Container({super.key, required this.wObj, required this.onPressed});
 
   @override
   State<What2Container> createState() => _What2ContainerState();
@@ -222,22 +222,26 @@ class _ProgramRowState extends State<ProgramRow> {
 
 
 
-class RecommedContainer extends StatefulWidget {
+class BigContainer extends StatefulWidget {
   final String image;
   final String title;
   final String bottomText;
+  final Color? textColor;
   final Color? containerColor;
-  const RecommedContainer({super.key, 
+  final Color? viewColor;
+
+  const BigContainer({super.key, 
   required this.image, 
   required this.title, 
   required this.bottomText, 
-  this.containerColor});
+  this.containerColor, 
+  this.viewColor, this.textColor});
 
   @override
-  State<RecommedContainer> createState() => _RecommedContainerState();
+  State<BigContainer> createState() => _BigContainerState();
 }
 
-class _RecommedContainerState extends State<RecommedContainer> {
+class _BigContainerState extends State<BigContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -260,14 +264,14 @@ class _RecommedContainerState extends State<RecommedContainer> {
           Text(
             widget.title,
             style: Styles.seeMore.copyWith(
-              color: Colors.black,
+              color: widget.textColor ?? Colors.black,
             ),
           ),
           Text(
             widget.bottomText,
             style: Styles.normal.copyWith(
               fontSize: 12,
-              color: Colors.black,
+              color: widget.textColor ?? Colors.black,
             ),
           ),
           const Gap(12),
@@ -275,7 +279,128 @@ class _RecommedContainerState extends State<RecommedContainer> {
             "View",
             style: Styles.seeMore.copyWith(
               fontWeight: FontWeight.bold,
-              color: Colors.red,
+              color: widget.viewColor ?? Colors.red,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+class LittleContainer extends StatefulWidget {
+  final String image;
+  final String title;
+  final String bottomText;
+  final Color? textColor;
+  final Color? containerColor;
+  
+  const LittleContainer({super.key, 
+  required this.image, 
+  required this.title, 
+  required this.bottomText, 
+  this.textColor, 
+  this.containerColor});
+
+  @override
+  State<LittleContainer> createState() => _LittleContainerState();
+}
+
+class _LittleContainerState extends State<LittleContainer> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(5),
+      width: 120,
+      decoration: BoxDecoration(
+          color: widget.containerColor ?? Styles.secondColor.withOpacity(0.4),
+          borderRadius: BorderRadius.circular(20)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(
+            widget.image,
+            width: 60,
+            height: 60,
+            fit: BoxFit.contain,
+          ),
+          const Gap(5),
+          Text(
+            widget.title,
+            style: Styles.normal.copyWith(
+              fontSize: 11,
+              fontWeight: FontWeight.bold,
+              color: widget.textColor ?? Colors.black,
+            ),
+          ),
+          Text(
+            widget.bottomText,
+            style: Styles.normal.copyWith(
+              fontSize: 10,
+              color: widget.textColor ?? Colors.black,
+            ),
+          ),
+          
+        ],
+      ),
+    );
+  }
+}
+
+
+
+class SquareContainer extends StatefulWidget {
+  final String image;
+  final String title;
+  final String bottomText;
+  final Color? textColor;
+  final Color? containerColor;
+  
+  const SquareContainer({super.key, 
+  required this.image, 
+  required this.title, 
+  required this.bottomText, 
+  this.textColor, 
+  this.containerColor});
+
+  @override
+  State<SquareContainer> createState() => _SquareContainerState();
+}
+
+class _SquareContainerState extends State<SquareContainer> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(5),
+      width: 160,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade50,
+        boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 2)],
+        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(
+            widget.image,
+            width: double.maxFinite,
+            height: 100,
+            fit: BoxFit.contain,
+          ),
+          const Gap(5),
+          Text(
+            widget.title,
+            style: Styles.normal.copyWith(
+              color: widget.textColor ?? Colors.black,
+            ),
+          ),
+          Text(
+            widget.bottomText,
+            style: Styles.normal.copyWith(
+              fontSize: 10,
+              color: widget.textColor ?? Colors.black,
             ),
           ),
         ],

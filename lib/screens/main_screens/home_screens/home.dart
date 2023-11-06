@@ -11,7 +11,10 @@ import 'package:ifit/screens/main_screens/home_screens/activity_tracker.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/home_screens/notifications.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_details.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/meal_screens/meal_tracker.dart';
 import 'package:ifit/screens/main_screens/program_tracker_screens/program_schedule/program_schedule.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_details.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/workout_screens/workout_tracker.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 import 'package:dotted_dashed_line/dotted_dashed_line.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
@@ -29,18 +32,21 @@ class _HomeScreenState extends State<HomeScreen> {
     {
       "name": "Full Body Exercises",
       "image": "assets/icons/workout-pic.png",
+      "exercise": "10",
       "kcal": "180",
       "duration": "20",
     },
     {
       "name": "Upper Body Weights",
       "image": "assets/icons/Lower-Weights.png",
+      "exercise": "12",
       "kcal": "200",
       "duration": "30",
     },
     {
       "name": "Ab Exercises",
       "image": "assets/icons/Ab-workout.png",
+      "exercise": "10",
       "kcal": "300",
       "duration": "40",
     },
@@ -51,18 +57,27 @@ class _HomeScreenState extends State<HomeScreen> {
       "name": "Blueberry Pancake",
       "image": "assets/images/meal/pancake.png",
       "kcal": "190",
+      "fats": "199",
+      "proteins": "305",
+      "sugar": "150",
       "categories": "Breakfast",
     },
     {
       "name": "Salad",
       "image": "assets/images/meal/salad.png",
       "kcal": "200",
+      "fats": "100",
+      "proteins": "300",
+      "sugar": "50",
       "categories": "Lunch",
     },
     {
       "name": "Salmon Nigiri",
       "image": "assets/images/meal/nigiri.png",
       "kcal": "300",
+      "fats": "250",
+      "proteins": "310",
+      "sugar": "100",
       "categories": "Dinner",
     },
   ];
@@ -517,13 +532,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               TextButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //       context,
-                  //       MaterialPageRoute(
-                  //         builder: (context) =>
-                  //             const WorkoutTrackerScreen()
-                  //       ),
-                  //     );
+                  Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const WorkoutTrackerScreen()
+                        ),
+                      );
                 },
                 child: Text(
                   "See More",
@@ -538,18 +553,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                   itemCount: recommendWorkoutArr.length,
                   itemBuilder: (context, index) {
-                  var mObj = recommendWorkoutArr[index] as Map? ?? {};
+                  var wObj = recommendWorkoutArr[index] as Map? ?? {};
                   return InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MealDetails(dObj: mObj)),
+                            builder: (context) => WorkoutDetails(dObj: wObj)),
                         );
                       },
-                      child: BigContainer(image: mObj["image"], 
-                        title: mObj["name"], 
-                        bottomText: "${mObj["duration"]} minutes | ${mObj["kcal"]} kcal",));
+                      child: BigContainer(image: wObj["image"], 
+                        title: wObj["name"], 
+                        bottomText: "${wObj["duration"]} minutes | ${wObj["kcal"]} kcal",));
                 }),
               ),
                 
@@ -562,7 +577,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: Styles.title
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const MealTrackerScreen()
+                        ),
+                      );
+                },
                 child: Text(
                   "See More",
                   style: Styles.seeMore

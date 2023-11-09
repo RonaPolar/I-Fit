@@ -5,6 +5,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/progress_tracker_screens/body/progress_comparison.dart';
+import 'package:ifit/screens/main_screens/progress_tracker_screens/body/progress_result.dart';
 
 class ProgressTrackerScreen extends StatefulWidget {
   const ProgressTrackerScreen({super.key});
@@ -38,6 +39,10 @@ class _ProgressTrackerScreenState extends State<ProgressTrackerScreen> {
 
   @override
   Widget build(BuildContext context) {
+  DateTime currentDate = DateTime.now();
+  DateTime lastMonthDate = DateTime(currentDate.year, currentDate.month - 1, currentDate.day);
+
+  
     return Scaffold(
       backgroundColor: Styles.bgColor,
       appBar: AppBar(
@@ -147,9 +152,9 @@ class _ProgressTrackerScreenState extends State<ProgressTrackerScreen> {
                                   child: MainButton(
                                     title: "Learn More",
                                   onPressed: () {
-                                    // Navigator.of(context).push(
-                                    //   MaterialPageRoute(
-                                    //   builder: (context) => const WorkoutSchedule()));
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                      builder: (context) => ProgressResult(date1: currentDate, date2: lastMonthDate),));
                                   },
                                   textStyle: const TextStyle(
                                     fontSize: 14,
@@ -311,4 +316,10 @@ class _ProgressTrackerScreenState extends State<ProgressTrackerScreen> {
       ),
     );
   }
+    String formatDate(DateTime date) {
+    // Format the date as needed, e.g., 'MM/dd/yyyy'
+    return "${date.month}/${date.day}/${date.year}";
+  }
 }
+
+

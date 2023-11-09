@@ -63,8 +63,8 @@ class _MyRateScreenState extends State<MyRateScreen>
         bottom: TabBar(
           controller: tabController,
           tabs: const <Tab>[
-            Tab(text: 'To Rate'),
-            Tab(text: 'Expert Rating'),
+            Tab(text: 'Program Rate'),
+            Tab(text: 'Expert Rate'),
           ],
           labelColor: primary, // Customize the selected tab text color.
           unselectedLabelColor:

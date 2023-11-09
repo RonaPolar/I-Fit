@@ -152,7 +152,7 @@ class _ActivityTrackerScreenState extends State<ActivityTrackerScreen> {
                             Gap(10),
                             Expanded(
                               child: TodayTargetContainer(
-                                  icon: "assets/icons/salad.png",
+                                  icon: "assets/images/meal/salad.png",
                                   value: "Lunch",
                                   title: "Salad"),
                             ),

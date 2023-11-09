@@ -5,6 +5,7 @@ import 'package:ifit/screens/main_screens/discover_screens/my_program/body/cance
 import 'package:ifit/screens/main_screens/discover_screens/my_program/body/favorites_program.dart';
 import 'package:ifit/screens/main_screens/discover_screens/my_program/body/finished_program.dart';
 import 'package:ifit/screens/main_screens/discover_screens/my_program/body/ongoing_program.dart';
+import 'package:ifit/screens/main_screens/program_tracker_screens/program_rate/my_rate.dart';
 
 class MyProgramScreen extends StatefulWidget {
   final int initialSelectTab;
@@ -59,6 +60,28 @@ class _MyProgramScreenState extends State<MyProgramScreen> with SingleTickerProv
           'My Programs',
           style: Styles.headline20,
         ),
+        actions: [
+          InkWell(
+            onTap: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(
+                builder: (context) => const ToRateProgram()));
+            },
+            child: Container(
+              margin: const EdgeInsets.all(12),
+              height: 30,
+              width: 30,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(10)),
+              child: const Icon(FluentSystemIcons.ic_fluent_star_regular,
+                size: 20,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ],
         bottom: TabBar(
         controller: tabController,
         tabs: const <Tab>[

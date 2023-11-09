@@ -20,7 +20,6 @@ class DiscoverScreen extends StatefulWidget {
 class _DiscoverScreenState extends State<DiscoverScreen> {
 TextEditingController txtSearch = TextEditingController();
 
-
     List popularWorkoutArr = [
     {
       "name": "Full Body Exercises",

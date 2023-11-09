@@ -28,6 +28,7 @@ class MainButton extends StatelessWidget {
       ),
       child: Text(
         title, // Use the 'title' variable
+        textAlign: TextAlign.center,
         style: textStyle ?? Styles.mainButtonText.copyWith(color: Styles.bgColor), // Use the provided textStyle or the default style
       ),
     );

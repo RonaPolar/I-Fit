@@ -2,11 +2,19 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/common/widgets/confirmation_dialog.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/toggle_switch.dart';
 import 'package:ifit/screens/main_screens/home_screens/activity_tracker.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
+import 'package:ifit/screens/main_screens/profile_screens/about.dart';
+import 'package:ifit/screens/main_screens/profile_screens/contact_us.dart';
+import 'package:ifit/screens/main_screens/profile_screens/personal_data.dart';
+import 'package:ifit/screens/main_screens/profile_screens/privacy_policy.dart';
+import 'package:ifit/screens/main_screens/profile_screens/settings/edit_profile.dart';
+import 'package:ifit/screens/main_screens/profile_screens/settings/settings.dart';
+import 'package:ifit/screens/main_screens/progress_tracker_screens/body/progress_result.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -19,6 +27,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool positive = false;
   @override
   Widget build(BuildContext context) {
+    DateTime currentDate = DateTime.now();
+    DateTime lastMonthDate = DateTime(currentDate.year, currentDate.month - 1, currentDate.day);
+
     return Scaffold(
       backgroundColor: Styles.bgColor,
       appBar: AppBar(
@@ -103,7 +114,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: MainButton(
                           title: "Edit",
                         onPressed: () {
-                          
+                          Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const EditProfile()));
                         },
                         textStyle: Styles.seeMore.copyWith(
                           color: Colors.white,
@@ -128,9 +140,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ],
                     ),
 
-                    const Gap(25),
+                    const Gap(15),
                     Container(
-                      height: 200,
+                      height: 160,
                       padding: const EdgeInsets.symmetric(
                           vertical: 15, horizontal: 15),
                       decoration: BoxDecoration(
@@ -151,12 +163,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_person_accounts_regular,
                             title: 'Personal Data',
-                            onTap: () {},
-                          ),
-                          NextNavigation(
-                            iconData: FluentSystemIcons.ic_fluent_archive_regular,
-                            title: 'Achievement',
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const PersonalData()));
+                            },
                           ),
                           NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_history_regular,
@@ -170,7 +180,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_activity_regular,
                             title: 'Workout Progress',
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => ProgressResult(date1: currentDate, date2: lastMonthDate)));
+                            },
                           ),
                         ],
                       ),
@@ -178,7 +191,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                     const Gap(20),
                     Container(
-                      height: 115,
+                      height: 110,
                       padding: const EdgeInsets.symmetric(
                           vertical: 15, horizontal: 15),
                       decoration: BoxDecoration(
@@ -198,9 +211,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           const Gap(1),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Icon(FluentSystemIcons.ic_fluent_alert_regular,),
-                                
+                            children: [
+                              const Icon(FluentSystemIcons.ic_fluent_alert_regular,),
                             const SizedBox(
                               width: 15,
                             ),
@@ -221,7 +233,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                     const Gap(20),
                     Container(
-                      height: 170,
+                      height: 230,
                       padding: const EdgeInsets.symmetric(
                           vertical: 15, horizontal: 15),
                       decoration: BoxDecoration(
@@ -240,28 +252,51 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           const Gap(1),
                           NextNavigation(
+                            iconData: FluentSystemIcons.ic_fluent_info_regular,
+                            title: 'About',
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const About()));
+                            },
+                          ),
+                          NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_mail_regular,
                             title: 'Contact Us',
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const ContactUs()));
+                            },
                           ),
                           NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_shield_regular,
                             title: 'Privacy Policy',
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const PrivacyPolicyScreen()));
+                            },
                           ),
                           NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_settings_regular,
                             title: 'Settings',
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const Settings()));
+                            },
                           ),
-                          
+                          NextNavigation(
+                            iconData: Icons.logout_outlined,
+                            title: 'Log Out',
+                            onTap: () {
+                              showDialog(context: context,
+                                builder: (BuildContext context) {
+                                  return const ConfirmationDialog();});
+                            },
+                          ),
                         ],
                       ),
-                    ),
-                
+                    ),                
                 ],
-                )
-
+                ),
 
               ],//main Children
             ),

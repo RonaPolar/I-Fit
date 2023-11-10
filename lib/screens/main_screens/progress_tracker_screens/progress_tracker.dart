@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
+import 'package:ifit/screens/main_screens/progress_tracker_screens/body/gallery.dart';
 import 'package:ifit/screens/main_screens/progress_tracker_screens/body/progress_comparison.dart';
 import 'package:ifit/screens/main_screens/progress_tracker_screens/body/progress_result.dart';
 
@@ -51,8 +52,7 @@ class _ProgressTrackerScreenState extends State<ProgressTrackerScreen> {
         elevation: 0,
         leading: InkWell(
           onTap: () {
-            Navigator.of(context).push(
-            MaterialPageRoute(
+            Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => const HomeNavBar()));
           },
           child: Container(
@@ -215,13 +215,8 @@ class _ProgressTrackerScreenState extends State<ProgressTrackerScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //       context,
-                      //       MaterialPageRoute(
-                      //         builder: (context) =>
-                      //             const WorkoutTrackerScreen()
-                      //       ),
-                      //     );
+                      Navigator.push(context,MaterialPageRoute(
+                        builder: (context) => const Gallery()),);
                     },
                     child: Text(
                       "See More",

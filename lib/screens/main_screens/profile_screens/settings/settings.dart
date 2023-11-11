@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
-import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/profile_screens/settings/change_email.dart';
 import 'package:ifit/screens/main_screens/profile_screens/settings/change_pass.dart';
 import 'package:ifit/screens/main_screens/profile_screens/settings/delete_account.dart';
@@ -27,8 +26,7 @@ class _SettingsState extends State<Settings> {
         elevation: 0,
         leading: InkWell(
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const HomeNavBar()));
+            Navigator.pop(context);
           },
           child: Container(
             margin: const EdgeInsets.all(12),

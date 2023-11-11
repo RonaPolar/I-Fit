@@ -10,7 +10,6 @@ import 'package:ifit/screens/main_screens/home_screens/activity_tracker.dart';
 import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/main_screens/profile_screens/about.dart';
 import 'package:ifit/screens/main_screens/profile_screens/contact_us.dart';
-import 'package:ifit/screens/main_screens/profile_screens/personal_data.dart';
 import 'package:ifit/screens/main_screens/profile_screens/privacy_policy.dart';
 import 'package:ifit/screens/main_screens/profile_screens/settings/edit_profile.dart';
 import 'package:ifit/screens/main_screens/profile_screens/settings/settings.dart';
@@ -142,7 +141,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                     const Gap(15),
                     Container(
-                      height: 160,
+                      height: 140,
                       padding: const EdgeInsets.symmetric(
                           vertical: 15, horizontal: 15),
                       decoration: BoxDecoration(
@@ -161,19 +160,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           const Gap(1),
                           NextNavigation(
-                            iconData: FluentSystemIcons.ic_fluent_person_accounts_regular,
-                            title: 'Personal Data',
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const PersonalData()));
-                            },
-                          ),
-                          NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_history_regular,
                             title: 'Activity History',
                             onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
+                              Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => const ActivityTrackerScreen()));
                             },
                           ),
@@ -233,7 +223,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                     const Gap(20),
                     Container(
-                      height: 230,
+                      height: 250,
                       padding: const EdgeInsets.symmetric(
                           vertical: 15, horizontal: 15),
                       decoration: BoxDecoration(

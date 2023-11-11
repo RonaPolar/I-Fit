@@ -1,4 +1,124 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/common/widgets/main_button.dart';
+
+
+class VerificationCodeScreen extends StatefulWidget {
+  final void Function() onConfirmPressed;
+
+  const VerificationCodeScreen({super.key, required this.onConfirmPressed});
+
+  @override
+  State<VerificationCodeScreen> createState() => _VerificationCodeScreenState();
+  
+}
+
+class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Styles.bgColor,
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Verification Code',
+                            style: Styles.headline25,
+                          ),
+                          const Gap(30),
+                          Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'We have sent the code verification to',
+                                  style: Styles.text15normal,
+                                ),
+                                Text(
+                                  'jua*********@gmail.com',
+                                  style: Styles.text15normal.copyWith(
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const Gap(10),
+                          VerificationTextBox(
+                            numberOfFields: 4,
+                            fieldWidth: 65.0,
+                            fieldSpacing: 20.0,
+                            onCodeChanged: (code) {
+                              // Handle the OTP code here
+                            },
+                          ),
+                          const Gap(15),
+                          Text(
+                            'Did\'nt receive yet?',
+                            style: Styles.text15normal,
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: RichText(
+                              text: TextSpan(
+                                style: Styles.text15bold,
+                                children: const <TextSpan>[
+                                  TextSpan(
+                                    text: 'Resend',
+                                    style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.only(
+                  right: 20,
+                  left: 20,
+                  bottom: 30,
+                  top: 20,
+                ),
+                child: Column(
+                  children: [
+                    MainButton(
+                      title: 'Confirm',
+                      onPressed: () {
+                        // Call the callback function provided by the parent widget
+                        widget.onConfirmPressed();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
 
 
 //Verification Box of Number/Code

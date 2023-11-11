@@ -4,7 +4,8 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
-import 'package:ifit/screens/account-login&reg/password/pass_verification.dart';
+import 'package:ifit/common/widgets/verification_text_box.dart';
+import 'package:ifit/screens/account-login&reg/password/new_pass.dart';
 
 class PasswordRecovery extends StatefulWidget {
   const PasswordRecovery({super.key});
@@ -83,10 +84,13 @@ class _PasswordRecoveryState extends State<PasswordRecovery> {
                     MainButton(
                       title: 'Next',
                       onPressed: () {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const PasswordVerification(),
+                            builder: (context) => VerificationCodeScreen(onConfirmPressed: (){
+                              Navigator.pushReplacement(context,MaterialPageRoute(
+                                builder: (context) => const NewPassword()),);
+                            }),
                           ),
                         );
                       },

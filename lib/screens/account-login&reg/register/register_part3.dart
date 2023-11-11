@@ -47,7 +47,7 @@ Widget build(BuildContext context) {
                           ),
                           const Gap(15),
                           const CheckBoxList(questionText: 'What fitness goals do you want to achieve?',
-                            choices: ['Lose Weight', 'Body Toning', 'Gain muscles'],  
+                            choices: ['Loss Weight', 'Body Toning', 'Gain Muscles'],  
                           ),
                           const Gap(15),
                           const CheckBoxList(questionText: 'What specific body part do you want for it?',

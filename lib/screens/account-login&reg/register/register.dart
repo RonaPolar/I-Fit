@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
+import 'package:ifit/common/widgets/verification_text_box.dart';
 import 'package:ifit/screens/account-login&reg/login.dart';
 import 'package:ifit/screens/account-login&reg/register/popup_privacy_terms.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
-import 'package:ifit/screens/account-login&reg/register/register_verification.dart';
+import 'package:ifit/screens/account-login&reg/register/register_part2.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -174,7 +175,10 @@ class _RegisterState extends State<Register> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const RegisterVerification(),
+                            builder: (context) => VerificationCodeScreen(onConfirmPressed: (){
+                              Navigator.pushReplacement(context,MaterialPageRoute(
+                                builder: (context) => const RegisterPart2()),);
+                            }),
                           ),
                         );
                       },

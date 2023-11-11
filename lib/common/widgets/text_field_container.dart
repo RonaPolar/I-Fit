@@ -52,3 +52,51 @@ class _TextfieldContainerState extends State<TextfieldContainer> {
     );
   }
 }
+
+
+class DisplayTextContainer extends StatefulWidget {
+  final String hitText;
+  final IconData icon;
+  final Widget? rightIcon;
+  final EdgeInsets? margin;
+
+  const DisplayTextContainer({
+    Key? key,
+    required this.hitText,
+    required this.icon,
+    this.rightIcon,
+    this.margin, required bool obscureText,
+  }) : super(key: key);
+
+  @override
+  State<DisplayTextContainer> createState() => _DisplayTextContainerState();
+}
+
+class _DisplayTextContainerState extends State<DisplayTextContainer> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Styles.boxtextField,
+        borderRadius: BorderRadius.circular(15),
+      ),
+      padding: const EdgeInsets.all(15),
+      child: Row(
+        children: [
+          Icon(widget.icon, color: Styles.fadeTextColor),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              widget.hitText,
+              style: TextStyle(
+                fontSize: 16,
+                color: Styles.fadeTextColor,
+              ),
+            ),
+          ),
+          if (widget.rightIcon != null) widget.rightIcon!,
+        ],
+      ),
+    );
+  }
+}

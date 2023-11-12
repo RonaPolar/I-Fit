@@ -6,7 +6,7 @@ import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
 import 'package:ifit/screens/account-login&reg/password/pass_recovery.dart';
 import 'package:ifit/screens/account-login&reg/register/register.dart';
-import 'package:ifit/screens/main_screens/main_bottom_bar.dart';
+import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});

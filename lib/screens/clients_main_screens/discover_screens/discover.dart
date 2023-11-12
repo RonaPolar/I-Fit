@@ -1,0 +1,393 @@
+import 'dart:math';
+import 'package:fluentui_icons/fluentui_icons.dart';
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/common/widgets/search.dart';
+import 'package:ifit/common/widgets/program_widgets.dart';
+import 'package:ifit/screens/clients_main_screens/discover_screens/my_program/my_program.dart';
+import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
+import 'package:ifit/screens/clients_main_screens/program_tracker_screens/meal_screens/meal_details.dart';
+import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/workout_details.dart';
+
+class DiscoverScreen extends StatefulWidget {
+  const DiscoverScreen({super.key});
+
+  @override
+  State<DiscoverScreen> createState() => _DiscoverScreenState();
+}
+
+class _DiscoverScreenState extends State<DiscoverScreen> {
+TextEditingController txtSearch = TextEditingController();
+
+    List popularWorkoutArr = [
+    {
+      "name": "Full Body Exercises",
+      "image": "assets/icons/workout-pic.png",
+      "schedule": "Monday",
+      "categories": "Full Body",
+      "time": "9:00am",
+      "kcal": "320",
+      "exercise": "10",
+      "duration": "30",
+    },
+    {
+      "name": "Upper Body Weights",
+      "image": "assets/icons/Lower-Weights.png",
+      "schedule": "Monday",
+      "categories": "Upper Body",
+      "time": "10:00am",
+      "kcal": "210",
+      "exercise": "10",
+      "duration": "30",
+    },
+    {
+      "name": "Ab Exercises",
+      "image": "assets/icons/Ab-workout.png",
+      "schedule": "Monday",
+      "categories": "Abdominal",
+      "time": "4:00pm",
+      "kcal": "260",
+      "exercise": "10",
+      "duration": "30",
+    },
+  ];
+
+  List popularMealArr = [
+    {
+      "name": "Blueberry Pancake",
+      "image": "assets/images/meal/pancake.png",
+      "kcal": "190",
+      "fats": "199",
+      "proteins": "305",
+      "sugar": "150",
+      "categories": "Breakfast",
+    },
+    {
+      "name": "Salad",
+      "image": "assets/images/meal/salad.png",
+      "kcal": "200",
+      "fats": "100",
+      "proteins": "300",
+      "sugar": "50",
+      "categories": "Lunch",
+    },
+    {
+      "name": "Salmon Nigiri",
+      "image": "assets/images/meal/nigiri.png",
+      "kcal": "300",
+      "fats": "250",
+      "proteins": "310",
+      "sugar": "100",
+      "categories": "Dinner",
+    },
+  ];
+
+
+  List discoverExperts = [
+    {
+      "name": "Dr. Otto Octavius",
+      "image": "assets/images/experts/expert1.png",
+      "profession": "Physician",
+      "rate": "4.5",
+    },
+    {
+      "name": "Dr. Harleen Quinzel",
+      "image": "assets/images/experts/expert3.jpg",
+      "profession": "Physical Therapist",
+      "rate": "4.8",
+    },
+    {
+      "name": "Dr. Octavius Brine",
+      "image": "assets/images/experts/expert2.png",
+      "profession": "Nutritionist",
+      "rate": "3.9",
+    },
+    {
+      "name": "Coach. Rendon Labador",
+      "image": "assets/images/experts/expert4.jpg",
+      "profession": "Gym Instructor",
+      "rate": "3.9",
+    },
+  ];
+
+
+  @override
+  Widget build(BuildContext context) {
+    List<dynamic> combinedList = [...popularWorkoutArr, ...popularMealArr];
+    combinedList.shuffle(Random());
+
+    return Scaffold(
+      backgroundColor: Styles.bgColor,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        elevation: 0,
+        leading: InkWell(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+            builder: (context) => const HomeNavBar()));
+        },
+        child: Container(
+          margin: const EdgeInsets.all(12),
+            height: 30,
+            width: 30,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              color: Colors.grey.shade200,
+              borderRadius: BorderRadius.circular(10)),
+          child: const Icon(
+            FluentSystemIcons.ic_fluent_chevron_left_filled,
+            size: 20,
+            color: Colors.black,
+          ),
+        ),
+      ),
+        title: Container(
+          height: 35,
+          width: double.maxFinite,
+          decoration: BoxDecoration(
+              color: Colors.grey.shade200,
+              borderRadius: BorderRadius.circular(10)),
+          alignment: Alignment.center,
+          child: SearchContainer(controller: txtSearch, hintText: "Search")
+        ),
+        actions: [
+          InkWell(
+            onTap: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(
+                builder: (context) => const OngoingPrograms()));
+            },
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal:15, vertical: 10),
+              height: 35,
+              width: 35,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(10)),
+              child: const Icon(FluentSystemIcons.ic_fluent_person_regular,
+                size: 20,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: ListView(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top:15, right:15, left:15),
+                child: Text(
+                    "Daily Discover",
+                    style: Styles.title
+                  ),
+              ),
+
+
+              const Gap(10),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: const EdgeInsets.only(right: 5, top: 10, bottom: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 3
+                    )
+                  ),
+                  child: Column(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal:7),
+                            child: Text(
+                                "New Arrival",
+                                style: Styles.title
+                              ),
+                          ),
+                          SizedBox(
+                            height: 130,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: combinedList.length,
+                              itemBuilder: (context, index) {
+                                var item = combinedList[index] as Map? ?? {};
+
+                                if (item.containsKey("duration") && item.containsKey("kcal")) {
+                                  // It's a workout item
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => WorkoutDetails(dObj: item),
+                                        ),
+                                      );
+                                    },
+                                    child: LittleContainer(
+                                      containerColor: Styles.secondColor.withOpacity(0.6),
+                                      image: item["image"],
+                                      title: item["name"],
+                                      bottomText: "${item["duration"]} minutes | ${item["kcal"]} kcal",
+                                    ),
+                                  );
+                                } else {
+                                  // It's a meal item
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => MealDetails(dObj: item),
+                                        ),
+                                      );
+                                    },
+                                    child: LittleContainer(
+                                      containerColor: Styles.secondColor.withOpacity(0.6),
+                                      image: item["image"],
+                                      title: item["name"],
+                                      bottomText: "${item["categories"]} | ${item["kcal"]} kcal",
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      
+                      
+                      const Gap(10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 7),
+                            child: Text(
+                              "Popular",
+                              style: Styles.title,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 130,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: combinedList.length,
+                              itemBuilder: (context, index) {
+                                var item = combinedList[index] as Map? ?? {};
+
+                                if (item.containsKey("duration") && item.containsKey("kcal")) {
+                                  // It's a workout item
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => WorkoutDetails(dObj: item),
+                                        ),
+                                      );
+                                    },
+                                    child: LittleContainer(
+                                      containerColor: Styles.secondColor.withOpacity(0.6),
+                                      image: item["image"],
+                                      title: item["name"],
+                                      bottomText: "${item["duration"]} minutes | ${item["kcal"]} kcal",
+                                    ),
+                                  );
+                                } else {
+                                  // It's a meal item
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => MealDetails(dObj: item),
+                                        ),
+                                      );
+                                    },
+                                    child: LittleContainer(
+                                      containerColor: Styles.secondColor.withOpacity(0.6),
+                                      image: item["image"],
+                                      title: item["name"],
+                                      bottomText: "${item["categories"]} | ${item["kcal"]} kcal",
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              
+              const Gap(15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal:15),
+                    child: 
+                      Text(
+                        "Experts",
+                        style: Styles.title
+                      ),
+                    ),
+                  SizedBox(
+                    height: 360,
+                    width: double.maxFinite,
+                    child: GridView.builder(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      scrollDirection: Axis.horizontal,
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, // Adjust the number of columns as per your design
+                      ),
+                      itemCount: discoverExperts.length,
+                      itemBuilder: (context, index) {
+                        var exObj = discoverExperts[index] as Map? ?? {};
+                        return InkWell(
+                          onTap: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => WorkoutDetails(dObj: wObj)),
+                            // );
+                          },
+                          child: SquareContainer(
+                            image: exObj["image"],
+                            title: exObj["name"],
+                            bottomText: "${exObj["profession"]} | ${exObj["rate"]} stars",
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                ],
+              ),
+                
+              
+              const Gap(10)
+
+
+            ],//main Children
+          ),
+        ],
+
+      ),
+    );
+  }
+}
+
+

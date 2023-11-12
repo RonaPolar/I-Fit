@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 
 class ConfirmationDialog extends StatelessWidget {
+  final String question;
   final VoidCallback? onYesPressed; // Callback function for "Yes" button
 
-  const ConfirmationDialog({Key? key, this.onYesPressed}) : super(key: key);
+  const ConfirmationDialog({Key? key, 
+    this.onYesPressed, 
+    this.question = 'Are you sure?',
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +25,17 @@ class ConfirmationDialog extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 30, bottom: 20),
-              child: Text(
-                'Are you sure?',
-                style: Styles.headline20,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 30, bottom: 20),
+                child: Text(
+                  question,
+                  style: Styles.title,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
-            const Gap(20),
+            // const Gap(20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

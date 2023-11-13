@@ -10,7 +10,7 @@ import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/meal_screens/meal_tracker.dart';
 import 'package:ifit/screens/clients_main_screens/discover_screens/my_program/my_program.dart';
-import 'package:ifit/screens/clients_main_screens/program_tracker_screens/program_rate/my_rate.dart';
+import 'package:ifit/screens/clients_main_screens/program_tracker_screens/rate_screens/my_rate.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/program_schedule/program_schedule.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/workout_details.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/workout_tracker.dart';
@@ -29,6 +29,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
     {
       "name": "Full Body Exercises",
       "image": "assets/icons/workout-pic.png",
+      "rate": "4.7",
       "kcal": "180",
       "days": "14",
       "duration": "30",
@@ -38,6 +39,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
     {
       "name": "Upper Body Weights",
       "image": "assets/icons/Lower-Weights.png",
+      "rate": "4.3",
       "kcal": "200",
       "duration": "30",
       "days": "10",
@@ -47,6 +49,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
     {
       "name": "Upper Ab Exercises",
       "image": "assets/icons/Ab-workout.png",
+      "rate": "4.5",
       "kcal": "300",
       "duration": "20",
       "days": "15",
@@ -59,6 +62,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
     {
       "name": "Blueberry Pancake",
       "image": "assets/images/meal/pancake.png",
+      "rate": "4.9",
       "kcal": "190",
       "fats": "100",
       "proteins": "176",
@@ -70,6 +74,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
     {
       "name": "Salad",
       "image": "assets/images/meal/salad.png",
+      "rate": "4.6",
       "kcal": "200",
       "fats": "100",
       "proteins": "300",
@@ -81,6 +86,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
     {
       "name": "Salmon Nigiri",
       "image": "assets/images/meal/nigiri.png",
+      "rate": "4.3",
       "kcal": "300",
       "fats": "170",
       "proteins": "400",
@@ -284,32 +290,30 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                         )
                       ],
                     ),
-                    SizedBox(
-                      child: ListView.builder( //WorkoutRowContainer Content
-                        padding: EdgeInsets.zero,
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: 2, //recommendWorkoutArr.length
-                        itemBuilder: (context, index) {
-                          var wObj = latestWorkoutArr[index] as Map? ?? {};
-                          return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                      WorkoutDetails(dObj: wObj),
-                                  ),
-                                );
-                              },
-                              child: ProgramRow(image: wObj["image"], 
+                    ListView.builder( //MealRowContainer Content
+                      padding: EdgeInsets.zero,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 2, //recommendWorkoutArr.length
+                      itemBuilder: (context, index) {
+                        var wObj = latestWorkoutArr[index] as Map? ?? {};
+                        return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => WorkoutDetails(dObj: wObj)),
+                              );
+                            },
+                            child: ProgramRow(image: wObj["image"], 
                               title: wObj["name"], 
                               bottomText: "${wObj["duration"]} minutes | ${wObj["kcal"]} Calories",
                               progress: wObj["progress"] as double?,
-                              showToggleSwitch: false,));
-                        }),
-                    ),
-                        
+                              progressText: wObj["days"],
+                              showToggleSwitch: false,
+                              ));
+                      }),
+
                     const Gap(10),
                     Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

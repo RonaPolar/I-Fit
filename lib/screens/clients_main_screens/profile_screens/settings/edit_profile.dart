@@ -6,6 +6,7 @@ import 'package:ifit/common/widgets/confirmation_dialog.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
 import 'package:ifit/screens/account-login&reg/register/register_part2.dart';
+import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
@@ -178,7 +179,13 @@ class _EditProfileState extends State<EditProfile> {
             child: MainButton(title: "Update Changes", onPressed: (){
               showDialog(context: context,
                 builder: (BuildContext context) {
-                  return const ConfirmationDialog();});
+                  return ConfirmationDialog(
+                    onYesPressed: (){
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                        builder: (context) => const ProfileNavBar()));
+                    },
+                  );});
             }),
           )
         ],

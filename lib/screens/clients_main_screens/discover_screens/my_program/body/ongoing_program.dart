@@ -17,10 +17,11 @@ class OngoingProgramScreen extends StatefulWidget {
 }
 
 class _OngoingProgramScreenState extends State<OngoingProgramScreen> {
-  List latestWorkoutArr = [
+ List latestWorkoutArr = [
     {
       "name": "Full Body Exercises",
       "image": "assets/icons/workout-pic.png",
+      "rate": "4.7",
       "kcal": "180",
       "days": "14",
       "duration": "30",
@@ -30,6 +31,7 @@ class _OngoingProgramScreenState extends State<OngoingProgramScreen> {
     {
       "name": "Upper Body Weights",
       "image": "assets/icons/Lower-Weights.png",
+      "rate": "4.3",
       "kcal": "200",
       "duration": "30",
       "days": "10",
@@ -39,6 +41,7 @@ class _OngoingProgramScreenState extends State<OngoingProgramScreen> {
     {
       "name": "Upper Ab Exercises",
       "image": "assets/icons/Ab-workout.png",
+      "rate": "4.5",
       "kcal": "300",
       "duration": "20",
       "days": "15",
@@ -51,6 +54,7 @@ class _OngoingProgramScreenState extends State<OngoingProgramScreen> {
     {
       "name": "Blueberry Pancake",
       "image": "assets/images/meal/pancake.png",
+      "rate": "4.9",
       "kcal": "190",
       "fats": "100",
       "proteins": "176",
@@ -62,6 +66,7 @@ class _OngoingProgramScreenState extends State<OngoingProgramScreen> {
     {
       "name": "Salad",
       "image": "assets/images/meal/salad.png",
+      "rate": "4.6",
       "kcal": "200",
       "fats": "100",
       "proteins": "300",
@@ -73,6 +78,7 @@ class _OngoingProgramScreenState extends State<OngoingProgramScreen> {
     {
       "name": "Salmon Nigiri",
       "image": "assets/images/meal/nigiri.png",
+      "rate": "4.3",
       "kcal": "300",
       "fats": "170",
       "proteins": "400",

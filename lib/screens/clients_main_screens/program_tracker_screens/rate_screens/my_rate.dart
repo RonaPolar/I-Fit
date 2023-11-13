@@ -1,8 +1,9 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/screens/clients_main_screens/program_tracker_screens/program_rate/body/to_rate_expert.dart';
-import 'package:ifit/screens/clients_main_screens/program_tracker_screens/program_rate/body/to_rate_program.dart';
+import 'package:ifit/screens/clients_main_screens/program_tracker_screens/rate_screens/body/expert_following.dart';
+import 'package:ifit/screens/clients_main_screens/program_tracker_screens/rate_screens/body/to_rate_expert.dart';
+import 'package:ifit/screens/clients_main_screens/program_tracker_screens/rate_screens/body/to_rate_program.dart';
 
 class MyRateScreen extends StatefulWidget {
   final int initialSelectTab;
@@ -26,7 +27,7 @@ class _MyRateScreenState extends State<MyRateScreen>
   void initState() {
     super.initState();
     tabController = TabController(
-        length: 2, initialIndex: widget.initialSelectTab, vsync: this);
+        length: 3, initialIndex: widget.initialSelectTab, vsync: this);
     currentTab = widget.initialCurrentTab;
   }
 
@@ -65,6 +66,7 @@ class _MyRateScreenState extends State<MyRateScreen>
           tabs: const <Tab>[
             Tab(text: 'Program Rate'),
             Tab(text: 'Expert Rate'),
+            Tab(text: 'Following'),
           ],
           labelColor: primary, // Customize the selected tab text color.
           unselectedLabelColor:
@@ -77,6 +79,7 @@ class _MyRateScreenState extends State<MyRateScreen>
         children: const <Widget>[
           ToRateProgramScreen(),
           ToRateExpertScreen(),
+          ExperFollowingScreen(),
         ],
       ),
     );
@@ -110,5 +113,21 @@ class _ToRateExpertProgramState extends State<ToRateExpertProgram> {
   Widget build(BuildContext context) {
     return const MyRateScreen(
         initialSelectTab: 1, initialCurrentTab: ToRateExpertScreen());
+  }
+}
+
+
+class ExpertFollowing extends StatefulWidget {
+  const ExpertFollowing({super.key});
+
+  @override
+  State<ExpertFollowing> createState() => _ExpertFollowingState();
+}
+
+class _ExpertFollowingState extends State<ExpertFollowing> {
+  @override
+  Widget build(BuildContext context) {
+    return const MyRateScreen(
+        initialSelectTab: 2, initialCurrentTab: ExperFollowingScreen());
   }
 }

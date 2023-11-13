@@ -4,10 +4,8 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
-import 'package:ifit/common/widgets/toggle_switch.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/workout_details.dart';
-import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
 class ToRateProgramScreen extends StatefulWidget {
   const ToRateProgramScreen({super.key});
@@ -18,9 +16,10 @@ class ToRateProgramScreen extends StatefulWidget {
 
 class _ToRateProgramScreenState extends State<ToRateProgramScreen> {
   List latestWorkoutArr = [
-    {
+     {
       "name": "Full Body Exercises",
       "image": "assets/icons/workout-pic.png",
+      "rate": "4.7",
       "kcal": "180",
       "days": "14",
       "duration": "30",
@@ -30,6 +29,7 @@ class _ToRateProgramScreenState extends State<ToRateProgramScreen> {
     {
       "name": "Upper Body Weights",
       "image": "assets/icons/Lower-Weights.png",
+      "rate": "4.3",
       "kcal": "200",
       "duration": "30",
       "days": "10",
@@ -39,6 +39,7 @@ class _ToRateProgramScreenState extends State<ToRateProgramScreen> {
     {
       "name": "Upper Ab Exercises",
       "image": "assets/icons/Ab-workout.png",
+      "rate": "4.5",
       "kcal": "300",
       "duration": "20",
       "days": "15",
@@ -51,6 +52,7 @@ class _ToRateProgramScreenState extends State<ToRateProgramScreen> {
     {
       "name": "Blueberry Pancake",
       "image": "assets/images/meal/pancake.png",
+      "rate": "4.9",
       "kcal": "190",
       "fats": "100",
       "proteins": "176",
@@ -62,6 +64,7 @@ class _ToRateProgramScreenState extends State<ToRateProgramScreen> {
     {
       "name": "Salad",
       "image": "assets/images/meal/salad.png",
+      "rate": "4.6",
       "kcal": "200",
       "fats": "100",
       "proteins": "300",
@@ -73,6 +76,7 @@ class _ToRateProgramScreenState extends State<ToRateProgramScreen> {
     {
       "name": "Salmon Nigiri",
       "image": "assets/images/meal/nigiri.png",
+      "rate": "4.3",
       "kcal": "300",
       "fats": "170",
       "proteins": "400",
@@ -120,7 +124,7 @@ class _ToRateProgramScreenState extends State<ToRateProgramScreen> {
                           child: ToRateRow(image: item["image"], 
                             title: item["name"], 
                             bottomText: "${item["duration"]} minutes | ${item["kcal"]} Calories",
-                            showToggleSwitch: false,));
+                            ));
                       } else {
                         // It's a meal item
                         return InkWell(
@@ -135,8 +139,6 @@ class _ToRateProgramScreenState extends State<ToRateProgramScreen> {
                           child: ToRateRow(image: item["image"], 
                             title: item["name"], 
                             bottomText: "${item["categories"]} | ${item["kcal"]} Calories",
-                            progressText: item["days"],
-                            showToggleSwitch: false,
                             ));
                       }
                     },
@@ -157,20 +159,17 @@ class ToRateRow extends StatefulWidget {
   final String image;
   final String title;
   final String bottomText;
-  final double? progress;
-  final String? progressText;
+  final String mainButtonText;
+
   final IconData icon;
-  final bool showToggleSwitch;
 
   const ToRateRow({
     super.key,
-    this.progress, // Provide a default value of null
     this.icon = FluentSystemIcons.ic_fluent_chevron_right_filled, // Provide a default icon
-    this.showToggleSwitch = true,
     required this.image,
     required this.title,
-    required this.bottomText,
-    this.progressText, // Provide a default value to show the ToggleSwitch
+    required this.bottomText, 
+    this.mainButtonText  = "Rate",
   });
 
   @override
@@ -219,49 +218,22 @@ class _ToRateRowState extends State<ToRateRow> {
                 const SizedBox(
                   height: 4,
                 ),
-                if (widget.progress != null &&
-                    widget.progressText !=
-                        null) // Conditionally render the progress bar
-                  Row(
-                    children: [
-                      SimpleAnimationProgressBar(
-                        height: 15,
-                        width: 150,
-                        backgroundColor: Colors.grey.shade200,
-                        foregrondColor: Styles.secondColor,
-                        ratio: widget.progress!,
-                        direction: Axis.horizontal,
-                        curve: Curves.fastLinearToSlowEaseIn,
-                        duration: const Duration(seconds: 3),
-                        borderRadius: BorderRadius.circular(7.5),
-                        gradientColor: LinearGradient(
-                          colors: Styles.gradientColor,
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                        ),
-                      ),
-                      Text(
-                        "${widget.progressText!} days", // Display the duration here
-                        style: Styles.normal.copyWith(
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
-                  ),
+                // Removed the progress bar code here
               ],
             ),
           ),
-          if (widget.showToggleSwitch) // Conditionally render the ToggleSwitch
-            const ToggleSwitch(),
-          if (!widget.showToggleSwitch) // Conditionally render the default icon
-            SizedBox(
-              height: 30,
-              width: 70,
-              child: MainButton(title: "Rate", 
-                textStyle: Styles.seeMore.copyWith(
-                color: Colors.white,),
-                buttonColor: Styles.secondColor,
-                onPressed: (){}))
+          SizedBox(
+            height: 30,
+            width: 70,
+            child: MainButton(
+              title: widget.mainButtonText,
+              textStyle: Styles.seeMore.copyWith(
+                color: Colors.white,
+              ),
+              buttonColor: Styles.secondColor,
+              onPressed: () {},
+            ),
+          )
         ],
       ),
     );

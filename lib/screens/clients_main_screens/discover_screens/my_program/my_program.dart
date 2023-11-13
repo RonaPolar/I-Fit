@@ -5,7 +5,7 @@ import 'package:ifit/screens/clients_main_screens/discover_screens/my_program/bo
 import 'package:ifit/screens/clients_main_screens/discover_screens/my_program/body/favorites_program.dart';
 import 'package:ifit/screens/clients_main_screens/discover_screens/my_program/body/finished_program.dart';
 import 'package:ifit/screens/clients_main_screens/discover_screens/my_program/body/ongoing_program.dart';
-import 'package:ifit/screens/clients_main_screens/program_tracker_screens/program_rate/my_rate.dart';
+import 'package:ifit/screens/clients_main_screens/program_tracker_screens/rate_screens/my_rate.dart';
 
 class MyProgramScreen extends StatefulWidget {
   final int initialSelectTab;

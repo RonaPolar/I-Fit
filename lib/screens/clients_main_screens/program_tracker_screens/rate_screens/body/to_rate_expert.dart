@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/screens/clients_main_screens/program_tracker_screens/program_rate/body/to_rate_program.dart';
-import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/workout_details.dart';
+import 'package:ifit/screens/clients_main_screens/discover_screens/expert_screens/expert_profile.dart';
+import 'package:ifit/screens/clients_main_screens/program_tracker_screens/rate_screens/body/to_rate_program.dart';
 
 class ToRateExpertScreen extends StatefulWidget {
   const ToRateExpertScreen({super.key});
@@ -64,14 +64,14 @@ class _ToRateExpertScreenState extends State<ToRateExpertScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                WorkoutDetails(dObj: exObj),
+                                ExpertProfile(exObj: exObj),
                             ),
                           );
                         },
                         child: ToRateRow(image: exObj["image"], 
                         title: exObj["name"], 
                         bottomText: exObj["profession"],
-                        showToggleSwitch: false,));
+                        ));
                   }),
               ),
             ],

@@ -46,10 +46,11 @@ class _MealCategoryState extends State<MealCategory> {
     },
   ];
 
-    List popularMealArr = [
+  List popularMealArr = [
     {
       "name": "Blueberry Pancake",
       "image": "assets/images/meal/pancake.png",
+      "rate": "4.9",
       "kcal": "190",
       "fats": "199",
       "proteins": "305",
@@ -59,6 +60,7 @@ class _MealCategoryState extends State<MealCategory> {
     {
       "name": "Salad",
       "image": "assets/images/meal/salad.png",
+      "rate": "4.6",
       "kcal": "200",
       "fats": "100",
       "proteins": "300",
@@ -68,6 +70,7 @@ class _MealCategoryState extends State<MealCategory> {
     {
       "name": "Salmon Nigiri",
       "image": "assets/images/meal/nigiri.png",
+      "rate": "4.3",
       "kcal": "300",
       "fats": "250",
       "proteins": "310",
@@ -75,6 +78,7 @@ class _MealCategoryState extends State<MealCategory> {
       "categories": "Dinner",
     },
   ];
+
   
   @override
   Widget build(BuildContext context) {

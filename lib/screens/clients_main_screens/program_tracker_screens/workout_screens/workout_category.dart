@@ -45,6 +45,7 @@ class _WorkoutCategoryState extends State<WorkoutCategory> {
     {
       "name": "Full Body Exercises",
       "image": "assets/icons/workout-pic.png",
+      "rate": "4.7",
       "schedule": "Monday",
       "categories": "Full Body",
       "time": "9:00am",
@@ -55,6 +56,7 @@ class _WorkoutCategoryState extends State<WorkoutCategory> {
     {
       "name": "Upper Body Weights",
       "image": "assets/icons/Lower-Weights.png",
+      "rate": "4.3",
       "schedule": "Monday",
       "categories": "Upper Body",
       "time": "10:00am",
@@ -65,6 +67,7 @@ class _WorkoutCategoryState extends State<WorkoutCategory> {
     {
       "name": "Ab Exercises",
       "image": "assets/icons/Ab-workout.png",
+      "rate": "4.5",
       "schedule": "Monday",
       "categories": "Abdominal",
       "time": "4:00pm",

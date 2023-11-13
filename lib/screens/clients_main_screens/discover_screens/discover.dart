@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/search.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
+import 'package:ifit/screens/clients_main_screens/discover_screens/expert_screens/expert_profile.dart';
 import 'package:ifit/screens/clients_main_screens/discover_screens/my_program/my_program.dart';
 import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/meal_screens/meal_details.dart';
@@ -24,6 +25,7 @@ TextEditingController txtSearch = TextEditingController();
     {
       "name": "Full Body Exercises",
       "image": "assets/icons/workout-pic.png",
+      "rate": "4.7",
       "schedule": "Monday",
       "categories": "Full Body",
       "time": "9:00am",
@@ -34,6 +36,7 @@ TextEditingController txtSearch = TextEditingController();
     {
       "name": "Upper Body Weights",
       "image": "assets/icons/Lower-Weights.png",
+      "rate": "4.3",
       "schedule": "Monday",
       "categories": "Upper Body",
       "time": "10:00am",
@@ -44,6 +47,7 @@ TextEditingController txtSearch = TextEditingController();
     {
       "name": "Ab Exercises",
       "image": "assets/icons/Ab-workout.png",
+      "rate": "4.5",
       "schedule": "Monday",
       "categories": "Abdominal",
       "time": "4:00pm",
@@ -57,6 +61,7 @@ TextEditingController txtSearch = TextEditingController();
     {
       "name": "Blueberry Pancake",
       "image": "assets/images/meal/pancake.png",
+      "rate": "4.9",
       "kcal": "190",
       "fats": "199",
       "proteins": "305",
@@ -66,6 +71,7 @@ TextEditingController txtSearch = TextEditingController();
     {
       "name": "Salad",
       "image": "assets/images/meal/salad.png",
+      "rate": "4.6",
       "kcal": "200",
       "fats": "100",
       "proteins": "300",
@@ -75,6 +81,7 @@ TextEditingController txtSearch = TextEditingController();
     {
       "name": "Salmon Nigiri",
       "image": "assets/images/meal/nigiri.png",
+      "rate": "4.3",
       "kcal": "300",
       "fats": "250",
       "proteins": "310",
@@ -90,24 +97,36 @@ TextEditingController txtSearch = TextEditingController();
       "image": "assets/images/experts/expert1.png",
       "profession": "Physician",
       "rate": "4.5",
+      "mealCreated": "2",
+      "workoutCreated": "3",
+      "descriptions": "Hello! I completed my course in 2017 and have 5 years of experience working as Physician. If you like my programs I created, you can visit me at Manila Center at Makati City.",
     },
     {
       "name": "Dr. Harleen Quinzel",
       "image": "assets/images/experts/expert3.jpg",
       "profession": "Physical Therapist",
       "rate": "4.8",
+      "mealCreated": "3",
+      "workoutCreated": "3",
+      "descriptions": "You can call me Dr. Harley. I'm a licensed Physical Therapist located Tondo Medical Center and have 6 years of experience working at the field. If you like my programs I created, you can visit me or contact me.",
     },
     {
       "name": "Dr. Octavius Brine",
       "image": "assets/images/experts/expert2.png",
       "profession": "Nutritionist",
       "rate": "3.9",
+      "mealCreated": "2",
+      "workoutCreated": "5",
+      "descriptions": "I'm a licensed Nutritionist working in GoFit center at Mandaluyong and has 12 years of experience at the field. If you like my programs I created, you can email or visit me.",
     },
     {
       "name": "Coach. Rendon Labador",
       "image": "assets/images/experts/expert4.jpg",
       "profession": "Gym Instructor",
       "rate": "3.9",
+      "mealCreated": "3",
+      "workoutCreated": "2",
+      "descriptions": "Hi, I'm a Gym Instructor in Farohs Gym located at Nagtahan, Manila - near EARIST and has a decade of experience working at the field. If you like my programs I created, come visit me or contact me.",
     },
   ];
 
@@ -345,34 +364,31 @@ TextEditingController txtSearch = TextEditingController();
                         style: Styles.title
                       ),
                     ),
-                  SizedBox(
-                    height: 360,
-                    width: double.maxFinite,
-                    child: GridView.builder(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      scrollDirection: Axis.horizontal,
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, // Adjust the number of columns as per your design
-                      ),
-                      itemCount: discoverExperts.length,
-                      itemBuilder: (context, index) {
-                        var exObj = discoverExperts[index] as Map? ?? {};
-                        return InkWell(
-                          onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => WorkoutDetails(dObj: wObj)),
-                            // );
-                          },
-                          child: SquareContainer(
-                            image: exObj["image"],
-                            title: exObj["name"],
-                            bottomText: "${exObj["profession"]} | ${exObj["rate"]} stars",
-                          ),
-                        );
-                      },
+                  GridView.builder(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, // Adjust the number of columns as per your design
                     ),
+                    itemCount: discoverExperts.length,
+                    itemBuilder: (context, index) {
+                      var exObj = discoverExperts[index] as Map? ?? {};
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ExpertProfile(exObj: exObj)),
+                          );
+                        },
+                        child: SquareContainer(
+                          image: exObj["image"],
+                          title: exObj["name"],
+                          bottomText: "${exObj["profession"]} | ${exObj["rate"]} stars",
+                        ),
+                      );
+                    },
                   )
                 ],
               ),

@@ -47,7 +47,9 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
     {
       "name": "Full Body Exercises",
       "image": "assets/icons/workout-pic.png",
+      "rate": "4.7",
       "schedule": "Monday",
+      "categories": "Full Body",
       "time": "9:00am",
       "kcal": "320",
       "exercise": "10",
@@ -56,7 +58,9 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
     {
       "name": "Upper Body Weights",
       "image": "assets/icons/Lower-Weights.png",
+      "rate": "4.3",
       "schedule": "Monday",
+      "categories": "Upper Body",
       "time": "10:00am",
       "kcal": "210",
       "exercise": "10",
@@ -65,7 +69,9 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
     {
       "name": "Ab Exercises",
       "image": "assets/icons/Ab-workout.png",
+      "rate": "4.5",
       "schedule": "Monday",
+      "categories": "Abdominal",
       "time": "4:00pm",
       "kcal": "260",
       "exercise": "10",

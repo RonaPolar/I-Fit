@@ -51,6 +51,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
     {
       "name": "Blueberry Pancake",
       "image": "assets/images/meal/pancake.png",
+      "rate": "4.9",
       "kcal": "200",
       "fats": "100",
       "proteins": "300",
@@ -61,6 +62,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
     {
       "name": "Salad",
       "image": "assets/images/meal/salad.png",
+      "rate": "4.6",
       "kcal": "200",
       "fats": "100",
       "proteins": "300",
@@ -71,6 +73,7 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
     {
       "name": "Salmon Nigiri",
       "image": "assets/images/meal/nigiri.png",
+      "rate": "4.3",
       "kcal": "300",
       "fats": "250",
       "proteins": "310",

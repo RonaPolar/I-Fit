@@ -225,52 +225,72 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                           fontWeight: FontWeight.w700),
                       ),
                       const Gap(10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
-                            decoration: BoxDecoration(
-                              color: Styles.secondColor.withOpacity(0.3),
-                              borderRadius: BorderRadius.circular(12),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                                padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10),
+                                decoration: BoxDecoration(
+                                  color: Styles.secondColor.withOpacity(0.3),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Row(
+                                  children: [
+                                    const Icon(Icons.star_sharp, color: Colors.red,),
+                                    Text("${widget.dObj["rate"].toString()} stars"),
+                                  ],
+                                ),
+                              ),
+                            const Gap(5),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                              decoration: BoxDecoration(
+                                color: Styles.secondColor.withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.accessibility_new_sharp, color: Colors.red,),
+                                  Text("${widget.dObj["exercise"].toString()} exercises"),
+                                ],
+                              ),
                             ),
-                            child: Row(
-                              children: [
-                                const Icon(Icons.accessibility_new_sharp, color: Colors.red,),
-                                Text("${widget.dObj["exercise"].toString()} exercises"),
-                              ],
+                            const Gap(5),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                              decoration: BoxDecoration(
+                                color: Styles.secondColor.withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.timer, color: Colors.red,),
+                                  Text("${widget.dObj["duration"].toString()} mins"),
+                                ],
+                              ),
                             ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
-                            decoration: BoxDecoration(
-                              color: Styles.secondColor.withOpacity(0.3),
-                              borderRadius: BorderRadius.circular(12),
+                            const Gap(5),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                              decoration: BoxDecoration(
+                                color: Styles.secondColor.withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.local_fire_department_sharp, color: Colors.red,),
+                                  Text("${widget.dObj["kcal"].toString()} calories"),
+                                ],
+                              ),
                             ),
-                            child: Row(
-                              children: [
-                                const Icon(Icons.timer, color: Colors.red,),
-                                Text("${widget.dObj["duration"].toString()} mins"),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
-                            decoration: BoxDecoration(
-                              color: Styles.secondColor.withOpacity(0.3),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Row(
-                              children: [
-                                const Icon(Icons.local_fire_department_sharp, color: Colors.red,),
-                                Text("${widget.dObj["kcal"].toString()} calories"),
-                              ],
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
 
                       const Gap(10),

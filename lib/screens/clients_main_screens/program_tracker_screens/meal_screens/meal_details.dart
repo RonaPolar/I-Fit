@@ -189,6 +189,21 @@ class _MealDetailsState extends State<MealDetails> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                              decoration: BoxDecoration(
+                                color: Styles.secondColor.withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.star_sharp, color: Colors.red,),
+                                  Text("${widget.dObj["rate"].toString()} stars"),
+                                ],
+                              ),
+                            ),
+                            const Gap(5), 
                             NutritionDescriptions(
                               imagePath: "assets/icons/calories.png", 
                               label: "${widget.dObj["kcal"].toString()} calories"), 

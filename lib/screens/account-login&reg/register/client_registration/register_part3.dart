@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
-import 'package:ifit/screens/account-login&reg/register/registration_success.dart';
+import 'package:ifit/screens/account-login&reg/register/client_registration/client_reg_success.dart';
 
 class RegisterPart3 extends StatefulWidget {
   const RegisterPart3({super.key});
@@ -86,7 +86,7 @@ Widget build(BuildContext context) {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SuccessRegistration(),
+                            builder: (context) => const ClientSuccessRegistration(),
                           ),
                         );
                       },

@@ -5,7 +5,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/confirmation_dialog.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
-import 'package:ifit/screens/account-login&reg/register/register_part2.dart';
+import 'package:ifit/screens/account-login&reg/register/client_registration/register_part2.dart';
 import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
 
 class EditProfile extends StatefulWidget {

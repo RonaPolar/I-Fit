@@ -60,7 +60,7 @@ class _MyAppState extends State<MyApp> {
         primaryColor: primary,
       ),
       title: 'I-Fit',
-    // home: const DiscoverNavbar(),
+    // home: const Register(),
     home: widget.homeScreen, //either Onboarding or Register Screen
 
     );

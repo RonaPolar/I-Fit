@@ -6,9 +6,10 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/verification_text_box.dart';
 import 'package:ifit/screens/account-login&reg/login.dart';
+import 'package:ifit/screens/account-login&reg/register/client_registration/register_part2.dart';
+import 'package:ifit/screens/account-login&reg/register/expert_registration/expert_registration1.dart';
 import 'package:ifit/screens/account-login&reg/register/popup_privacy_terms.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
-import 'package:ifit/screens/account-login&reg/register/register_part2.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -20,6 +21,8 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   bool _isPasswordVisible = false; // Track password visibility
   bool _isCheck = false; // Track check box
+  String? selectedValue;
+  String? destinationScreen;
 
   // Function to show the Privacy Policy dialog
   void _showPrivacyPolicyDialog() {
@@ -31,9 +34,13 @@ class _RegisterState extends State<Register> {
     CustomDialogs.showTermsOfUseDialog(context);
   }
 
+  void _showTypesOfUserDialog() {
+    CustomDialogs.showTypesOfUserDialog(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-  
+    
 
     return Scaffold(
       backgroundColor: Styles.bgColor,
@@ -94,6 +101,57 @@ class _RegisterState extends State<Register> {
                                 });
                               },
                             ),
+                          ),
+                          const Gap(15),
+                          Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Text.rich(
+                              TextSpan(
+                                text: 'Click here to learn about ',
+                                children: [
+                                  TextSpan(
+                                    text: 'Type of User',
+                                    style: TextStyle(
+                                      color: Styles.textColor,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        _showTypesOfUserDialog(); // Show Privacy Policy dialog
+                                      },
+                                  ),
+                                ],
+                              ),
+                              style: TextStyle(color: Styles.fadeTextColor),
+                            ),
+                          ),
+                          const Gap(5),
+                          RegisterDropDown(
+                            hintText: 'Type of User',
+                            icon: FluentSystemIcons.ic_fluent_people_regular,
+                            items: const [
+                              DropdownMenuItem<String>(
+                                value: "Client",
+                                child: Text("Client"),
+                              ),
+                              DropdownMenuItem<String>(
+                                value: "Expert",
+                                child: Text("Expert"),
+                              )
+                            ],
+                            onChanged: (value) {
+                              setState(() {
+                                selectedValue = value;
+
+                                if (value == "Client") {
+                                destinationScreen = "ClientRegistration";
+                                } else if (value == "Expert") {
+                                  destinationScreen = "ExpertRegistration";
+                                } 
+                                
+                              });                              
+                            },
+                            selectedValue: selectedValue,
                           ),
                           const Gap(5),
                           Align(
@@ -172,15 +230,20 @@ class _RegisterState extends State<Register> {
                     MainButton(
                       title: 'Register',
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => VerificationCodeScreen(onConfirmPressed: (){
-                              Navigator.pushReplacement(context,MaterialPageRoute(
-                                builder: (context) => const RegisterPart2()),);
-                            }),
-                          ),
-                        );
+                          Navigator.push(context,
+                            MaterialPageRoute(
+                              builder: (context) => VerificationCodeScreen(onConfirmPressed: (){
+                                if (destinationScreen == "ClientRegistration") {
+                                  Navigator.pushReplacement(context,MaterialPageRoute(
+                                    builder: (context) => const RegisterPart2()),);
+                                } else if (destinationScreen == "ExpertRegistration") {
+                                  Navigator.pushReplacement(context,MaterialPageRoute(
+                                    builder: (context) => const ExpertRegistration1()),);
+                                } 
+                              }),
+                            ),
+                          );
+                        
                       },
                     ),
                     const Gap(10),

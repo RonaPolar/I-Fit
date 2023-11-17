@@ -174,4 +174,59 @@ class CustomDialogs {
       },
     );
   }
+
+
+
+    // Function to show a Terms of Use dialog
+  static void showTypesOfUserDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Types of User'),
+          content: const SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'This outlines tells what type of user you are, and to identify how do you want to use our Application. It is important that you read and understand this before using it.',
+                ),
+                SizedBox(height: 10),
+                Text(
+                  '• Are you a CLIENT?',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 5),
+                Text(
+                  'You want to use this Application for Body Weight Loss, Body Toning, Muscle Build.',
+                ),
+                SizedBox(height: 10),
+                Text(
+                  '• Are you an EXPERT?',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 5),
+                Text(
+                  'You are a professional who works in physical fitness field.\nYou want to use this Application to create programs such as Body Weight Loss, Body Toning, Muscle Build that will be used by Clients.',
+                ),
+               
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
+
+
+
+

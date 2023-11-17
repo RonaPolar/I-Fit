@@ -4,7 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
-import 'package:ifit/screens/account-login&reg/register/register_part3.dart';
+import 'package:ifit/screens/account-login&reg/register/client_registration/register_part3.dart';
 
 class RegisterPart2 extends StatefulWidget {
   const RegisterPart2({super.key});

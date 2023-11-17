@@ -4,14 +4,14 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/screens/account-login&reg/login.dart';
 
-class SuccessRegistration extends StatefulWidget {
-  const SuccessRegistration({super.key});
+class ExpertSuccessRegistration extends StatefulWidget {
+  const ExpertSuccessRegistration({super.key});
 
   @override
-  State<SuccessRegistration> createState() => _SuccessRegistrationState();
+  State<ExpertSuccessRegistration> createState() => _ExpertSuccessRegistrationState();
 }
 
-class _SuccessRegistrationState extends State<SuccessRegistration> {
+class _ExpertSuccessRegistrationState extends State<ExpertSuccessRegistration> {
   @override
   Widget build(BuildContext context) {
   return Scaffold(
@@ -39,7 +39,7 @@ class _SuccessRegistrationState extends State<SuccessRegistration> {
                                textAlign: TextAlign.center,
                               ),
                             Text(
-                              'You are all set now, let’s reach your goals together with us',
+                              'You are all set now, let’s create programs together with us',
                                style: Styles.text18,
                                textAlign: TextAlign.center,
                               ),

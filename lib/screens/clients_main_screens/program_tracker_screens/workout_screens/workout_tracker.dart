@@ -54,6 +54,7 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
       "kcal": "320",
       "exercise": "10",
       "duration": "30",
+      "days": "21",
     },
     {
       "name": "Upper Body Weights",
@@ -65,6 +66,7 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
       "kcal": "210",
       "exercise": "10",
       "duration": "30",
+      "days": "15",
     },
     {
       "name": "Ab Exercises",
@@ -76,6 +78,7 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
       "kcal": "260",
       "exercise": "10",
       "duration": "30",
+      "days": "14",
     },
   ];
 

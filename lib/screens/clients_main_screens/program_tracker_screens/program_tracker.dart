@@ -68,7 +68,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
       "proteins": "176",
       "sugar": "50",
       "categories": "Breakfast",
-      "days": "15",
+      "days": "21",
       "progress": 0.2,
     },
     {
@@ -92,7 +92,7 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
       "proteins": "400",
       "sugar": "79",
       "categories": "Dinner",
-      "days": "15",
+      "days": "14",
       "progress": 0.5,
     },
   ];

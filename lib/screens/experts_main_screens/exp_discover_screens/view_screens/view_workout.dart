@@ -4,24 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/favorites_button.dart';
-import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/screens/clients_main_screens/discover_screens/expert_screens/expert_profile.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/program_schedule/add_schedule.dart';
-import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/start_workout.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/workout_exercises_steps.dart';
 import 'package:readmore/readmore.dart';
 
-class WorkoutDetails extends StatefulWidget {
+class ViewWorkoutDetails extends StatefulWidget {
   final Map dObj;
   
-  const WorkoutDetails({super.key, required this.dObj});
+  const ViewWorkoutDetails({super.key, required this.dObj});
 
   @override
-  State<WorkoutDetails> createState() => _WorkoutDetailsState();
+  State<ViewWorkoutDetails> createState() => _ViewWorkoutDetailsState();
 }
 
-class _WorkoutDetailsState extends State<WorkoutDetails> {
+class _ViewWorkoutDetailsState extends State<ViewWorkoutDetails> {
   List itemsArr = [
     {
       "item": "1x of 6lbs Kettlebell",
@@ -446,21 +444,6 @@ class _WorkoutDetailsState extends State<WorkoutDetails> {
                       );
                     }),
 
-                  Container(
-                    padding: const EdgeInsets.only(top: 5,
-                        bottom: 20),
-                    child: Column(
-                      children: [
-                        MainButton(
-                          title: 'Start Now',
-                          onPressed: () {
-                            Navigator.push(context,MaterialPageRoute(
-                                builder: (context) => const StartWorkout()),);
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
 
                 ], //Main children
               ),

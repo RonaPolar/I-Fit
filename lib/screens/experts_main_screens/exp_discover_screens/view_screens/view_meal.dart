@@ -4,24 +4,22 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/common/widgets/confirmation_dialog.dart';
 import 'package:ifit/common/widgets/favorites_button.dart';
-import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/screens/clients_main_screens/discover_screens/expert_screens/expert_profile.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/program_schedule/add_schedule.dart';
 import 'package:readmore/readmore.dart';
 
-class MealDetails extends StatefulWidget {
+class ViewMealDetails extends StatefulWidget {
   final Map dObj;
   
-  const MealDetails({super.key, required this.dObj});
+  const ViewMealDetails({super.key, required this.dObj});
 
   @override
-  State<MealDetails> createState() => _MealDetailsState();
+  State<ViewMealDetails> createState() => _ViewMealDetailsState();
 }
 
-class _MealDetailsState extends State<MealDetails> {
+class _ViewMealDetailsState extends State<ViewMealDetails> {
 
   List itemsArr = [
     {
@@ -76,8 +74,6 @@ class _MealDetailsState extends State<MealDetails> {
     },
   ];
 
- String buttonText = 'Start Now';
-   bool isContainerVisible = false; // Added state for container visibility
 
   @override
   Widget build(BuildContext context) {
@@ -387,49 +383,7 @@ class _MealDetailsState extends State<MealDetails> {
                             );
                           }),
                   
-                        Container(
-                          padding: const EdgeInsets.only(top: 5,
-                              bottom: 10),
-                          child: Column(
-                            children: [
-                              Visibility(
-                                visible: isContainerVisible,
-                                child: SizedBox(
-                                  width: 200,
-                                  child: MainButton(
-                                  title: "Are you Done?",
-                                  buttonColor: Styles.secondColor,
-                                  onPressed: () {
-                                    showDialog(context: context,
-                                      builder: (BuildContext context) {
-                                        return ConfirmationDialog(
-                                          onYesPressed: () {
-                                            setState(() {
-                                              buttonText = "Start Now";
-                                              isContainerVisible = false;
-                                            });
-                                            Navigator.pop(context);
-                                          },
-                                    );});
-                                  },
-                                  ),
-                                ),
-                              ),
-                              const Gap(10),
-                              MainButton(
-                                title: buttonText,
-                                onPressed: () {
-                                  setState(() {
-                                    buttonText = 'Preparing...';
-                                    isContainerVisible = !isContainerVisible;
-                                  });
-                                },
-                              ),
-                              
-                              
-                            ],
-                          ),
-                        ),
+                        
                       ],
                     ),
                   ),

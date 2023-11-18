@@ -42,7 +42,7 @@ class _WorkoutCategoryState extends State<WorkoutCategory> {
   ];
 
     List popularWorkoutArr = [
-    {
+        {
       "name": "Full Body Exercises",
       "image": "assets/icons/workout-pic.png",
       "rate": "4.7",
@@ -52,6 +52,7 @@ class _WorkoutCategoryState extends State<WorkoutCategory> {
       "kcal": "320",
       "exercise": "10",
       "duration": "30",
+      "days": "21",
     },
     {
       "name": "Upper Body Weights",
@@ -63,6 +64,7 @@ class _WorkoutCategoryState extends State<WorkoutCategory> {
       "kcal": "210",
       "exercise": "10",
       "duration": "30",
+      "days": "15",
     },
     {
       "name": "Ab Exercises",
@@ -74,6 +76,7 @@ class _WorkoutCategoryState extends State<WorkoutCategory> {
       "kcal": "260",
       "exercise": "10",
       "duration": "30",
+      "days": "14",
     },
   ];
   

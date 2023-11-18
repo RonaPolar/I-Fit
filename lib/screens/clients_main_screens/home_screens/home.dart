@@ -39,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
       "kcal": "320",
       "exercise": "10",
       "duration": "30",
+      "days": "21",
     },
     {
       "name": "Upper Body Weights",
@@ -50,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
       "kcal": "210",
       "exercise": "10",
       "duration": "30",
+      "days": "15",
     },
     {
       "name": "Ab Exercises",
@@ -61,6 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
       "kcal": "260",
       "exercise": "10",
       "duration": "30",
+      "days": "14",
     },
   ];
 

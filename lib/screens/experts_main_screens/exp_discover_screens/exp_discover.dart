@@ -1,28 +1,30 @@
 import 'dart:math';
+
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/common/widgets/search.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
+import 'package:ifit/common/widgets/search.dart';
 import 'package:ifit/screens/clients_main_screens/discover_screens/expert_screens/expert_profile.dart';
-import 'package:ifit/screens/clients_main_screens/discover_screens/my_program/my_program.dart';
-import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/workout_details.dart';
+import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
+import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/view_meal.dart';
+import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/view_workout.dart';
 
-class DiscoverScreen extends StatefulWidget {
-  const DiscoverScreen({super.key});
+class ExpDiscoverScreen extends StatefulWidget {
+  const ExpDiscoverScreen({super.key});
 
   @override
-  State<DiscoverScreen> createState() => _DiscoverScreenState();
+  State<ExpDiscoverScreen> createState() => _ExpDiscoverScreenState();
 }
 
-class _DiscoverScreenState extends State<DiscoverScreen> {
+class _ExpDiscoverScreenState extends State<ExpDiscoverScreen> {
 TextEditingController txtSearch = TextEditingController();
 
     List popularWorkoutArr = [
-        {
+    {
       "name": "Full Body Exercises",
       "image": "assets/icons/workout-pic.png",
       "rate": "4.7",
@@ -149,7 +151,7 @@ TextEditingController txtSearch = TextEditingController();
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-            builder: (context) => const HomeNavBar()));
+            builder: (context) => const ExpHome()));
         },
         child: Container(
           margin: const EdgeInsets.all(12),
@@ -178,9 +180,9 @@ TextEditingController txtSearch = TextEditingController();
         actions: [
           InkWell(
             onTap: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(
-                builder: (context) => const OngoingPrograms()));
+            // Navigator.of(context).push(
+            //     MaterialPageRoute(
+            //     builder: (context) => const OngoingPrograms()));
             },
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal:15, vertical: 10),
@@ -251,7 +253,7 @@ TextEditingController txtSearch = TextEditingController();
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => WorkoutDetails(dObj: item),
+                                          builder: (context) => ViewWorkoutDetails(dObj: item),
                                         ),
                                       );
                                     },
@@ -269,7 +271,7 @@ TextEditingController txtSearch = TextEditingController();
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => MealDetails(dObj: item),
+                                          builder: (context) => ViewMealDetails(dObj: item),
                                         ),
                                       );
                                     },
@@ -379,9 +381,11 @@ TextEditingController txtSearch = TextEditingController();
                       var exObj = discoverExperts[index] as Map? ?? {};
                       return InkWell(
                         onTap: () {
-                          Navigator.push(context,
+                          Navigator.push(
+                            context,
                             MaterialPageRoute(
-                              builder: (context) => ExpertProfile(exObj: exObj)),);
+                              builder: (context) => ExpertProfile(exObj: exObj)),
+                          );
                         },
                         child: SquareContainer(
                           image: exObj["image"],

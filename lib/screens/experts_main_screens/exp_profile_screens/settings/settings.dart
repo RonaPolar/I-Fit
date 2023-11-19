@@ -6,7 +6,7 @@ import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/settings/change_email.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/settings/change_pass.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/settings/delete_account.dart';
-import 'package:ifit/screens/clients_main_screens/profile_screens/settings/edit_profile.dart';
+import 'package:ifit/screens/experts_main_screens/exp_profile_screens/settings/edit_profile.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});

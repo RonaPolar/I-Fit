@@ -10,8 +10,11 @@ import 'package:ifit/screens/clients_main_screens/profile_screens/about.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/contact_us.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/privacy_policy.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/profile.dart';
-import 'package:ifit/screens/clients_main_screens/profile_screens/settings/settings.dart';
 import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
+import 'package:ifit/screens/experts_main_screens/exp_profile_screens/activity_history.dart';
+import 'package:ifit/screens/experts_main_screens/exp_profile_screens/settings/inbox/inbox.dart';
+import 'package:ifit/screens/experts_main_screens/exp_profile_screens/settings/edit_profile.dart';
+import 'package:ifit/screens/experts_main_screens/exp_profile_screens/settings/settings.dart';
 
 
 
@@ -23,6 +26,19 @@ class ExpProfileScreen extends StatefulWidget {
 }
 
 class _ExpProfileScreenState extends State<ExpProfileScreen> {
+  List experts = [
+    {
+      "name": "Dr. Otto Octavius",
+      "image": "assets/images/experts/expert1.png",
+      "profession": "Physician",
+      "rate": "4.5",
+      "mealCreated": "2",
+      "workoutCreated": "3",
+      "descriptions": "Hello! I completed my course in 2017 and have 5 years of experience working as Physician. If you like my programs I created, you can visit me at Manila Center at Makati City.",
+    },
+  ];
+
+  
   bool positive = false;
   @override
   Widget build(BuildContext context) {
@@ -58,6 +74,28 @@ class _ExpProfileScreenState extends State<ExpProfileScreen> {
         ),
         title: Text('Profile',
         style: Styles.headline20,),
+        actions: [
+          InkWell(
+            onTap: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(
+                builder: (context) => const ExpInbox()));
+            },
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal:15, vertical: 10),
+              height: 35,
+              width: 35,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(10)),
+              child: const Icon(FluentSystemIcons.ic_fluent_chat_regular,
+                size: 20,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ],
       ),
       body: ListView(
         children: [
@@ -84,7 +122,7 @@ class _ExpProfileScreenState extends State<ExpProfileScreen> {
                             width: 50,
                             height: 50,
                             child: Image.asset(
-                              'assets/icons/profile_pic.png',
+                              "${experts[0]["image"]}",
                               fit: BoxFit.fill,
                             ),
                           ),
@@ -96,12 +134,12 @@ class _ExpProfileScreenState extends State<ExpProfileScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Juan Dela Cruz",
+                            "${experts[0]["name"]}",
                             style: Styles.title
                           ),
                           const Gap(5),
                           Text(
-                            "Lose a Fat Program",
+                            "${experts[0]["profession"]}",
                             style: Styles.text15normal
                           )
                         ],
@@ -113,8 +151,8 @@ class _ExpProfileScreenState extends State<ExpProfileScreen> {
                         child: MainButton(
                           title: "Edit",
                         onPressed: () {
-                          // Navigator.of(context).push(MaterialPageRoute(
-                          //       builder: (context) => const EditProfile()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const EditProfile()));
                         },
                         textStyle: Styles.seeMore.copyWith(
                           color: Colors.white,
@@ -123,18 +161,18 @@ class _ExpProfileScreenState extends State<ExpProfileScreen> {
                     ],
                     ),
                     const Gap(10),
-                    const Row(
+                    Row(
                       children: [
                         Expanded(
-                            child: ProfileCell(value: '188cm', title: 'Height')
+                            child: ProfileCell(value: "${experts[0]["rate"]}", title: 'Star Rate')
                             ),
-                        Gap(10),
+                        const Gap(10),
                         Expanded(
-                            child: ProfileCell(value: '56kg', title: 'Weight')
+                            child: ProfileCell(value: "${experts[0]["mealCreated"]}", title: 'Meals')
                             ),
-                        Gap(10),
+                        const Gap(10),
                         Expanded(
-                            child: ProfileCell(value: '22yo', title: 'Height')
+                            child: ProfileCell(value: "${experts[0]["workoutCreated"]}", title: 'Workouts')
                             ),
                       ],
                     ),
@@ -163,16 +201,16 @@ class _ExpProfileScreenState extends State<ExpProfileScreen> {
                             iconData: FluentSystemIcons.ic_fluent_history_regular,
                             title: 'Activity History',
                             onTap: () {
-                              // Navigator.of(context).push(MaterialPageRoute(
-                              //     builder: (context) => const ActivityTrackerScreen()));
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const ExpertActivtyHistory()));
                             },
                           ),
                           NextNavigation(
                             iconData: FluentSystemIcons.ic_fluent_activity_regular,
-                            title: 'Workout Progress',
+                            title: 'Program Progress',
                             onTap: () {
-                              // Navigator.of(context).push(MaterialPageRoute(
-                              //   builder: (context) => ProgressResult(date1: currentDate, date2: lastMonthDate)));
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const ExpPrograms()));
                             },
                           ),
                         ],

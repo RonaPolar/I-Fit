@@ -5,7 +5,6 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/confirmation_dialog.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
-import 'package:ifit/screens/account-login&reg/register/client_registration/register_part2.dart';
 import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
 
 class EditProfile extends StatefulWidget {
@@ -16,25 +15,26 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-    List user = [
+  List experts = [
     {
-      "name": "Juan Dela Cruz",
-      "image": "assets/icons/profile_pic.png",
-      "program": "Loss Weight Program",
+      "name": "Dr. Otto Octavius",
+      "image": "assets/images/experts/expert1.png",
+      "profession": "Physician",
       "number": "09678882245",
-      "height": "188cm",
-      "weight": "56kg",
-      "age": "22",
-      "gender": "Female",
-      "email": "juandelacruz@gmail.com",
-      "bday": "February 13, 2001",
+      "age": "33",
+      "gender": "Male",
+      "email": "ottooctavius@gmail.com",
+      "bday": "February 20, 1990",
+      "rate": "4.5",
+      "mealCreated": "2",
+      "workoutCreated": "3",
+      "descriptions": "Hello! I completed my course in 2017 and have 5 years of experience working as Physician. If you like my programs I created, you can visit me at Manila Center at Makati City.",
     },
   ];
 
 
   @override
   Widget build(BuildContext context) {
-  String? selectedValue;
 
     return Scaffold(
       backgroundColor: Styles.bgColor,
@@ -97,7 +97,7 @@ class _EditProfileState extends State<EditProfile> {
                                   width: 100,
                                   height: 100,
                                   child: Image.asset(
-                                    user[0]["image"].toString(),
+                                    experts[0]["image"].toString(),
                                     fit: BoxFit.fill,
                                   ),
                                 ),
@@ -120,52 +120,26 @@ class _EditProfileState extends State<EditProfile> {
                           ),
                         ),
                         const Gap(15),
-                        TextfieldContainer(hitText: user[0]["name"].toString(), 
+                        TextfieldContainer(hitText: experts[0]["name"].toString(), 
                           icon: FluentSystemIcons.ic_fluent_edit_regular, obscureText: false),
                         const Gap(15),
-                        TextfieldContainer(hitText: user[0]["email"].toString(), 
+                        DisplayTextContainer(hitText: experts[0]["email"].toString(), 
+                          icon: FluentSystemIcons.ic_fluent_mail_regular, obscureText: false),
+                        const Gap(15),
+                        TextfieldContainer(hitText: experts[0]["number"].toString(), 
                           icon: FluentSystemIcons.ic_fluent_edit_regular, obscureText: false),
                         const Gap(15),
-                        TextfieldContainer(hitText: user[0]["number"].toString(), 
+                        DisplayTextContainer(hitText: experts[0]["profession"].toString(), 
+                          icon: FluentSystemIcons.ic_fluent_person_accounts_regular, obscureText: false),
+                        const Gap(15),
+                        TextfieldContainer(hitText: experts[0]["bday"].toString(), 
                           icon: FluentSystemIcons.ic_fluent_edit_regular, obscureText: false),
                         const Gap(15),
-                        RegisterDropDown(hintText: user[0]["program"].toString(), 
-                          icon: FluentSystemIcons.ic_fluent_edit_regular,
-                          items: const [
-                            DropdownMenuItem<String>(
-                              value: "Loss Weight",
-                              child: Text("Loss Weight Program"),),
-                            DropdownMenuItem<String>(
-                              value: "Body Toning",
-                              child: Text("Body Toning Program"),),
-                            DropdownMenuItem<String>(
-                              value: "Gain Muscles",
-                              child: Text("Gain Muscles Program"),)
-                          ],  
-                          onChanged: (value) {
-                            setState(() {
-                              selectedValue = value;
-                            });
-                          },
-                          selectedValue: selectedValue,
-                          ),
-                        // TextfieldContainer(hitText: user[0]["program"].toString(), 
-                        //   icon: FluentSystemIcons.ic_fluent_edit_regular, obscureText: false),
+                        DisplayTextContainer(hitText: experts[0]["age"].toString(), 
+                          icon: FluentSystemIcons.ic_fluent_person_regular, obscureText: false),
                         const Gap(15),
-                        TextfieldContainer(hitText: user[0]["bday"].toString(), 
-                          icon: FluentSystemIcons.ic_fluent_edit_regular, obscureText: false),
-                        const Gap(15),
-                        DisplayTextContainer(hitText: user[0]["age"].toString(), 
-                          icon: FluentSystemIcons.ic_fluent_person_accounts_regular, obscureText: false),
-                        const Gap(15),
-                        DisplayTextContainer(hitText: user[0]["gender"].toString(), 
-                          icon: FluentSystemIcons.ic_fluent_person_accounts_regular, obscureText: false),
-                        const Gap(15),
-                        DisplayTextContainer(hitText: user[0]["height"].toString(), 
-                          icon: FluentSystemIcons.ic_fluent_person_accounts_regular, obscureText: false),
-                        const Gap(15),
-                        DisplayTextContainer(hitText: user[0]["weight"].toString(), 
-                          icon: FluentSystemIcons.ic_fluent_person_accounts_regular, obscureText: false),
+                        DisplayTextContainer(hitText: experts[0]["gender"].toString(), 
+                          icon: FluentSystemIcons.ic_fluent_people_regular, obscureText: false),
                       ],
                     ),
                     

@@ -71,8 +71,14 @@ String? selectedValue;
                           ),
                           const Gap(15),
                           const TextfieldContainer(
+                          hitText: 'Number', 
+                          icon: FluentSystemIcons.ic_fluent_book_number_regular, 
+                          obscureText: false
+                          ),
+                          const Gap(15),
+                          const TextfieldContainer(
                           hitText: 'Profession', 
-                          icon: FluentSystemIcons.ic_fluent_calendar_regular, 
+                          icon: FluentSystemIcons.ic_fluent_person_accounts_regular, 
                           obscureText: false
                           ),
                           const Gap(15),

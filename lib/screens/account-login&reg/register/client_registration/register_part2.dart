@@ -47,6 +47,12 @@ String? selectedValue;
                             style: Styles.text15normal,
                           ),
                           const Gap(30),
+                          const TextfieldContainer(
+                          hitText: 'Number', 
+                          icon: FluentSystemIcons.ic_fluent_book_number_regular, 
+                          obscureText: false
+                          ),
+                          const Gap(15),
                           RegisterDropDown(hintText: 'Gender', 
                           icon: FluentSystemIcons.ic_fluent_people_regular,
                           items: const [
@@ -140,7 +146,7 @@ String? selectedValue;
                     MainButton(
                       title: 'Next',
                       onPressed: () {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const RegisterPart3(),

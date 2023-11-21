@@ -7,9 +7,8 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/common/widgets/search.dart';
 import 'package:ifit/screens/clients_main_screens/discover_screens/expert_screens/expert_profile.dart';
-import 'package:ifit/screens/clients_main_screens/program_tracker_screens/meal_screens/meal_details.dart';
-import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/workout_details.dart';
 import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
+import 'package:ifit/screens/experts_main_screens/exp_discover_screens/my_programs/exp_my_programs.dart';
 import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/view_meal.dart';
 import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/view_workout.dart';
 
@@ -35,6 +34,7 @@ TextEditingController txtSearch = TextEditingController();
       "exercise": "10",
       "duration": "30",
       "days": "21",
+      "clients": "21",
     },
     {
       "name": "Upper Body Weights",
@@ -47,6 +47,7 @@ TextEditingController txtSearch = TextEditingController();
       "exercise": "10",
       "duration": "30",
       "days": "15",
+      "clients": "11",
     },
     {
       "name": "Ab Exercises",
@@ -59,6 +60,7 @@ TextEditingController txtSearch = TextEditingController();
       "exercise": "10",
       "duration": "30",
       "days": "14",
+      "clients": "19",
     },
   ];
 
@@ -72,6 +74,7 @@ TextEditingController txtSearch = TextEditingController();
       "proteins": "305",
       "sugar": "150",
       "categories": "Breakfast",
+      "clients": "13",
     },
     {
       "name": "Salad",
@@ -82,6 +85,7 @@ TextEditingController txtSearch = TextEditingController();
       "proteins": "300",
       "sugar": "50",
       "categories": "Lunch",
+      "clients": "15",
     },
     {
       "name": "Salmon Nigiri",
@@ -92,6 +96,7 @@ TextEditingController txtSearch = TextEditingController();
       "proteins": "310",
       "sugar": "100",
       "categories": "Dinner",
+      "clients": "27",
     },
   ];
 
@@ -180,9 +185,9 @@ TextEditingController txtSearch = TextEditingController();
         actions: [
           InkWell(
             onTap: () {
-            // Navigator.of(context).push(
-            //     MaterialPageRoute(
-            //     builder: (context) => const OngoingPrograms()));
+            Navigator.of(context).push(
+                MaterialPageRoute(
+                builder: (context) => const ExpCreatedProgram()));
             },
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal:15, vertical: 10),
@@ -316,7 +321,7 @@ TextEditingController txtSearch = TextEditingController();
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => WorkoutDetails(dObj: item),
+                                          builder: (context) => ViewWorkoutDetails(dObj: item),
                                         ),
                                       );
                                     },
@@ -334,7 +339,7 @@ TextEditingController txtSearch = TextEditingController();
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => MealDetails(dObj: item),
+                                          builder: (context) => ViewMealDetails(dObj: item),
                                         ),
                                       );
                                     },

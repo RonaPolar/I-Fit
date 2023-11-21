@@ -2,6 +2,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
+import 'package:ifit/screens/experts_main_screens/exp_discover_screens/my_programs/exp_my_programs.dart';
 
 class ExpProgramScreen extends StatefulWidget {
   const ExpProgramScreen({super.key});
@@ -45,9 +46,9 @@ class _ExpProgramScreenState extends State<ExpProgramScreen> {
       actions: [
           InkWell(
             onTap: () {
-            // Navigator.of(context).push(
-            //     MaterialPageRoute(
-            //     builder: (context) => const OngoingPrograms()));
+            Navigator.of(context).push(
+                MaterialPageRoute(
+                builder: (context) => const ExpCreatedProgram()));
             },
             child: Container(
               margin: const EdgeInsets.all(12),

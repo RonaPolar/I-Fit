@@ -5,7 +5,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/confirmation_dialog.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
-import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
+import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
@@ -157,7 +157,7 @@ class _EditProfileState extends State<EditProfile> {
                     onYesPressed: (){
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                        builder: (context) => const ProfileNavBar()));
+                        builder: (context) => const ExpProfile()));
                     },
                   );});
             }),

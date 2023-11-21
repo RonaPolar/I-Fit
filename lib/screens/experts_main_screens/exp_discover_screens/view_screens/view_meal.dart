@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/favorites_button.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
+import 'package:ifit/common/widgets/text_field_container.dart';
 import 'package:ifit/screens/clients_main_screens/discover_screens/expert_screens/expert_profile.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/program_schedule/add_schedule.dart';
 import 'package:readmore/readmore.dart';
@@ -382,12 +383,24 @@ class _ViewMealDetailsState extends State<ViewMealDetails> {
                               isLast: stepArr.last == sObj,
                             );
                           }),
-                  
-                        
                       ],
                     ),
                   ),
 
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: Styles.secondColor.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: DisplayTextContainer(
+                          
+                          icon: FluentSystemIcons.ic_fluent_people_regular,
+                          hitText: "${widget.dObj["kcal"].toString()} clients", obscureText: false,),
+                    ),
+                  ),
                 ], //Main children
               ),
             ),

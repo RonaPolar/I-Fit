@@ -7,7 +7,7 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
-import 'package:ifit/screens/clients_main_screens/discover_screens/expert_screens/expert_contact.dart';
+import 'package:ifit/screens/clients_main_screens/profile_screens/contact_us.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/workout_details.dart';
 import 'package:readmore/readmore.dart';
@@ -369,7 +369,7 @@ class _ExpertProfileState extends State<ExpertProfile> {
                           title: 'Contact Now',
                           onPressed: () {
                             Navigator.push(context,MaterialPageRoute(
-                                builder: (context) => const ExpertContact()),);
+                                builder: (context) => const ContactUs()),);
                           },
                         ),
                       ],

@@ -5,7 +5,6 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/confirmation_dialog.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
-import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
 
 class ContactUs extends StatefulWidget {
   const ContactUs({super.key});
@@ -113,8 +112,7 @@ class _ContactUsState extends State<ContactUs> {
                       builder: (BuildContext context) {
                         return ConfirmationDialog(
                           onYesPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const ProfileNavBar()));
+                            Navigator.pop(context);
                           },
                         );
                       });

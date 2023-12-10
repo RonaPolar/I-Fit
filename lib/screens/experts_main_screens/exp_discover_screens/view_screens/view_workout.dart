@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/favorites_button.dart';
-import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
 import 'package:ifit/screens/clients_main_screens/discover_screens/expert_screens/expert_profile.dart';
-import 'package:ifit/screens/clients_main_screens/program_tracker_screens/program_schedule/add_schedule.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/workout_exercises_steps.dart';
 import 'package:readmore/readmore.dart';
 
@@ -345,30 +343,7 @@ class _ViewWorkoutDetailsState extends State<ViewWorkoutDetails> {
                     ],
                   ),
 
-                  
-                  
-                  const Gap(30),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 15, horizontal: 20),
-                    decoration: BoxDecoration(
-                      color: Styles.secondColor.withOpacity(0.3),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: NextNavigation(
-                        title: 'Schedule Workout',
-                        iconData: FluentSystemIcons.ic_fluent_calendar_regular,
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => AddSchedule(date: DateTime.now()),
-                            ),
-                          );
-                        }),
-                  ),
-
-
+             
                   const Gap(30),
                   Column(
                     children: [

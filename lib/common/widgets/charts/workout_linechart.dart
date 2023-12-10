@@ -218,28 +218,6 @@ LineChartBarData get lineChartBarData1_1 => LineChartBarData(
       ],
     );
 
-// LineChartBarData get lineChartBarData1_2 => LineChartBarData(
-//       isCurved: true,
-//       gradient: LinearGradient(colors: [
-//         Styles.primaryColor.withOpacity(0.5),
-//         Styles.secondColor.withOpacity(0.5),
-//       ]),
-//       barWidth: 2,
-//       isStrokeCapRound: true,
-//       dotData: const FlDotData(show: false),
-//       belowBarData: BarAreaData(
-//         show: false,
-//       ),
-//       spots: const [
-//         FlSpot(1, 80),
-//         FlSpot(2, 50),
-//         FlSpot(3, 90),
-//         FlSpot(4, 40),
-//         FlSpot(5, 80),
-//         FlSpot(6, 35),
-//         FlSpot(7, 60),
-//       ],
-//     );
 
 SideTitles get rightTitles => const SideTitles(
       getTitlesWidget: rightTitleWidgets,

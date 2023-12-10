@@ -6,6 +6,7 @@ import 'package:ifit/common/widgets/confirmation_dialog.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/toggle_switch.dart';
+import 'package:ifit/screens/account-login&reg/login.dart';
 import 'package:ifit/screens/clients_main_screens/home_screens/activity_tracker.dart';
 import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/about.dart';
@@ -279,7 +280,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             onTap: () {
                               showDialog(context: context,
                                 builder: (BuildContext context) {
-                                  return const ConfirmationDialog();});
+                                  return ConfirmationDialog(
+                                    onYesPressed: () {
+                                      Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const LogIn()));
+                                    },
+                                  );});
                             },
                           ),
                         ],

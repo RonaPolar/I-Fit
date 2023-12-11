@@ -12,7 +12,7 @@ import 'package:ifit/screens/clients_main_screens/profile_screens/contact_us.dar
 import 'package:ifit/screens/clients_main_screens/profile_screens/privacy_policy.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/profile.dart';
 import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
-import 'package:ifit/screens/experts_main_screens/exp_profile_screens/activity_history.dart';
+import 'package:ifit/screens/experts_main_screens/exp_home_screens/exp_activitytracker.dart';
 import 'package:ifit/screens/experts_main_screens/exp_profile_screens/settings/inbox/inbox.dart';
 import 'package:ifit/screens/experts_main_screens/exp_profile_screens/settings/edit_profile.dart';
 import 'package:ifit/screens/experts_main_screens/exp_profile_screens/settings/settings.dart';
@@ -203,7 +203,7 @@ class _ExpProfileScreenState extends State<ExpProfileScreen> {
                             title: 'Activity History',
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const ExpertActivtyHistory()));
+                                builder: (context) => const ExpActivityTracker()));
                             },
                           ),
                           NextNavigation(

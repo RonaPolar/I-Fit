@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/custom_dropdown.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
-import 'package:ifit/screens/clients_main_screens/profile_screens/activity_history.dart';
+import 'package:ifit/screens/experts_main_screens/exp_profile_screens/activity_history.dart';
 
 class ExpActivityTracker extends StatefulWidget {
   const ExpActivityTracker({super.key});
@@ -17,7 +17,7 @@ class ExpActivityTracker extends StatefulWidget {
 class _ExpActivityTrackerState extends State<ExpActivityTracker> {
   int touchedIndex = -1;
 
-  List actHistoryArr = [
+  List expactHistoryArr = [
     {
       "image": "assets/images/meal/nigiri.png",
       "title": "You have Created Nigiri lunch",
@@ -124,7 +124,7 @@ class _ExpActivityTrackerState extends State<ExpActivityTracker> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                 ActivtyHistoryScreen(actHistoryArr: actHistoryArr.cast<Map<dynamic, dynamic>>())
+                                 ExpertActivtyHistory(expactHistoryArr: expactHistoryArr.cast<Map<dynamic, dynamic>>())
                             ),
                           );
                         },
@@ -142,8 +142,8 @@ class _ExpActivityTrackerState extends State<ExpActivityTracker> {
                     shrinkWrap: true,
                     itemCount: 5,
                     itemBuilder: (context, index) {
-                      var actObj = actHistoryArr[index] as Map? ?? {};
-                      return ActivityHistoryRow(actObj: actObj);
+                      var expactObj = expactHistoryArr[index] as Map? ?? {};
+                      return ExpActivityHistoryRow(expactObj: expactObj);
                     },
                   ),
 
@@ -362,9 +362,9 @@ class _ActivityBarChartState extends State<ActivityBarChart> {
   }
 }
 
-class ActivityHistoryRow extends StatelessWidget {
-  final Map actObj;
-  const ActivityHistoryRow({super.key, required this.actObj});
+class ExpActivityHistoryRow extends StatelessWidget {
+  final Map expactObj;
+  const ExpActivityHistoryRow({super.key, required this.expactObj});
 
   @override
   Widget build(BuildContext context) {
@@ -375,7 +375,7 @@ class ActivityHistoryRow extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: Image.asset(
-              actObj["image"].toString(),
+              expactObj["image"].toString(),
               width: 40,
               height: 40,
               fit: BoxFit.contain,
@@ -389,12 +389,12 @@ class ActivityHistoryRow extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                actObj["title"].toString(),
+                expactObj["title"].toString(),
                 style: Styles.text12
                     .copyWith(fontWeight: FontWeight.bold),
               ),
               Text(
-                actObj["time"].toString(),
+                expactObj["time"].toString(),
                 style: const TextStyle(
                   fontSize: 12,
                   color: Colors.grey,
@@ -412,72 +412,3 @@ class ActivityHistoryRow extends StatelessWidget {
   }
 }
 
-
-
-//Today Target Container
-class TodayTargetContainer extends StatefulWidget {
-  final String icon;
-  final String value;
-  final String title;
-
-  const TodayTargetContainer({super.key, required this.icon, required this.value, required this.title});
-
-  @override
-  State<TodayTargetContainer> createState() => _TodayTargetContainerState();
-}
-
-class _TodayTargetContainerState extends State<TodayTargetContainer> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 70,
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Row(
-        children: [
-          Image.asset(
-           widget.icon,
-            width: 40,
-            height: 40,
-            fit: BoxFit.contain,
-          ),
-          const SizedBox(
-            width: 8,
-          ),
-          Expanded(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ShaderMask(
-                blendMode: BlendMode.srcIn,
-                shaderCallback: (bounds) {
-                  return LinearGradient(
-                          colors: Styles.gradientColor,
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight)
-                      .createShader(
-                          Rect.fromLTRB(0, 0, bounds.width, bounds.height));
-                },
-                child: Text(
-                  widget.value,
-                  style: Styles.seeMore.copyWith(
-                      color: Colors.white.withOpacity(0.7),
-                      fontWeight: FontWeight.w700,
-                      ),
-                ),
-              ),
-              Text(
-                widget.title,
-                style: Styles.text12
-              ),
-            ],
-          ))
-        ],
-      ),
-    );
-  }
-}

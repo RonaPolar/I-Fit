@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
       ),
       title: 'I-Fit',
 
-      // home: const ExpProgram(),
+      // home: const ExpPrograms(),
       home: widget.homeScreen, //either Onboarding or Register Screen
     );
   }

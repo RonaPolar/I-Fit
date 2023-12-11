@@ -4,6 +4,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
+import 'package:ifit/common/widgets/search.dart';
 import 'package:ifit/common/widgets/toggle_switch.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/meal_screens/meal_details.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/workout_details.dart';
@@ -92,6 +93,7 @@ class _OngoingProgramScreenState extends State<OngoingProgramScreen> {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController txtSearch = TextEditingController();
   List<dynamic> combinedList = [...latestWorkoutArr, ...latestMealArr];
   combinedList.shuffle(Random());
   // List<Widget> items = [];
@@ -102,6 +104,18 @@ class _OngoingProgramScreenState extends State<OngoingProgramScreen> {
         children: [
           Column(
             children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical:10, horizontal: 5),
+                child: Container(
+                  height: 35,
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(10)),
+                  alignment: Alignment.center,
+                  child: SearchContainer(controller: txtSearch, hintText: "Search")
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: SizedBox(

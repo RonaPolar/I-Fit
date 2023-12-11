@@ -430,7 +430,7 @@ class _ViewWorkoutDetailsState extends State<ViewWorkoutDetails> {
                       ),
                       child: DisplayTextContainer(
                         icon: FluentSystemIcons.ic_fluent_people_regular,
-                        hitText: "${widget.dObj["kcal"].toString()} clients", 
+                        hitText: "${widget.dObj["clients"].toString()} clients", 
                         obscureText: false,
                       ),
                     ),

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
+import 'package:ifit/common/widgets/search.dart';
 import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/view_meal.dart';
 import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/view_workout.dart';
 
@@ -89,6 +90,8 @@ class _ExpCreatedProgramScreenState extends State<ExpCreatedProgramScreen> {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController txtSearch = TextEditingController();
+
   List<dynamic> combinedList = [...latestWorkoutArr, ...latestMealArr];
   combinedList.shuffle(Random());
   // List<Widget> items = [];
@@ -99,6 +102,18 @@ class _ExpCreatedProgramScreenState extends State<ExpCreatedProgramScreen> {
         children: [
           Column(
             children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical:10, horizontal: 5),
+                child: Container(
+                  height: 35,
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(10)),
+                  alignment: Alignment.center,
+                  child: SearchContainer(controller: txtSearch, hintText: "Search")
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: SizedBox(

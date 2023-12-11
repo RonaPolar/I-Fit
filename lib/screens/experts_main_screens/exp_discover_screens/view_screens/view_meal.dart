@@ -370,7 +370,7 @@ class _ViewMealDetailsState extends State<ViewMealDetails> {
                       child: DisplayTextContainer(
                           
                           icon: FluentSystemIcons.ic_fluent_people_regular,
-                          hitText: "${widget.dObj["kcal"].toString()} clients", obscureText: false,),
+                          hitText: "${widget.dObj["clients"].toString()} clients", obscureText: false,),
                     ),
                   ),
                 ], //Main children

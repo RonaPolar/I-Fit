@@ -1,6 +1,8 @@
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/confirmation_dialog.dart';
+import 'package:ifit/screens/account-login&reg/register/client_registration/register_part2.dart';
 import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
 
 class CreateMeal extends StatefulWidget {
@@ -11,6 +13,8 @@ class CreateMeal extends StatefulWidget {
 }
 
 class _CreateMealState extends State<CreateMeal> {
+String? selectedValue;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +52,42 @@ class _CreateMealState extends State<CreateMeal> {
         ),
         title: Text('Create Meal Plan',
         style: Styles.headline20,),
-        
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              RegisterDropDown(hintText: 'Meal Category', 
+                icon: FluentSystemIcons.ic_fluent_people_regular,
+                items: const [
+                  DropdownMenuItem<String>(
+                    value: "Breakfast",
+                    child: Text("Breakfast"),),
+                  DropdownMenuItem<String>(
+                    value: "Lunch",
+                    child: Text("Lunch"),),
+                  DropdownMenuItem<String>(
+                    value: "Dinner",
+                    child: Text("Dinner"),),
+                  DropdownMenuItem<String>(
+                    value: "Snacks",
+                    child: Text("Snacks"),),
+                  DropdownMenuItem<String>(
+                    value: "Drinks",
+                    child: Text("Drinks"),),
+                ],  
+                onChanged: (value) {
+                  setState(() {
+                    selectedValue = value;
+                  });
+                },
+                selectedValue: selectedValue,
+                ),
+            ],
+          ),
+        ),
       ),
     );
   }

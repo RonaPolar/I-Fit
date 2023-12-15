@@ -8,8 +8,8 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
 import 'package:ifit/screens/experts_main_screens/exp_discover_screens/my_programs/exp_my_programs.dart';
-import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/view_meal.dart';
-import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/view_workout.dart';
+import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/meal_screen.dart/view_meal.dart';
+import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/workout_screen.dart/view_workout.dart';
 import 'package:ifit/screens/experts_main_screens/exp_program_screens/create_program_screens/create_meal.dart';
 import 'package:ifit/screens/experts_main_screens/exp_program_screens/create_program_screens/create_work.dart';
 

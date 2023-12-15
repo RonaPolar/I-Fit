@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/search.dart';
-import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/view_meal.dart';
-import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/view_workout.dart';
+import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/meal_screen.dart/view_meal.dart';
+import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/workout_screen.dart/view_workout.dart';
 
 class ExpDeletedProgramScreen extends StatefulWidget {
   const ExpDeletedProgramScreen({super.key});

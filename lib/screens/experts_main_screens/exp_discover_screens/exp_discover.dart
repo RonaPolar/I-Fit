@@ -4,13 +4,16 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
+import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/common/widgets/search.dart';
 import 'package:ifit/screens/clients_main_screens/discover_screens/expert_screens/expert_profile.dart';
 import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
 import 'package:ifit/screens/experts_main_screens/exp_discover_screens/my_programs/exp_my_programs.dart';
-import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/view_meal.dart';
-import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/view_workout.dart';
+import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/meal_screen.dart/exp_meal_screen.dart';
+import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/meal_screen.dart/view_meal.dart';
+import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/workout_screen.dart/exp_workout_screen.dart';
+import 'package:ifit/screens/experts_main_screens/exp_discover_screens/view_screens/workout_screen.dart/view_workout.dart';
 
 class ExpDiscoverScreen extends StatefulWidget {
   const ExpDiscoverScreen({super.key});
@@ -212,10 +215,43 @@ TextEditingController txtSearch = TextEditingController();
             children: [
               Padding(
                 padding: const EdgeInsets.only(top:15, right:15, left:15),
-                child: Text(
-                    "Daily Discover",
-                    style: Styles.title
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                        "Daily Discover",
+                        style: Styles.title
+                      ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        SizedBox(
+                          width: 80,
+                          height: 20,
+                          child: MainButton(title: 'Workout', 
+                            textStyle: Styles.text12.copyWith(
+                              color: Colors.white),
+                            onPressed: (){
+                              Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) => const ExpWorkoutScreen()));
+                          }),
+                        ),
+                        const Gap(5),
+                        SizedBox(
+                          width: 60,
+                          height: 20,
+                          child: MainButton(title: 'Meal', 
+                            textStyle: Styles.text12.copyWith(
+                              color: Colors.white),
+                            onPressed: (){
+                              Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) => const ExpMealScreen()));
+                            }),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
 
 
@@ -377,7 +413,7 @@ TextEditingController txtSearch = TextEditingController();
                   GridView.builder(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
+                    shrinkWrap: true,
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2, // Adjust the number of columns as per your design
                     ),

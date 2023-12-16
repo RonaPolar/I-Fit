@@ -5,7 +5,8 @@ class TextfieldContainer extends StatefulWidget {
   final TextEditingController? controller;
   final TextInputType? keyboardType;
   final String hitText;
-  final IconData icon;
+  final IconData? icon;
+  final String? imagePath;
   final Widget? rightIcon;
   final bool obscureText;
   final EdgeInsets? margin;
@@ -13,12 +14,12 @@ class TextfieldContainer extends StatefulWidget {
   const TextfieldContainer({
     Key? key, // Change super.key to Key key
     required this.hitText,
-    required this.icon,
+    this.icon,
     this.rightIcon,
     required this.obscureText,
     this.margin,
     this.controller,
-    this.keyboardType,
+    this.keyboardType, this.imagePath,
   }) : super(key: key);
 
   @override
@@ -28,6 +29,13 @@ class TextfieldContainer extends StatefulWidget {
 class _TextfieldContainerState extends State<TextfieldContainer> {
   @override
   Widget build(BuildContext context) {
+    Widget? prefixIcon;
+    if (widget.icon != null) {
+      prefixIcon = Icon(widget.icon);
+    } else if (widget.imagePath != null) {
+      prefixIcon = Image.asset(widget.imagePath!, scale: 10, fit: BoxFit.scaleDown);
+    }
+
     return Container(
       decoration: BoxDecoration(
         color: Styles.boxtextField,
@@ -41,7 +49,7 @@ class _TextfieldContainerState extends State<TextfieldContainer> {
           contentPadding: const EdgeInsets.only(top: 15),
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
-          prefixIcon: Icon(widget.icon),
+          prefixIcon: prefixIcon,
           suffixIcon: widget.rightIcon,
           hintText: widget.hitText,
           hintStyle: TextStyle(

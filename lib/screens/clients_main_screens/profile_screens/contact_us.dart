@@ -74,27 +74,7 @@ class _ContactUsState extends State<ContactUs> {
                           obscureText: false,
                         ),
                         const Gap(15),
-                        Container(
-                          height: 200,
-                          decoration: BoxDecoration(
-                            color: Styles.boxtextField,
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: SingleChildScrollView(
-                            child: TextField(
-                              maxLines: null,
-                              decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.all(5),
-                                enabledBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                hintText: 'Enter Message',
-                                hintStyle: TextStyle(
-                                  color: Styles.fadeTextColor,
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
+                        const BigTextField()
                       ],
                     ),
                   ],
@@ -119,6 +99,43 @@ class _ContactUsState extends State<ContactUs> {
                 }),
           )
         ],
+      ),
+    );
+  }
+}
+
+
+class BigTextField extends StatefulWidget {
+  final String hintText;
+
+  const BigTextField({super.key, this.hintText = 'Input Message'});
+
+  @override
+  State<BigTextField> createState() => _BigTextFieldState();
+}
+
+class _BigTextFieldState extends State<BigTextField> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200,
+      decoration: BoxDecoration(
+        color: Styles.boxtextField,
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: SingleChildScrollView(
+        child: TextField(
+          maxLines: null,
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.all(5),
+            enabledBorder: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            hintText: widget.hintText,
+            hintStyle: TextStyle(
+              color: Styles.fadeTextColor,
+            ),
+          ),
+        ),
       ),
     );
   }

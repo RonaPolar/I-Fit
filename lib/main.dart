@@ -10,6 +10,8 @@ import 'package:ifit/screens/clients_main_screens/program_tracker_screens/meal_s
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/program_schedule/program_schedule.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/workout_tracker.dart';
 import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
+import 'package:ifit/screens/experts_main_screens/exp_program_screens/create_program_screens/create_meal.dart';
+import 'package:ifit/screens/experts_main_screens/exp_program_screens/create_program_screens/create_work.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ifit/screens/welcome/onboarding_screen.dart';
 import 'package:ifit/screens/account-login&reg/register/register.dart';
@@ -63,7 +65,7 @@ class _MyAppState extends State<MyApp> {
       ),
       title: 'I-Fit',
 
-      // home: const ExpPrograms(),
+      // home: const CreateWorkout()
       home: widget.homeScreen, //either Onboarding or Register Screen
     );
   }

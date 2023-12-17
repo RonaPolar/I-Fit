@@ -9,6 +9,7 @@ import 'package:ifit/screens/account-login&reg/register/client_registration/regi
 import 'package:ifit/screens/clients_main_screens/profile_screens/contact_us.dart';
 import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
 import 'package:ifit/screens/experts_main_screens/exp_program_screens/create_program_screens/create_meal.dart';
+import 'package:ifit/screens/experts_main_screens/exp_program_screens/create_program_screens/create_work_next.dart';
 
 class CreateWorkout extends StatefulWidget {
   const CreateWorkout({super.key});
@@ -151,6 +152,7 @@ class _CreateWorkoutState extends State<CreateWorkout> {
                       hitText: 'Equipment with Quantity',
                       icon: FluentSystemIcons.ic_fluent_data_funnel_regular,
                       obscureText: false),
+
                     const AddsubButton(
                       title: 'Items', 
                       add: TextfieldContainer(
@@ -174,18 +176,36 @@ class _CreateWorkoutState extends State<CreateWorkout> {
                       add: Column(
                         children: [
                           const Gap(5),
-                          Text('Input the Exercises to the Set', style: Styles.text15bold,),
+                          Text('Input the Exercises to the Set and Click Continue', style: Styles.text15bold,),
                           const Gap(5),
-                          const TextfieldContainer(
+                          TextfieldContainer(
                             hitText: 'Exercise',
                             icon: FluentSystemIcons.ic_fluent_data_funnel_regular,
+                            rightIcon: SizedBox(width: 100, 
+                              child: MainButton(title: 'Continue', 
+                                textStyle: Styles.text15bold.copyWith(color: Colors.white), 
+                                onPressed: (){
+                                  Navigator.pushReplacement(context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const CreateWorkoutNext()));
+                                })),
                             obscureText: false),
-                          const AddsubButton(
+
+                          AddsubButton(
                             title: 'Exercise', 
                             add: TextfieldContainer(
                               hitText: 'Exercise',
                               icon: FluentSystemIcons.ic_fluent_data_funnel_regular,
-                              obscureText: false),
+                              rightIcon: SizedBox(width: 100, 
+                                child: MainButton(title: 'Continue', 
+                                textStyle: Styles.text15bold.copyWith(color: Colors.white), 
+                                onPressed: (){
+                                  Navigator.pushReplacement(context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const CreateWorkoutNext()));
+                                })),
+                              obscureText: false
+                            ),
                           ),
                         ],
                         )

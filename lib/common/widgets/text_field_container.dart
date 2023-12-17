@@ -12,7 +12,7 @@ class TextfieldContainer extends StatefulWidget {
   final EdgeInsets? margin;
 
   const TextfieldContainer({
-    Key? key, // Change super.key to Key key
+    Key? key,
     required this.hitText,
     this.icon,
     this.rightIcon,

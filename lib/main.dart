@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
       ),
       title: 'I-Fit',
 
-      home: widget.homeScreen, //either Onboarding or Register Screen
+      home: widget.homeScreen,// either Onboarding or Register Screen
     );
   }
 } 

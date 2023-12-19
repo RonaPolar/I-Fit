@@ -19,6 +19,8 @@ class CreateWorkout extends StatefulWidget {
 }
 
 class _CreateWorkoutState extends State<CreateWorkout> {
+  String? selectedWorkoutCategory;
+  String? selectedWorkoutDifficulty;
   String? selectedValue;
 
   @override
@@ -70,8 +72,8 @@ class _CreateWorkoutState extends State<CreateWorkout> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     RegisterDropDown(
-                      hintText: 'Workout Category',
-                      icon: FluentSystemIcons.ic_fluent_data_funnel_regular,
+                      hintText: 'Category',
+                      icon: Icons.fitness_center_outlined,
                       items: const [
                         DropdownMenuItem<String>(
                           value: "Upper Body",
@@ -92,16 +94,43 @@ class _CreateWorkoutState extends State<CreateWorkout> {
                       ],
                       onChanged: (value) {
                         setState(() {
-                          selectedValue = value;
+                          selectedWorkoutCategory = value;
                         });
                       },
-                      selectedValue: selectedValue,
+                      selectedValue: selectedWorkoutCategory,
                     ),
+
+                    const Gap(10),
+                    RegisterDropDown(
+                      hintText: 'Difficulty',
+                      icon: Icons.fitness_center_outlined,
+                      items: const [
+                        DropdownMenuItem<String>(
+                          value: "Beginner",
+                          child: Text("Beginner"),
+                        ),
+                        DropdownMenuItem<String>(
+                          value: "Intermediate",
+                          child: Text("Intermediate"),
+                        ),
+                        DropdownMenuItem<String>(
+                          value: "Expert",
+                          child: Text("Expert"),
+                        ),
+                      ],
+                      onChanged: (value) {
+                        setState(() {
+                          selectedWorkoutDifficulty  = value;
+                        });
+                      },
+                      selectedValue: selectedWorkoutDifficulty ,
+                    ),
+
                     const Gap(10),
                     const TextfieldContainer(
-                        hitText: 'Workout Plan Name',
-                        icon: FluentSystemIcons.ic_fluent_data_funnel_regular,
-                        obscureText: false),
+                      hitText: 'Plan Name',
+                      icon: Icons.fitness_center_outlined,
+                      obscureText: false),
                     const Gap(10),
                     const SizedBox(
                       height: 100,
@@ -128,12 +157,12 @@ class _CreateWorkoutState extends State<CreateWorkout> {
 
                     const Gap(10),
                     const TextfieldContainer(
-                      hitText: 'Minutes',
-                      icon: FluentSystemIcons.ic_fluent_timer_regular,
+                      hitText: 'Days of the Plan',
+                      icon: FluentSystemIcons.ic_fluent_calendar_regular,
                       obscureText: false),
                     const Gap(10),
                     const TextfieldContainer(
-                      hitText: 'Days',
+                      hitText: 'Minutes it Takes to Do',
                       icon: FluentSystemIcons.ic_fluent_timer_regular,
                       obscureText: false),
                     const Gap(10),
@@ -150,14 +179,14 @@ class _CreateWorkoutState extends State<CreateWorkout> {
                     const Gap(5),
                     const TextfieldContainer(
                       hitText: 'Equipment with Quantity',
-                      icon: FluentSystemIcons.ic_fluent_data_funnel_regular,
+                      icon: Icons.fitness_center_outlined,
                       obscureText: false),
 
                     const AddsubButton(
                       title: 'Items', 
                       add: TextfieldContainer(
                         hitText: 'Equipment with Quantity', 
-                        icon: FluentSystemIcons.ic_fluent_data_funnel_regular,
+                        icon: Icons.fitness_center_outlined,
                         obscureText: false)),
 
                     const Gap(20),
@@ -180,7 +209,7 @@ class _CreateWorkoutState extends State<CreateWorkout> {
                           const Gap(5),
                           TextfieldContainer(
                             hitText: 'Exercise',
-                            icon: FluentSystemIcons.ic_fluent_data_funnel_regular,
+                            icon: Icons.fitness_center_outlined,
                             rightIcon: SizedBox(width: 100, 
                               child: MainButton(title: 'Continue', 
                                 textStyle: Styles.text15bold.copyWith(color: Colors.white), 
@@ -195,7 +224,7 @@ class _CreateWorkoutState extends State<CreateWorkout> {
                             title: 'Exercise', 
                             add: TextfieldContainer(
                               hitText: 'Exercise',
-                              icon: FluentSystemIcons.ic_fluent_data_funnel_regular,
+                              icon: Icons.fitness_center_outlined,
                               rightIcon: SizedBox(width: 100, 
                                 child: MainButton(title: 'Continue', 
                                 textStyle: Styles.text15bold.copyWith(color: Colors.white), 

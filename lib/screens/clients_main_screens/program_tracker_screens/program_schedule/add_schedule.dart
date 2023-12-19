@@ -93,6 +93,22 @@ class _AddScheduleState extends State<AddSchedule> {
                       mode: CupertinoDatePickerMode.time,
                     ),
                   ),
+
+                  const Gap(15),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: NextNavigation(
+                      title: "Select Days",
+                      iconData: Icons.calendar_today_outlined,
+                      onTap: () {
+                        
+                      }),
+                  ),
             
                   const Gap(30),
                   Text(
@@ -111,12 +127,7 @@ class _AddScheduleState extends State<AddSchedule> {
                       title: "Choose Workout",
                       iconData: Icons.fitness_center_outlined,
                       onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => const WorkoutSchedule(),
-                        //   ),
-                        // );
+                        
                       }),
                   ),
                   const Gap(5),

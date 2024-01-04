@@ -21,6 +21,7 @@ class CreateWorkout extends StatefulWidget {
 class _CreateWorkoutState extends State<CreateWorkout> {
   String? selectedWorkoutCategory;
   String? selectedWorkoutDifficulty;
+  String? selectedWorkoutPurpose;
   String? selectedValue;
 
   @override
@@ -99,6 +100,33 @@ class _CreateWorkoutState extends State<CreateWorkout> {
                       },
                       selectedValue: selectedWorkoutCategory,
                     ),
+
+                    const Gap(10),
+                    RegisterDropDown(
+                      hintText: 'Purpose',
+                      icon: Icons.fitness_center_outlined,
+                      items: const [
+                        DropdownMenuItem<String>(
+                          value: "Lose Weight",
+                          child: Text("Lose Weight"),
+                        ),
+                        DropdownMenuItem<String>(
+                          value: "Gain Muscles",
+                          child: Text("Gain Muscles"),
+                        ),
+                        DropdownMenuItem<String>(
+                          value: "Body Toning",
+                          child: Text("Body Toning"),
+                        ),
+                      ],
+                      onChanged: (value) {
+                        setState(() {
+                          selectedWorkoutPurpose  = value;
+                        });
+                      },
+                      selectedValue: selectedWorkoutPurpose ,
+                    ),
+
 
                     const Gap(10),
                     RegisterDropDown(

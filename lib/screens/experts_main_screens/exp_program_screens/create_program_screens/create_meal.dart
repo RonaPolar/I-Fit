@@ -18,6 +18,9 @@ class CreateMeal extends StatefulWidget {
 
 class _CreateMealState extends State<CreateMeal> {
   String? selectedValue;
+  String? selectedFoodCategory;
+  String? selectedFoodPurpose;
+
 
   @override
   Widget build(BuildContext context) {
@@ -100,11 +103,40 @@ class _CreateMealState extends State<CreateMeal> {
                       ],
                       onChanged: (value) {
                         setState(() {
-                          selectedValue = value;
+                          selectedFoodCategory = value;
                         });
                       },
-                      selectedValue: selectedValue,
+                      selectedValue: selectedFoodCategory,
                     ),
+
+
+                    const Gap(10),
+                    RegisterDropDown(
+                      hintText: 'Purpose',
+                      icon: Icons.fitness_center_outlined,
+                      items: const [
+                        DropdownMenuItem<String>(
+                          value: "Lose Weight",
+                          child: Text("Lose Weight"),
+                        ),
+                        DropdownMenuItem<String>(
+                          value: "Gain Muscles",
+                          child: Text("Gain Muscles"),
+                        ),
+                        DropdownMenuItem<String>(
+                          value: "Body Toning",
+                          child: Text("Body Toning"),
+                        ),
+                      ],
+                      onChanged: (value) {
+                        setState(() {
+                          selectedFoodPurpose  = value;
+                        });
+                      },
+                      selectedValue: selectedFoodPurpose ,
+                    ),
+
+
                     const Gap(10),
                     const TextfieldContainer(
                         hitText: 'Food Plan Name',

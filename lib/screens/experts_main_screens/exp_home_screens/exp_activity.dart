@@ -3,40 +3,40 @@ import 'package:flutter/material.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/more_icon.dart';
 
-class ActivityTracker extends StatefulWidget {
-  const ActivityTracker({super.key});
+class ExpActivityHistory extends StatefulWidget {
+  const ExpActivityHistory({super.key});
 
   @override
-  State<ActivityTracker> createState() => _ActivityTrackerState();
+  State<ExpActivityHistory> createState() => _ExpActivityHistoryState();
 }
 
-class _ActivityTrackerState extends State<ActivityTracker> {
+class _ExpActivityHistoryState extends State<ExpActivityHistory> {
   int touchedIndex = -1;
 
-  List actHistoryArr = [
+  List expactHistoryArr = [
     {
       "image": "assets/images/meal/nigiri.png",
-      "title": "Eat lunch",
+      "title": "You have Created Nigiri lunch",
       "time": "About 1 minutes ago"
     },
     {
       "image": "assets/icons/Lower-Weights.png",
-      "title": "You have finished the Lowerbody Weights",
+      "title": "You have Edited the Lowerbody Weights",
       "time": "About 3 hours ago"
     },
     {
       "image": "assets/images/meal/salad.png",
-      "title": "Eat dinner",
+      "title": "You have Deleted Salad Dinner",
       "time": "About 3 hours ago"
     },
     {
       "image": "assets/icons/workout-pic.png",
-      "title": "You have completed the 15 days Full Bo...",
+      "title": "You have Created the 15 days Full Bo...",
       "time": "29 May"
     },
     {
-      "image": "assets/images/meal/pancake.png",
-      "title": "You added Pancake to your desserts",
+      "image": "assets/images/experts/expert3.jpg",
+      "title": "You have Followed Dr. Harley Quinn",
       "time": "8 April"
     },
     {
@@ -85,15 +85,15 @@ class _ActivityTrackerState extends State<ActivityTracker> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  
                   ListView.builder(
-                    // WorkoutRowContainer Content
                     padding: EdgeInsets.zero,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: actHistoryArr.length,
+                    itemCount: expactHistoryArr.length,
                     itemBuilder: (context, index) {
-                      var actObj = actHistoryArr[index] as Map? ?? {};
-                      return ActivityHistoryRow(actObj: actObj);
+                      var expactObj = expactHistoryArr[index] as Map? ?? {};
+                      return ExpActivityHistoryRow(expactObj: expactObj);
                     },
                   ),
 
@@ -107,9 +107,9 @@ class _ActivityTrackerState extends State<ActivityTracker> {
 
 
 
-class ActivityHistoryRow extends StatelessWidget {
-  final Map actObj;
-  const ActivityHistoryRow({super.key, required this.actObj});
+class ExpActivityHistoryRow extends StatelessWidget {
+  final Map expactObj;
+  const ExpActivityHistoryRow({super.key, required this.expactObj});
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +120,7 @@ class ActivityHistoryRow extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: Image.asset(
-              actObj["image"].toString(),
+              expactObj["image"].toString(),
               width: 40,
               height: 40,
               fit: BoxFit.contain,
@@ -134,12 +134,12 @@ class ActivityHistoryRow extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                actObj["title"].toString(),
+                expactObj["title"].toString(),
                 style: Styles.text12
                     .copyWith(fontWeight: FontWeight.bold),
               ),
               Text(
-                actObj["time"].toString(),
+                expactObj["time"].toString(),
                 style: const TextStyle(
                   fontSize: 12,
                   color: Colors.grey,

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/charts/meal_piechart.dart';
-import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/meal_screens/meal_category.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/meal_screens/meal_details.dart';
@@ -114,16 +113,6 @@ class _MealTrackerScreenState extends State<MealTrackerScreen> {
         title: Text(
           'Meal Tracker',
           style: Styles.headline20),
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 20),
-            height: 30,
-            width: 30,
-            alignment: Alignment.center,
-            child: const MoreIcon(options: ['This Week','This Month'], iconData: FluentSystemIcons.ic_fluent_more_filled,
-            ),
-          ),
-        ],
       ),
 
       body:ListView(

@@ -10,11 +10,9 @@ import 'package:ifit/screens/account-login&reg/login.dart';
 import 'package:ifit/screens/clients_main_screens/home_screens/activity_tracker.dart';
 import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/about.dart';
-import 'package:ifit/screens/clients_main_screens/profile_screens/contact_us.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/privacy_policy.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/settings/edit_profile.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/settings/settings.dart';
-import 'package:ifit/screens/clients_main_screens/progress_tracker_screens/body/progress_result.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -27,8 +25,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool positive = false;
   @override
   Widget build(BuildContext context) {
-    DateTime currentDate = DateTime.now();
-    DateTime lastMonthDate = DateTime(currentDate.year, currentDate.month - 1, currentDate.day);
 
     return Scaffold(
       backgroundColor: Styles.bgColor,
@@ -165,7 +161,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             title: 'Activity History',
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const ActivityTrackerScreen()));
+                                  builder: (context) => const ActivityTracker()));
                             },
                           ),
                           NextNavigation(
@@ -173,7 +169,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             title: 'Workout Progress',
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => ProgressResult(date1: currentDate, date2: lastMonthDate)));
+                                builder: (context) => const ProgressTrackerNavBar()));
                             },
                           ),
                         ],
@@ -254,8 +250,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             iconData: FluentSystemIcons.ic_fluent_mail_regular,
                             title: 'Contact Us',
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const ContactUs()));
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              //   builder: (context) => const ContactUs()));
                             },
                           ),
                           NextNavigation(

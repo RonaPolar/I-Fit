@@ -5,7 +5,7 @@ import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
-import 'package:ifit/screens/experts_main_screens/exp_home_screens/exp_activitytracker.dart';
+import 'package:ifit/screens/experts_main_screens/exp_home_screens/exp_activity.dart';
 import 'package:ifit/screens/experts_main_screens/exp_home_screens/exp_notifications.dart';
 import 'package:ifit/screens/experts_main_screens/exp_program_screens/exp_program.dart';
 
@@ -167,7 +167,7 @@ class _ExpHomeScreenState extends State<ExpHomeScreen> {
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
-                                      const ExpActivityTracker()));
+                                      const ExpActivityHistory()));
                             },
                             textStyle: Styles.seeMore.copyWith(
                               color: Colors.white,

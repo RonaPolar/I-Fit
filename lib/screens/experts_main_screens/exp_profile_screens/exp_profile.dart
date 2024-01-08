@@ -8,12 +8,10 @@ import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/toggle_switch.dart';
 import 'package:ifit/screens/account-login&reg/login.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/about.dart';
-import 'package:ifit/screens/clients_main_screens/profile_screens/contact_us.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/privacy_policy.dart';
 import 'package:ifit/screens/clients_main_screens/profile_screens/profile.dart';
 import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
-import 'package:ifit/screens/experts_main_screens/exp_home_screens/exp_activitytracker.dart';
-import 'package:ifit/screens/experts_main_screens/exp_profile_screens/settings/inbox/inbox.dart';
+import 'package:ifit/screens/experts_main_screens/exp_home_screens/exp_activity.dart';
 import 'package:ifit/screens/experts_main_screens/exp_profile_screens/settings/edit_profile.dart';
 import 'package:ifit/screens/experts_main_screens/exp_profile_screens/settings/settings.dart';
 
@@ -43,8 +41,6 @@ class _ExpProfileScreenState extends State<ExpProfileScreen> {
   bool positive = false;
   @override
   Widget build(BuildContext context) {
-    // DateTime currentDate = DateTime.now();
-    // DateTime lastMonthDate = DateTime(currentDate.year, currentDate.month - 1, currentDate.day);
 
     return Scaffold(
       backgroundColor: Styles.bgColor,
@@ -75,28 +71,7 @@ class _ExpProfileScreenState extends State<ExpProfileScreen> {
         ),
         title: Text('Profile',
         style: Styles.headline20,),
-        actions: [
-          InkWell(
-            onTap: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(
-                builder: (context) => const ExpInbox()));
-            },
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal:15, vertical: 10),
-              height: 35,
-              width: 35,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(10)),
-              child: const Icon(FluentSystemIcons.ic_fluent_chat_regular,
-                size: 20,
-                color: Colors.black,
-              ),
-            ),
-          ),
-        ],
+        
       ),
       body: ListView(
         children: [
@@ -203,7 +178,7 @@ class _ExpProfileScreenState extends State<ExpProfileScreen> {
                             title: 'Activity History',
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const ExpActivityTracker()));
+                                builder: (context) => const ExpActivityHistory()));
                             },
                           ),
                           NextNavigation(
@@ -292,8 +267,8 @@ class _ExpProfileScreenState extends State<ExpProfileScreen> {
                             iconData: FluentSystemIcons.ic_fluent_mail_regular,
                             title: 'Contact Us',
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const ContactUs()));
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              //   builder: (context) => const ContactUs()));
                             },
                           ),
                           NextNavigation(

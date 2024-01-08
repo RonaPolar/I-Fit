@@ -3,7 +3,6 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/common/widgets/charts/programs_chart.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
@@ -17,7 +16,6 @@ import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workou
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/workout_screens/workout_tracker.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 import 'package:dotted_dashed_line/dotted_dashed_line.dart';
-import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -247,7 +245,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                          builder: (context) => const ActivityTrackerScreen()));
+                          builder: (context) => const ActivityTracker()));
                       },
                       textStyle: Styles.seeMore.copyWith(
                         color: Colors.white,
@@ -389,158 +387,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                 ),
               ),
-              const Gap(15),
-
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      width: double.maxFinite,
-                      height: 150,
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 15, horizontal: 15),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                          boxShadow: const [
-                            BoxShadow(color: Colors.black26, blurRadius: 2)
-                          ]),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Time Spent',
-                              style: Styles.text15bold.copyWith(
-                                  color: Styles.fadeTextColor,
-                                  ),
-                              ),
-                              Text(
-                                "2hr 50m",
-                                style: Styles.normal.copyWith(
-                                    color: Styles.secondColor.withOpacity(0.5),
-                                    fontWeight: FontWeight.w700,
-                                    ),
-                              ),
-                              Expanded(
-                                child: Image.asset('assets/images/Sleep-Graph.png', 
-                                  fit: BoxFit.fill),
-                              ),
-                          ])
-                ),
-                    const Gap(15),
-                    
-                    Container(
-                      width: double.maxFinite,
-                      height: 150,
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 15, horizontal: 15),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                          boxShadow: const [
-                            BoxShadow(color: Colors.black26, blurRadius: 2)
-                          ]),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Calories',
-                              style: Styles.text15bold.copyWith(
-                                  color: Styles.fadeTextColor,
-                                  ),
-                              ),
-                              Text(
-                                "760 kCal",
-                                style: Styles.normal.copyWith(
-                                    color: Styles.secondColor.withOpacity(0.5),
-                                    fontWeight: FontWeight.w700,
-                                    ),
-                              ),
-                              const Gap(10),
-                              Container(
-                                alignment: Alignment.center,
-                                child: SizedBox(
-                                  width: 70,
-                                  height: 70,
-                                  child: Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      Container(
-                                        width: 60,
-                                        height: 60,
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                          color: primary,
-                                          borderRadius: BorderRadius.circular(20),
-                                        ),
-                                        child: FittedBox(
-                                          child: Text(
-                                            "240kCal\nBurned",
-                                            textAlign: TextAlign.center,
-                                            style: Styles.normal.copyWith(
-                                                color: Colors.white,
-                                                fontSize: 10),
-                                          ),
-                                          ),
-                                        ),
-                                        SimpleCircularProgressBar(
-                                        progressStrokeWidth: 10,
-                                        backStrokeWidth: 10,
-                                        progressColors: [Styles.secondColor.withOpacity(0.5), Styles.secondColor],
-                                        backColor: Colors.grey.shade200,
-                                        valueNotifier: ValueNotifier(30),
-                                        startAngle: -180,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              ])
-                      ),
-                    ],
-                ),
-                )
+              
               ],),
               const Gap(20),
 
-            Column(  //Workout Progress
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              NextNavigation(title: 'Program Activity',
-                nextIconColor: Styles.fadeTextColor,
-                titleTextStyle: Styles.title,
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                   builder: (context) => const ProgramTrackerNavbar(),
-                 ));
-                },),
-              const Gap(5),
-              ],
-            ),
-            
-            const Gap(10),
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  child: LegendsListWidget(
-                          legends: [
-                            // Legend('Pilates', pilateColor),
-                            Legend('Workouts', Styles.secondColor),
-                            Legend('Meal', Styles.primaryColor),
-                          ],
-                        ),
-                ),
-                Container(
-                  height: 200,
-                  width: double.maxFinite,
-                  alignment: Alignment.center,
-                  child: ProgramsChart(),
-                ),
-              ],
-            ),
-
-            const Gap(15),
             Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

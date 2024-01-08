@@ -6,7 +6,6 @@ import 'package:ifit/common/widgets/confirmation_dialog.dart';
 import 'package:ifit/common/widgets/main_button.dart';
 import 'package:ifit/common/widgets/text_field_container.dart';
 import 'package:ifit/screens/account-login&reg/register/client_registration/register_part2.dart';
-import 'package:ifit/screens/clients_main_screens/profile_screens/contact_us.dart';
 import 'package:ifit/screens/experts_main_screens/exp_bottom_bar.dart';
 
 class CreateMeal extends StatefulWidget {

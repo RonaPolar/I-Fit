@@ -4,7 +4,6 @@ import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
 import 'package:ifit/common/widgets/icon_text_icon.dart';
 import 'package:ifit/common/widgets/main_button.dart';
-import 'package:ifit/common/widgets/charts/programs_chart.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
 import 'package:ifit/screens/clients_main_screens/program_tracker_screens/meal_screens/meal_details.dart';
@@ -156,29 +155,42 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    child: LegendsListWidget(
-                      legends: [
-                        // Legend('Pilates', pilateColor),
-                        Legend('Workouts', Styles.secondColor),
-                        Legend('Meal', Styles.primaryColor),
-                      ],
-                    ),
+              Padding(
+                padding: const EdgeInsets.all(15),
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  decoration: BoxDecoration(
+                    color: Styles.secondColor.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(15),),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Daily Schedule',
+                        style: Styles.text15bold
+                      ),
+                      SizedBox(
+                        width: 80,
+                        height: 30,
+                          child: MainButton(
+                            title: "Check",
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                              builder: (context) => const MealSched()));
+                          },
+                          textStyle: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            ),
+                          )),                    
+                        ],
+                      ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    height: 200,
-                    width: double.maxFinite,
-                    alignment: Alignment.center,
-                    child: ProgramsChart(),
-                  ),
-                ],
               ),
 
-              const Gap(10),
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 decoration: BoxDecoration(
@@ -232,40 +244,6 @@ class _ProgramTrackerScreenState extends State<ProgramTrackerScreen> {
                 padding: const EdgeInsets.all(15),
                 child: Column(
                   children: [
-                    Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                decoration: BoxDecoration(
-                  color: Styles.secondColor.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(15),),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Daily Schedule',
-                      style: Styles.text15bold
-                    ),
-                    SizedBox(
-                      width: 80,
-                      height: 30,
-                        child: MainButton(
-                          title: "Check",
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                            builder: (context) => const MealSched()));
-                        },
-                        textStyle: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          ),
-                        )),                    
-                        ],
-                      ),
-                    ),
-
-                    const Gap(15),
                     Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

@@ -2,7 +2,6 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ifit/common/utils/app_styles.dart';
-import 'package:ifit/common/widgets/more_icon.dart';
 import 'package:ifit/common/widgets/program_widgets.dart';
 import 'package:ifit/common/widgets/charts/workout_linechart.dart';
 import 'package:ifit/screens/clients_main_screens/main_bottom_bar.dart';
@@ -115,16 +114,6 @@ class _WorkoutTrackerScreenState extends State<WorkoutTrackerScreen> {
         title: Text(
           'Workout Tracker',
           style: Styles.headline20),
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 20),
-            height: 30,
-            width: 30,
-            alignment: Alignment.center,
-            child: const MoreIcon(options: ['This Week','This Month'], iconData: FluentSystemIcons.ic_fluent_more_filled,
-            ),
-          ),
-        ],
       ),
 
         body:ListView(
